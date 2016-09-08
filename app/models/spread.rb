@@ -1,7 +1,13 @@
 class Spread < ApplicationRecord
+  has_many :places
+  
+  def position_of card
+    places.find_by :card_id => card.id
+  end
+  
   def quadrated_deck
     deck = Card.ordered_deck
-    age.times { deck = quadrate deck }
+    (age + 1).times { deck = quadrate deck }
     return deck
   end
   
