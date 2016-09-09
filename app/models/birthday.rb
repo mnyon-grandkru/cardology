@@ -1,4 +1,5 @@
 class Birthday < ApplicationRecord
+  attr_accessor :date
   def birth_card
     deck = Card.ordered_deck.unshift(Card.find_by(:face => Face.find_by(:name => 'Joker')))
     position = month * 2 + day
@@ -47,5 +48,9 @@ class Birthday < ApplicationRecord
     position = 52 + position if position < 0
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
+  end
+  
+  def reading
+    "Birth Card: #{birth_card.inspect}; This Year: #{card_for_this_year.inspect}; 52-day Card: #{card_for_this_52_day_period.inspect}"
   end
 end
