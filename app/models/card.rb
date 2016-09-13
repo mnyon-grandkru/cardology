@@ -15,7 +15,15 @@ class Card < ApplicationRecord
     return deck.reverse
   end
   
+  def self.joker
+    find_by(:face => Face.find_by(:name => 'Joker'))
+  end
+  
   def inspect
-    "#{face.name} of #{suit.name}"
+    if face.name == 'Joker'
+      'Joker'
+    else
+      "#{face.name} of #{suit.name}"
+    end
   end
 end
