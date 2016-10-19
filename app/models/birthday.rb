@@ -50,6 +50,6 @@ class Birthday < ApplicationRecord
   end
   
   def reading
-    "Birth Card: #{birth_card.inspect}; This Year: #{card_for_this_year.inspect}; 52-day Card: #{card_for_this_52_day_period.inspect}"
+    "Birth Card: #{birth_card.inspect}<br>This Year: #{card_for_this_year.inspect}<br>52-day Card: #{card_for_this_52_day_period.inspect}"
   end
 end

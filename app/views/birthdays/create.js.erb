@@ -1,1 +1,1 @@
-$('#results').html('<%= escape_javascript @birthday.reading %>');
+$('#results').html('<%= escape_javascript @birthday.reading.html_safe %>');
