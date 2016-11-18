@@ -24,6 +24,18 @@ form#new_birthday {
     
     .identification_of_card {
       float: right;
+      
+      .opportunities_on_card {
+        padding: 10px;
+        width: 80px;
+        background-color: #86D1DC;
+        
+        .monthly_price_of_card {
+          padding: 10px;
+          color: white;
+          background-color: #2F98D9;
+        }
+      }
     }
     
     .explication_of_card {
@@ -35,4 +47,8 @@ form#new_birthday {
       color: #48C5DC;
     }
   }
+}
+
+.clearboth {
+  clear: both;
 }

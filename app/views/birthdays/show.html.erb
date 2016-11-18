@@ -3,6 +3,12 @@
     <%= content_tag :header, 'Your birth card' %>
     <%= div_for @birth_card, :identification_of do %>
       <%= @birth_card.name %>
+      <%= div_for @birth_card, :opportunities_on do %>
+        Join the monthly membership for more info.
+        <%= div_for @birth_card, :monthly_price_of do %>
+          $7/mo
+        <% end %>
+      <% end %>
     <% end %>
     <%= div_for @birth_card, :explication_of do %>
       <%= @birth_card_explanation %>
@@ -10,10 +16,17 @@
     <%= link_to 'I want to learn more' %>
   <% end %>
   
+  <%= clearboth %>
   <%= div_for @birthday, :yearly_card_for do %>
     <%= content_tag :header, 'Your yearly card' %>
     <%= div_for @yearly_card, :identification_of do %>
       <%= @yearly_card.name %>
+      <%= div_for @yearly_card, :opportunities_on do %>
+        Join the monthly membership for more info.
+        <%= div_for @yearly_card, :monthly_price_of do %>
+          $7/mo
+        <% end %>
+      <% end %>
     <% end %>
     <%= div_for @yearly_card, :explication_of do %>
       <%= @yearly_card_explanation %>
@@ -21,10 +34,17 @@
     <%= link_to 'I want to learn more' %>
   <% end %>
   
+  <%= clearboth %>
   <%= div_for @birthday, :planetary_card_for do %>
     <%= content_tag :header, 'Your 52 day card' %>
     <%= div_for @planetary_card, :identification_of do %>
       <%= @planetary_card.name %>
+      <%= div_for @planetary_card, :opportunities_on do %>
+        Join the monthly membership for more info.
+        <%= div_for @planetary_card, :monthly_price_of do %>
+          $7/mo
+        <% end %>
+      <% end %>
     <% end %>
     <%= div_for @planetary_card, :explication_of do %>
       <%= @planetary_card_explanation %>
