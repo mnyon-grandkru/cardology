@@ -1,4 +1,8 @@
 class BirthdaysController < ApplicationController
+  def index
+    @birthdays = Birthday.all
+  end
+  
   def show
     @birthday = Birthday.find params[:id]
     @birth_card = @birthday.birth_card

@@ -1,0 +1,7 @@
+<% @birthdays.each do |birthday| %>
+  <%= div_for birthday do %>
+    <%= birthday.name %>
+    <%= link_to 'view reading', birthday %>
+  <% end %>
+<% end %>
+<%= link_to 'new birthday', new_birthday_path %>
