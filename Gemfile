@@ -12,6 +12,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 
+gem 'record_tag_helper'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end

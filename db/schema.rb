@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908202224) do
+ActiveRecord::Schema.define(version: 20161019104454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20160908202224) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "interpretations", force: :cascade do |t|
+    t.integer  "card_id"
+    t.text     "explanation"
+    t.integer  "reading"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["card_id"], name: "index_interpretations_on_card_id", using: :btree
   end
 
   create_table "lookups", force: :cascade do |t|
@@ -71,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160908202224) do
 
   add_foreign_key "cards", "faces"
   add_foreign_key "cards", "suits"
+  add_foreign_key "interpretations", "cards"
   add_foreign_key "lookups", "birthdays"
   add_foreign_key "places", "cards"
   add_foreign_key "places", "spreads"

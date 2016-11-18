@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :interpretations
   root :to => 'birthdays#new'
   resources :lookups
   resources :birthdays

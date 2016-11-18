@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  card: one
+  explanation: MyText
+  reading: 1
+
+two:
+  card: two
+  explanation: MyText
+  reading: 1

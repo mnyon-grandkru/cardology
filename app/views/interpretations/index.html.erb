@@ -1,0 +1,8 @@
+<% @interpretations.each do |interpretation| %>
+  <%= div_for interpretation do %>
+    <%= interpretation.card.name %> as
+    <%= interpretation.reading %>: 
+    <%= interpretation.explanation %>
+  <% end %>
+<% end %>
+<%= link_to 'new interpretation', new_interpretation_path %>

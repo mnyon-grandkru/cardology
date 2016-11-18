@@ -1,6 +1,7 @@
 class Card < ApplicationRecord
   belongs_to :suit
   belongs_to :face
+  has_many :interpretations
   
   def self.ordered_deck
     deck = []
@@ -25,5 +26,9 @@ class Card < ApplicationRecord
     else
       "#{face.name} of #{suit.name}"
     end
+  end
+  
+  def name
+    inspect
   end
 end
