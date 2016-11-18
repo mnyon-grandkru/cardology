@@ -9,3 +9,30 @@ form#new_birthday {
 #results {
   text-align: center;
 }
+
+
+.birthday {
+  width: 440px;
+  
+  font-family: Helvetica;
+  div {
+    padding: 20px;
+    header {
+      font-weight: bold;
+      padding: 10px;
+    }
+    
+    .identification_of_card {
+      float: right;
+    }
+    
+    .explication_of_card {
+      padding: 8px;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #48C5DC;
+    }
+  }
+}
