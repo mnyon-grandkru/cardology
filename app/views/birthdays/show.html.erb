@@ -1,16 +1,34 @@
 <%= div_for @birthday do %>
   <%= div_for @birthday, :birth_card_for do %>
-    <%= @birth_card.name %>
-    <%= @birth_card_explanation %>
+    <%= content_tag :header, 'Your birth card' %>
+    <%= div_for @birth_card, :identification_of do %>
+      <%= @birth_card.name %>
+    <% end %>
+    <%= div_for @birth_card, :explication_of do %>
+      <%= @birth_card_explanation %>
+    <% end %>
+    <%= link_to 'I want to learn more' %>
   <% end %>
   
   <%= div_for @birthday, :yearly_card_for do %>
-    <%= @yearly_card.name %>
-    <%= @yearly_card_explanation %>
+    <%= content_tag :header, 'Your yearly card' %>
+    <%= div_for @yearly_card, :identification_of do %>
+      <%= @yearly_card.name %>
+    <% end %>
+    <%= div_for @yearly_card, :explication_of do %>
+      <%= @yearly_card_explanation %>
+    <% end %>
+    <%= link_to 'I want to learn more' %>
   <% end %>
   
   <%= div_for @birthday, :planetary_card_for do %>
-    <%= @planetary_card.name %>
-    <%= @planetary_card_explanation %>
+    <%= content_tag :header, 'Your 52 day card' %>
+    <%= div_for @planetary_card, :identification_of do %>
+      <%= @planetary_card.name %>
+    <% end %>
+    <%= div_for @planetary_card, :explication_of do %>
+      <%= @planetary_card_explanation %>
+    <% end %>
+    <%= link_to 'I want to learn more' %>
   <% end %>
 <% end %>
