@@ -16,6 +16,16 @@ class InterpretationsController < ApplicationController
     redirect_to :action => :index
   end
   
+  def edit
+    @interpretation = Interpretation.find params[:id]
+  end
+  
+  def update
+    @interpretation = Interpretation.find params[:id]
+    @interpretation.update_attributes interpretation_params
+    redirect_to :action => :index
+  end
+  
   def interpretation_params
     params.require(:interpretation).permit(:reading, :explanation, :card_id)
   end

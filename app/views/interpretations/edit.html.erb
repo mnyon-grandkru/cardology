@@ -1,0 +1,17 @@
+<%= form_for @interpretation do |interpretation_form| %>
+  <div>
+    <%= interpretation_form.select :card_id, options_from_collection_for_select(Card.all, :id, :name, @interpretation.card_id), :include_blank => 'Pick a card' %>
+  </div>
+  
+  <div>
+    <%= interpretation_form.text_area :explanation %>
+  </div>
+  
+  <div>
+    <%= interpretation_form.select :reading, options_for_select(Interpretation.readings.keys, @interpretation.reading) %>
+  </div>
+  
+  <div>
+    <%= interpretation_form.submit %>
+  </div>
+<% end %>

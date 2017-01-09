@@ -2,7 +2,10 @@
   <%= div_for interpretation do %>
     <%= interpretation.card.name %> as
     <%= interpretation.reading %>: 
-    <%= interpretation.explanation %>
+    <%= mark_up interpretation.explanation %>
+    <%= div_for interpretation, :control_of do %>
+      <%= link_to '[edit]', edit_interpretation_path(interpretation) %>
+    <% end %>
   <% end %>
 <% end %>
 <%= link_to 'new interpretation', new_interpretation_path %>
