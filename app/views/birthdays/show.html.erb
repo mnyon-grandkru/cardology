@@ -11,7 +11,7 @@
       <% end %>
     <% end %>
     <%= div_for @birth_card, :explication_of do %>
-      <%= @birth_card_explanation %>
+      <%= mark_up @birth_card_explanation %>
     <% end %>
     <%= link_to 'I want to learn more' %>
   <% end %>
@@ -29,7 +29,7 @@
       <% end %>
     <% end %>
     <%= div_for @yearly_card, :explication_of do %>
-      <%= @yearly_card_explanation %>
+      <%= mark_up @yearly_card_explanation %>
     <% end %>
     <%= link_to 'I want to learn more' %>
   <% end %>
@@ -47,7 +47,7 @@
       <% end %>
     <% end %>
     <%= div_for @planetary_card, :explication_of do %>
-      <%= @planetary_card_explanation %>
+      <%= mark_up @planetary_card_explanation %>
     <% end %>
     <%= link_to 'I want to learn more' %>
   <% end %>

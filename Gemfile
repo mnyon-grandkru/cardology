@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 
 gem 'record_tag_helper'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'byebug', platform: :mri
