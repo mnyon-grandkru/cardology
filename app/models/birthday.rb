@@ -16,25 +16,37 @@ class Birthday < ApplicationRecord
   end
   
   def age
-    ((Date.today - birthdate) / 365).floor
+    ((Date.today - birthdate) / (1.year / 1.day)).floor
+  end
+  
+  def age_on_date date
+    ((date - birthdate) / (1.year / 1.day)).floor
   end
   
   def days_since_birthday #including the birthday
+    days_since_birthday_on_date Date.today
+  end
+  
+  def days_since_birthday_on_date date
     today = Date.today
-    if today.month > month
-      last_birthday = Date.new today.year, month, day
-    elsif today.month < month || today.day < day
-      last_birthday = Date.new(today.year - 1, month, day)
+    if date.month > month
+      last_birthday = Date.new date.year, month, day
+    elsif date.month < month || date.day < day
+      last_birthday = Date.new(date.year - 1, month, day)
     else
-      last_birthday = Date.new today.year, month, day
+      last_birthday = Date.new date.year, month, day
     end
     day_before_birthday = last_birthday - 1
-    (today - day_before_birthday).floor
+    (date - day_before_birthday).floor
   end
   
   def card_for_this_year
-    long_range_spread_index = age / 7
-    planetary_position = (age % 7) + 1
+    card_for_the_year_on_date Date.today
+  end
+  
+  def card_for_the_year_on_date date
+    long_range_spread_index = age_on_date(date) / 7
+    planetary_position = (age_on_date(date) % 7) + 1
     spread = Spread.find_by(:age => long_range_spread_index)
     position_of_birth_card = spread.position_of birth_card
     position = position_of_birth_card.position - planetary_position
@@ -44,8 +56,12 @@ class Birthday < ApplicationRecord
   end
   
   def card_for_this_52_day_period
-    spread = Spread.find_by(:age => age)
-    planetary_position = (days_since_birthday / 52) + 1
+    card_for_the_planetary_period_on_date Date.today
+  end
+  
+  def card_for_the_planetary_period_on_date date
+    spread = Spread.find_by(:age => age_on_date(date))
+    planetary_position = (days_since_birthday_on_date(date) / 52) + 1
     return Card.joker if planetary_position > 7
     position_of_birth_card = spread.position_of birth_card
     position = position_of_birth_card.position - planetary_position
