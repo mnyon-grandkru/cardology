@@ -8,9 +8,9 @@ class BirthdaysController < ApplicationController
     @birth_card = @birthday.birth_card
     @yearly_card = @birthday.card_for_this_year
     @planetary_card = @birthday.card_for_this_52_day_period
-    @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation
-    @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
-    @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :planetary).last&.explanation
+    @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation || Interpretation.last&.explanation
+    @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation || Interpretation.last&.explanation
+    @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :planetary).last&.explanation || Interpretation.last&.explanation
   end
   
   def create
