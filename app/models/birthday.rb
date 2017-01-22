@@ -70,6 +70,187 @@ class Birthday < ApplicationRecord
     place.card
   end
   
+  def personality_card
+    spread = Spread.find_by(:age => 0)
+    position_of_birth_card = spread.position_of birth_card
+    Rails.logger.info "Position of birth card: #{position_of_birth_card}"
+    Rails.logger.info "Number for planet: #{number_for_planet}"
+    planetary_ruling_position = position_of_birth_card.position - number_for_planet
+    place = Place.find_by :spread_id => spread.id, :position => planetary_ruling_position
+    place.card
+  end
+  
+  def astrological_sign
+    case birthdate.month
+    when 1
+      case birthdate.day
+      when 1..20
+        :capricorn
+      when 21..22
+        cusp(:capricorn, :aquarius)
+      when 23..31
+        :aquarius
+      end
+    when 2
+      case birthdate.day
+      when 1..20
+        :aquarius
+      when 21..22
+        cusp(:aquarius, :pisces)
+      when 23..31
+        :pisces
+      end
+    when 3
+      case birthdate.day
+      when 1..20
+        :pisces
+      when 21..22
+        cusp(:pisces, :aries)
+      when 23..31
+        :aries
+      end
+    when 4
+      case birthdate.day
+      when 1..20
+        :aries
+      when 21..22
+        cusp(:aries, :taurus)
+      when 23..31
+        :taurus
+      end
+    when 5
+      case birthdate.day
+      when 1..20
+        :taurus
+      when 21..22
+        cusp(:taurus, :gemini)
+      when 23..31
+        :gemini
+      end
+    when 6
+      case birthdate.day
+      when 1..20
+        :gemini
+      when 21..22
+        cusp(:gemini, :cancer)
+      when 23..31
+        :cancer
+      end
+    when 7
+      case birthdate.day
+      when 1..20
+        :cancer
+      when 21..22
+        cusp(:cancer, :leo)
+      when 23..31
+        :leo
+      end
+    when 8
+      case birthdate.day
+      when 1..20
+        :leo
+      when 21..22
+        cusp(:leo, :virgo)
+      when 23..31
+        :virgo
+      end
+    when 9
+      case birthdate.day
+      when 1..20
+        :virgo
+      when 21..22
+        cusp(:virgo, :libra)
+      when 23..31
+        :libra
+      end
+    when 10
+      case birthdate.day
+      when 1..20
+        :libra
+      when 21..22
+        cusp(:libra, :scorpio)
+      when 23..31
+        :scorpio
+      end
+    when 11
+      case birthdate.day
+      when 1..20
+        :scorpio
+      when 21..22
+        cusp(:scorpio, :saggitarius)
+      when 23..31
+        :saggitarius
+      end
+    when 12
+      case birthdate.day
+      when 1..20
+        :saggitarius
+      when 21..22
+        cusp(:saggitarius, :capricorn)
+      when 23..31
+        :capricorn
+      end
+    end
+  end
+  
+  def cusp leader, follower
+    leader
+  end
+  
+  def planet_for_sign
+    case astrological_sign
+    when :aries
+      :mars
+    when :taurus
+      :venus
+    when :gemini
+      :mercury
+    when :cancer
+      :moon
+    when :leo
+      :sun
+    when :virgo
+      :mercury
+    when :libra
+      :venus
+    when :scorpio
+      :mars
+    when :saggitarius
+      :jupiter
+    when :capricorn
+      :saturn
+    when :aquarius
+      :saturn
+    when :pisces
+      :jupiter
+    end
+  end
+  
+  def number_for_planet
+    case planet_for_sign
+    when :mercury
+      1
+    when :venus
+      2
+    when :mars
+      3
+    when :jupiter
+      4
+    when :saturn
+      5
+    when :neptune
+      6
+    when :uranus
+      7
+    when :pluto
+      8
+    when :sun
+      9 # speculation
+    when :moon
+      10 # speculation
+    end
+  end
+  
   def reading
     "Birth Card: #{birth_card.inspect}<br>This Year: #{card_for_this_year.inspect}<br>52-day Card: #{card_for_this_52_day_period.inspect}"
   end

@@ -6,9 +6,11 @@ class BirthdaysController < ApplicationController
   def show
     @birthday = Birthday.find params[:id]
     @birth_card = @birthday.birth_card
+    @personality_card = @birthday.personality_card
     @yearly_card = @birthday.card_for_this_year
     @planetary_card = @birthday.card_for_this_52_day_period
     @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation || Interpretation.last&.explanation
+    @personality_card_explanation = @personality_card.interpretations.where(:reading => :birth).last&.explanation || Interpretation.last&.explanation
     @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation || Interpretation.last&.explanation
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation || Interpretation.last&.explanation
   end
