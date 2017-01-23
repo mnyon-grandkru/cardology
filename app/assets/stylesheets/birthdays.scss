@@ -24,8 +24,12 @@ form#new_birthday {
     
     .identification_of_card {
       float: right;
+      .card_face_image {
+        width: 120px;
+      }
       
       .opportunities_on_card {
+        margin-left: 10px;
         padding: 10px;
         width: 80px;
         background-color: #86D1DC;

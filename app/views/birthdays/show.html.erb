@@ -2,7 +2,7 @@
   <%= div_for @birthday, :birth_card_for do %>
     <%= content_tag :header, 'Your Birth Card' %>
     <%= div_for @birth_card, :identification_of do %>
-      <%= @birth_card.name %>
+      <%= image_tag @birth_card.image, :class => 'card_face_image' %>
       <%= div_for @birth_card, :opportunities_on do %>
         Join the monthly membership for more info.
         <%= div_for @birth_card, :monthly_price_of do %>
@@ -20,7 +20,7 @@
   <%= div_for @birthday, :personality_card_for do %>
     <%= content_tag :header, 'Your Personality Card' %>
     <%= div_for @personality_card, :identification_of do %>
-      <%= @personality_card.name %>
+      <%= image_tag @personality_card.image, :class => 'card_face_image' %>
       <%= div_for @personality_card, :opportunities_on do %>
         Join the monthly membership for more info.
         <%= div_for @personality_card, :monthly_price_of do %>
@@ -36,9 +36,9 @@
   
   <%= clearboth %>
   <%= div_for @birthday, :yearly_card_for do %>
-    <%= content_tag :header, 'Your yearly card' %>
+    <%= content_tag :header, 'Your Yearly Card' %>
     <%= div_for @yearly_card, :identification_of do %>
-      <%= @yearly_card.name %>
+      <%= image_tag @yearly_card.image, :class => 'card_face_image' %>
       <%= div_for @yearly_card, :opportunities_on do %>
         Join the monthly membership for more info.
         <%= div_for @yearly_card, :monthly_price_of do %>
@@ -54,9 +54,9 @@
   
   <%= clearboth %>
   <%= div_for @birthday, :planetary_card_for do %>
-    <%= content_tag :header, 'Your 52 day card' %>
+    <%= content_tag :header, 'Your 52 Day Card' %>
     <%= div_for @planetary_card, :identification_of do %>
-      <%= @planetary_card.name %>
+      <%= image_tag @planetary_card.image, :class => 'card_face_image' %>
       <%= div_for @planetary_card, :opportunities_on do %>
         Join the monthly membership for more info.
         <%= div_for @planetary_card, :monthly_price_of do %>
