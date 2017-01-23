@@ -18,7 +18,8 @@ class BirthdaysController < ApplicationController
   def create
     @birthday = Birthday.find_or_create_by :year => birthday_params['date(1i)'], :month => birthday_params['date(2i)'], :day => birthday_params['date(3i)']
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
-    redirect_to @birthday
+    render :template => 'birthdays/member_form'
+    # redirect_to @birthday
   end
   
   def birthday_params

@@ -1,0 +1,10 @@
+<%= form_tag lookup_path(@lookup), :method => :put do %>
+  <div class="member_signup_credential_entry">
+    <%= text_field :member, :name, :placeholder => 'Name' %>
+  </div>
+  <div class="member_signup_credential_entry">
+    <%= text_field :member, :email, :placeholder => 'Email' %>
+  </div>
+  
+  <%= submit_tag 'Go' %>
+<% end %>

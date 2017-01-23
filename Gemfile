@@ -16,6 +16,7 @@ gem 'record_tag_helper'
 gem 'redcarpet'
 gem 'carrierwave', '~> 1.0'
 gem 'fog'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platform: :mri
