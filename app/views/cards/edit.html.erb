@@ -1,0 +1,6 @@
+Upload image for <%= @card.name %>
+<%= form_for @card do |card_form| %>
+  <%= card_form.file_field :image %>
+
+  <%= card_form.submit %>
+<% end %>

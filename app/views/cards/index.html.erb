@@ -1,0 +1,7 @@
+<% @cards.each do |card| %>
+  <%= div_for card do %>
+    <%= card.name %>
+    <%= image_tag card.image %>
+    <%= link_to 'edit', edit_card_path(card) %>
+  <% end %>
+<% end %>
