@@ -14,7 +14,7 @@ class CardologySeeder
   end
   
   def face_off!
-    ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Joker'].each do |face|
+    ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Joker', 'Card Back'].each do |face|
       Face.find_or_create_by :name => face
     end
   end
@@ -28,6 +28,7 @@ class CardologySeeder
       end
     end
     Card.find_or_create_by :suit => Suit.find_by(:name => 'No Suit'), :face => Face.find_by(:name => 'Joker')
+    Card.find_or_create_by :suit => Suit.find_by(:name => 'No Suit'), :face => Face.find_by(:name => 'Card Back')
   end
   
   def spread_out!

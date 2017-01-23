@@ -32,4 +32,8 @@ class Card < ApplicationRecord
   def name
     inspect
   end
+  
+  def self.card_back_image
+    find_by(:face => Face.find_by(:name => 'Card Back'))&.image
+  end
 end

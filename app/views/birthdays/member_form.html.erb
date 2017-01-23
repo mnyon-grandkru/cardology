@@ -1,3 +1,24 @@
+<%= div_for @birthday do %>
+  <%= div_for @birthday, :birth_card_for do %>
+    <%= content_tag :header, 'Your Birth Card' %>
+    <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}" %>
+    <%= div_for @birth_card, :identification_of do %>
+      <%= image_tag @birth_card.image, :class => 'card_face_image' %>
+    <% end %>
+    <%= div_for @birth_card, :explication_of do %>
+      <%= mark_up @birth_card_explanation %>
+    <% end %>
+    
+    <%= content_tag :header, 'Your Personality Card' %>
+    <%= div_for @birth_card, :identification_of do %>
+      <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
+    <% end %>
+    <%= div_for @birth_card, :explication_of do %>
+      <%= ENV['PERSONALITY_CARD_COPY'] %>
+    <% end %>
+  <% end %>
+<% end %>
+
 <%= form_tag lookup_path(@lookup), :method => :put do %>
   <div class="member_signup_credential_entry">
     <%= text_field :member, :name, :placeholder => 'Name' %>
