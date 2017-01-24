@@ -73,8 +73,6 @@ class Birthday < ApplicationRecord
   def personality_card
     spread = Spread.find_by(:age => 0)
     position_of_birth_card = spread.position_of birth_card
-    Rails.logger.info "Position of birth card: #{position_of_birth_card}"
-    Rails.logger.info "Number for planet: #{number_for_planet}"
     planetary_ruling_position = position_of_birth_card.position - number_for_planet
     place = Place.find_by :spread_id => spread.id, :position => planetary_ruling_position
     place.card
@@ -84,45 +82,45 @@ class Birthday < ApplicationRecord
     case birthdate.month
     when 1
       case birthdate.day
-      when 1..20
+      when 1..19
         :capricorn
-      when 21..22
+      when 20..21
         cusp(:capricorn, :aquarius)
-      when 23..31
+      when 22..31
         :aquarius
       end
     when 2
       case birthdate.day
-      when 1..20
+      when 1..18
         :aquarius
-      when 21..22
+      when 19..20
         cusp(:aquarius, :pisces)
-      when 23..31
+      when 21..29
         :pisces
       end
     when 3
       case birthdate.day
-      when 1..20
+      when 1..19
         :pisces
-      when 21..22
+      when 20..21
         cusp(:pisces, :aries)
-      when 23..31
+      when 22..31
         :aries
       end
     when 4
       case birthdate.day
-      when 1..20
+      when 1..19
         :aries
-      when 21..22
+      when 20..21
         cusp(:aries, :taurus)
-      when 23..31
+      when 22..30
         :taurus
       end
     when 5
       case birthdate.day
-      when 1..20
+      when 1..19
         :taurus
-      when 21..22
+      when 20..22
         cusp(:taurus, :gemini)
       when 23..31
         :gemini
@@ -133,41 +131,41 @@ class Birthday < ApplicationRecord
         :gemini
       when 21..22
         cusp(:gemini, :cancer)
-      when 23..31
+      when 23..30
         :cancer
       end
     when 7
       case birthdate.day
-      when 1..20
+      when 1..21
         :cancer
-      when 21..22
+      when 22..23
         cusp(:cancer, :leo)
-      when 23..31
+      when 24..31
         :leo
       end
     when 8
       case birthdate.day
-      when 1..20
+      when 1..21
         :leo
-      when 21..22
+      when 22..23
         cusp(:leo, :virgo)
-      when 23..31
+      when 24..31
         :virgo
       end
     when 9
       case birthdate.day
-      when 1..20
+      when 1..21
         :virgo
-      when 21..22
+      when 22..23
         cusp(:virgo, :libra)
-      when 23..31
+      when 24..30
         :libra
       end
     when 10
       case birthdate.day
-      when 1..20
+      when 1..22
         :libra
-      when 21..22
+      when 23..24
         cusp(:libra, :scorpio)
       when 23..31
         :scorpio
@@ -178,7 +176,7 @@ class Birthday < ApplicationRecord
         :scorpio
       when 21..22
         cusp(:scorpio, :saggitarius)
-      when 23..31
+      when 23..30
         :saggitarius
       end
     when 12
@@ -245,9 +243,9 @@ class Birthday < ApplicationRecord
     when :pluto
       8
     when :sun
-      9 # speculation
+      0
     when :moon
-      10 # speculation
+      -1
     end
   end
   
