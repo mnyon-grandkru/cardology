@@ -1,3 +1,36 @@
 // Place all the styles related to the lookups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.scroller {
+  width: 600px;
+  height: 260px;
+  overflow-x: scroll;
+  
+  .card_holder {
+    width: 1600px;
+    height: 260px;
+    
+    .card_reading {
+      height: 260px;
+      display: inline-block;
+    
+      .card_display {
+      
+        .card_image {
+        
+          img.preview_card {
+            width: 100px;
+          }
+        
+        }
+      
+        .interpretation_description {
+          width: 110px;
+          height: 70px;
+          overflow-y: scroll;
+        }
+      }
+    }
+  }
+}

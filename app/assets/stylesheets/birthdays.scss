@@ -15,8 +15,11 @@ form#new_birthday {
   width: 440px;
   
   font-family: Helvetica;
-  div {
+  & > div {
     padding: 20px;
+  }
+  
+  div {
     header {
       font-weight: bold;
       padding: 10px;
