@@ -15,7 +15,7 @@ module LookupsHelper
     content_tag :div, :class => 'card_display' do
       [
         content_tag(:div, image_tag(Card.card_back_image, :class => 'preview_card'), :class => 'card_image'),
-        "#{card_name.capitalize} Card",
+        content_tag(:div, "#{card_name.capitalize} Card", :class => 'card_name'),
         content_tag(:div, meaning_of_reading(card_name), :class => 'interpretation_description')
       ].join.html_safe
     end

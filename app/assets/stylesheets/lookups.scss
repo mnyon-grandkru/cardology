@@ -2,17 +2,43 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#offer_of_life_spread {
+  width: 500px;
+  border: 1px solid #C07E30;
+  
+  .intro {
+    margin-bottom: 20px;
+  }
+  
+  .call_to_action > div {
+    width: 40%;
+    display: inline-block;
+  }
+  
+  .call_to_action {
+    padding: 10px;
+    
+    .button {
+      padding: 20px;
+      text-align: center;
+      font-size: 1.3em;
+      color: white;
+      background-color: #3972E6;
+    }
+  }
+}
+
 .scroller {
-  width: 600px;
-  height: 260px;
+  width: 500px;
+  height: 265px;
   overflow-x: scroll;
   
   .card_holder {
     width: 1600px;
-    height: 260px;
+    height: 265px;
     
     .card_reading {
-      height: 260px;
+      height: 265px;
       display: inline-block;
     
       .card_display {
@@ -24,10 +50,14 @@
           }
         
         }
+        
+        .card_name {
+          padding: 10px 0px;
+        }
       
         .interpretation_description {
           width: 110px;
-          height: 70px;
+          height: 73px;
           overflow-y: scroll;
         }
       }
