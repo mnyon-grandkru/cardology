@@ -17,4 +17,16 @@ module CardsHelper
       :magician
     ]
   end
+  
+  def cards_in_year_spread
+    [
+      :mercury,
+      :venus,
+      :mars,
+      :jupiter,
+      :saturn,
+      :uranus,
+      :neptune
+    ]
+  end
 end

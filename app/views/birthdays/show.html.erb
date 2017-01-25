@@ -50,6 +50,13 @@
       <%= content_tag :div, "$97 Gold Report", :class => 'button' %>
     <% end %>
   <% end %>
+  <hr>
+  <%= content_tag :div, :class => 'card_group_heading' do %>
+    Your Yearly Cards
+    <div class="reddened">
+      For This Year
+    </div>
+  <% end %>
   
   <%= clearboth %>
   <%= div_for @birthday, :yearly_card_for do %>
@@ -86,4 +93,22 @@
     <% end %>
     <%= link_to 'I want to learn more' %>
   <% end %>
+  
+  <%= clearboth %>
+  <%= content_tag :div, :id => 'offer_of_year_spread' do %>
+    <%= content_tag :div, :class => 'intro' do %>
+      <header>Cards for your year</header>
+      Scroll through to see all your Yearly Cards.
+    <% end %>
+    
+    <%= scrolling_view_of cards_in_year_spread %>
+    
+    <%= content_tag :div, :class => 'call_to_action' do %>
+      <%= content_tag :div, "Join the monthly membership to find out all the Cards in your Year.", :class => 'text' %>
+      <%= content_tag :div, "$7/month", :class => 'button' %>
+    <% end %>
+  <% end %>
+  
+  
+  
 <% end %>

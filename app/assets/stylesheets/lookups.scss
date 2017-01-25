@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#offer_of_life_spread {
+#offer_of_life_spread, #offer_of_year_spread {
   width: 500px;
   border: 1px solid #C07E30;
   
@@ -30,15 +30,15 @@
 
 .scroller {
   width: 500px;
-  height: 265px;
+  height: 305px;
   overflow-x: scroll;
   
   .card_holder {
-    width: 1600px;
-    height: 265px;
+    width: 1750px;
+    height: 295px;
     
     .card_reading {
-      height: 265px;
+      height: 295px;
       display: inline-block;
     
       .card_display {
@@ -46,7 +46,7 @@
         .card_image {
         
           img.preview_card {
-            width: 100px;
+            width: 125px;
           }
         
         }
@@ -63,4 +63,16 @@
       }
     }
   }
+}
+
+.card_group_heading {
+  text-transform: uppercase;
+  
+  div {
+    display: inline-block;
+  }
+}
+
+.reddened {
+  color: #DE0032;
 }
