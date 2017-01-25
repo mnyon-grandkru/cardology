@@ -1,6 +1,9 @@
-Look up your Birth Card<br>
-to discover your soul's game plan.
+
 <%= form_for Birthday.new do |birthday_form| %>
+  <div>
+    Look up your Birth Card<br>
+    to discover your soul's game plan.
+  </div>
   <%= birthday_form.date_select :date, :start_year => 1900 %>
   <%= birthday_form.submit 'Go' %>
 <% end %>
