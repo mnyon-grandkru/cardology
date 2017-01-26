@@ -29,6 +29,8 @@ module InterpretationsHelper
       'The energy we learn to fully embody, the personal excellence that empowers our evolution.'
     when :magician, :king
       'The pattern that allows us to make magic in our lives. How we hold power to shape-shift reality at will. It comes via all the growth, learning and lessons of initiation that allow us the right to hold this power.'
+    when :result
+      
     end
   end
 end

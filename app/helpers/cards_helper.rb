@@ -26,7 +26,9 @@ module CardsHelper
       :jupiter,
       :saturn,
       :uranus,
-      :neptune
+      :neptune,
+      :pluto,
+      :result
     ]
   end
 end
