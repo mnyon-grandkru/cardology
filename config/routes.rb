@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :quotes
   devise_for :members
   resources :interpretations
   root :to => 'birthdays#new'

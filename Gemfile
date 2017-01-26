@@ -17,6 +17,7 @@ gem 'redcarpet'
 gem 'carrierwave', '~> 1.0'
 gem 'fog'
 gem 'devise'
+gem 'randumb'
 
 group :development, :test do
   gem 'byebug', platform: :mri

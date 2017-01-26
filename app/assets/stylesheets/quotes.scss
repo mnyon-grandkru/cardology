@@ -1,0 +1,16 @@
+// Place all the styles related to the quotes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.quote_single {
+  color: #999;
+    
+  .poignant_quote {
+    font-style: italic;
+  }
+  
+  .poignant_person {
+    padding: 3px;
+    text-transform: uppercase;
+  }
+}
