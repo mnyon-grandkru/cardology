@@ -2,6 +2,9 @@
   <%= div_for @birthday, :birth_card_for do %>
     <%= content_tag :header, 'Your Birth Card' %>
     <%= div_for @birth_card, :identification_of do %>
+      <%= div_for @birth_card, :name_of do %>
+        <%= "The #{@birth_card.name}" %>
+      <% end %>
       <%= image_tag @birth_card.image, :class => 'card_face_image' %>
       <%= div_for @birth_card, :opportunities_on do %>
         Join the monthly membership for more info.
@@ -21,6 +24,9 @@
   <%= div_for @birthday, :personality_card_for do %>
     <%= content_tag :header, 'Your Personality Card' %>
     <%= div_for @personality_card, :identification_of do %>
+    <%= div_for @personality_card, :name_of do %>
+      <%= "The #{@personality_card.name}" %>
+    <% end %>
       <%= image_tag @personality_card.image, :class => 'card_face_image' %>
       <%= div_for @personality_card, :opportunities_on do %>
         Join the monthly membership for more info.
@@ -64,6 +70,9 @@
   <%= div_for @birthday, :yearly_card_for do %>
     <%= content_tag :header, 'Your Yearly Card' %>
     <%= div_for @yearly_card, :identification_of do %>
+    <%= div_for @yearly_card, :name_of do %>
+      <%= "The #{@yearly_card.name}" %>
+    <% end %>
       <%= image_tag @yearly_card.image, :class => 'card_face_image' %>
       <%= div_for @yearly_card, :opportunities_on do %>
         Join the monthly membership for more info.
@@ -82,6 +91,9 @@
   <%= div_for @birthday, :planetary_card_for do %>
     <%= content_tag :header, 'Your 52 Day Card' %>
     <%= div_for @planetary_card, :identification_of do %>
+    <%= div_for @planetary_card, :name_of do %>
+      <%= "The #{@planetary_card.name}" %>
+    <% end %>
       <%= image_tag @planetary_card.image, :class => 'card_face_image' %>
       <%= div_for @planetary_card, :opportunities_on do %>
         Join the monthly membership for more info.
