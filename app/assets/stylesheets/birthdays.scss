@@ -14,7 +14,6 @@ form#new_birthday {
 .birthday {
   width: 440px;
   
-  font-family: Helvetica;
   & > div {
     padding: 20px;
   }
@@ -22,11 +21,13 @@ form#new_birthday {
   div {
     header {
       font-weight: bold;
-      padding: 10px;
+      font-size: 2em;
+      padding: 10px 0px;
     }
     
     .identification_of_card {
       float: right;
+      padding-left: 12px;
       .card_face_image {
         width: 120px;
       }
@@ -36,23 +37,35 @@ form#new_birthday {
         padding: 10px;
         width: 80px;
         background-color: #86D1DC;
-        
-        .monthly_price_of_card {
-          padding: 10px;
-          color: white;
-          background-color: #2F98D9;
-        }
       }
     }
     
     .explication_of_card {
-      padding: 8px;
+      padding: 8px 0px;
+      line-height: 1.45em;
     }
     
     a {
       text-decoration: none;
       color: #48C5DC;
     }
+  }
+}
+
+.monthly_price_of_card {
+  padding: 10px;
+  color: white;
+  background-color: #2F98D9;
+}
+
+.sales_pitch {
+  .instructions {
+    display: inline-block;
+    width: 60%;
+  }
+  
+  .access {
+    display: inline-block;
   }
 }
 

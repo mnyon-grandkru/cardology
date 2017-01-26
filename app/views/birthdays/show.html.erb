@@ -9,7 +9,7 @@
       <%= div_for @birth_card, :opportunities_on do %>
         Join the monthly membership for more info.
         <%= div_for @birth_card, :monthly_price_of do %>
-          $7/mo
+          $7/month
         <% end %>
       <% end %>
     <% end %>
@@ -31,7 +31,7 @@
       <%= div_for @personality_card, :opportunities_on do %>
         Join the monthly membership for more info.
         <%= div_for @personality_card, :monthly_price_of do %>
-          $7/mo
+          $7/month
         <% end %>
       <% end %>
     <% end %>
@@ -77,7 +77,7 @@
       <%= div_for @yearly_card, :opportunities_on do %>
         Join the monthly membership for more info.
         <%= div_for @yearly_card, :monthly_price_of do %>
-          $7/mo
+          $7/month
         <% end %>
       <% end %>
     <% end %>
@@ -85,6 +85,7 @@
       <%= mark_up @yearly_card_explanation %>
     <% end %>
     <%= link_to 'I want to learn more' %>
+    <%= quote %>
   <% end %>
   
   <%= clearboth %>
@@ -98,7 +99,7 @@
       <%= div_for @planetary_card, :opportunities_on do %>
         Join the monthly membership for more info.
         <%= div_for @planetary_card, :monthly_price_of do %>
-          $7/mo
+          $7/month
         <% end %>
       <% end %>
     <% end %>
@@ -116,13 +117,34 @@
     <% end %>
     
     <%= scrolling_view_of cards_in_year_spread %>
-    
+    <%= clearboth %>
     <%= content_tag :div, :class => 'call_to_action' do %>
       <%= content_tag :div, "Join the monthly membership to find out all the Cards in your Year.", :class => 'text' %>
       <%= content_tag :div, "$7/month", :class => 'button' %>
     <% end %>
   <% end %>
   
+  <%= clearboth %>
+  <%= div_for @birthday, :daily_card_for do %>
+    <%= content_tag :header, 'Your Daily Card' %>
+    <%= div_for @planetary_card, :identification_of do %>
+      <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
+    <% end %>
+    <%= div_for @planetary_card, :explication_of do %>
+      Bonus: Find out your Daily Card when you join the monthly membership.
+    <% end %>
+    <%= quote %>
+  <% end %>
   
+  <%= content_tag :div, :class => :sales_pitch do %>
+    <%= content_tag :div, :class => :instructions do %>
+      Join the monthly membership to find out all the cards in your year.
+    <% end %>
+    <%= content_tag :div, :class => :access do %>
+      <%= div_for @planetary_card, :monthly_price_of do %>
+        $7/month
+      <% end %>
+    <% end %>
+  <% end %>
   
 <% end %>
