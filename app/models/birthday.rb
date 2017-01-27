@@ -63,6 +63,10 @@ class Birthday < ApplicationRecord
     card_for_the_planetary_period_on_date Date.today
   end
   
+  def card_for_last_planet
+    card_for_the_planetary_period_on_date(Date.today - 52.days)
+  end
+  
   def card_for_the_planetary_period_on_date date
     spread = Spread.find_by(:age => age_on_date(date))
     planetary_position = (days_since_birthday_on_date(date) / 52) + 1

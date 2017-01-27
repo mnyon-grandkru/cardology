@@ -23,6 +23,8 @@ class BirthdaysController < ApplicationController
   
   def last_planet
     @birthday = Birthday.find params[:id]
+    @planetary_card = @birthday.card_for_last_planet
+    @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation || Interpretation.last&.explanation
   end
   
   def create

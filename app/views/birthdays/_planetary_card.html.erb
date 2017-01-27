@@ -1,0 +1,19 @@
+<%= div_for birthday, :planetary_card_for do %>
+  <%= content_tag :header, 'Your 52-Day Card' %>
+  <%= div_for planetary_card, :identification_of do %>
+  <%= div_for planetary_card, :name_of do %>
+    <%= "The #{planetary_card.name}" %>
+  <% end %>
+    <%= image_tag planetary_card.image, :class => 'card_face_image' %>
+    <%= div_for planetary_card, :opportunities_on do %>
+      Join the monthly membership for more info.
+      <%= div_for planetary_card, :monthly_price_of do %>
+        $7/month
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= div_for planetary_card, :explication_of do %>
+    <%= mark_up planetary_card_explanation %>
+  <% end %>
+  <%= link_to 'I want to learn more' %>
+<% end %>
