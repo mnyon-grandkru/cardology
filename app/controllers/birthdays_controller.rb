@@ -15,6 +15,16 @@ class BirthdaysController < ApplicationController
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation || Interpretation.last&.explanation
   end
   
+  def last_year
+    @birthday = Birthday.find params[:id]
+    @yearly_card = @birthday.card_for_last_year
+    @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation || Interpretation.last&.explanation
+  end
+  
+  def last_planet
+    @birthday = Birthday.find params[:id]
+  end
+  
   def create
     @birthday = Birthday.find_or_create_by :year => birthday_params['date(1i)'], :month => birthday_params['date(2i)'], :day => birthday_params['date(3i)']
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip

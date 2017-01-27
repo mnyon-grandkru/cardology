@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   resources :interpretations
   root :to => 'birthdays#new'
   resources :lookups
-  resources :birthdays
+  resources :birthdays do
+    member do
+      get :last_year
+      get :last_planet
+    end
+  end
   resources :places
   resources :spreads
   resources :cards

@@ -84,6 +84,7 @@
     <%= div_for @yearly_card, :explication_of do %>
       <%= mark_up @yearly_card_explanation %>
     <% end %>
+    <%= link_to "See Last Year's Card", last_year_birthday_path(@birthday), :remote => true %><br>
     <%= link_to 'I want to learn more' %>
     <%= quote %>
   <% end %>

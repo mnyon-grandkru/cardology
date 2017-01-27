@@ -44,6 +44,10 @@ class Birthday < ApplicationRecord
     card_for_the_year_on_date Date.today
   end
   
+  def card_for_last_year
+    card_for_the_year_on_date(Date.today - 1.year)
+  end
+  
   def card_for_the_year_on_date date
     long_range_spread_index = age_on_date(date) / 7
     planetary_position = (age_on_date(date) % 7) + 1
