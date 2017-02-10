@@ -1,3 +1,8 @@
+<div>
+  <div class="interpretation_sort card_in_interpretation">
+    <%= link_to 'Sort by Card', :sort => 'card_id' %>
+  </div>
+</div>
 <% @interpretations.each do |interpretation| %>
   <%= div_for interpretation do %>
     <%= div_for interpretation, :card_in, :class => 'interpretation_sort' do %>

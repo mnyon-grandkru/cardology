@@ -1,6 +1,6 @@
 class InterpretationsController < ApplicationController
   def index
-    @interpretations = Interpretation.all
+    @interpretations = Interpretation.order(params[:sort])
   end
   
   def show
