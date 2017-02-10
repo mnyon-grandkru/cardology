@@ -1,9 +1,15 @@
 <% @interpretations.each do |interpretation| %>
   <%= div_for interpretation do %>
-    <%= interpretation.card.name %> as
-    <%= interpretation.reading %>: 
-    <%= mark_up interpretation.explanation %>
-    <%= div_for interpretation, :control_of do %>
+    <%= div_for interpretation, :card_in, :class => 'interpretation_sort' do %>
+      <%= interpretation.card.name %> as
+    <% end %>
+    <%= div_for interpretation, :reading_type_of, :class => 'interpretation_sort' do %>
+      <%= interpretation.reading %>:
+    <% end %>
+    <%= div_for interpretation, :explanation_of, :class => 'interpretation_sort' do %>
+      <%= mark_up interpretation.explanation %>
+    <% end %>
+    <%= div_for interpretation, :control_of, :class => 'interpretation_sort' do %>
       <%= link_to '[edit]', edit_interpretation_path(interpretation) %>
     <% end %>
   <% end %>
