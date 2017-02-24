@@ -1,6 +1,8 @@
 class InterpretationsController < ApplicationController
   def index
-    @interpretations = if params[:suit]
+    @interpretations = if params[:by_face]
+      Interpretation.by_face
+    elsif params[:suit]
       Interpretation.order(params[:sort]).of_suit(params[:suit])
     else
       Interpretation.order(params[:sort])
