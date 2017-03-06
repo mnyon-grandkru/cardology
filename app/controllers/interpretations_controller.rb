@@ -10,7 +10,8 @@ class InterpretationsController < ApplicationController
   end
   
   def show
-    
+    @interpretation = Interpretation.find params[:id]
+    render :json => @interpretation
   end
   
   def new
