@@ -1,5 +1,5 @@
 class Interpretation < ApplicationRecord
-  belongs_to :card
+  belongs_to :card, :required => true
   has_one :suit, :through => :card
   has_one :face, :through => :card
   enum :reading => [:birth, :yearly]
