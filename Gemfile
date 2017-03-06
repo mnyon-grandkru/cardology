@@ -18,6 +18,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'fog'
 gem 'devise'
 gem 'randumb'
+gem 'jquery-validation-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
