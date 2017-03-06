@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :quotes
   devise_for :members
-  resources :interpretations
+  resources :interpretations do
+    collection do
+      get 'ids'
+    end
+  end
   root :to => 'birthdays#new'
   resources :lookups
   resources :birthdays do

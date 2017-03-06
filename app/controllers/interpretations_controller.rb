@@ -9,6 +9,11 @@ class InterpretationsController < ApplicationController
     end
   end
   
+  def ids
+    @interpretation_ids = Interpretation.all.map(&:id)
+    render :json => @interpretation_ids
+  end
+  
   def show
     @interpretation = Interpretation.find params[:id]
     render :json => @interpretation
