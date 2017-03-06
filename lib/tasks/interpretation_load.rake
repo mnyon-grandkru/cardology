@@ -19,7 +19,8 @@ namespace :load do
       response = http.request(request)
     
       interpretation_data = JSON.parse(response.body)
-      puts interpretation_data
+      local_interpretation = Interpretation.new :card_id => interpretation_data['card_id'], :explanation => interpretation_data['explanation'], :reading => interpretation_data['reading']
+      local_interpretation.save
     end
   end
 end
