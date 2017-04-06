@@ -13,5 +13,6 @@ module Cardology
     # -- all .rb files in that directory are automatically loaded.
     config.action_dispatch.default_headers["X-Content-Security-Policy"] = "frame-ancestors http://*.lifeelevated.life";
     config.action_dispatch.default_headers["Content-Security-Policy"] = "frame-ancestors http://*.lifeelevated.life";
+    config.action_dispatch.default_headers["X-Frame-Options"] = "frame-ancestors http://*.lifeelevated.life";
   end
 end
