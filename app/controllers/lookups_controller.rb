@@ -1,4 +1,6 @@
 class LookupsController < ApplicationController
+  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'herokuapp.com' }
+  
   def update
     @lookup = Lookup.find params[:id]
     @member = Member.new member_params
