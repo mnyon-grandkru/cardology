@@ -1,6 +1,6 @@
 class BirthdaysController < ApplicationController
   prepend_before_action :display_domain
-  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'lifeelevated.life' }
+  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'herokuapp.com' }
   
   def display_domain
     Rails.logger.info "Request domain is #{request.domain}"
