@@ -1,152 +1,154 @@
-<%= div_for @birthday do %>
-  <%= div_for @birthday, :birth_card_for do %>
-    <%= content_tag :header, 'Your Birth Card' %>
-    <%= div_for @birth_card, :identification_of do %>
-      <%= div_for @birth_card, :name_of do %>
-        <%= "The #{@birth_card.name}" %>
-      <% end %>
-      <%= image_tag @birth_card.image, :class => 'card_face_image' %>
-      <%= div_for @birth_card, :opportunities_on do %>
-        Join the monthly membership for more info.
-        <%= div_for @birth_card, :monthly_price_of do %>
-          $7/month
+<%= content_tag :div, :class => 'reading_display_container' do %>
+  <%= div_for @birthday do %>
+    <%= div_for @birthday, :birth_card_for do %>
+      <%= content_tag :header, 'Your Birth Card' %>
+      <%= div_for @birth_card, :identification_of do %>
+        <%= div_for @birth_card, :name_of do %>
+          <%= "The #{@birth_card.name}" %>
+        <% end %>
+        <%= image_tag @birth_card.image, :class => 'card_face_image' %>
+        <%= div_for @birth_card, :opportunities_on do %>
+          Join the monthly membership for more info.
+          <%= div_for @birth_card, :monthly_price_of do %>
+            $7/month
+          <% end %>
         <% end %>
       <% end %>
+      <%= div_for @birth_card, :explication_of do %>
+        <%= mark_up @birth_card_explanation %>
+      <% end %>
+      <%= link_to 'I want to learn more' %>
+      <%= quote %>
     <% end %>
-    <%= div_for @birth_card, :explication_of do %>
-      <%= mark_up @birth_card_explanation %>
-    <% end %>
-    <%= link_to 'I want to learn more' %>
-    <%= quote %>
-  <% end %>
   
-  <%= clearboth %>
-  <%= div_for @birthday, :personality_card_for do %>
-    <%= content_tag :header, 'Your Personality Card' %>
-    <%= div_for @personality_card, :identification_of do %>
-    <%= div_for @personality_card, :name_of do %>
-      <%= "The #{@personality_card.name}" %>
-    <% end %>
-      <%= image_tag @personality_card.image, :class => 'card_face_image' %>
-      <%= div_for @personality_card, :opportunities_on do %>
-        Join the monthly membership for more info.
-        <%= div_for @personality_card, :monthly_price_of do %>
-          $7/month
+    <%= clearboth %>
+    <%= div_for @birthday, :personality_card_for do %>
+      <%= content_tag :header, 'Your Personality Card' %>
+      <%= div_for @personality_card, :identification_of do %>
+      <%= div_for @personality_card, :name_of do %>
+        <%= "The #{@personality_card.name}" %>
+      <% end %>
+        <%= image_tag @personality_card.image, :class => 'card_face_image' %>
+        <%= div_for @personality_card, :opportunities_on do %>
+          Join the monthly membership for more info.
+          <%= div_for @personality_card, :monthly_price_of do %>
+            $7/month
+          <% end %>
         <% end %>
       <% end %>
+      <%= div_for @personality_card, :explication_of do %>
+        <%= mark_up @personality_card_explanation %>
+      <% end %>
+      <%= link_to 'I want to learn more' %>
     <% end %>
-    <%= div_for @personality_card, :explication_of do %>
-      <%= mark_up @personality_card_explanation %>
-    <% end %>
-    <%= link_to 'I want to learn more' %>
-  <% end %>
   
   
-  <%= clearboth %>
-  <%= content_tag :div, :id => 'offer_of_life_spread' do %>
-    <%= content_tag :div, :class => 'intro' do %>
-      <header>All thirteen Cards in your Life</header>
-      <div>$97 Gold Report</div>
-      Scroll through to see your Life Cards.
-    <% end %>
+    <%= clearboth %>
+    <%= content_tag :div, :id => 'offer_of_life_spread' do %>
+      <%= content_tag :div, :class => 'intro' do %>
+        <header>All thirteen Cards in your Life</header>
+        <div>$97 Gold Report</div>
+        Scroll through to see your Life Cards.
+      <% end %>
     
-    <%= scrolling_view_of cards_in_life_spread %>
+      <%= scrolling_view_of cards_in_life_spread %>
     
-    <%= content_tag :div, :class => 'call_to_action' do %>
-      <%= content_tag :div, "Buy the gold report to find out all thirteen Cards in your Life Path.", :class => 'text' %>
-      <%= content_tag :div, "$97 Gold Report", :class => 'button' %>
+      <%= content_tag :div, :class => 'call_to_action' do %>
+        <%= content_tag :div, "Buy the gold report to find out all thirteen Cards in your Life Path.", :class => 'text' %>
+        <%= content_tag :div, "$97 Gold Report", :class => 'button' %>
+      <% end %>
+      <%= quote %>
     <% end %>
-    <%= quote %>
-  <% end %>
-  <hr>
-  <%= content_tag :div, :class => 'card_group_heading' do %>
-    Your Yearly Cards
-    <div class="reddened">
-      For This Year
-    </div>
-  <% end %>
+    <hr>
+    <%= content_tag :div, :class => 'card_group_heading' do %>
+      Your Yearly Cards
+      <div class="reddened">
+        For This Year
+      </div>
+    <% end %>
   
-  <%= clearboth %>
-  <%= div_for @birthday, :yearly_card_for do %>
-    <%= content_tag :header, 'Your Yearly Card' %>
-    <%= div_for @yearly_card, :identification_of do %>
-    <%= div_for @yearly_card, :name_of do %>
-      <%= "The #{@yearly_card.name}" %>
-    <% end %>
-      <%= image_tag @yearly_card.image, :class => 'card_face_image' %>
-      <%= div_for @yearly_card, :opportunities_on do %>
-        Join the monthly membership for more info.
-        <%= div_for @yearly_card, :monthly_price_of do %>
-          $7/month
+    <%= clearboth %>
+    <%= div_for @birthday, :yearly_card_for do %>
+      <%= content_tag :header, 'Your Yearly Card' %>
+      <%= div_for @yearly_card, :identification_of do %>
+      <%= div_for @yearly_card, :name_of do %>
+        <%= "The #{@yearly_card.name}" %>
+      <% end %>
+        <%= image_tag @yearly_card.image, :class => 'card_face_image' %>
+        <%= div_for @yearly_card, :opportunities_on do %>
+          Join the monthly membership for more info.
+          <%= div_for @yearly_card, :monthly_price_of do %>
+            $7/month
+          <% end %>
         <% end %>
       <% end %>
+      <%= div_for @yearly_card, :explication_of do %>
+        <%= mark_up @yearly_card_explanation %>
+      <% end %>
+      <%= link_to "See Last Year's Card", last_year_birthday_path(@birthday), :remote => true %><br>
+      <%= link_to 'I want to learn more' %>
+      <%= quote %>
     <% end %>
-    <%= div_for @yearly_card, :explication_of do %>
-      <%= mark_up @yearly_card_explanation %>
-    <% end %>
-    <%= link_to "See Last Year's Card", last_year_birthday_path(@birthday), :remote => true %><br>
-    <%= link_to 'I want to learn more' %>
-    <%= quote %>
-  <% end %>
   
-  <%= clearboth %>
-  <%= div_for @birthday, :planetary_card_for do %>
-    <%= content_tag :header, 'Your 52 Day Card' %>
-    <%= div_for @planetary_card, :identification_of do %>
-    <%= div_for @planetary_card, :name_of do %>
-      <%= "The #{@planetary_card.name}" %>
+    <%= clearboth %>
+    <%= div_for @birthday, :planetary_card_for do %>
+      <%= content_tag :header, 'Your 52 Day Card' %>
+      <%= div_for @planetary_card, :identification_of do %>
+      <%= div_for @planetary_card, :name_of do %>
+        <%= "The #{@planetary_card.name}" %>
+      <% end %>
+        <%= image_tag @planetary_card.image, :class => 'card_face_image' %>
+        <%= div_for @planetary_card, :opportunities_on do %>
+          Join the monthly membership for more info.
+          <%= div_for @planetary_card, :monthly_price_of do %>
+            $7/month
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= div_for @planetary_card, :explication_of do %>
+        <%= mark_up @planetary_card_explanation %>
+      <% end %>
+      <%= link_to "What card did I have before this?", last_planet_birthday_path(@birthday), :remote => true %><br>
+      <%= link_to 'I want to learn more' %>
     <% end %>
-      <%= image_tag @planetary_card.image, :class => 'card_face_image' %>
-      <%= div_for @planetary_card, :opportunities_on do %>
-        Join the monthly membership for more info.
+  
+    <%= clearboth %>
+    <%= content_tag :div, :id => 'offer_of_year_spread' do %>
+      <%= content_tag :div, :class => 'intro' do %>
+        <header>Cards for your year</header>
+        Scroll through to see all your Yearly Cards.
+      <% end %>
+    
+      <%= scrolling_view_of cards_in_year_spread %>
+      <%= clearboth %>
+      <%= content_tag :div, :class => 'call_to_action' do %>
+        <%= content_tag :div, "Join the monthly membership to find out all the Cards in your Year.", :class => 'text' %>
+        <%= content_tag :div, "$7/month", :class => 'button' %>
+      <% end %>
+    <% end %>
+  
+    <%= clearboth %>
+    <%= div_for @birthday, :daily_card_for do %>
+      <%= content_tag :header, 'Your Daily Card' %>
+      <%= div_for @planetary_card, :identification_of do %>
+        <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
+      <% end %>
+      <%= div_for @planetary_card, :explication_of do %>
+        Bonus: Find out your Daily Card when you join the monthly membership.
+      <% end %>
+      <%= quote %>
+    <% end %>
+  
+    <%= content_tag :div, :class => :sales_pitch do %>
+      <%= content_tag :div, :class => :instructions do %>
+        Join the monthly membership to find out all the cards in your year.
+      <% end %>
+      <%= content_tag :div, :class => :access do %>
         <%= div_for @planetary_card, :monthly_price_of do %>
           $7/month
         <% end %>
       <% end %>
     <% end %>
-    <%= div_for @planetary_card, :explication_of do %>
-      <%= mark_up @planetary_card_explanation %>
-    <% end %>
-    <%= link_to "What card did I have before this?", last_planet_birthday_path(@birthday), :remote => true %><br>
-    <%= link_to 'I want to learn more' %>
-  <% end %>
   
-  <%= clearboth %>
-  <%= content_tag :div, :id => 'offer_of_year_spread' do %>
-    <%= content_tag :div, :class => 'intro' do %>
-      <header>Cards for your year</header>
-      Scroll through to see all your Yearly Cards.
-    <% end %>
-    
-    <%= scrolling_view_of cards_in_year_spread %>
-    <%= clearboth %>
-    <%= content_tag :div, :class => 'call_to_action' do %>
-      <%= content_tag :div, "Join the monthly membership to find out all the Cards in your Year.", :class => 'text' %>
-      <%= content_tag :div, "$7/month", :class => 'button' %>
-    <% end %>
   <% end %>
-  
-  <%= clearboth %>
-  <%= div_for @birthday, :daily_card_for do %>
-    <%= content_tag :header, 'Your Daily Card' %>
-    <%= div_for @planetary_card, :identification_of do %>
-      <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
-    <% end %>
-    <%= div_for @planetary_card, :explication_of do %>
-      Bonus: Find out your Daily Card when you join the monthly membership.
-    <% end %>
-    <%= quote %>
-  <% end %>
-  
-  <%= content_tag :div, :class => :sales_pitch do %>
-    <%= content_tag :div, :class => :instructions do %>
-      Join the monthly membership to find out all the cards in your year.
-    <% end %>
-    <%= content_tag :div, :class => :access do %>
-      <%= div_for @planetary_card, :monthly_price_of do %>
-        $7/month
-      <% end %>
-    <% end %>
-  <% end %>
-  
 <% end %>

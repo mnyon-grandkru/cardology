@@ -10,9 +10,14 @@ form#new_birthday {
   text-align: center;
 }
 
+.reading_display_container {
+  text-align: center;
+}
 
 .birthday {
   width: 440px;
+  display: inline-block;
+  text-align: left;
   
   & > div {
     padding: 20px;
