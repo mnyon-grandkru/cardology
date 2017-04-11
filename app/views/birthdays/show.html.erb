@@ -2,6 +2,7 @@
   <%= div_for @birthday do %>
     <%= div_for @birthday, :birth_card_for do %>
       <%= content_tag :header, 'Your Birth Card' %>
+      <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}" %>
       <%= div_for @birth_card, :identification_of do %>
         <%= div_for @birth_card, :name_of do %>
           <%= "The #{@birth_card.name}" %>

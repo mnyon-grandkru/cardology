@@ -30,16 +30,17 @@
 
 .scroller {
   width: 500px;
-  height: 305px;
+  height: 345px;
   overflow-x: scroll;
   
   .card_holder {
     width: 1750px;
-    height: 295px;
+    height: 345px;
     
     .card_reading {
       height: 295px;
       display: inline-block;
+      vertical-align: top;
     
       .card_display {
       
@@ -57,7 +58,7 @@
       
         .interpretation_description {
           width: 110px;
-          height: 73px;
+          height: 123px;
           overflow-y: scroll;
           font-size: 0.8em;
         }
