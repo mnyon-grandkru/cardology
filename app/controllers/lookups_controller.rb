@@ -9,8 +9,6 @@ class LookupsController < ApplicationController
     @member.password = Member.generate_password
     @member.password_confirmation = @member.password
     @member.save
-    @member.ip_address = request.remote_ip
-    @member.sync_to_getresponse!
     redirect_to @member.birthday
   end
   
