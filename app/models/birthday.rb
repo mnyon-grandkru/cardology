@@ -128,9 +128,9 @@ class Birthday < ApplicationRecord
       case birthdate.day
       when 1..19
         :taurus
-      when 20..22
+      when 20..21
         cusp(:taurus, :gemini)
-      when 23..31
+      when 22..31
         :gemini
       end
     when 6
