@@ -5,12 +5,12 @@
     <%= "The #{yearly_card.name}" %>
   <% end %>
     <%= image_tag yearly_card.image, :class => 'card_face_image' %>
-    <%= div_for yearly_card, :opportunities_on do %>
+    <!-- <%= div_for yearly_card, :opportunities_on do %>
       Join the monthly membership for more info.
       <%= div_for yearly_card, :monthly_price_of do %>
         $7/month
       <% end %>
-    <% end %>
+    <% end %> -->
   <% end %>
   <%= div_for yearly_card, :explication_of do %>
     <%= mark_up yearly_card_explanation %>
