@@ -1,5 +1,6 @@
 class BirthdaysController < ApplicationController
   skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'herokuapp.com' }
+  before_action :redirect_customer, :only => :index
   
   def index
     @birthdays = Birthday.all
@@ -40,5 +41,9 @@ class BirthdaysController < ApplicationController
   
   def birthday_params
     params.require(:birthday).permit('date(1i)', 'date(2i)', 'date(3i)')
+  end
+  
+  def redirect_customer
+    redirect_to :action => :new
   end
 end
