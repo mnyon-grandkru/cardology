@@ -24,6 +24,7 @@
       <input type="text" name="email" placeholder="Email"/><br/>
       <input type="submit" value="Go"/>
       <input type="hidden" name="campaign_token" value="<%= ENV['GETRESPONSE_CAMPAIGN_ID'] %>" />
+      <input type="hidden" name="thankyou_url" value="<%= birthday_url(@birthday) %>"/>
     </form>
   <% end %>
 <% end %>
