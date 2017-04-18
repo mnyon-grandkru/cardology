@@ -1,6 +1,6 @@
 <%= div_for birthday, :yearly_card_for do %>
   <%= content_tag :header, 'Your Yearly Card' %>
-  <%= content_tag :header, 'This card represents the main theme of your year. Your year starts from your last birthday until your next birthday.', :class => 'subtitle' %>
+  <%= content_tag :header, ENV['YEARLY_CARD_SUBTITLE'], :class => 'subtitle' %>
   <%= div_for yearly_card, :identification_of do %>
   <%= div_for yearly_card, :name_of do %>
     <%= "The #{yearly_card.name}" %>

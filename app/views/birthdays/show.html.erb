@@ -72,7 +72,7 @@
     <%= clearboth %>
     <%= div_for @birthday, :yearly_card_for do %>
       <%= content_tag :header, 'Your Yearly Card' %>
-      <%= content_tag :header, 'This card represents the main theme of your year. Your year starts from your last birthday until your next birthday.', :class => 'subtitle' %>
+      <%= content_tag :header, ENV['YEARLY_CARD_SUBTITLE'], :class => 'subtitle' %>
       
       <%= div_for @yearly_card, :identification_of do %>
       <%= div_for @yearly_card, :name_of do %>
@@ -97,7 +97,7 @@
     <%= clearboth %>
     <%= div_for @birthday, :planetary_card_for do %>
       <%= content_tag :header, 'Your 52 Day Card' %>
-      <%= content_tag :header, 'This card represents the current period of your year. It indicates a specific energy pattern in play for this 52-day cycle.', :class => 'subtitle' %>
+      <%= content_tag :header, ENV['PLANETARY_CARD_SUBTITLE'], :class => 'subtitle' %>
       
       <%= div_for @planetary_card, :identification_of do %>
       <%= div_for @planetary_card, :name_of do %>
