@@ -1,11 +1,10 @@
-form.signup {
+form.member_signup_credential_entry {
   padding-left: 12px;
 
-  .member_signup_credential_entry {
-    input {
-      font-size: 1.0em;
-      line-height: 1.5em;
-      width: 270px;
-    }
+  input {
+    margin-left: 10px;
+    font-size: 1.0em;
+    line-height: 1.5em;
+    width: 50%;
   }
 }
