@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   resources :cards
   resources :faces
   resources :suits
+  
+  get '/getresponse_data_endpoint' => 'members#accept_getresponse_data', :as => 'getresponse_data_endpoint'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
