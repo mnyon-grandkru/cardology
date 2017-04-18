@@ -24,6 +24,10 @@ form#new_birthday {
   display: inline-block;
   text-align: left;
   
+  .birthdate {
+    padding-bottom: 16px;
+  }
+  
   & > div {
     padding: 20px;
   }
@@ -37,9 +41,11 @@ form#new_birthday {
     
     header.subtitle {
       font-size: 1.1em;
+      padding-bottom: 16px;
     }
     
     .identification_of_card {
+      font-style: italic;
       float: right;
       padding-left: 12px;
       .card_face_image {
@@ -55,8 +61,11 @@ form#new_birthday {
     }
     
     .explication_of_card {
-      padding: 8px 0px;
       line-height: 1.45em;
+      
+      p {
+        margin-top: 0;
+      }
     }
     
     a {
