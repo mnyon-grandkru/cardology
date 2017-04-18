@@ -12,3 +12,4 @@ $(document).on 'turbolinks:load', ->
           birthday_id: $('div.birthday').data('birthday_id')
           name: $('#member_first_name').val()
           email: $('#member_email').val()
+          lookup_id: $('div.birthday').data('lookup_id')

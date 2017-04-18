@@ -11,7 +11,7 @@ class MembersController < ApplicationController
   private
   
   def member_params
-    params.require(:member).permit(:birthday_id, :name, :email)
+    params.require(:member).permit(:birthday_id, :name, :email, :lookup_id)
   end
   
 end
