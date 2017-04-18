@@ -19,17 +19,11 @@
       <% end %>
     <% end %>
     
-    <%= form_tag lookup_path(@lookup), :method => :put, :class => 'signup' do %>
-      <div class="member_signup_credential_entry">
-        <%= text_field :member, :name, :placeholder => 'First Name' %>
-      </div>
-      <div class="member_signup_credential_entry">
-        <%= text_field :member, :email, :placeholder => 'Email' %>
-      </div>
-  
-      <div class="member_signup_credential_entry">
-        <%= submit_tag 'Go' %>
-      </div>
-    <% end %>
+    <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post">
+      <input type="text" name="name" placeholder="First Name"/><br/>
+      <input type="text" name="email" placeholder="Email"/><br/>
+      <input type="submit" value="Go"/>
+      <input type="hidden" name="campaign_token" value="<%= ENV['GETRESPONSE_CAMPAIGN_ID'] %>" />
+    </form>
   <% end %>
 <% end %>
