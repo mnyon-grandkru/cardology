@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load', ->
+  $('#getresponse_delivery').validate()
   $('.reading_display_container').on 'submit', '#getresponse_delivery', ->
     $.ajax
       url: '/member_save'

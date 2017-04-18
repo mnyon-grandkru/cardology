@@ -20,8 +20,8 @@
     <% end %>
     
     <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post" id="getresponse_delivery">
-      <input type="text" name="name" placeholder="First Name" id="member_first_name"/><br/>
-      <input type="text" name="email" placeholder="Email" id="member_email"/><br/>
+      <input type="text" name="name" placeholder="First Name" id="member_first_name" required="required"/><br/>
+      <input name="email" placeholder="Email" id="member_email" required="required" type="email"/><br/>
       <input type="submit" value="Go"/>
       <input type="hidden" name="campaign_token" value="<%= ENV['GETRESPONSE_CAMPAIGN_ID'] %>" />
       <input type="hidden" name="thankyou_url" value="<%= birthday_url(@birthday) %>"/>
