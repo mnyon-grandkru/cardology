@@ -29,5 +29,16 @@
       <input type="hidden" name="campaign_token" value="<%= ENV['GETRESPONSE_CAMPAIGN_ID'] %>" />
       <input type="hidden" name="thankyou_url" value="<%= birthday_url(@birthday) %>"/>
     </form>
+    
+    <%= content_tag :div, :class => 'lookup_teaser' do %>
+      <%= content_tag :header do %>
+        Your yearly card and 52-day card
+      <% end %>
+      
+      <%= content_tag :div do %>
+        <%= ENV['YEARLY_TEASER_TEXT'] %>
+      <% end %>
+    <% end %>
+    
   <% end %>
 <% end %>
