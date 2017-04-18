@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   resources :faces
   resources :suits
   
-  get '/getresponse_data_endpoint' => 'members#accept_getresponse_data', :as => 'getresponse_data_endpoint'
+  post '/member_save' => 'members#create', :as => 'member_save'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

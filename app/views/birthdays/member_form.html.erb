@@ -1,5 +1,5 @@
 <%= content_tag :div, :class => 'reading_display_container' do %>
-  <%= div_for @birthday do %>
+  <%= div_for @birthday, 'data-birthday_id' => @birthday.id do %>
     <%= div_for @birthday, :birth_card_for do %>
       <%= content_tag :header, 'Your Birth Card' %>
       <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}" %>
@@ -19,13 +19,12 @@
       <% end %>
     <% end %>
     
-    <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post">
-      <input type="text" name="name" placeholder="First Name"/><br/>
-      <input type="text" name="email" placeholder="Email"/><br/>
+    <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post" id="getresponse_delivery">
+      <input type="text" name="name" placeholder="First Name" id="member_first_name"/><br/>
+      <input type="text" name="email" placeholder="Email" id="member_email"/><br/>
       <input type="submit" value="Go"/>
       <input type="hidden" name="campaign_token" value="<%= ENV['GETRESPONSE_CAMPAIGN_ID'] %>" />
       <input type="hidden" name="thankyou_url" value="<%= birthday_url(@birthday) %>"/>
-      <input type="hidden" name="forward_data" value="<%= getresponse_data_endpoint_url %>" />
     </form>
   <% end %>
 <% end %>
