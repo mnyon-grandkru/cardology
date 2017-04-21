@@ -1,6 +1,7 @@
 module QuotesHelper
   def quote
     q = Quote.random
+    return unless q
     content_tag :div, :class => 'quote_single' do
       [
         content_tag(:span, "“#{q.phrasing}”", :class => 'poignant_quote'),
