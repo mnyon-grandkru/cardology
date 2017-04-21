@@ -7,4 +7,9 @@ form.member_signup_credential_entry {
     line-height: 1.5em;
     width: 50%;
   }
+  
+  label.error {
+    display: block;
+    padding-left: 10px;
+  }
 }
