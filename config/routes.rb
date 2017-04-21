@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :birthdays do
     member do
       get :last_year
+      get :this_year
       get :last_planet
+      get :this_planet
     end
   end
   resources :places

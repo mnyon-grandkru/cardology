@@ -24,10 +24,24 @@ class BirthdaysController < ApplicationController
     @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation || Interpretation.last&.explanation
   end
   
+  def this_year
+    @birthday = Birthday.find params[:id]
+    @yearly_card = @birthday.card_for_this_year
+    @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation || Interpretation.last&.explanation
+    render :template => 'birthdays/last_year.js.erb'
+  end
+  
   def last_planet
     @birthday = Birthday.find params[:id]
     @planetary_card = @birthday.card_for_last_planet
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation || Interpretation.last&.explanation
+  end
+  
+  def this_planet
+    @birthday = Birthday.find params[:id]
+    @planetary_card = @birthday.card_for_this_52_day_period
+    @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation || Interpretation.last&.explanation
+    render :template => 'birthdays/last_planet.js.erb'
   end
   
   def create

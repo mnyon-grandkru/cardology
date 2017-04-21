@@ -16,4 +16,5 @@
   <%= div_for planetary_card, :explication_of do %>
     <%= mark_up planetary_card_explanation %>
   <% end %>
+  <%= link_to "What card do I have now?", this_planet_birthday_path(@birthday), :remote => true %>
 <% end %>
