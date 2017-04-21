@@ -31,6 +31,10 @@
     </form>
     
     <%= content_tag :div, :class => 'lookup_teaser' do %>
+      <%= div_for @birth_card, :identification_of do %><br>
+        <%= image_tag Card.card_back_image, :class => 'card_face_image' %><br>
+        <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
+      <% end %>
       <%= content_tag :header do %>
         Your Yearly Card and 52 Day Card
       <% end %>
