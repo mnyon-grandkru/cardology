@@ -1,5 +1,8 @@
 <%= content_tag :div, :class => 'reading_display_container' do %>
   <%= div_for @birthday do %>
+    <%= content_tag :div, :class => 'card_group_heading' do %>
+      Your Lifelong Cards
+    <% end %>
     <%= div_for @birthday, :birth_card_for do %>
       <%= content_tag :header, 'Your Birth Card' %>
       <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
@@ -62,7 +65,7 @@
 
     <hr>
     <%= content_tag :div, :class => 'card_group_heading' do %>
-      Your Yearly Cards
+      Your Cards
       <div class="reddened">
         For This Year
       </div>
