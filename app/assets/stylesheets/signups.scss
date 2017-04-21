@@ -8,6 +8,10 @@ form.member_signup_credential_entry {
     width: 50%;
   }
   
+  input#submit {
+    cursor: pointer;
+  }
+  
   label.error {
     display: block;
     padding-left: 10px;
