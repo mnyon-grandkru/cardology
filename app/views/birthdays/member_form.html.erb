@@ -16,35 +16,46 @@
       <% end %>
     
       <%= content_tag :header, 'Your Personality Card' %>
-      <%= div_for @birth_card, :preview_of do %>
-        <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
-      <% end %>
       <%= div_for @birth_card, :explication_of do %>
-        <%= ENV['PERSONALITY_CARD_COPY'] %>
+        <%= mark_up ENV['PERSONALITY_CARD_COPY'] %>
       <% end %>
-    <% end %>
-    
-    <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post" id="getresponse_delivery" class="member_signup_credential_entry">
-      <input type="text" name="name" placeholder="First Name" id="member_first_name" required="required"/><br/>
-      <input name="email" placeholder="Email" id="member_email" required="required" type="email"/><br/>
-      <input type="submit" value="Go" id="submit"/>
-      <input type="hidden" name="campaign_token" value="<%= ENV['GETRESPONSE_CAMPAIGN_ID'] %>" />
-      <input type="hidden" name="thankyou_url" value="<%= birthday_url(@birthday) %>"/>
-      <input type="hidden" name="custom_date_of_birth" value="<%= @birthday.birthdate_string %>"/>
-    </form>
-    
-    <%= content_tag :div, :class => 'lookup_teaser' do %>
-      <%= div_for @birth_card, :preview_of do %><br>
-        <%= image_tag Card.card_back_image, :class => 'card_face_image' %><br>
+      <%= div_for @birth_card, :identification_of do %>
         <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
-      <% end %>
-      <%= content_tag :header do %>
-        Your Yearly Card and 52 Day Card
       <% end %>
       
-      <%= content_tag :div do %>
-        <%= ENV['YEARLY_TEASER_TEXT'] %>
+      <%= content_tag :header, 'Your Yearly Card' %>
+      <%= div_for @birth_card, :explication_of do %>
+        <%= mark_up ENV['YEARLY_CARD_COPY'] %>
       <% end %>
+      <%= div_for @birth_card, :identification_of do %>
+        <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
+      <% end %>
+      
+      <%= content_tag :header, 'Your 52-Day Card' %>
+      <%= div_for @birth_card, :explication_of do %>
+        <%= mark_up ENV['PLANETARY_CARD_COPY'] %>
+      <% end %>
+      <%= div_for @birth_card, :identification_of do %>
+        <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
+      <% end %>
+      
+      <%= content_tag :header, 'Join The Players Club' %>
+      <%= div_for @birth_card, :explication_of do %>
+        <%= mark_up ENV['PLAYERS_CLUB_COPY'] %>
+      <% end %>
+      <%= div_for @birth_card, :identification_of do %>
+        <div id="signup">
+          <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post" id="getresponse_delivery" class="member_signup_credential_entry">
+            <input type="text" name="name" placeholder="First Name" id="member_first_name" required="required"/><br/>
+            <input name="email" placeholder="Email" id="member_email" required="required" type="email"/><br/>
+            <input type="submit" value="Go" id="submit"/>
+            <input type="hidden" name="campaign_token" value="<%= ENV['GETRESPONSE_CAMPAIGN_ID'] %>" />
+            <input type="hidden" name="thankyou_url" value="<%= birthday_url(@birthday) %>"/>
+            <input type="hidden" name="custom_date_of_birth" value="<%= @birthday.birthdate_string %>"/>
+          </form>
+        </div>
+      <% end %>
+      
     <% end %>
     
   <% end %>
