@@ -27,6 +27,7 @@ class BirthdaysController < ApplicationController
     @header_subtitle = ENV['YEARLY_CARD_SUBTITLE']
     @link_text = "See This Year's Card"
     @structural_role = 'yearly_card_for'
+    render :template => 'birthdays/replace_card.js.erb'
   end
   
   def this_year
@@ -38,7 +39,7 @@ class BirthdaysController < ApplicationController
     @header_subtitle = ENV['YEARLY_CARD_SUBTITLE']
     @link_text = "See Last Year's Card"
     @structural_role = 'yearly_card_for'
-    render :template => 'birthdays/last_year.js.erb'
+    render :template => 'birthdays/replace_card.js.erb'
   end
   
   def last_planet
@@ -50,7 +51,7 @@ class BirthdaysController < ApplicationController
     @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
     @link_text = "What card do I have now?"
     @structural_role = 'planetary_card_for'
-    render :template => 'birthdays/last_year.js.erb'
+    render :template => 'birthdays/replace_card.js.erb'
   end
   
   def this_planet
@@ -62,7 +63,7 @@ class BirthdaysController < ApplicationController
     @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
     @link_text = "What card did I have before this?"
     @structural_role = 'planetary_card_for'
-    render :template => 'birthdays/last_year.js.erb'
+    render :template => 'birthdays/replace_card.js.erb'
   end
   
   def create
