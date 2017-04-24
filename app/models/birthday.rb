@@ -5,6 +5,10 @@ class Birthday < ApplicationRecord
     birthdate.strftime("%B %-d, %Y")
   end
   
+  def birthdate_string
+    birthdate.strftime("%Y-%m-%d")
+  end
+  
   def birth_card
     deck = Card.ordered_deck.unshift(Card.find_by(:face => Face.find_by(:name => 'Joker')))
     position = month * 2 + day
