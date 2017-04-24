@@ -20,44 +20,49 @@ class BirthdaysController < ApplicationController
   
   def last_year
     @birthday = Birthday.find params[:id]
-    @yearly_card = @birthday.card_for_last_year
-    @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
+    @card = @birthday.card_for_last_year
+    @card_explanation = @card.interpretations.where(:reading => :yearly).last&.explanation
+    @alternative_card_location = this_year_birthday_path(@birthday)
     @header_text = 'Your Yearly Card'
     @header_subtitle = ENV['YEARLY_CARD_SUBTITLE']
     @link_text = "See This Year's Card"
-    @alternative_card_location = this_year_birthday_path(@birthday)
+    @structural_role = 'yearly_card_for'
   end
   
   def this_year
     @birthday = Birthday.find params[:id]
-    @yearly_card = @birthday.card_for_this_year
-    @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
+    @card = @birthday.card_for_this_year
+    @card_explanation = @card.interpretations.where(:reading => :yearly).last&.explanation
+    @alternative_card_location = last_year_birthday_path(@birthday)
     @header_text = 'Your Yearly Card'
     @header_subtitle = ENV['YEARLY_CARD_SUBTITLE']
     @link_text = "See Last Year's Card"
-    @alternative_card_location = last_year_birthday_path(@birthday)
+    @structural_role = 'yearly_card_for'
     render :template => 'birthdays/last_year.js.erb'
   end
   
   def last_planet
     @birthday = Birthday.find params[:id]
-    @planetary_card = @birthday.card_for_last_planet
-    @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation
+    @card = @birthday.card_for_last_planet
+    @card_explanation = @card.interpretations.where(:reading => :yearly).last&.explanation
     @alternative_card_location = this_planet_birthday_path(@birthday)
     @header_text = 'Your 52-Day Card'
     @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
     @link_text = "What card do I have now?"
+    @structural_role = 'planetary_card_for'
+    render :template => 'birthdays/last_year.js.erb'
   end
   
   def this_planet
     @birthday = Birthday.find params[:id]
-    @planetary_card = @birthday.card_for_this_52_day_period
-    @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation
+    @card = @birthday.card_for_this_52_day_period
+    @card_explanation = @card.interpretations.where(:reading => :yearly).last&.explanation
     @alternative_card_location = last_planet_birthday_path(@birthday)
     @header_text = 'Your 52-Day Card'
     @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
     @link_text = "What card did I have before this?"
-    render :template => 'birthdays/last_planet.js.erb'
+    @structural_role = 'planetary_card_for'
+    render :template => 'birthdays/last_year.js.erb'
   end
   
   def create
