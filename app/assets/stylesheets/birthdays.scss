@@ -40,6 +40,15 @@ form#new_birthday {
       padding-bottom: 16px;
     }
     
+    .preview_of_card {
+      float: right;
+      padding-left: 12px;
+      
+      .card_face_image {
+        width: 120px;
+      }
+    }
+    
     .identification_of_card {
       display: inline-block;
       vertical-align: top;
