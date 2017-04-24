@@ -39,12 +39,16 @@ class BirthdaysController < ApplicationController
     @birthday = Birthday.find params[:id]
     @planetary_card = @birthday.card_for_last_planet
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation
+    @alternative_planetary_card_location = this_planet_birthday_path(@birthday)
+    @link_text = "What card do I have now?"
   end
   
   def this_planet
     @birthday = Birthday.find params[:id]
     @planetary_card = @birthday.card_for_this_52_day_period
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation
+    @alternative_planetary_card_location = last_planet_birthday_path(@birthday)
+    @link_text = "What card did I have before this?"
     render :template => 'birthdays/last_planet.js.erb'
   end
   
