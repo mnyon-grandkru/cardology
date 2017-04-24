@@ -6,28 +6,31 @@
     <%= div_for @birthday, :birth_card_for do %>
       <%= content_tag :header, 'Your Birth Card' %>
       <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
+      
+      <%= div_for @birth_card, :explication_of do %>
+        <%= mark_up @birth_card_explanation %>
+      <% end %>
+      
       <%= div_for @birth_card, :identification_of do %>
         <%= div_for @birth_card, :name_of do %>
           <%= @birth_card.name %>
         <% end %>
         <%= image_tag @birth_card.image, :class => 'card_face_image' %>
       <% end %>
-      <%= div_for @birth_card, :explication_of do %>
-        <%= mark_up @birth_card_explanation %>
-      <% end %>
     <% end %>
   
     <%= clearboth %>
     <%= div_for @birthday, :personality_card_for do %>
       <%= content_tag :header, 'Your Personality Card' %>
-      <%= div_for @personality_card, :identification_of do %>
-      <%= div_for @personality_card, :name_of do %>
-        <%= @personality_card.name %>
-      <% end %>
-        <%= image_tag @personality_card.image, :class => 'card_face_image' %>
-      <% end %>
       <%= div_for @personality_card, :explication_of do %>
         <%= mark_up @personality_card_explanation %>
+      <% end %>
+      
+      <%= div_for @personality_card, :identification_of do %>
+        <%= div_for @personality_card, :name_of do %>
+          <%= @personality_card.name %>
+        <% end %>
+        <%= image_tag @personality_card.image, :class => 'card_face_image' %>
       <% end %>
     <% end %>
 
@@ -44,15 +47,17 @@
       <%= content_tag :header, 'Your Yearly Card' %>
       <%= content_tag :header, ENV['YEARLY_CARD_SUBTITLE'], :class => 'subtitle' %>
       
-      <%= div_for @yearly_card, :identification_of do %>
-      <%= div_for @yearly_card, :name_of do %>
-        <%= @yearly_card.name %>
-      <% end %>
-        <%= image_tag @yearly_card.image, :class => 'card_face_image' %>
-      <% end %>
       <%= div_for @yearly_card, :explication_of do %>
         <%= mark_up @yearly_card_explanation %>
       <% end %>
+      
+      <%= div_for @yearly_card, :identification_of do %>
+        <%= div_for @yearly_card, :name_of do %>
+          <%= @yearly_card.name %>
+        <% end %>
+        <%= image_tag @yearly_card.image, :class => 'card_face_image' %>
+      <% end %>
+      <%= clearboth %>
       <%= link_to "See Last Year's Card", replace_card_birthday_path(@birthday, :reading_type => 'last_year'), :remote => true %><br>
       <%= quote %>
     <% end %>
@@ -62,15 +67,17 @@
       <%= content_tag :header, 'Your 52 Day Card' %>
       <%= content_tag :header, ENV['PLANETARY_CARD_SUBTITLE'], :class => 'subtitle' %>
       
-      <%= div_for @planetary_card, :identification_of do %>
-      <%= div_for @planetary_card, :name_of do %>
-        <%= @planetary_card.name %>
-      <% end %>
-        <%= image_tag @planetary_card.image, :class => 'card_face_image' %>
-      <% end %>
       <%= div_for @planetary_card, :explication_of do %>
         <%= mark_up @planetary_card_explanation %>
       <% end %>
+      
+      <%= div_for @planetary_card, :identification_of do %>
+        <%= div_for @planetary_card, :name_of do %>
+          <%= @planetary_card.name %>
+        <% end %>
+        <%= image_tag @planetary_card.image, :class => 'card_face_image' %>
+      <% end %>
+      <%= clearboth %>
       <%= link_to "What card did I have before this?", replace_card_birthday_path(@birthday, :reading_type => 'last_planet'), :remote => true %><br>
     <% end %>
   

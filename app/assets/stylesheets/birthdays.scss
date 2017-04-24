@@ -41,7 +41,8 @@ form#new_birthday {
     }
     
     .identification_of_card {
-      float: right;
+      display: inline-block;
+      vertical-align: top;
       padding-left: 12px;
       .card_face_image {
         width: 120px;
@@ -56,6 +57,8 @@ form#new_birthday {
     }
     
     .explication_of_card {
+      display: inline-block;
+      width: 60%;
       line-height: 1.45em;
       
       p {
