@@ -11,58 +11,46 @@ class BirthdaysController < ApplicationController
     @birth_card = @birthday.birth_card
     @personality_card = @birthday.personality_card
     @yearly_card = @birthday.card_for_this_year
-    @planetary_card = @birthday.card_for_this_52_day_period
+    @planetary_card = @birthday.card_for_this_planet
     @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation
     @personality_card_explanation = @personality_card.interpretations.where(:reading => :birth).last&.explanation
     @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation
   end
   
-  def last_year
+  def replace_card
     @birthday = Birthday.find params[:id]
-    @card = @birthday.card_for_last_year
+    @card = case params[:reading_type]
+    when 'last_year'
+      @alternative_card_location = replace_card_birthday_path(@birthday, :reading_type => 'this_year')
+      @header_text = 'Your Yearly Card'
+      @header_subtitle = ENV['YEARLY_CARD_SUBTITLE']
+      @link_text = "See This Year's Card"
+      @structural_role = 'yearly_card_for'
+      @birthday.card_for_last_year
+    when 'this_year'
+      @alternative_card_location = replace_card_birthday_path(@birthday, :reading_type => 'last_year')
+      @header_text = 'Your Yearly Card'
+      @header_subtitle = ENV['YEARLY_CARD_SUBTITLE']
+      @link_text = "See Last Year's Card"
+      @structural_role = 'yearly_card_for'
+      @birthday.card_for_this_year
+    when 'last_planet'
+      @alternative_card_location = replace_card_birthday_path(@birthday, :reading_type => 'this_planet')
+      @header_text = 'Your 52-Day Card'
+      @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
+      @link_text = "What card do I have now?"
+      @structural_role = 'planetary_card_for'
+      @birthday.card_for_last_planet
+    when 'this_planet'
+      @alternative_card_location = replace_card_birthday_path(@birthday, :reading_type => 'last_planet')
+      @header_text = 'Your 52-Day Card'
+      @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
+      @link_text = "What card did I have before this?"
+      @structural_role = 'planetary_card_for'
+      @birthday.card_for_this_planet
+    end
     @card_explanation = @card.interpretations.where(:reading => :yearly).last&.explanation
-    @alternative_card_location = this_year_birthday_path(@birthday)
-    @header_text = 'Your Yearly Card'
-    @header_subtitle = ENV['YEARLY_CARD_SUBTITLE']
-    @link_text = "See This Year's Card"
-    @structural_role = 'yearly_card_for'
-    render :template => 'birthdays/replace_card.js.erb'
-  end
-  
-  def this_year
-    @birthday = Birthday.find params[:id]
-    @card = @birthday.card_for_this_year
-    @card_explanation = @card.interpretations.where(:reading => :yearly).last&.explanation
-    @alternative_card_location = last_year_birthday_path(@birthday)
-    @header_text = 'Your Yearly Card'
-    @header_subtitle = ENV['YEARLY_CARD_SUBTITLE']
-    @link_text = "See Last Year's Card"
-    @structural_role = 'yearly_card_for'
-    render :template => 'birthdays/replace_card.js.erb'
-  end
-  
-  def last_planet
-    @birthday = Birthday.find params[:id]
-    @card = @birthday.card_for_last_planet
-    @card_explanation = @card.interpretations.where(:reading => :yearly).last&.explanation
-    @alternative_card_location = this_planet_birthday_path(@birthday)
-    @header_text = 'Your 52-Day Card'
-    @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
-    @link_text = "What card do I have now?"
-    @structural_role = 'planetary_card_for'
-    render :template => 'birthdays/replace_card.js.erb'
-  end
-  
-  def this_planet
-    @birthday = Birthday.find params[:id]
-    @card = @birthday.card_for_this_52_day_period
-    @card_explanation = @card.interpretations.where(:reading => :yearly).last&.explanation
-    @alternative_card_location = last_planet_birthday_path(@birthday)
-    @header_text = 'Your 52-Day Card'
-    @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
-    @link_text = "What card did I have before this?"
-    @structural_role = 'planetary_card_for'
     render :template => 'birthdays/replace_card.js.erb'
   end
   

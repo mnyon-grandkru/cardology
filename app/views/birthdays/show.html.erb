@@ -53,7 +53,7 @@
       <%= div_for @yearly_card, :explication_of do %>
         <%= mark_up @yearly_card_explanation %>
       <% end %>
-      <%= link_to "See Last Year's Card", last_year_birthday_path(@birthday), :remote => true %><br>
+      <%= link_to "See Last Year's Card", replace_card_birthday_path(@birthday, :reading_type => 'last_year'), :remote => true %><br>
       <%= quote %>
     <% end %>
   
@@ -71,7 +71,7 @@
       <%= div_for @planetary_card, :explication_of do %>
         <%= mark_up @planetary_card_explanation %>
       <% end %>
-      <%= link_to "What card did I have before this?", last_planet_birthday_path(@birthday), :remote => true %><br>
+      <%= link_to "What card did I have before this?", replace_card_birthday_path(@birthday, :reading_type => 'last_planet'), :remote => true %><br>
     <% end %>
   
   <% end %>

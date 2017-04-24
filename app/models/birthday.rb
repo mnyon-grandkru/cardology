@@ -59,7 +59,7 @@ class Birthday < ApplicationRecord
     place.card
   end
   
-  def card_for_this_52_day_period
+  def card_for_this_planet
     card_for_the_planetary_period_on_date Date.today
   end
   
@@ -258,6 +258,6 @@ class Birthday < ApplicationRecord
   end
   
   def reading
-    "Birth Card: #{birth_card.inspect}<br>This Year: #{card_for_this_year.inspect}<br>52-day Card: #{card_for_this_52_day_period.inspect}"
+    "Birth Card: #{birth_card.inspect}<br>This Year: #{card_for_this_year.inspect}<br>52-day Card: #{card_for_this_planet.inspect}"
   end
 end

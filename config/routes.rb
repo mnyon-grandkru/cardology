@@ -10,10 +10,7 @@ Rails.application.routes.draw do
   resources :lookups
   resources :birthdays do
     member do
-      get :last_year
-      get :this_year
-      get :last_planet
-      get :this_planet
+      get :replace_card
     end
   end
   resources :places
