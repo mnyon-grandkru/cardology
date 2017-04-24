@@ -1,1 +1,1 @@
-$('.planetary_card_for_birthday').html('<%= escape_javascript render :partial => 'planetary_card', :locals => {:birthday => @birthday, :planetary_card => @planetary_card, :planetary_card_explanation => @planetary_card_explanation} %>');
+$('.planetary_card_for_birthday').html('<%= escape_javascript render :partial => 'planetary_card', :locals => {:birthday => @birthday, :card => @planetary_card, :card_explanation => @planetary_card_explanation, :structural_role => 'planetary_card_for'} %>');

@@ -23,7 +23,7 @@ class BirthdaysController < ApplicationController
     @yearly_card = @birthday.card_for_last_year
     @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
     @link_text = "See This Year's Card"
-    @alternative_yearly_card_location = this_year_birthday_path(@birthday)
+    @alternative_card_location = this_year_birthday_path(@birthday)
   end
   
   def this_year
@@ -31,7 +31,7 @@ class BirthdaysController < ApplicationController
     @yearly_card = @birthday.card_for_this_year
     @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
     @link_text = "See Last Year's Card"
-    @alternative_yearly_card_location = last_year_birthday_path(@birthday)
+    @alternative_card_location = last_year_birthday_path(@birthday)
     render :template => 'birthdays/last_year.js.erb'
   end
   
@@ -39,7 +39,9 @@ class BirthdaysController < ApplicationController
     @birthday = Birthday.find params[:id]
     @planetary_card = @birthday.card_for_last_planet
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation
-    @alternative_planetary_card_location = this_planet_birthday_path(@birthday)
+    @alternative_card_location = this_planet_birthday_path(@birthday)
+    @header_text = 'Your 52-Day Card'
+    @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
     @link_text = "What card do I have now?"
   end
   
@@ -47,7 +49,9 @@ class BirthdaysController < ApplicationController
     @birthday = Birthday.find params[:id]
     @planetary_card = @birthday.card_for_this_52_day_period
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation
-    @alternative_planetary_card_location = last_planet_birthday_path(@birthday)
+    @alternative_card_location = last_planet_birthday_path(@birthday)
+    @header_text = 'Your 52-Day Card'
+    @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
     @link_text = "What card did I have before this?"
     render :template => 'birthdays/last_planet.js.erb'
   end
