@@ -22,12 +22,16 @@ class BirthdaysController < ApplicationController
     @birthday = Birthday.find params[:id]
     @yearly_card = @birthday.card_for_last_year
     @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
+    @link_text = "See This Year's Card"
+    @alternative_yearly_card_location = this_year_birthday_path(@birthday)
   end
   
   def this_year
     @birthday = Birthday.find params[:id]
     @yearly_card = @birthday.card_for_this_year
     @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
+    @link_text = "See Last Year's Card"
+    @alternative_yearly_card_location = last_year_birthday_path(@birthday)
     render :template => 'birthdays/last_year.js.erb'
   end
   

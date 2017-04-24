@@ -10,6 +10,6 @@
   <%= div_for yearly_card, :explication_of do %>
     <%= mark_up yearly_card_explanation %>
   <% end %>
-  <%= link_to "See This Year's Card", this_year_birthday_path(@birthday), :remote => true %><br>
+  <%= link_to @link_text, @alternative_yearly_card_location, :remote => true %><br>
   <%= quote %>
 <% end %>
