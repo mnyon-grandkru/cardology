@@ -1,12 +1,22 @@
+<div id="new_players">
+  <%= form_for Birthday.new do |birthday_form| %>
+    <div id="look_up_cta">
+      Look up your Birth Card.<br>
+      Unlock the secrets to a better life!
+    </div>
+    <%= birthday_form.date_select :date, :start_year => 1900 %>
+    <%= birthday_form.submit 'Go' %>
+  <% end %>
+</div>
 
-<%= form_for Birthday.new do |birthday_form| %>
-  <div id="look_up_cta">
-    Look up your Birth Card.<br>
-    Unlock the secrets to a better life!
-  </div>
-  <%= birthday_form.date_select :date, :start_year => 1900 %>
-  <%= birthday_form.submit 'Go' %>
-<% end %>
+<div id="returning_players">
+  Log in to get back in the game:
+  <%= form_for Member.new, :url => member_session_path do |signin_form| %>
+    <%= signin_form.text_field :email, :placeholder => 'Email' %><br>
+    <%= signin_form.password_field :password, :placeholder => 'Password' %><br>
+    <%= submit_tag "Get Back In The Game" %>
+  <% end %>
+</div>
 
 <div id="results">
 </div>
