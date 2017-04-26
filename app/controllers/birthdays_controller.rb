@@ -11,11 +11,15 @@ class BirthdaysController < ApplicationController
     @birthday = Birthday.find params[:id]
     @birth_card = @birthday.birth_card
     @birthday.zodiac_sign = current_member.zodiac_sign&.intern
-    @personality_card = @birthday.personality_card
+    if @birthday.astrological_sign.is_cusp?
+      @personality_card = nil
+    else
+      @personality_card = @birthday.personality_card
+    end
     @yearly_card = @birthday.card_for_this_year
     @planetary_card = @birthday.card_for_this_planet
     @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation
-    @personality_card_explanation = @personality_card.interpretations.where(:reading => :birth).last&.explanation
+    @personality_card_explanation = @personality_card&.interpretations&.where(:reading => :birth)&.last&.explanation
     @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation
   end

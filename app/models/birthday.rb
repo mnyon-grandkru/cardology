@@ -1,3 +1,4 @@
+Cusp = Struct.new(:leader, :follower, :is_cusp?)
 class Birthday < ApplicationRecord
   attr_accessor :date, :zodiac_sign
   
@@ -205,7 +206,7 @@ class Birthday < ApplicationRecord
   end
   
   def cusp leader, follower
-    leader
+    Cusp.new(leader, follower, true)
   end
   
   def planet_for_sign sign
@@ -264,5 +265,11 @@ class Birthday < ApplicationRecord
   
   def reading
     "Birth Card: #{birth_card.inspect}<br>This Year: #{card_for_this_year.inspect}<br>52-day Card: #{card_for_this_planet.inspect}"
+  end
+end
+
+class Symbol
+  def is_cusp?
+    false
   end
 end

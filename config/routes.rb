@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   resources :suits
   
   post '/member_save' => 'members#create', :as => 'member_save'
+  put '/member_assign_zodiac/:id' => 'members#update', :as => 'member_assign_zodiac'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

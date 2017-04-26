@@ -5,13 +5,20 @@ class MembersController < ApplicationController
     @member.password = Member.generate_password
     @member.password_confirmation = @member.password
     @member.save
-    render :nothing => true
+    sign_in @member
+    redirect_to @member.birthday
+  end
+  
+  def update
+    @member = Member.find params[:id]
+    @member.update_attributes member_params
+    redirect_to @member.birthday
   end
   
   private
   
   def member_params
-    params.require(:member).permit(:birthday_id, :name, :email, :lookup_id)
+    params.require(:member).permit(:birthday_id, :name, :email, :lookup_id, :zodiac_sign)
   end
   
 end

@@ -4,7 +4,7 @@
 
 $(document).on 'turbolinks:load', ->
   $('#getresponse_delivery').validate()
-  $('.reading_display_container').on 'submit', '#getresponse_delivery', ->
+  $('.reading_display_container').on 'submit', '#getresponse_delivery', (event) ->
     $.ajax
       url: '/member_save'
       method: 'POST'
@@ -14,3 +14,11 @@ $(document).on 'turbolinks:load', ->
           name: $('#member_first_name').val()
           email: $('#member_email').val()
           lookup_id: $('div.birthday').data('lookup_id')
+    
+    $.ajax
+      url: 'https://app.getresponse.com/add_subscriber.html'
+      method: 'POST'
+      data:
+        $(this).serialize()
+    
+    event.preventDefault()
