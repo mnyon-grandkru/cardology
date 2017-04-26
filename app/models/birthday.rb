@@ -1,5 +1,5 @@
 class Birthday < ApplicationRecord
-  attr_accessor :date
+  attr_accessor :date, :zodiac_sign
   
   def name
     birthdate.strftime("%B %-d, %Y")
@@ -83,15 +83,16 @@ class Birthday < ApplicationRecord
   end
   
   def personality_card
+    # self.zodiac_sign = :cancer
     spread = Spread.find_by(:age => 0)
     position_of_birth_card = spread.position_of birth_card
-    planetary_ruling_position = position_of_birth_card.position - number_for_planet
+    planetary_ruling_position = position_of_birth_card.position - number_for_planet(planet_for_sign(astrological_sign))
     place = Place.find_by :spread_id => spread.id, :position => planetary_ruling_position
     place.card
   end
   
   def astrological_sign
-    case birthdate.month
+    zodiac_sign || case birthdate.month
     when 1
       case birthdate.day
       when 1..19
@@ -187,16 +188,16 @@ class Birthday < ApplicationRecord
       when 1..20
         :scorpio
       when 21..22
-        cusp(:scorpio, :saggitarius)
+        cusp(:scorpio, :sagittarius)
       when 23..30
-        :saggitarius
+        :sagittarius
       end
     when 12
       case birthdate.day
       when 1..20
-        :saggitarius
+        :sagittarius
       when 21..22
-        cusp(:saggitarius, :capricorn)
+        cusp(:sagittarius, :capricorn)
       when 23..31
         :capricorn
       end
@@ -207,8 +208,8 @@ class Birthday < ApplicationRecord
     leader
   end
   
-  def planet_for_sign
-    case astrological_sign
+  def planet_for_sign sign
+    case sign
     when :aries
       :mars
     when :taurus
@@ -225,7 +226,7 @@ class Birthday < ApplicationRecord
       :venus
     when :scorpio
       :mars
-    when :saggitarius
+    when :sagittarius
       :jupiter
     when :capricorn
       :saturn
@@ -236,8 +237,8 @@ class Birthday < ApplicationRecord
     end
   end
   
-  def number_for_planet
-    case planet_for_sign
+  def number_for_planet planet
+    case planet
     when :mercury
       1
     when :venus

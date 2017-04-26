@@ -10,6 +10,7 @@ class BirthdaysController < ApplicationController
   def show
     @birthday = Birthday.find params[:id]
     @birth_card = @birthday.birth_card
+    @birthday.zodiac_sign = current_member.zodiac_sign&.intern
     @personality_card = @birthday.personality_card
     @yearly_card = @birthday.card_for_this_year
     @planetary_card = @birthday.card_for_this_planet
