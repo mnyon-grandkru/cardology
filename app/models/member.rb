@@ -10,6 +10,6 @@ class Member < ApplicationRecord
   belongs_to :lookup
   
   def self.generate_password
-    'dinklage'
+    ENV['INITIAL_PASSWORD']
   end
 end
