@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :quotes
-  devise_for :members
+  devise_for :members, :controllers => {:sessions => 'sessions'}
   resources :interpretations do
     collection do
       get 'ids'
