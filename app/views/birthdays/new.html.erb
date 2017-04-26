@@ -4,7 +4,7 @@
       Look up your Birth Card.<br>
       Unlock the secrets to a better life!
     </div>
-    <%= birthday_form.date_select :date, :start_year => 1900 %>
+    <%= birthday_form.date_select :date, :start_year => 1900, :order => [:month, :day, :year] %>
     <%= birthday_form.submit 'Go' %>
   <% end %>
 </div>
