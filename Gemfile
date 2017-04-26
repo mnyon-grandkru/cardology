@@ -19,6 +19,7 @@ gem 'fog'
 gem 'devise'
 gem 'randumb'
 gem 'jquery-validation-rails'
+gem 'cancancan'
 
 group :development, :test do
   gem 'byebug', platform: :mri

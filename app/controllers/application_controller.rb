@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for resource
     birthday_path resource.birthday
   end
+  
+  def current_ability
+    @current_ability ||= ::Ability.new(current_member)
+  end
 end

@@ -1,4 +1,6 @@
 class InterpretationsController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     @interpretations = if params[:by_face]
       Interpretation.by_face
