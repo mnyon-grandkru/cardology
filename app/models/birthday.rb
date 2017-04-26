@@ -88,6 +88,7 @@ class Birthday < ApplicationRecord
     spread = Spread.find_by(:age => 0)
     position_of_birth_card = spread.position_of birth_card
     planetary_ruling_position = position_of_birth_card.position - number_for_planet(planet_for_sign(astrological_sign))
+    planetary_ruling_position = 52 + planetary_ruling_position if planetary_ruling_position < 0
     place = Place.find_by :spread_id => spread.id, :position => planetary_ruling_position
     place.card
   end
