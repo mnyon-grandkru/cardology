@@ -22,8 +22,13 @@ span.terms {
 
 #new_players {
   display: inline-block;
+  vertical-align: top;
+  margin: 20px;
 }
 
 #returning_players {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 20px;
   display: inline-block;
 }
