@@ -50,9 +50,7 @@ form#new_birthday {
     }
     
     .identification_of_card {
-      width: 30%;
-      display: inline-block;
-      vertical-align: top;
+      float: right;
       padding-left: 12px;
       font-weight: bold;
       .card_face_image {
@@ -68,8 +66,6 @@ form#new_birthday {
     }
     
     .explication_of_card {
-      display: inline-block;
-      width: 60%;
       line-height: 1.45em;
       
       p {

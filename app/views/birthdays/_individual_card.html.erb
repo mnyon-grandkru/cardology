@@ -1,16 +1,14 @@
 <%= div_for birthday, structural_role do %>
   <%= content_tag :header, @header_text %>
   <%= content_tag :header, @header_subtitle, :class => 'subtitle' %>
+  <%= div_for card, :identification_of do %>
+  <%= div_for card, :name_of do %>
+    <%= "The #{card.name}" %>
+  <% end %>
+    <%= image_tag card.image, :class => 'card_face_image' %>
+  <% end %>
   <%= div_for card, :explication_of do %>
     <%= mark_up card_explanation %>
   <% end %>
-  
-  <%= div_for card, :identification_of do %>
-    <%= div_for card, :name_of do %>
-      <%= "The #{card.name}" %>
-    <% end %>
-    <%= image_tag card.image, :class => 'card_face_image' %>
-  <% end %>
-  <%= clearboth %>
   <%= link_to @link_text, @alternative_card_location, :remote => true %>
 <% end %>
