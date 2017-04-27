@@ -18,9 +18,7 @@
         <%= mark_up ENV['PERSONALITY_CARD_COPY'] %>
       <% end %>
       <%= div_for @birth_card, :identification_of do %>
-        <%= div_for @birth_card, :name_of do %>
-          Flip Over This Card
-        <% end %>
+        <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
         <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
       <% end %>
       
@@ -29,9 +27,7 @@
         <%= mark_up ENV['YEARLY_CARD_COPY'] %>
       <% end %>
       <%= div_for @birth_card, :identification_of do %>
-        <%= div_for @birth_card, :name_of do %>
-          Flip Over This Card
-        <% end %>
+        <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
         <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
       <% end %>
       
@@ -40,9 +36,7 @@
         <%= mark_up ENV['PLANETARY_CARD_COPY'] %>
       <% end %>
       <%= div_for @birth_card, :identification_of do %>
-        <%= div_for @birth_card, :name_of do %>
-          Flip Over This Card
-        <% end %>
+        <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
         <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
       <% end %>
       

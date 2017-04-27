@@ -22,30 +22,23 @@
       <%= content_tag :header, 'Your Personality Card' %>
 
       <% if @personality_card %>
-        <%= div_for @personality_card, :explication_of do %>
-          <%= mark_up @personality_card_explanation %>
-        <% end %>
-      
         <%= div_for @personality_card, :identification_of do %>
           <%= div_for @personality_card, :name_of do %>
             <%= @personality_card.name %>
           <% end %>
           <%= image_tag @personality_card.image, :class => 'card_face_image' %>
         <% end %>
+        
+        <%= div_for @personality_card, :explication_of do %>
+          <%= mark_up @personality_card_explanation %>
+        <% end %>
       <% else %>
         Your birthday is on an astrological cusp.  Do you know your sign?<br>
-        
         <%= link_to @birthday.astrological_sign.leader.capitalize, member_assign_zodiac_path(:id => current_member.id, :member => {:zodiac_sign => @birthday.astrological_sign.leader}), :method => :put %><br>
         <%= link_to @birthday.astrological_sign.follower.capitalize, member_assign_zodiac_path(:id => current_member.id, :member => {:zodiac_sign => @birthday.astrological_sign.follower}), :method => :put %><br>
-        
         If you are not sure, email <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'] %>.
-
-      <% end %>
-      <%= div_for @personality_card, :explication_of do %>
-        <%= mark_up @personality_card_explanation %>
       <% end %>
     <% end %>
-
     <hr>
     <%= content_tag :div, :class => 'card_group_heading' do %>
       Your Cards
