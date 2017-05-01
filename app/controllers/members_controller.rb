@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'herokuapp.com' }
 
   def create
     @member = Member.new member_params
