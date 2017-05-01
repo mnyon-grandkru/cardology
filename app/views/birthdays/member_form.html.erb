@@ -12,11 +12,17 @@
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up @birth_card_explanation %>
       <% end %>
+      
+      <%= div_for @birth_card, :identification_of do %>
+        <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
+        <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
+      <% end %>
     
       <%= content_tag :header, 'Your Personality Card' %>
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up ENV['PERSONALITY_CARD_COPY'] %>
       <% end %>
+      
       <%= div_for @birth_card, :identification_of do %>
         <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
         <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
@@ -26,6 +32,7 @@
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up ENV['YEARLY_CARD_COPY'] %>
       <% end %>
+      
       <%= div_for @birth_card, :identification_of do %>
         <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
         <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
@@ -34,10 +41,6 @@
       <%= content_tag :header, 'Your 52-Day Card' %>
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up ENV['PLANETARY_CARD_COPY'] %>
-      <% end %>
-      <%= div_for @birth_card, :identification_of do %>
-        <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
-        <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
       <% end %>
       
       <%= content_tag :header, 'Join The Players Club' %>
@@ -55,7 +58,6 @@
           <input type="hidden" name="BirthDate" value="<%= @birthday.birthdate_string %>"/>
         </form>
       </div>
-      
     <% end %>
     
   <% end %>
