@@ -8,9 +8,10 @@ class BirthdaysController < ApplicationController
   end
   
   def show
+    @member = current_member || Member.find(params[:member_id])
     @birthday = Birthday.find params[:id]
     @birth_card = @birthday.birth_card
-    @birthday.zodiac_sign = current_member&.zodiac_sign&.intern
+    @birthday.zodiac_sign = @member&.zodiac_sign&.intern
     if @birthday.astrological_sign.is_cusp?
       @personality_card = nil
     else

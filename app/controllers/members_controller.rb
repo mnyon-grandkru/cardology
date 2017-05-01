@@ -7,13 +7,13 @@ class MembersController < ApplicationController
     @member.password_confirmation = @member.password
     @member.save
     sign_in @member
-    redirect_to @member.birthday
+    redirect_to birthday_path @member.birthday, :member_id => @member.id
   end
   
   def update
     @member = Member.find params[:id]
     @member.update_attributes member_params
-    redirect_to @member.birthday
+    redirect_to birthday_path @member.birthday, :member_id => @member.id
   end
   
   private
