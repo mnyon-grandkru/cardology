@@ -34,8 +34,8 @@
         <% end %>
       <% else %>
         Your birthday is on an astrological cusp.  Do you know your sign?<br>
-        <%= link_to @birthday.astrological_sign.leader.capitalize, member_assign_zodiac_path(:id => current_member.id, :member => {:zodiac_sign => @birthday.astrological_sign.leader}), :method => :put %><br>
-        <%= link_to @birthday.astrological_sign.follower.capitalize, member_assign_zodiac_path(:id => current_member.id, :member => {:zodiac_sign => @birthday.astrological_sign.follower}), :method => :put %><br>
+        <%= link_to @birthday.astrological_sign.leader.capitalize, member_assign_zodiac_path(:id => current_member&.id, :member => {:zodiac_sign => @birthday.astrological_sign.leader}), :method => :put, :class => 'cusp_resolution' %><br>
+        <%= link_to @birthday.astrological_sign.follower.capitalize, member_assign_zodiac_path(:id => current_member&.id, :member => {:zodiac_sign => @birthday.astrological_sign.follower}), :method => :put, :class => 'cusp_resolution' %><br>
         If you are not sure, email <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'] %>.
       <% end %>
     <% end %>
@@ -83,4 +83,13 @@
     <% end %>
   
   <% end %>
+<% end %>
+
+<% if current_member.nil? %>
+  <script>
+    $('#reading_display_container').on('click', '.cusp_resolution', function(event) {
+      alert('This feature is not available via your device. You can log in from your computer to verify your sign. Thank you for your understanding regarding this limitation.');
+      event.preventDefault();
+    });
+  </script>
 <% end %>
