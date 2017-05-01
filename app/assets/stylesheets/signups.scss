@@ -31,10 +31,17 @@ span.terms {
 }
 
 #returning_players {
-  font-size: 1.5em;
   text-align: center;
   margin: 20px;
   display: inline-block;
+  
+  header {
+    font-size: 1.5em;
+  }
+  
+  label {
+    font-size: 0.9em;
+  }
 }
 
 .flip_over {

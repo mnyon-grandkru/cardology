@@ -11,10 +11,12 @@
   </div>
 
   <div id="returning_players">
-    Log in to get back in the game:
+    <%= content_tag :header, 'Log in to get back in the game:' %>
     <%= form_for Member.new, :url => member_session_path do |signin_form| %>
       <%= signin_form.text_field :email, :placeholder => 'Email' %><br>
+      <%= signin_form.label :email, 'This is the email you entered when you joined the Players Club.' %><br>
       <%= signin_form.password_field :password, :placeholder => 'Password' %><br>
+      <%= signin_form.label :password, 'This is the temporary password emailed to you.' %><br>
       <%= submit_tag "Get Back In The Game" %>
     <% end %>
     <%#= link_to 'Reset Password', new_member_password_path %>
