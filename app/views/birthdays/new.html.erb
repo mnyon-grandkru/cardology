@@ -17,6 +17,8 @@
       <%= signin_form.label :email, 'This is the email you entered when you joined the Players Club.' %><br>
       <%= signin_form.password_field :password, :placeholder => 'Password' %><br>
       <%= signin_form.label :password, 'This is the temporary password emailed to you.' %><br>
+      <%= signin_form.check_box :remember_me %>
+      <%= signin_form.label :remember_me %><br>
       <%= submit_tag "Get Back In The Game" %>
     <% end %>
     <%#= link_to 'Reset Password', new_member_password_path %>
