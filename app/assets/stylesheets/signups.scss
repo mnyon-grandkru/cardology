@@ -24,6 +24,16 @@ span.terms {
   text-align: center;
 }
 
+header {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+header.call_to_action {
+  font-size: 1.1em;
+  font-weight: normal;
+}
+
 #new_players {
   display: inline-block;
   vertical-align: top;
@@ -34,10 +44,6 @@ span.terms {
   text-align: center;
   margin: 20px;
   display: inline-block;
-  
-  header {
-    font-size: 1.5em;
-  }
   
   label {
     font-size: 0.9em;
