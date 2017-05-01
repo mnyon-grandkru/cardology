@@ -22,6 +22,7 @@
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up ENV['PERSONALITY_CARD_COPY'] %>
       <% end %>
+      <%= clearboth %>
       
       <%= div_for @birth_card, :identification_of do %>
         <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
@@ -32,6 +33,7 @@
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up ENV['YEARLY_CARD_COPY'] %>
       <% end %>
+      <%= clearboth %>
       
       <%= div_for @birth_card, :identification_of do %>
         <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
@@ -42,6 +44,7 @@
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up ENV['PLANETARY_CARD_COPY'] %>
       <% end %>
+      <%= clearboth %>
       
       <%= content_tag :header, 'Join The Players Club' %>
       <%= div_for @birth_card, :explication_of do %>
