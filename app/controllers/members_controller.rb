@@ -7,7 +7,7 @@ class MembersController < ApplicationController
     @member.password_confirmation = @member.password
     @member.save
     sign_in @member
-    redirect_to birthday_path @member.birthday, :member_id => @member.id
+    redirect_to birthday_path @member.birthday, :member_id => @member.id, :scroll_to_top => true
   end
   
   def update

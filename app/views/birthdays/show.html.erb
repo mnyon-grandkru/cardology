@@ -84,3 +84,11 @@
   
   <% end %>
 <% end %>
+
+<% if @scroll_to_top %>
+  <script>
+    $(document).on('turbolinks:load', function() {
+      $.scrollTo('.reading_display_container');
+    });
+  </script>
+<% end %>

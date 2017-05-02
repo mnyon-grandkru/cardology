@@ -23,6 +23,7 @@ class BirthdaysController < ApplicationController
     @personality_card_explanation = @personality_card&.interpretations&.where(:reading => :birth)&.last&.explanation
     @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation
+    @scroll_to_top = params[:scroll_to_top]
   end
   
   def replace_card

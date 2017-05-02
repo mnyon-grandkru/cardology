@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/fishpercolator/jquery-scrollto-rails.git
+  revision: 0c6aa0e0a0ec72f2c54bbb3833a7a48cf95637bf
+  ref: 0c6aa0e0a0ec72f2c54bbb3833a7a48cf95637bf
+  specs:
+    jquery-scrollto-rails (1.4.3)
+      railties (> 3.1, < 6.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -328,6 +336,7 @@ DEPENDENCIES
   fog
   jbuilder (~> 2.5)
   jquery-rails
+  jquery-scrollto-rails!
   jquery-validation-rails
   listen (~> 3.0.5)
   pg

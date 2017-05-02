@@ -20,6 +20,7 @@ gem 'devise'
 gem 'randumb'
 gem 'jquery-validation-rails'
 gem 'cancancan'
+gem 'jquery-scrollto-rails', :github => 'fishpercolator/jquery-scrollto-rails', :ref => '0c6aa0e0a0ec72f2c54bbb3833a7a48cf95637bf'
 
 group :development, :test do
   gem 'byebug', platform: :mri
