@@ -69,6 +69,12 @@ class BirthdaysController < ApplicationController
     render :template => 'birthdays/member_form'
   end
   
+  def second_try
+    @email = params[:member][:email]
+    @password_explanation = "Oops, it looks like you're entering the wrong password. The temporary password was emailed to you when you signed up. Please check your email for the password."
+    render 'new.html.erb'
+  end
+  
   def birthday_params
     params.require(:birthday).permit('date(1i)', 'date(2i)', 'date(3i)')
   end
