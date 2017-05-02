@@ -87,8 +87,8 @@
 
 <% if @scroll_to_top %>
   <script>
-    $(document).on('turbolinks:load', function() {
-      $.scrollTo('.reading_display_container');
-    });
+    setTimeout(function() {
+      $.scrollTo('.reading_display_container', 1200);
+    }, 1200);
   </script>
 <% end %>
