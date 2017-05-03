@@ -10,7 +10,7 @@
   </div>
 
   <div id="returning_players">
-    <%= content_tag :header, 'Returning Players' %>
+    <%= content_tag :header, params[:message] || 'Returning Players' %>
     <%= content_tag :header, 'Log in to get back in the game:', :class => 'call_to_action' %>
     <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>
       <%= signin_form.text_field :email, :placeholder => 'Email' %><br>
