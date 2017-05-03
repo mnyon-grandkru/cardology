@@ -21,7 +21,7 @@
       <%= signin_form.label :remember_me %><br>
       <%= submit_tag "Get Back In The Game" %>
     <% end %>
-    <%#= link_to 'Reset Password', new_member_password_path %>
+    <%= link_to 'Reset Password', new_password_path(:member) %>
   </div>
 
   <div id="results">
