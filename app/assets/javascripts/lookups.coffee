@@ -22,3 +22,6 @@ $(document).on 'turbolinks:load', ->
         $(this).serialize()
     
     event.preventDefault()
+
+  $('.identification_of_card').on 'click', '.flip_over', ->
+    $('#member_first_name').focus()
