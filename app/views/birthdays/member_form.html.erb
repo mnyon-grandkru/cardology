@@ -15,7 +15,7 @@
       
       <%= div_for @birth_card, :identification_of do %>
         <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
-        <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
+        <%= image_tag Card.personality_card_back_image, :class => 'card_face_image' %>
       <% end %>
     
       <%= content_tag :header, 'Your Personality Card' %>
@@ -26,7 +26,7 @@
       
       <%= div_for @birth_card, :identification_of do %>
         <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
-        <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
+        <%= image_tag Card.yearly_card_back_image, :class => 'card_face_image' %>
       <% end %>
       
       <%= content_tag :header, 'Your Yearly Card' %>
@@ -37,7 +37,7 @@
       
       <%= div_for @birth_card, :identification_of do %>
         <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
-        <%= image_tag Card.card_back_image, :class => 'card_face_image' %>
+        <%= image_tag Card.planetary_card_back_image, :class => 'card_face_image' %>
       <% end %>
       
       <%= content_tag :header, 'Your 52-Day Card' %>
