@@ -3,15 +3,18 @@
   <div class="interpretation_sort card_in_interpretation">
     <%= link_to 'Sort by Card', :sort => 'card_id' %><br>
     <%= link_to 'Sort by Face', :by_face => true %><br>
-    <%= link_to 'Hearts', :suit => 'Hearts' %>
-    <%= link_to 'Clubs', :suit => 'Clubs' %><br>
-    <%= link_to 'Diamonds', :suit => 'Diamonds' %>
-    <%= link_to 'Spades', :suit => 'Spades' %>
+    <%= link_to 'Sort by Reading', :sort => 'reading' %>
+  </div>
+  <div class="interpretation_sort">
+    <%= link_to "All #{params[:reading]}", sort_params.except(:suit) %><br>
+    <% Suit.actual.each do |suit| %>
+      <%= link_to suit.name, sort_params.merge(:suit => suit.name) %><br>
+    <% end %>
   </div>
   <div class="interpretation_sort reading_type_of_interpretation">
-    <%= link_to 'Sort by Reading', :sort => 'reading' %><br>
+    <%= link_to "All #{params[:suit]}", sort_params.except(:reading) %><br>
     <% Interpretation.readings.each do |name, db_id| %>
-      <%= link_to name.capitalize, :reading => name %>
+      <%= link_to name.capitalize, sort_params.merge(:reading => name) %><br>
     <% end %>
   </div>
 </div>

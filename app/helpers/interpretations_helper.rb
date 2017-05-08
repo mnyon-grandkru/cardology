@@ -33,4 +33,8 @@ module InterpretationsHelper
       
     end
   end
+  
+  def sort_params
+    params.permit(:suit, :reading, :sort, :by_face)
+  end
 end
