@@ -1,8 +1,7 @@
+<%= link_to 'Return to My Reading', root_path, :id => 'my_reading_link' if current_member %>
 <div id="landing">
   <div id="new_players">
-    <% unless current_member %>
-      <%= content_tag :header, 'New Players' %>
-    <% end %>
+    <%= content_tag :header, 'New Players' unless current_member %>
     <%= content_tag :header, @goal, :class => 'call_to_action' %>
     <%= content_tag :header, @instructions, :class => 'call_to_action' %>
     <%= form_for Birthday.new do |birthday_form| %>

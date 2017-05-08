@@ -1,6 +1,6 @@
 <%= form_for @interpretation do |interpretation_form| %>
   <div>
-    <%= interpretation_form.select :card_id, options_from_collection_for_select(Card.all, :id, :name, @interpretation.card_id), {:include_blank => 'Pick a card'}, {:required => true} %>
+    <%= interpretation_form.select :card_id, options_from_collection_for_select(Card.ordered_deck << Card.joker, :id, :name, @interpretation.card_id), {:include_blank => 'Pick a card'}, {:required => true} %>
   </div>
   
   <div>
