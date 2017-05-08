@@ -1,0 +1,18 @@
+<%= link_to 'Return to Birth Card Lookup', new_birthday_path, :id => 'new_lookup_link' %>
+<%= content_tag :div, :class => 'reading_display_container' do %>
+  <%= div_for @birthday, 'data-birthday_id' => @birthday.id, 'data-lookup_id' => @lookup.id do %>
+    <%= div_for @birthday, :birth_card_for do %>
+      <%= content_tag :header, 'Your Birth Card' %>
+      <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
+      <%= div_for @birth_card, :identification_of do %>
+        <%= div_for @birth_card, :name_of do %>
+          <%= @birth_card.name %>
+        <% end %>
+        <%= image_tag @birth_card.image, :class => 'card_face_image' %>
+      <% end %>
+      <%= div_for @birth_card, :explication_of do %>
+        <%= mark_up @birth_card_explanation %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

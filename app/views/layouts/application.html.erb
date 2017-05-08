@@ -11,9 +11,10 @@
   </head>
 
   <body>
-    <% if @member %>
-      <%= link_to 'Return to Birth Card Lookup', destroy_member_session_path, :method => :delete, :id => 'logout_link' %>
+    <% if @member || current_member %>
+      <%= link_to 'Log Out', destroy_member_session_path, :method => :delete, :id => 'logout_link' %>
     <% end %>
+    
     <%= yield %>
   </body>
 </html>

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :quotes
   devise_for :members, :controllers => {:sessions => 'sessions', :passwords => 'passwords'}
+  
+  authenticated :member do
+    root :to => 'birthdays#mine'
+  end
+  
   resources :interpretations do
     collection do
       get 'ids'

@@ -87,6 +87,12 @@ form#new_birthday {
 }
 
 #logout_link {
+  float: right;
+  text-decoration: none;
+  color: #E8830C;
+}
+
+#new_lookup_link {
   text-decoration: none;
   color: #E8830C;
 }

@@ -1,7 +1,6 @@
 class BirthdaysController < ApplicationController
   skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'herokuapp.com' }
   before_action :redirect_customer, :only => :index
-  before_action :redirect_member, :only => :new
   
   def index
     @birthdays = Birthday.all
@@ -62,12 +61,30 @@ class BirthdaysController < ApplicationController
     render :template => 'birthdays/replace_card.js.erb'
   end
   
+  def new
+    if current_member
+      @goal = 'Look Up Another Birth Card'
+      @instructions = 'Enter the Birthdate'
+    else
+      @goal = 'Find Out Your Birth Card'
+      @instructions = 'Enter your Date of Birth:'
+    end
+  end
+  
+  def mine
+    redirect_to current_member.birthday
+  end
+  
   def create
     @birthday = Birthday.find_or_create_by :year => birthday_params['date(1i)'], :month => birthday_params['date(2i)'], :day => birthday_params['date(3i)']
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
     @birth_card = @birthday.birth_card
     @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation
-    render :template => 'birthdays/member_form'
+    if current_member
+      render :template => 'birthdays/birth_card'
+    else
+      render :template => 'birthdays/member_form'
+    end
   end
   
   def second_try
@@ -82,11 +99,5 @@ class BirthdaysController < ApplicationController
   
   def redirect_customer
     redirect_to :action => :new
-  end
-  
-  def redirect_member
-    if current_member
-      redirect_to current_member.birthday
-    end
   end
 end

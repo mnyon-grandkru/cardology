@@ -1,28 +1,32 @@
 <div id="landing">
   <div id="new_players">
-    <%= content_tag :header, 'New Players' %>
-    <%= content_tag :header, 'Find Out Your Birth Card', :class => 'call_to_action' %>
-    <%= content_tag :header, 'Enter your Date of Birth:', :class => 'call_to_action' %>
+    <% unless current_member %>
+      <%= content_tag :header, 'New Players' %>
+    <% end %>
+    <%= content_tag :header, @goal, :class => 'call_to_action' %>
+    <%= content_tag :header, @instructions, :class => 'call_to_action' %>
     <%= form_for Birthday.new do |birthday_form| %>
       <%= birthday_form.date_select :date, :start_year => 1900, :order => [:month, :day, :year] %>
       <%= birthday_form.submit 'Go' %>
     <% end %>
   </div>
 
-  <div id="returning_players">
-    <%= content_tag :header, params[:message] || 'Returning Players' %>
-    <%= content_tag :header, 'Log in to get back in the game:', :class => 'call_to_action' %>
-    <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>
-      <%= signin_form.text_field :email, :placeholder => 'Email' %><br>
-      <%= signin_form.label :email, 'This is the email you entered when you joined the Players Club.' %><br>
-      <%= signin_form.password_field :password, :placeholder => 'Password' %><br>
-      <%= signin_form.label :password, (@password_explanation || 'This is the temporary password emailed to you.'), :id => 'password_description' %><br>
-      <%= signin_form.check_box :remember_me %>
-      <%= signin_form.label :remember_me %><br>
-      <%= submit_tag "Get Back In The Game" %>
-    <% end %>
-    <%= link_to 'Reset Password', new_password_path(:member) %>
-  </div>
+  <% unless current_member %>
+    <div id="returning_players">
+      <%= content_tag :header, params[:message] || 'Returning Players' %>
+      <%= content_tag :header, 'Log in to get back in the game:', :class => 'call_to_action' %>
+      <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>
+        <%= signin_form.text_field :email, :placeholder => 'Email' %><br>
+        <%= signin_form.label :email, 'This is the email you entered when you joined the Players Club.' %><br>
+        <%= signin_form.password_field :password, :placeholder => 'Password' %><br>
+        <%= signin_form.label :password, (@password_explanation || 'This is the temporary password emailed to you.'), :id => 'password_description' %><br>
+        <%= signin_form.check_box :remember_me %>
+        <%= signin_form.label :remember_me %><br>
+        <%= submit_tag "Get Back In The Game" %>
+      <% end %>
+      <%= link_to 'Reset Password', new_password_path(:member) %>
+    </div>
+  <% end %>
 
   <div id="results">
   </div>
