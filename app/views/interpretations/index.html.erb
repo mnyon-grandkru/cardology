@@ -9,9 +9,13 @@
     <%= link_to 'Spades', :suit => 'Spades' %>
   </div>
   <div class="interpretation_sort reading_type_of_interpretation">
-    <%= link_to 'Sort by Reading', :sort => 'reading' %>
+    <%= link_to 'Sort by Reading', :sort => 'reading' %><br>
+    <% Interpretation.readings.each do |name, db_id| %>
+      <%= link_to name.capitalize, :reading => name %>
+    <% end %>
   </div>
 </div>
+<%= paginate @interpretations %>
 <% @interpretations.each do |interpretation| %>
   <%= div_for interpretation do %>
     <%= div_for interpretation, :card_in, :class => 'interpretation_sort' do %>
@@ -28,4 +32,5 @@
     <% end %>
   <% end %>
 <% end %>
+<%= paginate @interpretations %>
 <%= link_to 'new interpretation', new_interpretation_path %>

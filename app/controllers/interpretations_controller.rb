@@ -6,9 +6,11 @@ class InterpretationsController < ApplicationController
       Interpretation.by_face
     elsif params[:suit]
       Interpretation.order(params[:sort]).of_suit(params[:suit])
+    elsif params[:reading]
+      Interpretation.order(params[:sort]).of_reading(params[:reading])
     else
       Interpretation.order(params[:sort])
-    end
+    end.page(params[:page])
   end
   
   def ids
