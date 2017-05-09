@@ -1,4 +1,6 @@
 class Member < ApplicationRecord
+  after_create :deliver_temporary_password
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -11,5 +13,9 @@ class Member < ApplicationRecord
   
   def self.generate_password
     ENV['INITIAL_PASSWORD']
+  end
+  
+  def deliver_temporary_password
+    MemberMailer.temporary_password(self).deliver
   end
 end
