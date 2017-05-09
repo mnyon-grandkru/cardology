@@ -89,6 +89,8 @@ class BirthdaysController < ApplicationController
   end
   
   def second_try
+    @goal = 'Find Out Your Birth Card'
+    @instructions = 'Enter your Date of Birth:'
     @email = params[:member][:email]
     @password_explanation = "Oops, it looks like you're entering the wrong password. The temporary password was emailed to you when you signed up. Please check your email for the password."
     render 'new.html.erb'
