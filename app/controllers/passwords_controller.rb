@@ -1,5 +1,5 @@
 class PasswordsController < Devise::PasswordsController
-  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'herokuapp.com' }
+  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'lifeelevated.life' }
   
   def after_sending_reset_password_instructions_path_for(resource_name)
     root_url :message => "Your email will arrive momentarily."

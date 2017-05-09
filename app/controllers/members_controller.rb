@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'herokuapp.com' }
+  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'lifeelevated.life' }
 
   def create
     if @member = Member.find_by_email(member_params[:email])

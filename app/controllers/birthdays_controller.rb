@@ -1,5 +1,5 @@
 class BirthdaysController < ApplicationController
-  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'herokuapp.com' }
+  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'lifeelevated.life' }
   before_action :redirect_customer, :only => :index
   
   def index

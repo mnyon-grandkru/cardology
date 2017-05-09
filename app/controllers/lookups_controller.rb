@@ -1,5 +1,5 @@
 class LookupsController < ApplicationController
-  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'herokuapp.com' }
+  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'lifeelevated.life' }
   
   def update
     @lookup = Lookup.find params[:id]
