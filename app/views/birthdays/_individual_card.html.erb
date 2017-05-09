@@ -3,7 +3,7 @@
   <%= content_tag :header, @header_subtitle, :class => 'subtitle' %>
   <%= div_for card, :identification_of do %>
   <%= div_for card, :name_of do %>
-    <%= "The #{card.name}" %>
+    <%= card.name %>
   <% end %>
     <%= image_tag card.image, :class => 'card_face_image' %>
   <% end %>
