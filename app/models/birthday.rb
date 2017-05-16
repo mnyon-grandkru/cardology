@@ -96,7 +96,11 @@ class Birthday < ApplicationRecord
   end
   
   def astrological_sign
-    zodiac_sign || case birthdate.month
+    zodiac_sign || zodiac_for_birthday
+  end
+    
+  def zodiac_for_birthday
+    case birthdate.month
     when 1
       case birthdate.day
       when 1..19
