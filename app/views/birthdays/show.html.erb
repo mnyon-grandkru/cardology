@@ -1,8 +1,11 @@
-<%= link_to 'Return to Birth Card Lookup', new_birthday_path, :id => 'new_lookup_link' %>
+<%= link_to 'Return to BirthCard Lookup', new_birthday_path, :id => 'new_lookup_link' %>
 <%= content_tag :div, :class => 'reading_display_container' do %>
   <%= div_for @birthday do %>
     <%= content_tag :div, :class => 'card_group_heading' do %>
-      Your Lifelong Cards
+      Your Cards
+      <div class="reddened">
+        For Life
+      </div>
     <% end %>
     <%= div_for @birthday, :birth_card_for do %>
       <%= content_tag :header, 'Your Birth Card' %>
@@ -33,11 +36,14 @@
         <%= div_for @personality_card, :explication_of do %>
           <%= mark_up @personality_card_explanation %>
         <% end %>
+        <% if @member.birthday.astrological_sign.is_cusp? %>
+          <%= link_to 'Change my Zodiac Sign', member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put %>
+        <% end %>
       <% else %>
         Your birthday is on an astrological cusp.  Do you know your sign?<br>
-        <%= link_to @birthday.astrological_sign.leader.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.astrological_sign.leader}), :method => :put %><br>
-        <%= link_to @birthday.astrological_sign.follower.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.astrological_sign.follower}), :method => :put %><br>
-        If you are not sure, email <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'] %>.
+        <%= link_to @birthday.astrological_sign.leader.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.astrological_sign.leader}), :method => :put, :remote => true %><br>
+        <%= link_to @birthday.astrological_sign.follower.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.astrological_sign.follower}), :method => :put, :remote => true %><br>
+        If you are unsure of your Astrological Birth Sign, you may <%= mail_to 'email us', ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'] %> with your time and place of birth and we will look it up for you.  Alternatively, there are free lookup tools on the web for you to do this too.  We will respond to your email in 24 hours.
       <% end %>
     <% end %>
     <%= clearboth %>

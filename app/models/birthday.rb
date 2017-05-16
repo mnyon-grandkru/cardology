@@ -87,7 +87,7 @@ class Birthday < ApplicationRecord
   
   def personality_card
     return Card.joker if birth_card == Card.joker
-    spread = Spread.find_by(:age => 0)
+    spread = Spread.find_by :age => 0
     position_of_birth_card = spread.position_of birth_card
     planetary_ruling_position = position_of_birth_card.position - number_for_planet(planet_for_sign(astrological_sign))
     planetary_ruling_position = 52 + planetary_ruling_position if planetary_ruling_position < 0

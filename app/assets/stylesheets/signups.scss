@@ -52,6 +52,15 @@ header.call_to_action {
 #new_players {
   vertical-align: top;
   margin: 20px;
+  
+  #new_players_header {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  header {
+    margin-bottom: 15px;
+  }
 }
 
 #returning_players {

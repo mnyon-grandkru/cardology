@@ -3,10 +3,10 @@
   <div id="landing">
     <div id="left_cell" class="landing_table"></div>
     <div id="new_players" class="landing_table">
-      <%= content_tag :header, 'New Players' unless current_member %>
-      <%= content_tag :header, @goal, :class => 'call_to_action' %>
+      <%= content_tag :header, 'New Players', :id => 'new_players_header' unless current_member %>
+      <%= content_tag :header, content_tag(:b, @goal), :class => 'call_to_action' %>
       <%= content_tag :header, @instructions, :class => 'call_to_action' %>
-      <%= form_for Birthday.new do |birthday_form| %>
+      <%= form_for Birthday.new :date => @date do |birthday_form| %>
         <%= birthday_form.date_select :date, :start_year => 1900, :order => [:month, :day, :year] %>
         <%= birthday_form.submit 'Go' %>
       <% end %>
@@ -16,7 +16,7 @@
     <% unless current_member %>
       <div id="returning_players">
         <%= content_tag :header, params[:message] || 'Returning Players' %>
-        <%= content_tag :header, 'Log in to get back in the game:', :class => 'call_to_action' %>
+        <%= content_tag :header, 'Login to get back in the game:', :class => 'call_to_action' %>
         <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>
           <%= signin_form.text_field :email, :placeholder => 'Email', :class => 'spacious' %><br>
           <%= signin_form.label :email, 'This is the email you entered<br>when you joined the Players Club.'.html_safe %><br>
