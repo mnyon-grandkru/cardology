@@ -79,3 +79,11 @@
 .reddened {
   color: #DE0032;
 }
+
+#zodiac_options {
+  font-size: 2em;
+  a.zodiac_selection {
+    display: inline-block;
+    margin: 14px 11%;
+  }
+}
