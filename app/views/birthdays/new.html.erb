@@ -15,13 +15,15 @@
       <%= content_tag :header, params[:message] || 'Returning Players' %>
       <%= content_tag :header, 'Log in to get back in the game:', :class => 'call_to_action' %>
       <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>
-        <%= signin_form.text_field :email, :placeholder => 'Email' %><br>
+        <%= signin_form.text_field :email, :placeholder => 'Email', :class => 'spacious' %><br>
         <%= signin_form.label :email, 'This is the email you entered<br>when you joined the Players Club.'.html_safe %><br>
-        <%= signin_form.password_field :password, :placeholder => 'Password' %><br>
+        <%= signin_form.password_field :password, :placeholder => 'Password', :class => 'spacious' %><br>
         <%= signin_form.label :password, (@password_explanation || 'This password was emailed to you.'), :id => 'password_description' %><br>
         <%= signin_form.check_box :remember_me %>
-        <%= signin_form.label :remember_me %><br>
-        <%= submit_tag "Get Back In The Game" %>
+        <%= signin_form.label :remember_me %>
+        <div class="actions">
+          <%= submit_tag "Get Back In The Game", :id => 'login_submit_button' %>
+        </div>
       <% end %>
       <%= link_to 'Reset Password', new_password_path(:member) %>
     </div>

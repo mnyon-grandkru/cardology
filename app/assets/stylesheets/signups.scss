@@ -46,9 +46,35 @@ header.call_to_action {
   margin: 20px;
   display: inline-block;
   
-  label {
-    font-size: 0.9em;
+  form#new_member {
+    text-align: left;
+    
+    input {
+      margin: 35px 0px 15px 0px;
+    }
+    
+    label {
+
+    }
+    
+    .actions {
+      text-align: center;
+      
+      #login_submit_button {
+        margin-top: 0px;
+      }
+    }
   }
+}
+
+input.spacious {
+  padding: 2px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 20px;
+//  font-family: 'Roboto Condensed';
+  color: #4e4e4e;
+  background-color: #fff;
 }
 
 .flip_over {
