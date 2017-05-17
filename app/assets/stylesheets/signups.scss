@@ -57,9 +57,13 @@ span.terms {
   font-size: 0.8em;
 }
 
+#landing,
+#password_control {
+  min-height: 600px;
+}
+
 #password_control {
   text-align: center;
-  min-height: 600px;
 }
 
 header {
@@ -89,6 +93,7 @@ header.call_to_action {
 #new_players {
   vertical-align: top;
   margin: 20px;
+  padding-top: 8px;
   
   #new_players_header {
     font-size: 2em;

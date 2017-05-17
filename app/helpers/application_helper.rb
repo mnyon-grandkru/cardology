@@ -1,8 +1,10 @@
 module ApplicationHelper
   def clearboth
-    content_tag :div, :class => 'clearboth' do
-      
-    end
+    content_tag :div, '', :class => 'clearboth'
+  end
+  
+  def clearleft
+    content_tag :div, '', :class => 'clearleft'
   end
   
   def markdown
