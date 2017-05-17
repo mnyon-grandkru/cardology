@@ -1,4 +1,4 @@
-<%= link_to 'Return to BirthCard Lookup', new_birthday_path, :id => 'new_lookup_link' %>
+<%= link_to 'Return to BirthCard Lookup', new_birthday_path, :id => 'new_lookup_link', :class => 'lunar_navigation' %>
 <%= content_tag :div, :class => 'reading_display_container' do %>
   <%= div_for @birthday do %>
     <%= content_tag :div, :class => 'card_group_heading' do %>
@@ -37,7 +37,7 @@
           <%= mark_up @personality_card_explanation %>
         <% end %>
         <% if @member.birthday.astrological_sign.is_cusp? %>
-          <%= link_to 'Change my Zodiac Sign', member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action' %>
+          <%= link_to 'Change my Zodiac Sign', member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation' %>
         <% end %>
       <% else %>
         Your birthday is on an astrological cusp.  Do you know your sign?<br>
@@ -72,7 +72,7 @@
       <%= div_for @yearly_card, :explication_of do %>
         <%= mark_up @yearly_card_explanation %>
       <% end %>
-      <%= link_to "See Last Year's Card", replace_card_birthday_path(@birthday, :reading_type => 'last_year'), :remote => true, :class => 'trailing call_to_action' %>
+      <%= link_to "See Last Year's Card", replace_card_birthday_path(@birthday, :reading_type => 'last_year'), :remote => true, :class => 'trailing call_to_action lunar_navigation' %>
       <%= quote %>
     <% end %>
   
@@ -90,7 +90,7 @@
       <%= div_for @planetary_card, :explication_of do %>
         <%= mark_up @planetary_card_explanation %>
       <% end %>
-      <%= link_to "What card did I have before this?", replace_card_birthday_path(@birthday, :reading_type => 'last_planet'), :remote => true, :class => 'trailing call_to_action' %>
+      <%= link_to "What card did I have before this?", replace_card_birthday_path(@birthday, :reading_type => 'last_planet'), :remote => true, :class => 'trailing call_to_action lunar_navigation' %>
     <% end %>
   
   <% end %>

@@ -68,12 +68,10 @@
     }
     
     a {
-      text-decoration: none;
-      color: #E8830C;
       
       &.trailing.call_to_action {
         display: block;
-        padding-bottom: 16px;
+        margin-bottom: 16px;
       }
     }
   }
@@ -81,13 +79,6 @@
 
 #logout_link {
   float: right;
-  text-decoration: none;
-  color: #E8830C;
-}
-
-#new_lookup_link, #my_reading_link {
-  text-decoration: none;
-  color: #E8830C;
 }
 
 .monthly_price_of_card {
