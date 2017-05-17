@@ -1,3 +1,22 @@
+form#new_birthday {
+  text-align: center;
+  
+  #look_up_cta {
+    font-size: 1.5em;
+    padding-bottom: 12px;
+  }
+  
+  select {
+    -webkit-appearance: none;
+    height: 40px;
+    font-size: 28px;
+    
+    option {
+      font-size: 28px;
+    }
+  }
+}
+
 #signup {
   text-align: center;
   

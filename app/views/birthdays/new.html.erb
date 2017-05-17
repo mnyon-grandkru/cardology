@@ -2,7 +2,7 @@
 <div id="container">
   <div id="landing">
     <div id="left_cell" class="landing_table"></div>
-    <div id="new_players" class="landing_table">
+    <div id="new_players" class="landing_table submission">
       <%= content_tag :header, 'New Players', :id => 'new_players_header' unless current_member %>
       <%= content_tag :header, content_tag(:b, @goal), :class => 'call_to_action' %>
       <%= content_tag :header, @instructions, :class => 'call_to_action' %>
@@ -14,7 +14,7 @@
     <div id="right_cell" class="landing_table"></div>
 
     <% unless current_member %>
-      <div class="customSideForm">
+      <div class="submission">
         <div id="returning_players">
           <%= content_tag :header, params[:message] || 'Returning Players' %>
           <%= content_tag :header, 'Login to get back in the game:', :class => 'call_to_action' %>
