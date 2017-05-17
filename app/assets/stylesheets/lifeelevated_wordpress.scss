@@ -1,0 +1,18 @@
+.customSideForm form input{
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.customSideForm form input[type="submit"]{
+  background-color: #335276;
+  color: white;
+  border: 2px solid #fff;
+  transition: all 0.3s;
+}
+
+.customSideForm form input[type="submit"]:hover{
+  background-color: #fff;
+  color: #335276;
+  border: 2px solid #335276;
+}

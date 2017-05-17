@@ -15,6 +15,6 @@ module ApplicationHelper
   end
   
   def google_fonts
-    content_tag :link, nil, :href => 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300', :rel => 'stylesheet'
+    content_tag :link, nil, :href => 'https://fonts.googleapis.com/css?family=Abel|Open+Sans+Condensed:300', :rel => 'stylesheet'
   end
 end

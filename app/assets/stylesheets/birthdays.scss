@@ -55,6 +55,7 @@ form#new_birthday {
       font-weight: bold;
       
       .name_of_card {
+        font-family: 'Open Sans Condensed';
         text-align: center;
         margin-bottom: 5px;
       }
@@ -81,7 +82,12 @@ form#new_birthday {
     
     a {
       text-decoration: none;
-      color: #E8830C; //#48C5DC;
+      color: #E8830C;
+      
+      &.trailing.call_to_action {
+        display: block;
+        padding-bottom: 16px;
+      }
     }
   }
 }
