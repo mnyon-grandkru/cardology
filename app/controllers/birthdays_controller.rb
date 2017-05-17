@@ -80,11 +80,11 @@ class BirthdaysController < ApplicationController
   def new
     if current_member
       @date = rand((50.years.ago)..20.years.ago)
-      @goal = 'Look Up Another BirthCard'
+      @goal = 'Look Up Another Birth Card'
       @instructions = 'Enter the Birthdate'
     else
       @date = rand((50.years.ago)..20.years.ago)
-      @goal = 'Find Out Your BirthCard'
+      @goal = 'Find Out Your Birth Card'
       @instructions = 'Enter your Date of Birth:'
     end
   end
@@ -107,7 +107,7 @@ class BirthdaysController < ApplicationController
   
   def second_try
     @date = rand((50.years.ago)..20.years.ago)
-    @goal = 'Find Out Your BirthCard'
+    @goal = 'Find Out Your Birth Card'
     @instructions = 'Enter your Date of Birth:'
     @email = params[:member][:email]
     @password_explanation = "Oops, it looks like you're entering the wrong password.<br>The temporary password was emailed to you when you signed up.<br>Please check your email for the password.".html_safe
