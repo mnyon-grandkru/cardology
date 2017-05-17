@@ -64,6 +64,7 @@ header.call_to_action {
 }
 
 #returning_players {
+  font-family: Abel;
   position: relative;
   right: 0;
   top: 0;
@@ -74,17 +75,18 @@ header.call_to_action {
     text-align: left;
     
     input {
-      margin: 35px 0px 15px 0px;
+      margin: 25px 0px 8px 0px;
     }
     
     label {
-      font-size: 20px;
+      font-size: 16px;
     }
     
     .actions {
       text-align: center;
       
       #login_submit_button {
+        font-size: 20px;
         margin-top: 0px;
       }
     }
