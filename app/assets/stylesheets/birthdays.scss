@@ -69,6 +69,11 @@
     
     a {
       
+      &.zodiac_selection, &.zodiac_email {
+        color: #e8830c;
+        text-decoration: none;
+      }
+      
       &.trailing.call_to_action {
         display: block;
         margin-bottom: 16px;

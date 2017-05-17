@@ -61,7 +61,7 @@ class BirthdaysController < ApplicationController
       @alternative_card_location = replace_card_birthday_path(current_member.birthday, :reading_type => 'personality')
       @header_text = 'Your Personality Card'
       @header_subtitle = ENV['PERSONALITY_CARD_SUBTITLE']
-      @link_text = "Jump over the Cusp"
+      @link_text = "Change my Zodiac sign"
       @structural_role = 'personality_card_for'
       @cusp = @birthday.zodiac_for_birthday
       if @cusp.leader == current_member.zodiac_sign.intern
@@ -71,9 +71,10 @@ class BirthdaysController < ApplicationController
         @birthday.zodiac_sign = @cusp.leader
         current_member.update_attribute :zodiac_sign, @cusp.leader
       end
+      @card_explanation = @birthday.personality_card.interpretations.where(:reading => :personality).last&.explanation || @birthday.personality_card.interpretations.where(:reading => :birth).last&.explanation
       @birthday.personality_card
     end
-    @card_explanation = @card.interpretations.where(:reading => :yearly).last&.explanation
+    @card_explanation ||= @card.interpretations.where(:reading => :yearly).last&.explanation
     render :template => 'birthdays/replace_card.js.erb'
   end
   
