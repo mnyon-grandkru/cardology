@@ -56,6 +56,9 @@ class Birthday < ApplicationRecord
   def card_for_the_year_on_date date
     return Card.joker if birth_card == Card.joker
     long_range_spread_index = age_on_date(date) / 7
+    if long_range_spread_index < 0
+      long_range_spread_index = 89 + long_range_spread_index
+    end
     planetary_position = (age_on_date(date) % 7) + 1
     spread = Spread.find_by(:age => long_range_spread_index)
     position_of_birth_card = spread.position_of birth_card
@@ -75,7 +78,13 @@ class Birthday < ApplicationRecord
   
   def card_for_the_planetary_period_on_date date
     return Card.joker if birth_card == Card.joker
-    spread = Spread.find_by(:age => age_on_date(date))
+    if age_on_date(date) < 0
+      spread = Spread.find_by(:age => 89 + age_on_date(date))
+    elsif age_on_date(date) > 89
+      spread = Spread.find_by(:age => -89 + age_on_date(date))
+    else
+      spread = Spread.find_by(:age => age_on_date(date))
+    end
     planetary_position = (days_since_birthday_on_date(date) / 52) + 1
     return Card.joker if planetary_position > 7
     position_of_birth_card = spread.position_of birth_card
