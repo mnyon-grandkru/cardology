@@ -46,12 +46,12 @@
           <%= link_to 'Change my Zodiac Sign', member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation' %>
         <% end %>
       <% else %>
-        Your birthday is on an astrological cusp.  Do you know your sign?<br>
+        Your birthday is on an astrological cusp. To correctly determine your Personality Card, we need to know which is your Western Astrological sign. If you know it, please click it here:<br>
         <div id="zodiac_options">
           <%= link_to @birthday.astrological_sign.leader.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.astrological_sign.leader}), :method => :put, :remote => true, :class => 'zodiac_selection' %>
           <%= link_to @birthday.astrological_sign.follower.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.astrological_sign.follower}), :method => :put, :remote => true, :class => 'zodiac_selection' %>
         </div>
-        If you are unsure of your Astrological Birth Sign, you may <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'], 'email us', :id => 'zodiac_email' %> with your time and place of birth and we will look it up for you.  We will respond to your email within 24 hours.  Alternately, there are free lookup tools on the web for you to do this.  You can play with each Astrological Sign option to see which Personality Card appears.
+        If you are unsure of your Astrological Birth Sign, you may <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'], 'email us', :id => 'zodiac_email' %> with your time and place of birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up your Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again.
       <% end %>
     <% end %>
     <%= clearboth %>
