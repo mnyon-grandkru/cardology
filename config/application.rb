@@ -11,8 +11,8 @@ module Cardology
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    # config.action_dispatch.default_headers["X-Content-Security-Policy"] = "frame-ancestors http://*.lifeelevated.life";
-    # config.action_dispatch.default_headers["Content-Security-Policy"] = "frame-ancestors http://*.lifeelevated.life";
-    # config.action_dispatch.default_headers["X-Frame-Options"] = "SAMEORIGIN";
+    config.action_dispatch.default_headers["X-Content-Security-Policy"] = "FRAME-ANCESTORS http://*.lifeelevated.life";
+    config.action_dispatch.default_headers["Content-Security-Policy"] = "FRAME-ANCESTORS http://*.lifeelevated.life";
+    config.action_dispatch.default_headers["X-Frame-Options"] = "ALLOW-FROM http://*.lifeelevated.life";
   end
 end
