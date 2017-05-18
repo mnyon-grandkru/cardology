@@ -101,3 +101,11 @@
   
   <% end %>
 <% end %>
+
+<% if params[:scroll_to_top] %>
+  <script onload="window.parent.scroll(0,0)">
+    // $(document).on('turbolinks:load', function() {
+    //   $.scrollTo('#birth_cards_header', 2000);
+    // });
+  </script>
+<% end %>
