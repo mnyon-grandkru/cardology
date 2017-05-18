@@ -1,5 +1,5 @@
 <%= clearleft %>
-<%= link_to 'Return to Birth Card Lookup', root_url, :class => 'lunar_navigation' %>
+<%= link_to 'Birth Card Lookup', root_url, :class => 'lunar_navigation' %>
 <%= content_tag :div, :class => 'reading_display_container submission' do %>
   <%= div_for @birthday, 'data-birthday_id' => @birthday.id, 'data-lookup_id' => @lookup.id do %>
     <%= div_for @birthday, :birth_card_for do %>
