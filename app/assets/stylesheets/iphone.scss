@@ -13,5 +13,28 @@
       width: 340px;
       display: block;
     }
+    
+    #returning_players {
+      margin: 20px;
+      
+      form#new_member {
+        input {
+          margin-left: 26px;
+        }
+        
+        input[type="checkbox"] {
+          margin-left: 70px;
+          margin-bottom: 15px;
+        }
+        
+        input[type="submit"] {
+          margin-left: 0px;
+        }
+        
+        label {
+          padding-left: 34px;
+        }
+      }
+    }
   }
 }
