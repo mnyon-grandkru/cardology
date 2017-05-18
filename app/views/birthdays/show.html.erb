@@ -1,5 +1,9 @@
 <%= clearleft %>
 <%= link_to 'Return to Birth Card Lookup', new_birthday_path, :id => 'new_lookup_link', :class => 'lunar_navigation' %>
+<% if params[:navigation_shown] %>
+  <%= clearleft %><%= clearleft %><%= clearleft %>
+  <%= link_to 'Return to My Reading', root_url, :class => 'lunar_navigation' %>
+<% end %>
 <%= content_tag :div, :class => 'reading_display_container' do %>
   <%= div_for @birthday do %>
     <%= content_tag :div, :class => 'card_group_heading' do %>
@@ -95,12 +99,4 @@
     <% end %>
   
   <% end %>
-<% end %>
-
-<% if @scroll_to_top %>
-  <script>
-    setTimeout(function() {
-      $.scrollTo('.reading_display_container', 1200);
-    }, 1200);
-  </script>
 <% end %>

@@ -100,7 +100,7 @@ class BirthdaysController < ApplicationController
     @birth_card = @birthday.birth_card
     @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation
     if current_member
-      render :template => 'birthdays/birth_card'
+      redirect_to birthday_path(@birthday, :navigation_shown => true)
     else
       render :template => 'birthdays/member_form'
     end
