@@ -7,7 +7,7 @@
 <%= clearleft %><%= clearleft %><%= clearleft %>
 <%= content_tag :div, :class => 'reading_display_container' do %>
   <%= div_for @birthday do %>
-    <%= content_tag :div, :class => 'card_group_heading' do %>
+    <%= content_tag :div, :class => 'card_group_heading', :id => 'birth_cards_header' do %>
       Your Cards
       <div class="reddened">
         For Life
@@ -105,7 +105,7 @@
 <% if params[:scroll_to_top] %>
   <script>
     $(document).on('turbolinks:load', function() {
-      $.scrollTo('.birthday', 2000);
+      $.scrollTo('#birth_cards_header', 2000);
     });
   </script>
 <% end %>
