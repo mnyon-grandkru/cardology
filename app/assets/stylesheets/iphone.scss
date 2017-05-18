@@ -4,8 +4,14 @@
   }
   
   #landing {
-    div#returning_players {
-//      display: block;
+    
+    .landing_table {
+      display: block;
+    }
+    
+    #new_players {
+      width: 340px;
+      display: block;
     }
   }
 }
