@@ -22,16 +22,22 @@ class MembersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(birthday_path(@member.birthday, :member_id => @member.id)) }
       format.js do
-        @alternative_card_location = replace_card_birthday_path(@member.birthday, :reading_type => 'personality')
-        @header_text = 'Your Personality Card'
-        @header_subtitle = ENV['PERSONALITY_CARD_SUBTITLE']
-        @link_text = "Jump over the Cusp"
-        @structural_role = 'personality_card_for'
-        @birthday = @member.birthday
-        @birthday.zodiac_sign = @member.zodiac_sign&.intern
-        @card = @birthday.personality_card
-        @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
-        render :template => 'birthdays/replace_card.js.erb'
+        if @member.zodiac_sign.present?
+          @alternative_card_location = member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil})
+          @link_method = :put
+          @header_text = 'Your Personality Card'
+          @header_subtitle = ENV['PERSONALITY_CARD_SUBTITLE']
+          @link_text = "Change my Zodiac sign"
+          @structural_role = 'personality_card_for'
+          @birthday = @member.birthday
+          @birthday.zodiac_sign = @member.zodiac_sign&.intern
+          @card = @birthday.personality_card
+          @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
+          render :template => 'birthdays/replace_card.js.erb'
+        else
+          @birthday = @member.birthday
+          render :template => 'birthdays/cusp_select.js.erb'
+        end
       end
     end
   end

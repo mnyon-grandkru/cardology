@@ -43,7 +43,7 @@
           <%= mark_up @personality_card_explanation %>
         <% end %>
         <% if @member.birthday.astrological_sign.is_cusp? %>
-          <%= link_to 'Change my Zodiac Sign', member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation' %>
+          <%= link_to 'Change my Zodiac Sign', member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation', :remote => true %>
         <% end %>
       <% else %>
         Your birthday is on an astrological cusp. To correctly determine your Personality Card, we need to know which is your Western Astrological sign. If you know it, please click it here:<br>

@@ -10,5 +10,5 @@
   <%= div_for card, :explication_of do %>
     <%= mark_up card_explanation %>
   <% end %>
-  <%= link_to @link_text, @alternative_card_location, :remote => true, :class => 'trailing call_to_action lunar_navigation' %>
+  <%= link_to @link_text, @alternative_card_location, :remote => true, :class => 'trailing call_to_action lunar_navigation', :method => @link_method %>
 <% end %>
