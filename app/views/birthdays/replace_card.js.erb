@@ -1,1 +1,4 @@
-$('.<%= @structural_role %>_birthday').html('<%= escape_javascript render :partial => 'birthdays/individual_card', :locals => {:birthday => @birthday, :card => @card, :card_explanation => @card_explanation, :structural_role => @structural_role} %>');
+$('.<%= @structural_role %>_birthday .front').html('<%= escape_javascript render :partial => 'birthdays/individual_card', :locals => {:birthday => @birthday, :card => @card, :card_explanation => @card_explanation, :structural_role => @structural_role} %>');
+<% if @structural_role == 'personality_card_for' %>
+  $('.personality_card_for_birthday').toggleClass('flip')
+<% end %>

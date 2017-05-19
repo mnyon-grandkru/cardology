@@ -28,31 +28,37 @@
     <% end %>
   
     <%= clearboth %>
-    <%= div_for @birthday, :personality_card_for, :class => 'card_reading_pane pane' do %>
-      <%= content_tag :header, 'Your Personality Card' %>
-
-      <% if @personality_card %>
-        <%= div_for @personality_card, :identification_of do %>
-          <%= div_for @personality_card, :name_of do %>
-            <%= @personality_card.name %>
+    <%= div_for @birthday, :personality_card_for, :class => "card_reading_pane pane panel #{@personality_card ? '' : 'flip'}" do %>
+      <div class="front">
+        <%= content_tag :header, 'Your Personality Card' %>
+        <% if @personality_card %>
+          <%= div_for @personality_card, :identification_of do %>
+            <%= div_for @personality_card, :name_of do %>
+              <%= @personality_card.name %>
+            <% end %>
+            <%= image_tag @personality_card.image, :class => 'card_face_image' %>
           <% end %>
-          <%= image_tag @personality_card.image, :class => 'card_face_image' %>
-        <% end %>
         
-        <%= div_for @personality_card, :explication_of do %>
-          <%= mark_up @personality_card_explanation %>
+          <%= div_for @personality_card, :explication_of do %>
+            <%= mark_up @personality_card_explanation %>
+          <% end %>
+          <% if @member.birthday.astrological_sign.is_cusp? %>
+            <%= link_to 'Change my Zodiac Sign', member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation', :remote => true %>
+          <% end %>
         <% end %>
-        <% if @member.birthday.astrological_sign.is_cusp? %>
-          <%= link_to 'Change my Zodiac Sign', member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation', :remote => true %>
-        <% end %>
-      <% else %>
+      </div>
+      
+      
+      <div class="back">
+        <%= content_tag :header, 'Your Personality Card' %>
         Your birthday is on an astrological cusp. To correctly determine your Personality Card, we need to know which is your Western Astrological sign. If you know it, please click it here:<br>
         <div id="zodiac_options">
-          <%= link_to @birthday.astrological_sign.leader.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.astrological_sign.leader}), :method => :put, :remote => true, :class => 'zodiac_selection' %>
-          <%= link_to @birthday.astrological_sign.follower.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.astrological_sign.follower}), :method => :put, :remote => true, :class => 'zodiac_selection' %>
+          <%= link_to @birthday.zodiac_for_birthday.leader.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.zodiac_for_birthday.leader}), :method => :put, :remote => true, :class => 'zodiac_selection' %>
+          <%= link_to @birthday.zodiac_for_birthday.follower.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.zodiac_for_birthday.follower}), :method => :put, :remote => true, :class => 'zodiac_selection' %>
         </div>
         If you are unsure of your Astrological Birth Sign, you may <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'], 'email us', :id => 'zodiac_email' %> with your time and place of birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up your Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again.
-      <% end %>
+      </div>
+      <%= clearboth %>
     <% end %>
     <%= clearboth %>
     <br><br>
@@ -66,37 +72,41 @@
   
     <%= clearboth %>
     <%= div_for @birthday, :yearly_card_for, :class => 'card_reading_pane pane' do %>
-      <%= content_tag :header, 'Your Yearly Card' %>
-      <%= content_tag :header, ENV['YEARLY_CARD_SUBTITLE'], :class => 'subtitle' %>
+      <div class="front">
+        <%= content_tag :header, 'Your Yearly Card' %>
+        <%= content_tag :header, ENV['YEARLY_CARD_SUBTITLE'], :class => 'subtitle' %>
       
-      <%= div_for @yearly_card, :identification_of do %>
-      <%= div_for @yearly_card, :name_of do %>
-        <%= @yearly_card.name %>
-      <% end %>
-        <%= image_tag @yearly_card.image, :class => 'card_face_image' %>
-      <% end %>
-      <%= div_for @yearly_card, :explication_of do %>
-        <%= mark_up @yearly_card_explanation %>
-      <% end %>
-      <%= link_to "See Last Year's Card", replace_card_birthday_path(@birthday, :reading_type => 'last_year'), :remote => true, :class => 'trailing call_to_action lunar_navigation' %>
-      <%= quote %>
+        <%= div_for @yearly_card, :identification_of do %>
+        <%= div_for @yearly_card, :name_of do %>
+          <%= @yearly_card.name %>
+        <% end %>
+          <%= image_tag @yearly_card.image, :class => 'card_face_image' %>
+        <% end %>
+        <%= div_for @yearly_card, :explication_of do %>
+          <%= mark_up @yearly_card_explanation %>
+        <% end %>
+        <%= link_to "See Last Year's Card", replace_card_birthday_path(@birthday, :reading_type => 'last_year'), :remote => true, :class => 'trailing call_to_action lunar_navigation' %>
+        <%= quote %>
+      </div>
     <% end %>
   
     <%= clearboth %>
     <%= div_for @birthday, :planetary_card_for, :class => 'card_reading_pane pane' do %>
-      <%= content_tag :header, 'Your 52 Day Card' %>
-      <%= content_tag :header, ENV['PLANETARY_CARD_SUBTITLE'], :class => 'subtitle' %>
+      <div class="front">
+        <%= content_tag :header, 'Your 52 Day Card' %>
+        <%= content_tag :header, ENV['PLANETARY_CARD_SUBTITLE'], :class => 'subtitle' %>
       
-      <%= div_for @planetary_card, :identification_of do %>
-      <%= div_for @planetary_card, :name_of do %>
-        <%= @planetary_card.name %>
-      <% end %>
-        <%= image_tag @planetary_card.image, :class => 'card_face_image' %>
-      <% end %>
-      <%= div_for @planetary_card, :explication_of do %>
-        <%= mark_up @planetary_card_explanation %>
-      <% end %>
-      <%= link_to "What card did I have before this?", replace_card_birthday_path(@birthday, :reading_type => 'last_planet'), :remote => true, :class => 'trailing call_to_action lunar_navigation' %>
+        <%= div_for @planetary_card, :identification_of do %>
+        <%= div_for @planetary_card, :name_of do %>
+          <%= @planetary_card.name %>
+        <% end %>
+          <%= image_tag @planetary_card.image, :class => 'card_face_image' %>
+        <% end %>
+        <%= div_for @planetary_card, :explication_of do %>
+          <%= mark_up @planetary_card_explanation %>
+        <% end %>
+        <%= link_to "What card did I have before this?", replace_card_birthday_path(@birthday, :reading_type => 'last_planet'), :remote => true, :class => 'trailing call_to_action lunar_navigation' %>
+      </div>
     <% end %>
   
   <% end %>

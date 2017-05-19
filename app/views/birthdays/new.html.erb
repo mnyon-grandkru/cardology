@@ -20,7 +20,7 @@
           <%= content_tag :header, params[:message] || 'Returning Players' %>
           <%= content_tag :header, 'Login to get back in the game:', :class => 'call_to_action' %>
           <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>
-            <%= signin_form.text_field :email, :placeholder => 'Email', :class => 'spacious' %>
+            <%= signin_form.text_field :email, :placeholder => 'Profile Email', :class => 'spacious' %>
             <%#= signin_form.label :email, 'This is the email you entered<br>when you joined the Players Club.'.html_safe %>
             <%= signin_form.password_field :password, :placeholder => 'Password', :class => 'spacious' %><br>
             <%= signin_form.label :password, (@password_explanation || content_tag(:em, 'A temporary password was emailed to you.')), :id => 'password_description' %><br>
