@@ -2,7 +2,7 @@
 <%= link_to 'Birth Card Lookup', root_url, :class => 'lunar_navigation' %>
 <%= content_tag :div, :class => 'reading_display_container submission' do %>
   <%= div_for @birthday, 'data-birthday_id' => @birthday.id, 'data-lookup_id' => @lookup.id do %>
-    <%= div_for @birthday, :birth_card_for do %>
+    <%= div_for @birthday, :birth_card_for, :class => 'card_reading_pane pane' do %>
       <%= content_tag :header, 'Your Birth Card' %>
       <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
       <%= div_for @birth_card, :identification_of do %>
@@ -14,40 +14,48 @@
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up @birth_card_explanation %>
       <% end %>
+    <% end %>
       
+    <%= content_tag :div, :id => 'personality_card_preview', :class => 'pane' do %>
       <%= div_for @birth_card, :identification_of do %>
         <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
         <%= image_tag Card.personality_card_back_image, :class => 'card_face_image' %>
       <% end %>
-    
-      <%= content_tag :header, 'Your Personality Card' %>
+  
+      <%= content_tag :header, 'Your Personality Card', :class => 'preview_header', :id => 'personality_preview_header' %>
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up ENV['PERSONALITY_CARD_COPY'] %>
       <% end %>
-      <%= clearboth %>
-      
+    <% end %>
+    <%= clearboth %>
+    
+    <%= content_tag :div, :id => 'yearly_card_preview', :class => 'pane' do %>
       <%= div_for @birth_card, :identification_of do %>
         <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
         <%= image_tag Card.yearly_card_back_image, :class => 'card_face_image' %>
       <% end %>
-      
-      <%= content_tag :header, 'Your Yearly Card' %>
+    
+      <%= content_tag :header, 'Your Yearly Card', :class => 'preview_header', :id => 'yearly_preview_header' %>
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up ENV['YEARLY_CARD_COPY'] %>
       <% end %>
-      <%= clearboth %>
-      
+    <% end %>
+    <%= clearboth %>
+    
+    <%= content_tag :div, :id => 'planetary_card_preview', :class => 'pane' do %>
       <%= div_for @birth_card, :identification_of do %>
         <%= content_tag :div, 'Flip Over This Card', :class => 'flip_over' %>
         <%= image_tag Card.planetary_card_back_image, :class => 'card_face_image' %>
       <% end %>
-      
-      <%= content_tag :header, 'Your 52-Day Card' %>
+    
+      <%= content_tag :header, 'Your 52-Day Card', :class => 'preview_header', :id => 'planetary_preview_header' %>
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up ENV['PLANETARY_CARD_COPY'] %>
       <% end %>
-      <%= clearboth %>
-      
+    <% end %>
+    <%= clearboth %>
+    
+    <%= content_tag :div, :id => 'players_club_membership_form', :class => 'pane' do %>
       <%= content_tag :header, 'Join The Players Club' %>
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up ENV['PLAYERS_CLUB_COPY'] %>
@@ -64,6 +72,5 @@
         </form>
       </div>
     <% end %>
-    
   <% end %>
 <% end %>
