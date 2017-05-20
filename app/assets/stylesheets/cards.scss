@@ -26,10 +26,7 @@ img.image_gallery {
   }
 }
 
-
 .panel {
-//  float: left;
-//  position: relative;
   -webkit-perspective: 600px;
           perspective: 600px;
 }
@@ -37,9 +34,6 @@ img.image_gallery {
 /* -- general styles, including Y axis rotation -- */
 .panel .front {
   float: none;
-//  position: absolute;
-//  top: 0;
-//  left: 0;
   z-index: 900;
 
   -webkit-transform: rotateX(0) rotateY(0);
@@ -52,12 +46,12 @@ img.image_gallery {
           backface-visibility: hidden;
 
   /* -- transition is the magic sauce for animation -- */
-  -webkit-transition: all .4s ease-in-out;
-          transition: all .4s ease-in-out;
+  -webkit-transition: all .8s ease-in-out;
+          transition: all .8s ease-in-out;
 }
 .panel.flip .front {
   z-index: 900;
-//  display: none;
+  height: 0;
 
   -webkit-transform: rotateY(179deg);
           transform: rotateY(179deg);
@@ -65,10 +59,7 @@ img.image_gallery {
 
 .panel .back {
   float: none;
-//  position: absolute;
-//  display: none;
-//  top: 0;
-//  left: 0;
+  height: 0;
   z-index: 800;
 
   -webkit-transform: rotateY(-179deg);
@@ -81,13 +72,13 @@ img.image_gallery {
           backface-visibility: hidden;
 
   /* -- transition is the magic sauce for animation -- */
-  -webkit-transition: all .4s ease-in-out;
-          transition: all .4s ease-in-out;
+  -webkit-transition: all .8s ease-in-out;
+          transition: all .8s ease-in-out;
 }
 
 .panel.flip .back {
   z-index: 1000;
-  display: block;
+  height: auto;
 
   -webkit-transform: rotateX(0) rotateY(0);
           transform: rotateX(0) rotateY(0);
