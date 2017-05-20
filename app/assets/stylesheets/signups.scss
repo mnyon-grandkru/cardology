@@ -75,22 +75,13 @@ header.call_to_action {
   font-weight: normal;
 }
 
-#container {
-  display: table;
-}
-
 #landing {
-  display: table-row;
-}
-
-.landing_table {
-  display: table-cell;
-  width: 42%;
   text-align: center;
 }
 
 #new_players {
   vertical-align: top;
+  display: inline-block;
   margin: 20px;
   padding-top: 8px;
   
@@ -104,10 +95,11 @@ header.call_to_action {
   }
 }
 
+.submission {
+  display: inline-block;
+}
+
 #returning_players {
-  position: relative;
-  right: 0;
-  top: 0;
   text-align: center;
   margin: 20px;
   

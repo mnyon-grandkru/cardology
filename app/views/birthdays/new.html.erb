@@ -2,7 +2,6 @@
 <%= link_to 'My Reading', root_path, :id => 'my_reading_link', :class => 'lunar_navigation' if current_member %>
 <div id="container">
   <div id="landing">
-    <div id="left_cell" class="landing_table"></div>
     <div id="new_players" class="landing_table submission pane">
       <%= content_tag :header, 'New Players', :id => 'new_players_header' unless current_member %>
       <%= content_tag :header, content_tag(:b, @goal), :class => 'call_to_action' %>
@@ -12,7 +11,6 @@
         <%= birthday_form.submit 'Go' %>
       <% end %>
     </div>
-    <div id="right_cell" class="landing_table"></div>
 
     <% unless current_member %>
       <div class="submission">
@@ -20,7 +18,7 @@
           <%= content_tag :header, params[:message] || 'Returning Players' %>
           <%= content_tag :header, 'Login to get back in the game:', :class => 'call_to_action' %>
           <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>
-            <%= signin_form.text_field :email, :placeholder => 'Profile Email', :class => 'spacious' %>
+            <%= signin_form.text_field :email, :placeholder => 'Profile Email', :class => 'spacious' %><br>
             <%#= signin_form.label :email, 'This is the email you entered<br>when you joined the Players Club.'.html_safe %>
             <%= signin_form.password_field :password, :placeholder => 'Password', :class => 'spacious' %><br>
             <%= signin_form.label :password, (@password_explanation || content_tag(:em, 'A temporary password was emailed to you.')), :id => 'password_description' %><br>
