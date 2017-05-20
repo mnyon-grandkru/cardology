@@ -84,7 +84,9 @@
 }
 
 #logout_link {
-  float: right;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
 .monthly_price_of_card {
