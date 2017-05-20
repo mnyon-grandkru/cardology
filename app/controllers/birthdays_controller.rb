@@ -61,15 +61,19 @@ class BirthdaysController < ApplicationController
       @alternative_card_location = replace_card_birthday_path(current_member.birthday, :reading_type => 'personality')
       @header_text = 'Your Personality Card'
       @header_subtitle = ENV['PERSONALITY_CARD_SUBTITLE']
-      @link_text = "Change my Zodiac sign"
+      @link_text = "Jump Over the Cusp"
       @structural_role = 'personality_card_for'
       @cusp = @birthday.zodiac_for_birthday
       if @cusp.leader == current_member.zodiac_sign.intern
         @birthday.zodiac_sign = @cusp.follower
-        current_member.update_attribute :zodiac_sign, @cusp.follower
+        if @birthday == current_member.birthday
+          current_member.update_attribute :zodiac_sign, @cusp.follower
+        end
       else
         @birthday.zodiac_sign = @cusp.leader
-        current_member.update_attribute :zodiac_sign, @cusp.leader
+        if @birthday == current_member.birthday
+          current_member.update_attribute :zodiac_sign, @cusp.leader
+        end
       end
       @card_explanation = @birthday.personality_card.interpretations.where(:reading => :personality).last&.explanation || @birthday.personality_card.interpretations.where(:reading => :birth).last&.explanation
       @birthday.personality_card
@@ -79,12 +83,11 @@ class BirthdaysController < ApplicationController
   end
   
   def new
+    @date = rand((50.years.ago)..20.years.ago)
     if current_member
-      @date = rand((50.years.ago)..20.years.ago)
       @goal = 'Look Up Another Birth Card'
       @instructions = 'Enter the Birthdate'
     else
-      @date = rand((50.years.ago)..20.years.ago)
       @goal = 'Find Out Your Birth Card'
       @instructions = 'Enter your Date of Birth:'
     end
@@ -113,6 +116,15 @@ class BirthdaysController < ApplicationController
     @email = params[:member][:email]
     @password_explanation = "Oops, it looks like you're entering the wrong password.<br>The temporary password was emailed to you when you signed up.<br>Please check your email for the password.".html_safe
     render 'new.html.erb'
+  end
+  
+  def personality_for_zodiac
+    @birthday = Birthday.find params[:id]
+    @birthday.zodiac_sign = params[:zodiac_sign].intern
+    @card = @birthday.personality_card
+    @structural_role = 'personality_card_for'
+    @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
+    render :template => 'birthdays/replace_card.js.erb'
   end
   
   def birthday_params

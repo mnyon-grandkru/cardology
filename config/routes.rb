@@ -12,10 +12,10 @@ Rails.application.routes.draw do
     end
   end
   root :to => 'birthdays#new'
-  resources :lookups
   resources :birthdays do
     member do
       get :replace_card
+      get :personality_for_zodiac
     end
   end
   resources :places
