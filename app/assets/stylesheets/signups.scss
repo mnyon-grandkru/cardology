@@ -82,8 +82,10 @@ header.call_to_action {
 #new_players {
   vertical-align: top;
   display: inline-block;
+  height: 400px;
+  width: 270px;
   margin: 20px;
-  padding-top: 8px;
+  padding-top: 16px;
   
   #new_players_header {
     font-size: 2em;
@@ -91,7 +93,7 @@ header.call_to_action {
   }
   
   header {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
   }
 }
 
@@ -102,6 +104,8 @@ header.call_to_action {
 #returning_players {
   text-align: center;
   margin: 20px;
+  height: 390px;
+  width: 270px;
   
   form#new_member {
     text-align: left;
