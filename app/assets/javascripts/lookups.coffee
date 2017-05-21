@@ -23,3 +23,5 @@ $(document).on 'turbolinks:load', ->
     
     event.preventDefault()
 
+  $('.joining_players_club').on 'click', ->
+    $('#member_first_name').focus();

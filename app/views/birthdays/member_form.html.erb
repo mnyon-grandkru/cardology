@@ -1,73 +1,75 @@
 <%= clearleft %>
 <%= link_to 'Birth Card Lookup', root_url, :class => 'lunar_navigation' %>
-<%= content_tag :div, :class => 'reading_display_container' do %>
-  <%= div_for @birthday, 'data-birthday_id' => @birthday.id, 'data-lookup_id' => @lookup.id do %>
-    <%= div_for @birthday, :birth_card_for, :class => 'card_reading_pane pane' do %>
-      <%= content_tag :header, 'Your Birth Card' %>
-      <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
-      <%= div_for @birth_card, :identification_of do %>
-        <%= div_for @birth_card, :name_of do %>
-          <%= @birth_card.name %>
+<%= content_tag :div, :class => 'member_form_container' do %>
+  <%= content_tag :div, :class => 'reading_display_container' do %>
+    <%= div_for @birthday, 'data-birthday_id' => @birthday.id, 'data-lookup_id' => @lookup.id do %>
+      <%= div_for @birthday, :birth_card_for, :class => 'card_reading_pane pane' do %>
+        <%= content_tag :header, 'Your Birth Card' %>
+        <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
+        <%= div_for @birth_card, :identification_of do %>
+          <%= div_for @birth_card, :name_of do %>
+            <%= @birth_card.name %>
+          <% end %>
+          <%= image_tag @birth_card.image, :class => 'card_face_image' %>
         <% end %>
-        <%= image_tag @birth_card.image, :class => 'card_face_image' %>
+        <%= div_for @birth_card, :explication_of do %>
+          <%= mark_up @birth_card_explanation %>
+        <% end %>
       <% end %>
-      <%= div_for @birth_card, :explication_of do %>
-        <%= mark_up @birth_card_explanation %>
-      <% end %>
-    <% end %>
       
-    <%= content_tag :div, :id => 'personality_card_preview', :class => 'pane' do %>
-      <%= div_for @birth_card, :identification_of do %>
-        <%= image_tag Card.personality_card_back_image, :class => 'card_face_image' %>
-      <% end %>
+      <%= content_tag :div, :id => 'personality_card_preview', :class => 'pane' do %>
+        <%= div_for @birth_card, :identification_of do %>
+          <%= image_tag Card.personality_card_back_image, :class => 'card_face_image' %>
+        <% end %>
   
-      <%= content_tag :header, 'Your Personality Card', :class => 'preview_header', :id => 'personality_preview_header' %>
-      <%= div_for @birth_card, :explication_of do %>
-        <%= mark_up ENV['PERSONALITY_CARD_COPY'] %>
+        <%= content_tag :header, 'Your Personality Card', :class => 'preview_header', :id => 'personality_preview_header' %>
+        <%= div_for @birth_card, :explication_of do %>
+          <%= mark_up ENV['PERSONALITY_CARD_COPY'] %>
+        <% end %>
       <% end %>
+      <%= clearboth %>
+    
+      <%= content_tag :div, :id => 'yearly_card_preview', :class => 'pane' do %>
+        <%= div_for @birth_card, :identification_of do %>
+          <%= image_tag Card.yearly_card_back_image, :class => 'card_face_image' %>
+        <% end %>
+    
+        <%= content_tag :header, 'Your Yearly Card', :class => 'preview_header', :id => 'yearly_preview_header' %>
+        <%= div_for @birth_card, :explication_of do %>
+          <%= mark_up ENV['YEARLY_CARD_COPY'] %>
+        <% end %>
+      <% end %>
+      <%= clearboth %>
+    
+      <%= content_tag :div, :id => 'planetary_card_preview', :class => 'pane' do %>
+        <%= div_for @birth_card, :identification_of do %>
+          <%= image_tag Card.planetary_card_back_image, :class => 'card_face_image' %>
+        <% end %>
+    
+        <%= content_tag :header, 'Your 52-Day Card', :class => 'preview_header', :id => 'planetary_preview_header' %>
+        <%= div_for @birth_card, :explication_of do %>
+          <%= mark_up ENV['PLANETARY_CARD_COPY'] %>
+        <% end %>
+      <% end %>
+      <%= clearboth %>
     <% end %>
-    <%= clearboth %>
-    
-    <%= content_tag :div, :id => 'yearly_card_preview', :class => 'pane' do %>
-      <%= div_for @birth_card, :identification_of do %>
-        <%= image_tag Card.yearly_card_back_image, :class => 'card_face_image' %>
-      <% end %>
-    
-      <%= content_tag :header, 'Your Yearly Card', :class => 'preview_header', :id => 'yearly_preview_header' %>
-      <%= div_for @birth_card, :explication_of do %>
-        <%= mark_up ENV['YEARLY_CARD_COPY'] %>
-      <% end %>
+  <% end %>
+
+  <%= content_tag :div, :id => 'players_club_membership_form', :class => 'pane' do %>
+    <%= content_tag :header, 'Join The Players Club' %>
+    <%= div_for @birth_card, :explication_of do %>
+      <%= mark_up ENV['PLAYERS_CLUB_COPY'] %>
     <% end %>
-    <%= clearboth %>
-    
-    <%= content_tag :div, :id => 'planetary_card_preview', :class => 'pane' do %>
-      <%= div_for @birth_card, :identification_of do %>
-        <%= image_tag Card.planetary_card_back_image, :class => 'card_face_image' %>
-      <% end %>
-    
-      <%= content_tag :header, 'Your 52-Day Card', :class => 'preview_header', :id => 'planetary_preview_header' %>
-      <%= div_for @birth_card, :explication_of do %>
-        <%= mark_up ENV['PLANETARY_CARD_COPY'] %>
-      <% end %>
-    <% end %>
-    <%= clearboth %>
-    
-    <%= content_tag :div, :id => 'players_club_membership_form', :class => 'pane' do %>
-      <%= content_tag :header, 'Join The Players Club' %>
-      <%= div_for @birth_card, :explication_of do %>
-        <%= mark_up ENV['PLAYERS_CLUB_COPY'] %>
-      <% end %>
-      <div id="signup" class="submission">
-        <%= content_tag :header, 'Create Your FREE Player Profile' %>
-        <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post" id="getresponse_delivery" class="member_signup_credential_entry">
-          <input type="text" name="name" placeholder="First Name" id="member_first_name" required="required"/><br/>
-          <input name="email" placeholder="Email" id="member_email" required="required" type="email"/><br/>
-          <input type="submit" value="Go" id="submit"/>
-          <input type="hidden" name="campaign_token" value="<%= ENV['GETRESPONSE_CAMPAIGN_ID'] %>" />
-          <!-- <input type="hidden" name="thankyou_url" value="<%= birthday_url(@birthday) %>"/> -->
-          <input type="hidden" name="custom_BirthDate" value="<%= @birthday.birthdate_string %>"/>
-        </form>
-      </div>
-    <% end %>
+    <div id="signup" class="submission">
+      <%= content_tag :header, 'Create Your FREE Player Profile' %>
+      <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post" id="getresponse_delivery" class="member_signup_credential_entry">
+        <input type="text" name="name" placeholder="First Name" id="member_first_name" required="required"/><br/>
+        <input name="email" placeholder="Email" id="member_email" required="required" type="email"/><br/>
+        <input type="submit" value="Go" id="submit"/>
+        <input type="hidden" name="campaign_token" value="<%= ENV['GETRESPONSE_CAMPAIGN_ID'] %>" />
+        <!-- <input type="hidden" name="thankyou_url" value="<%= birthday_url(@birthday) %>"/> -->
+        <input type="hidden" name="custom_BirthDate" value="<%= @birthday.birthdate_string %>"/>
+      </form>
+    </div>
   <% end %>
 <% end %>

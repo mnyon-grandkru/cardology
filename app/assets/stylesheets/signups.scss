@@ -29,6 +29,24 @@ form#new_birthday {
   }
 }
 
+.member_form_container {
+  text-align: center;
+  
+  >div {
+    vertical-align: top;
+    display: inline-block;
+  }
+  
+  #players_club_membership_form {
+    text-align: left;
+    width: 368px;
+  }
+}
+
+.joining_players_club {
+  cursor: pointer;
+}
+
 #signup {
   text-align: center;
   
