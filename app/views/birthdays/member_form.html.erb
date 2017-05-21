@@ -16,8 +16,9 @@
           <%= mark_up @birth_card_explanation %>
         <% end %>
       <% end %>
+      <%= clearboth %>
       
-      <%= content_tag :div, :id => 'personality_card_preview', :class => 'pane' do %>
+      <%= content_tag :div, :id => 'personality_card_preview', :class => 'pane card_preview' do %>
         <%= div_for @birth_card, :identification_of do %>
           <%= image_tag Card.personality_card_back_image, :class => 'card_face_image' %>
         <% end %>
@@ -29,7 +30,7 @@
       <% end %>
       <%= clearboth %>
     
-      <%= content_tag :div, :id => 'yearly_card_preview', :class => 'pane' do %>
+      <%= content_tag :div, :id => 'yearly_card_preview', :class => 'pane card_preview' do %>
         <%= div_for @birth_card, :identification_of do %>
           <%= image_tag Card.yearly_card_back_image, :class => 'card_face_image' %>
         <% end %>
@@ -41,7 +42,7 @@
       <% end %>
       <%= clearboth %>
     
-      <%= content_tag :div, :id => 'planetary_card_preview', :class => 'pane' do %>
+      <%= content_tag :div, :id => 'planetary_card_preview', :class => 'pane card_preview' do %>
         <%= div_for @birth_card, :identification_of do %>
           <%= image_tag Card.planetary_card_back_image, :class => 'card_face_image' %>
         <% end %>
