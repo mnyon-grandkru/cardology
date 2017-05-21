@@ -4,7 +4,7 @@
 
 $(document).on 'turbolinks:load', ->
   $('#getresponse_delivery').validate()
-  $('.reading_display_container').on 'submit', '#getresponse_delivery', (event) ->
+  $('.member_form_container').on 'submit', '#getresponse_delivery', (event) ->
     $.ajax
       url: '/member_save'
       method: 'POST'
