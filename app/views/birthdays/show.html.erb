@@ -27,7 +27,6 @@
       <% end %>
     <% end %>
   
-    <%= clearboth %>
     <%= content_tag :div, :class => "panel #{@personality_card ? '' : 'flip'}" do %>
       <%= div_for @birthday, :personality_card_for, :class => "card_reading_pane pane front" do %>
         <%= content_tag :header, 'Your Personality Card' %>
@@ -93,7 +92,6 @@
       <%= quote %>
     <% end %>
   
-    <%= clearboth %>
     <%= div_for @birthday, :planetary_card_for, :class => 'card_reading_pane pane front' do %>
       <%= content_tag :header, 'Your 52 Day Card' %>
       <%= content_tag :header, ENV['PLANETARY_CARD_SUBTITLE'], :class => 'subtitle' %>

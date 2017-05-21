@@ -7,12 +7,17 @@
 }
 
 .birthday {
-  width: 440px;
+  width: 900px;
   display: inline-block;
   text-align: left;
   
   .birthdate {
     padding-bottom: 16px;
+  }
+  
+  .card_reading_pane {
+    vertical-align: top;
+    width: 330px;
   }
   
   div {
