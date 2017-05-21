@@ -17,12 +17,16 @@ class BirthdaysController < ApplicationController
       @personality_card = @birthday.personality_card
     end
     @yearly_card = @birthday.card_for_this_year
+    @last_yearly_card = @birthday.card_for_last_year
     @planetary_card = @birthday.card_for_this_planet
+    @last_planetary_card = @birthday.card_for_last_planet
     @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation
     @personality_card_explanation = @personality_card&.interpretations&.where(:reading => :personality)&.last&.explanation
     @personality_card_explanation ||= @personality_card&.interpretations&.where(:reading => :birth)&.last&.explanation
     @yearly_card_explanation = @yearly_card.interpretations.where(:reading => :yearly).last&.explanation
+    @last_yearly_card_explanation = @last_yearly_card.interpretations.where(:reading => :yearly).last&.explanation
     @planetary_card_explanation = @planetary_card.interpretations.where(:reading => :yearly).last&.explanation
+    @last_planetary_card_explanation = @last_planetary_card.interpretations.where(:reading => :yearly).last&.explanation
     @scroll_to_top = params[:scroll_to_top]
   end
   
