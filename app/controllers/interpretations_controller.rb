@@ -1,5 +1,5 @@
 class InterpretationsController < ApplicationController
-  load_and_authorize_resource :except => [:ids, :show]
+  load_and_authorize_resource #(:except => [:ids, :show])
   
   def index
     @interpretations = if params[:by_face]
