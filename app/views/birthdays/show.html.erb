@@ -89,8 +89,7 @@
         <%= div_for @yearly_card, :explication_of do %>
           <%= mark_up @yearly_card_explanation %>
         <% end %>
-        <%= link_to "See Last Year's Card", '#', :class => 'flip_card', :'data-reading' => 'yearly' %>
-        <%#= link_to "See Last Year's Card", replace_card_birthday_path(@birthday, :reading_type => 'last_year'), :remote => true, :class => 'trailing call_to_action lunar_navigation' %>
+        <%= link_to "See Last Year's Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'yearly' %>
         <%= quote %>
       <% end %>
   
@@ -107,7 +106,7 @@
         <%= div_for @last_yearly_card, :explication_of do %>
           <%= mark_up @last_yearly_card_explanation %>
         <% end %>
-        <%= link_to "See This Year's Card", '#', :class => 'flip_card', :'data-reading' => 'yearly' %>
+        <%= link_to "See This Year's Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'yearly' %>
         <%= quote %>
       <% end %>
   
@@ -127,11 +126,11 @@
         <%= div_for @planetary_card, :explication_of do %>
           <%= mark_up @planetary_card_explanation %>
         <% end %>
-        <%= link_to "What card did I have before this?", '#', :class => 'flip_card', :'data-reading' => 'planetary' %>
+        <%= link_to "What card did I have before this?", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'planetary' %>
       <% end %>
       
       <%= div_for @birthday, :planetary_card_for, :class => 'card_reading_pane pane back' do %>
-        <%= content_tag :header, 'Your 52 Day Card' %>
+        <%= content_tag :header, 'Previous 52 Day Card' %>
         <%= content_tag :header, ENV['PLANETARY_CARD_SUBTITLE'], :class => 'subtitle' %>
     
         <%= div_for @last_planetary_card, :identification_of do %>
@@ -143,7 +142,7 @@
         <%= div_for @last_planetary_card, :explication_of do %>
           <%= mark_up @last_planetary_card_explanation %>
         <% end %>
-        <%= link_to "What card did I have before this?", '#', :class => 'flip_card', :'data-reading' => 'planetary' %>
+        <%= link_to "What card do I have now?", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'planetary' %>
       <% end %>
     <% end %>
   
