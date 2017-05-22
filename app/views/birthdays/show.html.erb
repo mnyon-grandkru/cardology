@@ -8,14 +8,14 @@
 <%= content_tag :div, :class => 'reading_display_container' do %>
   <%= div_for @birthday do %>
     <%= content_tag :div, :class => 'card_group_heading', :id => 'birth_cards_header' do %>
-      Your Cards
+      <%= @pronoun %> Cards
       <div class="reddened">
         For Life
       </div>
     <% end %>
     <%= content_tag :div, :class => "panel birth" do %>
       <%= div_for @birthday, :birth_card_for, :class => 'card_reading_pane pane front' do %>
-        <%= content_tag :header, 'Your Birth Card' %>
+        <%= content_tag :header, "#@pronoun Birth Card" %>
         <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
         <%= div_for @birth_card, :identification_of do %>
           <%= div_for @birth_card, :name_of do %>
@@ -31,7 +31,7 @@
   
     <%= content_tag :div, :class => "panel #{@personality_card ? '' : 'flip'} personality" do %>
       <%= div_for @birthday, :personality_card_for, :class => "card_reading_pane pane front" do %>
-        <%= content_tag :header, 'Your Personality Card' %>
+        <%= content_tag :header, "#@pronoun Personality Card" %>
         <% if @personality_card %>
           <%= div_for @personality_card, :identification_of do %>
             <%= div_for @personality_card, :name_of do %>
@@ -51,8 +51,8 @@
       
       <% if @birthday.zodiac_for_birthday.is_cusp? %>
         <%= div_for @birthday, :personality_card_for, :class => "card_reading_pane pane back" do %>
-          <%= content_tag :header, 'Your Personality Card' %>
-          Your birthday is on an astrological cusp. To correctly determine your Personality Card, we need to know which is your Western Astrological sign. If you know it, please click it here:<br>
+          <%= content_tag :header, "#@pronoun Personality Card" %>
+          <%= @pronoun %> birthday is on an astrological cusp. To correctly determine <%= @pronoun.downcase %> Personality Card, we need to know which is <%= @pronoun.downcase %> Western Astrological sign. If you know it, please click it here:<br>
           <div id="zodiac_options">
             <% if @birthday == @member.birthday %>
               <%= link_to @birthday.zodiac_for_birthday.leader.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.zodiac_for_birthday.leader}), :method => :put, :remote => true, :class => 'zodiac_selection' %>
@@ -62,13 +62,13 @@
               <%= link_to @birthday.zodiac_for_birthday.follower.capitalize, personality_for_zodiac_birthday_path(@birthday, :zodiac_sign => @birthday.zodiac_for_birthday.leader), :remote => true, :class => 'zodiac_selection' %>
             <% end %>
           </div>
-          If you are unsure of your Astrological Birth Sign, you may <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'], 'email us', :id => 'zodiac_email' %> with your time and place of birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up your Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again.
+          If you are unsure of <%= @pronoun.downcase %> Astrological Birth Sign, you may <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'], 'email us', :id => 'zodiac_email' %> with <%= @pronoun.downcase %> time and place of birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up <%= @pronoun.downcase %> Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again.
         <% end %>
       <% end %>
     <% end %>
     <hr>
     <%= content_tag :div, :class => 'card_group_heading' do %>
-      Your Cards
+      <%= @pronoun %> Cards
       <div class="reddened">
         For This Year
       </div>
@@ -77,7 +77,7 @@
     <%= clearboth %>
     <%= content_tag :div, :class => "panel yearly" do %>
       <%= div_for @birthday, :yearly_card_for, :class => 'card_reading_pane pane front' do %>
-        <%= content_tag :header, 'Your Yearly Card' %>
+        <%= content_tag :header, "#@pronoun Yearly Card" %>
         <%= content_tag :header, ENV['YEARLY_CARD_SUBTITLE'], :class => 'subtitle' %>
     
         <%= div_for @yearly_card, :identification_of do %>
@@ -114,7 +114,7 @@
   
     <%= content_tag :div, :class => "panel planetary" do %>
       <%= div_for @birthday, :planetary_card_for, :class => 'card_reading_pane pane front' do %>
-        <%= content_tag :header, 'Your 52 Day Card' %>
+        <%= content_tag :header, "#@pronoun 52 Day Card" %>
         <%= content_tag :header, ENV['PLANETARY_CARD_SUBTITLE'], :class => 'subtitle' %>
     
         <%= div_for @planetary_card, :identification_of do %>
@@ -126,7 +126,7 @@
         <%= div_for @planetary_card, :explication_of do %>
           <%= mark_up @planetary_card_explanation %>
         <% end %>
-        <%= link_to "What card did I have before this?", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'planetary' %>
+        <%= link_to "See #@pronoun Previous Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'planetary' %>
       <% end %>
       
       <%= div_for @birthday, :planetary_card_for, :class => 'card_reading_pane pane back' do %>
@@ -142,7 +142,7 @@
         <%= div_for @last_planetary_card, :explication_of do %>
           <%= mark_up @last_planetary_card_explanation %>
         <% end %>
-        <%= link_to "What card do I have now?", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'planetary' %>
+        <%= link_to "See #@pronoun Current Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'planetary' %>
       <% end %>
     <% end %>
   

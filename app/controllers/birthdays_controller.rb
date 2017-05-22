@@ -9,6 +9,11 @@ class BirthdaysController < ApplicationController
   def show
     @member = current_member || Member.find(params[:member_id])
     @birthday = Birthday.find params[:id]
+    if @birthday == @current_member.birthday
+      @pronoun = "Your"
+    else
+      @pronoun = "Their"
+    end
     @birth_card = @birthday.birth_card
     @birthday.zodiac_sign = @member&.zodiac_sign&.intern
     if @birthday.astrological_sign.is_cusp?
