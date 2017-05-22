@@ -3,16 +3,10 @@ class InterpretationsController < ApplicationController
   
   def index
     @interpretations = if params[:by_face]
-      Interpretation.by_face
-    elsif params[:suit] && params[:reading]
-      Interpretation.order(params[:sort]).of_suit(params[:suit]).of_reading(params[:reading])
-    elsif params[:suit]
-      Interpretation.order(params[:sort]).of_suit(params[:suit])
-    elsif params[:reading]
-      Interpretation.order(params[:sort]).of_reading(params[:reading])
+      Interpretation.by_face.of_reading(params[:reading]).of_suit(params[:suit])
     else
       Interpretation.order(params[:sort])
-    end.page(params[:page])
+    end.page(params[:page]).of_suit(params[:suit]).of_reading(params[:reading])
   end
   
   def ids
