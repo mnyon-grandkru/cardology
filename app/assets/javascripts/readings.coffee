@@ -1,10 +1,10 @@
 $(document).on 'turbolinks:load', ->
-  resizeReading
+  setTimeout(resizeReading, 100)
   $('.card_reading_pane').on 'click', '.flip_card', ->
     $(this).closest('.panel.' + $(this).data('reading')).toggleClass 'flip'
-    resizeReading
+    resizeReading()
 
 resizeReading = ->
   $('.panel').each (i, p) ->
-    $(p).height $('.card_reading_pane').outerHeight()
+    $(p).height $(p).find('.card_reading_pane').outerHeight()
     return

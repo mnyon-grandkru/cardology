@@ -26,6 +26,7 @@ img.image_gallery {
 .panel {
   display: inline-block;
   position: relative;
+  vertical-align: top;
   width: 49%;
   -webkit-perspective: 600px;
           perspective: 600px;
