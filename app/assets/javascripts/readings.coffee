@@ -5,4 +5,6 @@ $(document).on 'turbolinks:load', ->
     resizeReading
 
 resizeReading = ->
-  $('.panel').height($('.card_reading_pane').outerHeight())
+  $('.panel').each (i, p) ->
+    $(p).height $('.card_reading_pane').outerHeight()
+    return
