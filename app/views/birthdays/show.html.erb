@@ -13,17 +13,19 @@
         For Life
       </div>
     <% end %>
-    <%= div_for @birthday, :birth_card_for, :class => 'card_reading_pane pane' do %>
-      <%= content_tag :header, 'Your Birth Card' %>
-      <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
-      <%= div_for @birth_card, :identification_of do %>
-        <%= div_for @birth_card, :name_of do %>
-          <%= @birth_card.name %>
+    <%= content_tag :div, :class => "panel birth" do %>
+      <%= div_for @birthday, :birth_card_for, :class => 'card_reading_pane pane' do %>
+        <%= content_tag :header, 'Your Birth Card' %>
+        <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
+        <%= div_for @birth_card, :identification_of do %>
+          <%= div_for @birth_card, :name_of do %>
+            <%= @birth_card.name %>
+          <% end %>
+          <%= image_tag @birth_card.image, :class => 'card_face_image' %>
         <% end %>
-        <%= image_tag @birth_card.image, :class => 'card_face_image' %>
-      <% end %>
-      <%= div_for @birth_card, :explication_of do %>
-        <%= mark_up @birth_card_explanation %>
+        <%= div_for @birth_card, :explication_of do %>
+          <%= mark_up @birth_card_explanation %>
+        <% end %>
       <% end %>
     <% end %>
   
@@ -63,9 +65,7 @@
           If you are unsure of your Astrological Birth Sign, you may <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'], 'email us', :id => 'zodiac_email' %> with your time and place of birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up your Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again.
         <% end %>
       <% end %>
-      <%= clearboth %>
     <% end %>
-    <%= clearboth %>
     <hr>
     <%= content_tag :div, :class => 'card_group_heading' do %>
       Your Cards
