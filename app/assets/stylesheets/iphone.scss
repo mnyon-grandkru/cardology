@@ -1,6 +1,10 @@
 @media (max-width : 667px) {
   .birthday {
-    width: 300px;
+    width: 350px;
+    
+    .card_reading_pane {
+      width: 295px;
+    }
   }
   
   #landing {

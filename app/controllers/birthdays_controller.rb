@@ -9,7 +9,7 @@ class BirthdaysController < ApplicationController
   def show
     @member = current_member || Member.find(params[:member_id])
     @birthday = Birthday.find params[:id]
-    if @birthday == @current_member.birthday
+    if @birthday == @member.birthday
       @pronoun = "Your"
     else
       @pronoun = "Their"
