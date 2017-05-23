@@ -55,11 +55,11 @@
           <%= @pronoun %> birthday is on an astrological cusp. To correctly determine <%= @pronoun.downcase %> Personality Card, we need to know which is <%= @pronoun.downcase %> Western Astrological sign. If you know it, please click it here:<br>
           <div id="zodiac_options">
             <% if @birthday == @member.birthday %>
-              <%= link_to @birthday.zodiac_for_birthday.leader.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.zodiac_for_birthday.leader}), :method => :put, :remote => true, :class => 'zodiac_selection' %>
-              <%= link_to @birthday.zodiac_for_birthday.follower.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.zodiac_for_birthday.follower}), :method => :put, :remote => true, :class => 'zodiac_selection' %>
+              <%= link_to @birthday.zodiac_for_birthday.leader.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.zodiac_for_birthday.leader}), :method => :put, :remote => true, :class => 'zodiac_selection flip_card' %>
+              <%= link_to @birthday.zodiac_for_birthday.follower.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.zodiac_for_birthday.follower}), :method => :put, :remote => true, :class => 'zodiac_selection flip_card' %>
             <% else %>
-              <%= link_to @birthday.zodiac_for_birthday.leader.capitalize, personality_for_zodiac_birthday_path(@birthday, :zodiac_sign => @birthday.zodiac_for_birthday.leader), :remote => true, :class => 'zodiac_selection' %>
-              <%= link_to @birthday.zodiac_for_birthday.follower.capitalize, personality_for_zodiac_birthday_path(@birthday, :zodiac_sign => @birthday.zodiac_for_birthday.leader), :remote => true, :class => 'zodiac_selection' %>
+              <%= link_to @birthday.zodiac_for_birthday.leader.capitalize, personality_for_zodiac_birthday_path(@birthday, :zodiac_sign => @birthday.zodiac_for_birthday.leader), :remote => true, :class => 'zodiac_selection flip_card' %>
+              <%= link_to @birthday.zodiac_for_birthday.follower.capitalize, personality_for_zodiac_birthday_path(@birthday, :zodiac_sign => @birthday.zodiac_for_birthday.leader), :remote => true, :class => 'zodiac_selection flip_card' %>
             <% end %>
           </div>
           If you are unsure of <%= @pronoun.downcase %> Astrological Birth Sign, you may <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'], 'email us', :id => 'zodiac_email' %> with <%= @pronoun.downcase %> time and place of birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up <%= @pronoun.downcase %> Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again.
@@ -81,15 +81,15 @@
         <%= content_tag :header, ENV['YEARLY_CARD_SUBTITLE'], :class => 'subtitle' %>
     
         <%= div_for @yearly_card, :identification_of do %>
-        <%= div_for @yearly_card, :name_of do %>
-          <%= @yearly_card.name %>
-        <% end %>
+          <%= div_for @yearly_card, :name_of do %>
+            <%= @yearly_card.name %>
+          <% end %>
           <%= image_tag @yearly_card.image, :class => 'card_face_image' %>
         <% end %>
         <%= div_for @yearly_card, :explication_of do %>
           <%= mark_up @yearly_card_explanation %>
         <% end %>
-        <%= link_to "See Last Year's Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'yearly' %>
+        <%= link_to "See Last Year's Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
         <%= quote %>
       <% end %>
   
@@ -98,15 +98,15 @@
         <%= content_tag :header, ENV['YEARLY_CARD_SUBTITLE'], :class => 'subtitle' %>
     
         <%= div_for @last_yearly_card, :identification_of do %>
-        <%= div_for @last_yearly_card, :name_of do %>
-          <%= @last_yearly_card.name %>
-        <% end %>
+          <%= div_for @last_yearly_card, :name_of do %>
+            <%= @last_yearly_card.name %>
+          <% end %>
           <%= image_tag @last_yearly_card.image, :class => 'card_face_image' %>
         <% end %>
         <%= div_for @last_yearly_card, :explication_of do %>
           <%= mark_up @last_yearly_card_explanation %>
         <% end %>
-        <%= link_to "See This Year's Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'yearly' %>
+        <%= link_to "See This Year's Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
         <%= quote %>
       <% end %>
   
@@ -118,15 +118,15 @@
         <%= content_tag :header, ENV['PLANETARY_CARD_SUBTITLE'], :class => 'subtitle' %>
     
         <%= div_for @planetary_card, :identification_of do %>
-        <%= div_for @planetary_card, :name_of do %>
-          <%= @planetary_card.name %>
-        <% end %>
+          <%= div_for @planetary_card, :name_of do %>
+            <%= @planetary_card.name %>
+          <% end %>
           <%= image_tag @planetary_card.image, :class => 'card_face_image' %>
         <% end %>
         <%= div_for @planetary_card, :explication_of do %>
           <%= mark_up @planetary_card_explanation %>
         <% end %>
-        <%= link_to "See #@pronoun Previous Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'planetary' %>
+        <%= link_to "See #@pronoun Previous Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
       <% end %>
       
       <%= div_for @birthday, :planetary_card_for, :class => 'card_reading_pane pane back' do %>
@@ -142,22 +142,8 @@
         <%= div_for @last_planetary_card, :explication_of do %>
           <%= mark_up @last_planetary_card_explanation %>
         <% end %>
-        <%= link_to "See #@pronoun Current Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation', :'data-reading' => 'planetary' %>
+        <%= link_to "See #@pronoun Current Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
       <% end %>
     <% end %>
-  
   <% end %>
-<% end %>
-
-<% if params[:scroll_to_top] %>
-  <script>
-    console.log('attaching scroll script');
-    // $(document).on('turbolinks:load', function() {
-    //   $.scrollTo('.planetary_card_for_birthday', 5000);
-    // });
-    $(this.window).trigger('reposition');
-    console.log('triggered reposition on ');
-    console.dir(this.window);
-    
-  </script>
 <% end %>

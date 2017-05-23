@@ -38,34 +38,6 @@ class BirthdaysController < ApplicationController
   def replace_card
     @birthday = Birthday.find params[:id]
     @card = case params[:reading_type]
-    when 'last_year'
-      @alternative_card_location = replace_card_birthday_path(@birthday, :reading_type => 'this_year')
-      @header_text = 'Your Yearly Card'
-      @header_subtitle = ENV['YEARLY_CARD_SUBTITLE']
-      @link_text = "See This Year's Card"
-      @structural_role = 'yearly_card_for'
-      @birthday.card_for_last_year
-    when 'this_year'
-      @alternative_card_location = replace_card_birthday_path(@birthday, :reading_type => 'last_year')
-      @header_text = 'Your Yearly Card'
-      @header_subtitle = ENV['YEARLY_CARD_SUBTITLE']
-      @link_text = "See Last Year's Card"
-      @structural_role = 'yearly_card_for'
-      @birthday.card_for_this_year
-    when 'last_planet'
-      @alternative_card_location = replace_card_birthday_path(@birthday, :reading_type => 'this_planet')
-      @header_text = 'Your 52-Day Card'
-      @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
-      @link_text = "What card do I have now?"
-      @structural_role = 'planetary_card_for'
-      @birthday.card_for_last_planet
-    when 'this_planet'
-      @alternative_card_location = replace_card_birthday_path(@birthday, :reading_type => 'last_planet')
-      @header_text = 'Your 52-Day Card'
-      @header_subtitle = ENV['PLANETARY_CARD_SUBTITLE']
-      @link_text = "What card did I have before this?"
-      @structural_role = 'planetary_card_for'
-      @birthday.card_for_this_planet
     when 'personality'
       @alternative_card_location = replace_card_birthday_path(current_member.birthday, :reading_type => 'personality')
       @header_text = 'Your Personality Card'
@@ -131,7 +103,7 @@ class BirthdaysController < ApplicationController
     @birthday = Birthday.find params[:id]
     @birthday.zodiac_sign = params[:zodiac_sign].intern
     @card = @birthday.personality_card
-    @structural_role = 'personality_card_for'
+    @header_text = 'Their Personality Card'
     @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
     render :template => 'birthdays/replace_card.js.erb'
   end
