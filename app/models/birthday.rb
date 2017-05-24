@@ -251,9 +251,9 @@ class Birthday < ApplicationRecord
     when :capricorn
       :saturn
     when :aquarius
-      :saturn
+      :uranus
     when :pisces
-      :jupiter
+      :neptune
     end
   end
   
