@@ -59,7 +59,7 @@
               <%= link_to @birthday.zodiac_for_birthday.follower.capitalize, member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => @birthday.zodiac_for_birthday.follower}), :method => :put, :remote => true, :class => 'zodiac_selection flip_card' %>
             <% else %>
               <%= link_to @birthday.zodiac_for_birthday.leader.capitalize, personality_for_zodiac_birthday_path(@birthday, :zodiac_sign => @birthday.zodiac_for_birthday.leader), :remote => true, :class => 'zodiac_selection flip_card' %>
-              <%= link_to @birthday.zodiac_for_birthday.follower.capitalize, personality_for_zodiac_birthday_path(@birthday, :zodiac_sign => @birthday.zodiac_for_birthday.leader), :remote => true, :class => 'zodiac_selection flip_card' %>
+              <%= link_to @birthday.zodiac_for_birthday.follower.capitalize, personality_for_zodiac_birthday_path(@birthday, :zodiac_sign => @birthday.zodiac_for_birthday.follower), :remote => true, :class => 'zodiac_selection flip_card' %>
             <% end %>
           </div>
           If you are unsure of <%= @pronoun.downcase %> Astrological Birth Sign, you may <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'], 'email us', :id => 'zodiac_email' %> with <%= @pronoun.downcase %> time and place of birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up <%= @pronoun.downcase %> Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again.
