@@ -8,5 +8,7 @@ $(document).on 'turbolinks:load', ->
 
 resizeReading = ->
   $('.panel').each (i, p) ->
-    $(p).height $(p).find('.card_reading_pane').outerHeight() + 30
-    return
+    if ($(p).hasClass('flip'))
+      $(p).height $(p).find('.card_reading_pane.back').outerHeight() + 30
+    else
+      $(p).height $(p).find('.card_reading_pane.front').outerHeight() + 30
