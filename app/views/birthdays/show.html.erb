@@ -14,19 +14,7 @@
       </div>
     <% end %>
     <%= content_tag :div, :class => "panel birth" do %>
-      <%= div_for @birthday, :birth_card_for, :class => 'card_reading_pane pane front' do %>
-        <%= content_tag :header, "#@pronoun Birth Card" %>
-        <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
-        <%= div_for @birth_card, :identification_of do %>
-          <%= div_for @birth_card, :name_of do %>
-            <%= @birth_card.name %>
-          <% end %>
-          <%= image_tag @birth_card.image, :class => 'card_face_image' %>
-        <% end %>
-        <%= div_for @birth_card, :explication_of do %>
-          <%= mark_up @birth_card_explanation %>
-        <% end %>
-      <% end %>
+      <%= card_reading_pane @birthday.birth_card, :birth, "#@pronoun Birth Card", "For #{@birthday.birthdate.strftime("%b %e %Y")}" %>
     <% end %>
   
     <%= content_tag :div, :class => "panel #{@personality_card ? '' : 'flip'} personality" do %>
@@ -76,72 +64,23 @@
   
     <%= clearboth %>
     <%= content_tag :div, :class => "panel yearly" do %>
-      <%= div_for @birthday, :yearly_card_for, :class => 'card_reading_pane pane front' do %>
-        <%= content_tag :header, "#@pronoun Yearly Card" %>
-        <%= content_tag :header, ENV['YEARLY_CARD_SUBTITLE'], :class => 'subtitle' %>
-    
-        <%= div_for @yearly_card, :identification_of do %>
-          <%= div_for @yearly_card, :name_of do %>
-            <%= @yearly_card.name %>
-          <% end %>
-          <%= image_tag @yearly_card.image, :class => 'card_face_image' %>
-        <% end %>
-        <%= div_for @yearly_card, :explication_of do %>
-          <%= mark_up @yearly_card_explanation %>
-        <% end %>
+      <%= card_reading_pane @birthday.card_for_this_year, :yearly, "#@pronoun Yearly Card", ENV['YEARLY_CARD_SUBTITLE'] do %>
         <%= link_to "See Last Year's Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
         <%= quote %>
       <% end %>
   
-      <%= div_for @birthday, :yearly_card_for, :class => 'card_reading_pane pane back' do %>
-        <%= content_tag :header, 'Last Yearly Card' %>
-        <%= content_tag :header, ENV['YEARLY_CARD_SUBTITLE'], :class => 'subtitle' %>
-    
-        <%= div_for @last_yearly_card, :identification_of do %>
-          <%= div_for @last_yearly_card, :name_of do %>
-            <%= @last_yearly_card.name %>
-          <% end %>
-          <%= image_tag @last_yearly_card.image, :class => 'card_face_image' %>
-        <% end %>
-        <%= div_for @last_yearly_card, :explication_of do %>
-          <%= mark_up @last_yearly_card_explanation %>
-        <% end %>
+      <%= card_reading_pane @birthday.card_for_last_year, :yearly, 'Last Yearly Card', ENV['YEARLY_CARD_SUBTITLE'], 'back' do %>
         <%= link_to "See This Year's Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
         <%= quote %>
       <% end %>
-  
     <% end %>
   
     <%= content_tag :div, :class => "panel planetary" do %>
-      <%= div_for @birthday, :planetary_card_for, :class => 'card_reading_pane pane front' do %>
-        <%= content_tag :header, "#@pronoun 52 Day Card" %>
-        <%= content_tag :header, ENV['PLANETARY_CARD_SUBTITLE'], :class => 'subtitle' %>
-    
-        <%= div_for @planetary_card, :identification_of do %>
-          <%= div_for @planetary_card, :name_of do %>
-            <%= @planetary_card.name %>
-          <% end %>
-          <%= image_tag @planetary_card.image, :class => 'card_face_image' %>
-        <% end %>
-        <%= div_for @planetary_card, :explication_of do %>
-          <%= mark_up @planetary_card_explanation %>
-        <% end %>
+      <%= card_reading_pane @birthday.card_for_this_planet, :yearly, "#@pronoun 52 Day Card", ENV['PLANETARY_CARD_SUBTITLE'] do %>
         <%= link_to "See #@pronoun Previous Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
       <% end %>
       
-      <%= div_for @birthday, :planetary_card_for, :class => 'card_reading_pane pane back' do %>
-        <%= content_tag :header, 'Previous 52 Day Card' %>
-        <%= content_tag :header, ENV['PLANETARY_CARD_SUBTITLE'], :class => 'subtitle' %>
-    
-        <%= div_for @last_planetary_card, :identification_of do %>
-        <%= div_for @last_planetary_card, :name_of do %>
-          <%= @last_planetary_card.name %>
-        <% end %>
-          <%= image_tag @last_planetary_card.image, :class => 'card_face_image' %>
-        <% end %>
-        <%= div_for @last_planetary_card, :explication_of do %>
-          <%= mark_up @last_planetary_card_explanation %>
-        <% end %>
+      <%= card_reading_pane @birthday.card_for_last_planet, :yearly, "Previous 52 Day Card", ENV['PLANETARY_CARD_SUBTITLE'], 'back' do %>
         <%= link_to "See #@pronoun Current Card", 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
       <% end %>
     <% end %>

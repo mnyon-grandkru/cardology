@@ -1,4 +1,8 @@
 module InterpretationsHelper
+  def interpretation_of card, reading
+    card.interpretations.where(:reading => reading).last.explanation
+  end
+  
   def meaning_of_reading card_name
     case card_name
     when :moon
