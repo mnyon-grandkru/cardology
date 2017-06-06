@@ -1,2 +1,2 @@
-$('.personality_card_for_birthday.front').html('<%= escape_javascript render :partial => 'birthdays/individual_card', :locals => {:birthday => @birthday, :card => @card, :card_explanation => @card_explanation, :structural_role => @structural_role} %>');
-resizeReading()
+$('.personality_card_for_birthday.front').replaceWith('<%= escape_javascript card_reading_pane @birthday.personality_card, :personality, 'Your Personality Card', ENV['PERSONALITY_CARD_SUBTITLE'] { @member ? link_to('Jump Over the Cusp', member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation', :remote => true) : link_to('Jump Over the Cusp', 'javascript:null', :class => 'flip_card call_to_action trailing lunar_navigation') } %>');
+attachFlippers()

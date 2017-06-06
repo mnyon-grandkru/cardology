@@ -1,6 +1,11 @@
 module InterpretationsHelper
   def interpretation_of card, reading
-    card.interpretations.where(:reading => reading).last.explanation
+    case reading
+    when :personality
+      card.interpretations.where(:reading => reading).last&.explanation || card.interpretations.where(:reading => :birth).last&.explanation
+    else
+      card.interpretations.where(:reading => reading).last.explanation
+    end
   end
   
   def meaning_of_reading card_name
