@@ -3,55 +3,16 @@
 <%= content_tag :div, :class => 'member_form_container' do %>
   <%= content_tag :div, :class => 'reading_display_container' do %>
     <%= div_for @birthday, 'data-birthday_id' => @birthday.id, 'data-lookup_id' => @lookup.id do %>
-      <%= div_for @birthday, :birth_card_for, :class => 'card_reading_pane pane' do %>
-        <%= content_tag :header, 'Your Birth Card' %>
-        <%= content_tag :div, "For #{@birthday.birthdate.strftime("%b %e %Y")}", :class => 'birthdate' %>
-        <%= div_for @birth_card, :identification_of do %>
-          <%= div_for @birth_card, :name_of do %>
-            <%= @birth_card.name %>
-          <% end %>
-          <%= image_tag @birth_card.image, :class => 'card_face_image' %>
-        <% end %>
-        <%= div_for @birth_card, :explication_of do %>
-          <%= mark_up @birth_card_explanation %>
-        <% end %>
-      <% end %>
+      <%= card_reading_pane @birthday.birth_card, :birth, "Your Birth Card", "For #{@birthday.birthdate.strftime("%b %e %Y")}" %>
       <%= clearboth %>
       
-      <%= content_tag :div, :id => 'personality_card_preview', :class => 'pane card_preview' do %>
-        <%= div_for @birth_card, :identification_of do %>
-          <%= image_tag Card.personality_card_back_image, :class => 'card_face_image' %>
-        <% end %>
-  
-        <%= content_tag :header, 'Your Personality Card', :class => 'preview_header', :id => 'personality_preview_header' %>
-        <%= div_for @birth_card, :explication_of do %>
-          <%= mark_up ENV['PERSONALITY_CARD_COPY'] %>
-        <% end %>
-      <% end %>
+      <%= card_preview :personality %>
       <%= clearboth %>
     
-      <%= content_tag :div, :id => 'yearly_card_preview', :class => 'pane card_preview' do %>
-        <%= div_for @birth_card, :identification_of do %>
-          <%= image_tag Card.yearly_card_back_image, :class => 'card_face_image' %>
-        <% end %>
-    
-        <%= content_tag :header, 'Your Yearly Card', :class => 'preview_header', :id => 'yearly_preview_header' %>
-        <%= div_for @birth_card, :explication_of do %>
-          <%= mark_up ENV['YEARLY_CARD_COPY'] %>
-        <% end %>
-      <% end %>
+      <%= card_preview :yearly %>
       <%= clearboth %>
     
-      <%= content_tag :div, :id => 'planetary_card_preview', :class => 'pane card_preview' do %>
-        <%= div_for @birth_card, :identification_of do %>
-          <%= image_tag Card.planetary_card_back_image, :class => 'card_face_image' %>
-        <% end %>
-    
-        <%= content_tag :header, 'Your 52-Day Card', :class => 'preview_header', :id => 'planetary_preview_header' %>
-        <%= div_for @birth_card, :explication_of do %>
-          <%= mark_up ENV['PLANETARY_CARD_COPY'] %>
-        <% end %>
-      <% end %>
+      <%= card_preview :planetary, 'Your 52-Day Card' %>
       <%= clearboth %>
     <% end %>
   <% end %>
