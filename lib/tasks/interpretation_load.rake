@@ -1,3 +1,5 @@
+require 'net/http'
+
 namespace :load do
   desc "Load interpretation text from production server"
   task :interpretations => :environment do

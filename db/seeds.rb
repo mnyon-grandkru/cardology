@@ -29,6 +29,9 @@ class CardologySeeder
     end
     Card.find_or_create_by :suit => Suit.find_by(:name => 'No Suit'), :face => Face.find_by(:name => 'Joker')
     Card.find_or_create_by :suit => Suit.find_by(:name => 'No Suit'), :face => Face.find_by(:name => 'Card Back')
+    Card.find_or_create_by :suit => Suit.find_by(:name => 'No Suit'), :face => Face.find_or_create_by(:name => 'Personality Card Back')
+    Card.find_or_create_by :suit => Suit.find_by(:name => 'No Suit'), :face => Face.find_or_create_by(:name => 'Yearly Card Back')
+    Card.find_or_create_by :suit => Suit.find_by(:name => 'No Suit'), :face => Face.find_or_create_by(:name => 'Planetary Card Back')
   end
   
   def spread_out!
