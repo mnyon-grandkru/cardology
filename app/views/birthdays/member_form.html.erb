@@ -18,9 +18,8 @@
   <% end %>
 
   <%= content_tag :div, :id => 'players_club_membership_form', :class => 'pane' do %>
-    <%= content_tag :header, marketing_text('member_form', 'header') %>
-    <%= image_tag asset_path('players_club_logo.png'), :id => 'players_club_logo' %>
-    <%= content_tag :header, marketing_text('member_form', 'subheader') %>
+    <%= content_tag :header, content_tag(:b, marketing_text('member_form', 'header')) %>
+    <%= image_tag asset_path('blueorangeround-lowrez.png'), :id => 'players_club_logo' %>
     <%= div_for @birth_card, :explication_of do %>
       <%= mark_up marketing_text('member_form', 'description') %>
     <% end %>
@@ -35,5 +34,6 @@
         <input type="hidden" name="custom_BirthDate" value="<%= @birthday.birthdate_string %>"/>
       </form>
     </div>
+    <%= mark_up marketing_text('member_form', 'privacy_policy')%>
   <% end %>
 <% end %>
