@@ -16,7 +16,10 @@ returning_players:
 card_previews:
   personality:
     header: "Your Personality Card"
-    description: "Your Personality Card is the second most important card in your life. You may even be more identified with it than your Birth Card. It’s how you show up in your world. <strong class='joining_players_club'>Join the Players Club</strong> to find out your Personality Card."
+    description: |
+      Your Personality Card is the second most important card in your life. You may even be more identified with it than your Birth Card. It’s how you show up in your world. 
+      
+      <strong class='joining_players_club'>Join the Players Club</strong> to find out your Personality Card.
   yearly:
     header: "Your Yearly Card"
     description: "Starting on our Birthday, we have new cards to play each year. Based on which cards are in play, we have specific challenges to resolve and specific opportunities for growth. <strong class='joining_players_club'>Join the Players Club</strong> to find out the card that indicates the central theme of your life this year."
