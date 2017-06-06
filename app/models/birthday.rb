@@ -286,6 +286,8 @@ class Birthday < ApplicationRecord
   def reading
     "Birth Card: #{birth_card.inspect}<br>This Year: #{card_for_this_year.inspect}<br>52-day Card: #{card_for_this_planet.inspect}"
   end
+  
+  memoize :birth_card
 end
 
 class Symbol
