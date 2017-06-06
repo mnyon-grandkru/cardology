@@ -19,6 +19,7 @@
 
   <%= content_tag :div, :id => 'players_club_membership_form', :class => 'pane' do %>
     <%= content_tag :header, 'Join The Players Club' %>
+    <%= image_tag asset_path('players_club_logo.png'), :id => 'players_club_logo' %>
     <%= div_for @birth_card, :explication_of do %>
       <%= mark_up ENV['PLAYERS_CLUB_COPY'] %>
     <% end %>
