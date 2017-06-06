@@ -22,11 +22,11 @@ class Birthday < ApplicationRecord
   end
   
   def age
-    ((Date.today - birthdate) / (1.year / 1.day)).floor
+    ((Date.today - birthdate) / (1.year.to_f / 1.day.to_f)).floor
   end
   
   def actual_age_on_date date
-    ((date - birthdate) / (1.year / 1.day)).floor
+    ((date - birthdate) / (1.year.to_f / 1.day.to_f)).floor
   end
   
   def age_on_date date
