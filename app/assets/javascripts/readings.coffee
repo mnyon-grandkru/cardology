@@ -1,9 +1,8 @@
 $(document).on 'turbolinks:load', ->
-  setTimeout(resizeReading, 150)
+  setInterval(resizeReading, 50)
   $('.card_reading_pane').on 'click', '.flip_card', (event) ->
     $(this).closest('.panel').toggleClass 'flip'
     $.scrollTo($(this).closest('.panel'), 1000)
-    setTimeout(resizeReading, 50)
     event.preventDefault()
 
 resizeReading = ->
