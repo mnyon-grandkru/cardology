@@ -1,0 +1,38 @@
+new_players:
+  header: "New Players"
+  subheader: "Find Out Your Birth Card"
+  instructions: "Enter your Date of Birth:"
+  button: "Go"
+returning_players:
+  header: "Returning Players"
+  subheader: "Login to get back in the game:"
+  instructions: "A temporary password was emailed to you."
+  button: "Get Back In The Game"
+  email_name: "Profile Email"
+  password_name: "Password"
+  remember_name: "Remember me"
+  reset_name: "Reset Password"
+
+card_previews:
+  personality:
+    header: "Your Personality Card"
+    description: "Your Personality Card is the second most important card in your life. You may even be more identified with it than your Birth Card. It’s how you show up in your world. <strong class='joining_players_club'>Join the Players Club</strong> to find out your Personality Card."
+  yearly:
+    header: "Your Yearly Card"
+    description: "Starting on our Birthday, we have new cards to play each year. Based on which cards are in play, we have specific challenges to resolve and specific opportunities for growth. <strong class='joining_players_club'>Join the Players Club</strong> to find out the card that indicates the central theme of your life this year."
+  planetary:
+    header: "Your 52-Day Card"
+    description: "During our year, from Birthday to Birthday, we move through seven specific cycles of influence. Each cycle in the year is 52 days long. <strong class='joining_players_club'>Join the Players Club</strong> to find out which card is in play for you right now during this cycle, so you can clarify what’s happening for you right now."
+
+member_form:
+  header: "Join The Players Club"
+  subheader: "It's FREE"
+  description: |
+    Look up your Personality Card, your Yearly Card and your 52-Day Card. And look up other people's cards too!
+
+    Create your FREE Player Profile with your first name and email address. Two things:
+
+    - Please use your real first name. 
+    - You will receive a temporary password and other important player information sent to the email you provide. So please make sure to provide a valid email that you check regularly. 
+
+    <span class='terms'>Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.</span>

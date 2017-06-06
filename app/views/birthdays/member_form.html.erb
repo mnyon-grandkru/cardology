@@ -12,16 +12,17 @@
       <%= card_preview :yearly %>
       <%= clearboth %>
     
-      <%= card_preview :planetary, 'Your 52-Day Card' %>
+      <%= card_preview :planetary %>
       <%= clearboth %>
     <% end %>
   <% end %>
 
   <%= content_tag :div, :id => 'players_club_membership_form', :class => 'pane' do %>
-    <%= content_tag :header, 'Join The Players Club' %>
+    <%= content_tag :header, marketing_text('member_form', 'header') %>
     <%= image_tag asset_path('players_club_logo.png'), :id => 'players_club_logo' %>
+    <%= content_tag :header, marketing_text('member_form', 'subheader') %>
     <%= div_for @birth_card, :explication_of do %>
-      <%= mark_up ENV['PLAYERS_CLUB_COPY'] %>
+      <%= mark_up marketing_text('member_form', 'description') %>
     <% end %>
     <div id="signup" class="submission">
       <%= content_tag :header, 'Create Your FREE Player Profile' %>

@@ -1,12 +1,12 @@
 module CardsHelper
-  def card_preview reading, heading = "Your #{reading.capitalize} Card"
+  def card_preview reading
     content_tag :div, :id => "#{reading}_card_preview", :class => 'pane card_preview' do
       div_for(Card.last, :identification_of) do
         image_tag Card.send("#{reading}_card_back_image"), :class => 'card_face_image'
       end +
-      content_tag(:header, heading, :class => 'preview_header', :id => "#{reading}_preview_header") +
+      content_tag(:header, marketing_text('card_previews', "#{reading}", 'header'), :class => 'preview_header', :id => "#{reading}_preview_header") +
       div_for(Card.last, :explication_of) do
-        mark_up ENV["#{reading.upcase}_CARD_COPY"]
+        mark_up marketing_text('card_previews', "#{reading}", 'description')
       end
     end
   end

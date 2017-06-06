@@ -1,4 +1,18 @@
 module ApplicationHelper
+  extend Memoist
+  def marketing_text *keys
+    copy = marketing_copy
+    keys.each do |key|
+      copy = copy[key]
+    end
+    copy
+  end
+  
+  def marketing_copy
+    YAML.load(File.read(Rails.root.join('config', 'marketing.yml')))
+  end
+  memoize :marketing_copy
+  
   def clearboth
     content_tag :div, '', :class => 'clearboth'
   end
