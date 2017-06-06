@@ -60,8 +60,8 @@ class BirthdaysController < ApplicationController
       @goal = 'Look Up Another Birth Card'
       @instructions = 'Enter the Birthdate'
     else
-      @goal = 'Find Out Your Birth Card'
-      @instructions = 'Enter your Date of Birth:'
+      @goal = view_context.marketing_text('new_players', 'subheader')
+      @instructions = view_context.marketing_text('new_players', 'instructions')
     end
   end
   
@@ -83,8 +83,8 @@ class BirthdaysController < ApplicationController
   
   def second_try
     @date = rand((50.years.ago)..20.years.ago)
-    @goal = 'Find Out Your Birth Card'
-    @instructions = 'Enter your Date of Birth:'
+    @goal = view_context.marketing_text('new_players', 'subheader')
+    @instructions = view_context.marketing_text('new_players', 'instructions')
     @email = params[:member][:email]
     @password_explanation = "Oops, it looks like you're entering the wrong password.<br>The temporary password was emailed to you when you signed up.<br>Please check your email for the password.".html_safe
     render 'new.html.erb'
