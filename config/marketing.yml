@@ -43,5 +43,5 @@ member_form:
 
     - Please use your real first name. 
     - You will receive a temporary password and other important player information sent to the email you provide. So please provide a valid email that you check regularly. 
-
+  privacy_policy: |
     <span class='terms'>Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.</span>
