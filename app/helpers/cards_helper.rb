@@ -4,7 +4,7 @@ module CardsHelper
       div_for(Card.last, :identification_of) do
         image_tag Card.send("#{reading}_card_back_image"), :class => 'card_face_image'
       end +
-      content_tag(:header, marketing_text('card_previews', 'member', reading.to_s, 'header_current'), :class => 'preview_header', :id => "#{reading}_preview_header") +
+      content_tag(:header, marketing_text('card_previews', 'member', reading.to_s, 'header'), :class => 'preview_header', :id => "#{reading}_preview_header") +
       div_for(Card.last, :explication_of) do
         mark_up marketing_text('card_previews', 'member', reading.to_s, 'description')
       end
