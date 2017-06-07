@@ -59,9 +59,6 @@ member_form:
   privacy_policy: |
     <span class='terms'>Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.</span>
 
-replace_card:
-  button: "Jump Over the Cusp"
-  
 show:
   personality_card:
     cusp_picker: "This birthday is on an astrological cusp. To correctly determine this Personality Card, we need to know which is the Western Astrological sign. If you know it, please click it here:"
