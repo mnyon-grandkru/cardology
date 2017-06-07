@@ -20,6 +20,10 @@ card_previews:
       Your Personality Card is the second most important card in your life. You may even be more identified with it than your Birth Card. It’s how you show up in your world. 
       
       <strong class='joining_players_club'>Join the Players Club</strong> to find out your Personality Card.  It's FREE to join.
+    cusp_picker: "This birthday is on an astrological cusp. To correctly determine this Personality Card, we need to know which is the Western Astrological sign. If you know it, please click it here:"
+    cusp_unsure: "If you are unsure of the Astrological Birth Sign, you may"
+    email: "dinklage@thrones.net"
+    cusp_unsure_two: "with the time and place of birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up the Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again."
     button: "Jump Over the Cusp"
   yearly:
     header_last: "Last Yearly Card"
@@ -58,10 +62,4 @@ member_form:
 
   privacy_policy: |
     <span class='terms'>Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.</span>
-
-show:
-  personality_card:
-    cusp_picker: "This birthday is on an astrological cusp. To correctly determine this Personality Card, we need to know which is the Western Astrological sign. If you know it, please click it here:"
-    cusp_unsure: "If you are unsure of the Astrological Birth Sign, you may"
-    email: "dinklage@thrones.net"
-    cusp_unsure_two: "with the time and place of birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up the Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again."
+    
