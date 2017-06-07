@@ -13,8 +13,10 @@ class BirthdaysController < ApplicationController
     if @birthday == @member.birthday
       @pronoun = "Your"
       @birthday.zodiac_sign = @member&.zodiac_sign&.intern
+      @querent = 'member'
     else
       @pronoun = "Their"
+      @querent = 'guest'
     end
     if @birthday.astrological_sign.is_cusp?
       @personality_card = nil
