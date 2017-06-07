@@ -270,10 +270,10 @@ class Birthday < ApplicationRecord
       4
     when :saturn
       5
-    when :neptune
-      7
     when :uranus
       6
+    when :neptune
+      7
     when :pluto
       8
     when :sun
