@@ -21,7 +21,7 @@
       <%= card_reading_pane @birthday.personality_card, :personality, marketing_text('card_previews', @querent, 'personality', 'header'), nil do %>
         <% if @birthday == @member.birthday %>
           <% if @member.birthday.astrological_sign.is_cusp? %>
-            <%= link_to marketing_text('card_previews', 'personality', 'button'), member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation', :remote => true %>
+            <%= link_to marketing_text('card_previews', @querent, 'personality', 'button'), member_assign_zodiac_path(:id => @member.id, :member => {:zodiac_sign => nil}), :method => :put, :class => 'trailing call_to_action lunar_navigation', :remote => true %>
           <% end %>
         <% end %>
       <% end %>
@@ -29,11 +29,11 @@
       <% if @birthday.zodiac_for_birthday.is_cusp? %>
         <%= div_for @birthday, :personality_card_for, :class => "card_reading_pane pane back" do %>
           <%= content_tag :header, marketing_text('card_previews', @querent, 'personality', 'header') %>
-          <%= marketing_text('card_previews', 'personality_card', 'cusp_picker') %><br>
+          <%= marketing_text('card_previews', @querent, 'personality', 'cusp_picker') %><br>
           <div id="zodiac_options">
             <%= zodiac_picker_for @member, @birthday %>
           </div>
-          <%= marketing_text('card_previews', 'personality_card', 'cusp_unsure') %> <%= mail_to marketing_text('card_previews', 'personality_card', 'email'), 'email us', :id => 'zodiac_email' %> <%= marketing_text('card_previews', 'personality_card', 'cusp_unsure_two') %>
+          <%= marketing_text('card_previews', @querent, 'personality', 'cusp_unsure') %> <%= mail_to marketing_text('card_previews', @querent, 'personality', 'email'), 'email us', :id => 'zodiac_email' %> <%= marketing_text('card_previews', @querent, 'personality', 'cusp_unsure_two') %>
         <% end %>
       <% end %>
     <% end %>
