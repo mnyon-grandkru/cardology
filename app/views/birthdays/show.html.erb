@@ -33,7 +33,7 @@
           <div id="zodiac_options">
             <%= zodiac_picker_for @member, @birthday %>
           </div>
-          <%= marketing_text('card_previews', @querent, 'personality', 'cusp_unsure') %> <%= mail_to marketing_text('card_previews', @querent, 'personality', 'email'), 'email us', :id => 'zodiac_email' %> <%= marketing_text('card_previews', @querent, 'personality', 'cusp_unsure_two') %>
+          <%= marketing_text('card_previews', @querent, 'personality', 'cusp_unsure') %> <%= mail_to ENV['ASTROLOGICAL_CUSP_QUERY_EMAIL_ADDRESS'], 'email us', :id => 'zodiac_email' %> <%= marketing_text('card_previews', @querent, 'personality', 'cusp_unsure_two') %>
         <% end %>
       <% end %>
     <% end %>

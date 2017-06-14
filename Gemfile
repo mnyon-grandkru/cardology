@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.3'
 
 gem 'rails', '5.1.1'
 gem 'pg'
@@ -23,6 +23,8 @@ gem 'cancancan'
 gem 'jquery-scrollto-rails', :github => 'fishpercolator/jquery-scrollto-rails', :ref => '0c6aa0e0a0ec72f2c54bbb3833a7a48cf95637bf'
 gem 'kaminari'
 gem 'memoist'
+gem 'rollbar'
+gem 'oj'
 
 group :development, :test do
   gem 'byebug', platform: :mri

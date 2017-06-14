@@ -59,7 +59,6 @@ card_previews:
         <strong class='joining_players_club'>Join the Players Club</strong> to find out your Personality Card.  It's FREE to join.
       cusp_picker: "This birthday is on an astrological cusp. To correctly determine the Personality Card, we need to know which is their Western Astrological sign. If you know it, please click it here:"
       cusp_unsure: "If you are unsure of their Astrological Birth Sign, you may"
-      email: "me@lifeelevated.life"
       cusp_unsure_two: "with the time and place of your birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up an Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again."
       button: "Jump Over the Cusp"
     yearly:
