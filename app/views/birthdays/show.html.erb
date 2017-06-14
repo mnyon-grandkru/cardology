@@ -60,7 +60,7 @@
   
     <%= content_tag :div, :class => "panel planetary" do %>
       <%= card_reading_pane @birthday.card_for_this_planet, :yearly, marketing_text('card_previews', @querent, 'planetary', 'header'), marketing_text('card_previews', @querent, 'planetary', 'subheader') do %>
-        <%= link_to marketing_text('card_previews', @querent, 'yearly', 'button_last'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
+        <%= link_to marketing_text('card_previews', @querent, 'planetary', 'button_last'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
       <% end %>
       
       <%= card_reading_pane @birthday.card_for_last_planet, :yearly, marketing_text('card_previews', @querent, 'planetary', 'header_last'), marketing_text('card_previews', @querent, 'planetary', 'subheader'), 'back' do %>
