@@ -97,6 +97,7 @@ class BirthdaysController < ApplicationController
     @birthday.zodiac_sign = params[:zodiac_sign].intern
     @card = @birthday.personality_card
     @header_text = 'Their Personality Card'
+    @querent = 'guest'
     @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
     render :template => 'birthdays/replace_card.js.erb'
   end
