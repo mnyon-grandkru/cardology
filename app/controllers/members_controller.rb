@@ -33,6 +33,7 @@ class MembersController < ApplicationController
           @birthday.zodiac_sign = @member.zodiac_sign&.intern
           @card = @birthday.personality_card
           @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
+          @querent = 'member'
           render :template => 'birthdays/replace_card.js.erb'
         else
           @birthday = @member.birthday
