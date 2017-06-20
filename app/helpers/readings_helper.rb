@@ -8,7 +8,10 @@ module ReadingsHelper
           div_for(card, :name_of) do
             card.name
           end +
-          image_tag(card.image, :class => 'card_face_image')
+          image_tag(card.image, :class => 'card_face_image') +
+          div_for(Card.last, :opportunities_on) do
+            "Want to learn more? #{link_to("Get the book.", ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
+          end
         end +
         div_for(card, :explication_of) do
           mark_up interpretation_of(card, reading)
