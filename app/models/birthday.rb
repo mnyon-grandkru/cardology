@@ -57,6 +57,28 @@ class Birthday < ApplicationRecord
     (date - day_before_birthday).floor
   end
   
+  def days_since_birth
+    Date.today - birthdate
+  end
+  
+  def weeks_since_birth
+    days_since_birth / 7
+  end
+  
+  def position_in_week
+    (days_since_birth % 7) + 1
+  end
+  
+  def card_for_today
+    spread_ordinal = ((weeks_since_birth + 45) % 90)
+    spread = Spread.find_by(:age => spread_ordinal)
+    position_of_birth_card = spread.position_of birth_card
+    position = position_of_birth_card.position - position_in_week
+    position = 52 + position if position < 0
+    place = Place.find_by :spread_id => spread.id, :position => position
+    place.card
+  end
+  
   def card_for_this_year
     card_for_the_year_on_date Date.today
   end
