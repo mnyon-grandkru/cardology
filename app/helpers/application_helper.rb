@@ -2,8 +2,13 @@ module ApplicationHelper
   extend Memoist
   def marketing_text *keys
     copy = marketing_copy
-    keys.each do |key|
-      copy = copy[key]
+    begin
+      keys.each do |key|
+        copy = copy[key]
+      end
+    rescue StandardError => error
+      Rails.logger.info "Marketing text for #{keys} is not configured."
+      copy = ''
     end
     copy
   end

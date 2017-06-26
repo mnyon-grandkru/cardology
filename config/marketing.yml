@@ -18,6 +18,8 @@ new_teammates:
 
 card_previews:
   member:
+    birth:
+      button_current: "My Birth Card"
     personality:
       header: "Your Personality Card"
       description: |
@@ -53,6 +55,11 @@ card_previews:
       button_last: "See Your Previous Card"
       button_current: "See Your Current Card"
       button_next: "See Your Next Card"
+    daily:
+      button_current: "My Card for Today"
+      header: "Today's Card"
+      subheader: "This card will be with you until midnight."
+      
   guest:
     personality:
       header: "Their Personality Card"

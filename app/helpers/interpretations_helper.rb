@@ -2,7 +2,9 @@ module InterpretationsHelper
   def interpretation_of card, reading
     case reading
     when :personality
-      card.interpretations.where(:reading => reading).last&.explanation || card.interpretations.where(:reading => :birth).last&.explanation
+      card.interpretations.where(:reading => reading).last&.explanation || interpretation_of(card, :birth)
+    when :daily
+      card.interpretations.where(:reading => reading).last&.explanation || interpretation_of(card, :yearly)
     else
       card.interpretations.where(:reading => reading).last.explanation
     end
