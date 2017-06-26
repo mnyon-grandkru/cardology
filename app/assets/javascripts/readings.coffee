@@ -11,7 +11,6 @@ window.resizeReading = ->
 
 window.attachFlippers = ->
   $('.card_reading_pane').off('click').on 'click', '.flip_card', (event) ->
-    console.log "flipper called"
     $(this).closest('.panel').toggleClass 'flip'
     $.scrollTo($(this).closest('.panel'), 1000)
     event.preventDefault()

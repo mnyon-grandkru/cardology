@@ -12,6 +12,9 @@ returning_players:
   password_name: "Password"
   remember_name: "Remember me"
   reset_name: "Reset Password"
+new_teammates:
+  subheader: "Look Up Someone Else's Cards"
+  instructions: "Enter their Date of Birth"
 
 card_previews:
   member:

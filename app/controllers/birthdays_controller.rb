@@ -59,8 +59,8 @@ class BirthdaysController < ApplicationController
   def new
     @date = rand((50.years.ago)..20.years.ago)
     if current_member
-      @goal = 'Look Up Another Birth Card'
-      @instructions = 'Enter the Birthdate'
+      @goal = view_context.marketing_text('new_teammates', 'subheader')
+      @instructions = view_context.marketing_text('new_teammates', 'instructions')
     else
       @goal = view_context.marketing_text('new_players', 'subheader')
       @instructions = view_context.marketing_text('new_players', 'instructions')
