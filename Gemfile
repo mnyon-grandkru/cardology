@@ -25,6 +25,7 @@ gem 'kaminari'
 gem 'memoist'
 gem 'rollbar'
 gem 'oj'
+gem 'braintree'
 
 group :development, :test do
   gem 'byebug', platform: :mri

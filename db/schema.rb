@@ -10,101 +10,103 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426201230) do
+ActiveRecord::Schema.define(version: 20170627165724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "birthdays", force: :cascade do |t|
-    t.integer  "year"
-    t.integer  "month"
-    t.integer  "day"
+  create_table "birthdays", id: :serial, force: :cascade do |t|
+    t.integer "year"
+    t.integer "month"
+    t.integer "day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "cards", force: :cascade do |t|
-    t.integer  "suit_id"
-    t.integer  "face_id"
-    t.string   "image"
+  create_table "cards", id: :serial, force: :cascade do |t|
+    t.integer "suit_id"
+    t.integer "face_id"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["face_id"], name: "index_cards_on_face_id", using: :btree
-    t.index ["suit_id"], name: "index_cards_on_suit_id", using: :btree
+    t.index ["face_id"], name: "index_cards_on_face_id"
+    t.index ["suit_id"], name: "index_cards_on_suit_id"
   end
 
-  create_table "faces", force: :cascade do |t|
-    t.string   "name"
+  create_table "faces", id: :serial, force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "number"
+    t.integer "number"
   end
 
-  create_table "interpretations", force: :cascade do |t|
-    t.integer  "card_id"
-    t.text     "explanation"
-    t.integer  "reading"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["card_id"], name: "index_interpretations_on_card_id", using: :btree
+  create_table "interpretations", id: :serial, force: :cascade do |t|
+    t.integer "card_id"
+    t.text "explanation"
+    t.integer "reading"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_interpretations_on_card_id"
   end
 
-  create_table "lookups", force: :cascade do |t|
-    t.integer  "birthday_id"
-    t.string   "ip_address"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["birthday_id"], name: "index_lookups_on_birthday_id", using: :btree
+  create_table "lookups", id: :serial, force: :cascade do |t|
+    t.integer "birthday_id"
+    t.string "ip_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["birthday_id"], name: "index_lookups_on_birthday_id"
   end
 
-  create_table "members", force: :cascade do |t|
-    t.integer  "birthday_id"
-    t.integer  "lookup_id"
-    t.string   "name"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "members", id: :serial, force: :cascade do |t|
+    t.integer "birthday_id"
+    t.integer "lookup_id"
+    t.string "name"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.integer  "zodiac_sign"
-    t.index ["birthday_id"], name: "index_members_on_birthday_id", using: :btree
-    t.index ["email"], name: "index_members_on_email", unique: true, using: :btree
-    t.index ["lookup_id"], name: "index_members_on_lookup_id", using: :btree
-    t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
-  end
-
-  create_table "places", force: :cascade do |t|
-    t.integer  "card_id"
-    t.integer  "spread_id"
-    t.integer  "position"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["card_id"], name: "index_places_on_card_id", using: :btree
-    t.index ["spread_id"], name: "index_places_on_spread_id", using: :btree
+    t.integer "zodiac_sign"
+    t.string "braintree_id"
+    t.integer "subscription_status"
+    t.index ["birthday_id"], name: "index_members_on_birthday_id"
+    t.index ["email"], name: "index_members_on_email", unique: true
+    t.index ["lookup_id"], name: "index_members_on_lookup_id"
+    t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
-  create_table "quotes", force: :cascade do |t|
-    t.string   "source"
-    t.text     "phrasing"
+  create_table "places", id: :serial, force: :cascade do |t|
+    t.integer "card_id"
+    t.integer "spread_id"
+    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_places_on_card_id"
+    t.index ["spread_id"], name: "index_places_on_spread_id"
   end
 
-  create_table "spreads", force: :cascade do |t|
-    t.integer  "age"
+  create_table "quotes", id: :serial, force: :cascade do |t|
+    t.string "source"
+    t.text "phrasing"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "suits", force: :cascade do |t|
-    t.string   "name"
+  create_table "spreads", id: :serial, force: :cascade do |t|
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "suits", id: :serial, force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

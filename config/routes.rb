@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     root :to => 'birthdays#mine'
   end
   
+  resources :subscriptions, :only => [:new, :create] do
+    member do
+      delete :cancel
+    end
+  end
+  
   resources :interpretations do
     collection do
       get 'ids'
