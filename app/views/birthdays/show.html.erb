@@ -16,17 +16,13 @@
     <%= content_tag :div, :class => "panel birth" do %>
       <%= card_reading_pane @birthday.birth_card, :birth, "#@pronoun Birth Card", "For #{@birthday.birthdate.strftime("%b %e %Y")}" do %>
         <% if @querent == 'member' %>
-          <% if @member.subscribed? %>
-            <%= link_to marketing_text('button', @querent, 'daily', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
-          <% else %>
-            <%= checkout_form %>
-          <% end %>
+          <%= link_to marketing_text('button', @querent, 'daily', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
         <% end %>
       <% end %>
       
-      <% if @querent == 'member' && @member.subscribed? %>
-        <%= card_reading_pane @birthday.card_for_today, :daily, marketing_text('heading', @querent, 'daily', 'header'), marketing_text('heading', @querent, 'daily', 'subheader'), 'back' do %>
-          <%= link_to marketing_text('button', @querent, 'birth', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
+      <% if @querent == 'member' %>
+        <%= card_reading_pane @birthday.card_for_today, :daily, marketing_text('heading', @querent, 'daily', 'header'), marketing_text('heading', @querent, 'daily', 'subheader'), 'fore' do %>
+          <%= link_to marketing_text('button', @querent, 'birth', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
         <% end %>
       <% end %>
     <% end %>
