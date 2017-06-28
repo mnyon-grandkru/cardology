@@ -1,3 +1,37 @@
+member_form:
+  header: "Join The Players Club for FREE"
+  subheader: "It's FREE"
+  description: |
+    Look up your cards to play. And look up other people's cards too!
+
+    Create your FREE Player Profile.
+
+    - You'll receive a temporary password and other important information emailed to you. So please make sure to provide a valid email you check regularly. 
+
+  instructions: "Create Your FREE Player Profile"
+  privacy_policy: |
+    <span class='terms'>Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.</span>
+
+subscription:
+  teaser:
+    header: See More Cards
+    subheader: Become a member
+    offer: |
+      For $1.99 per month, you may have information about
+
+      * Your upcoming yearly card
+      * Your upcoming 52-day card
+      * The date your cards will change
+      * YOUR DAILY CARD FOR EVERY SINGLE DAY
+
+      Cool huh?
+    accept: Yes, begin my 7-day trial.
+    defer: No, this is enough for now.
+
+book:
+  question: "Want to learn more?"
+  answer: "Get the book."
+
 new_players:
   header: "New Players"
   subheader: "Find Out Your Birth Card"
@@ -21,116 +55,95 @@ navigation:
   reading: 'My Reading'
   log_out: 'Log Out'
 
-card_previews:
+heading:
   member:
     birth:
-      button_current: "My Birth Card"
+      header: "Your Birth Card"
     personality:
       header: "Your Personality Card"
-      description: |
-        Your Personality Card is the second most important card in your life. You may even be more identified with it than your Birth Card. It’s how you show up in your world. 
-
-        <strong class='joining_players_club'>Join the Players Club</strong> to find out your Personality Card.  It's FREE to join.
-      cusp_picker: "Your birthday is on an astrological cusp. To correctly determine your Personality Card, we need to know which is your Western Astrological sign. If you know it, please click it here:"
-      cusp_unsure: "If you are unsure of your Astrological Birth Sign, you may"
-      email: "dinklage@thrones.net"
-      cusp_unsure_two: "with the time and place of your birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up your Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again."
-      button: "Jump Over the Cusp"
+      subheader: "This card is the second most important card in your life. You may even be more identified with it than your Birth Card. It’s how you show up in your world."
     yearly:
       header_last: "Last Yearly Card"
       header: "Your Yearly Card"
       header_next: "Coming Yearly Card"
       subheader: "This card represents the main theme of your year. Your year starts from your last birthday until your next birthday."
-      description: |
-         Starting on our Birthday, we have new cards to play each year. Based on which cards are in play, we have specific challenges to resolve and specific opportunities for growth. 
-
-         <strong class='joining_players_club'>Join the Players Club</strong> to find out the card that indicates the central theme of your life this year.  It's FREE to join.
-      button_last: "See Last Year's Card"
-      button_current: "See This Year's Card"
-      button_next: "See Next Year's Card"
     planetary:
       header_last: "Previous 52-Day Card"
       header: "Your 52-Day Card"
       header_next: "Coming 52-Day Card"
       subheader: "This card represents the current period of your year. It indicates a specific energy pattern in play for this 52-day cycle."
-      description: |
-          During our year, from Birthday to Birthday, we move through seven specific cycles of influence. Each cycle in the year is 52 days long. 
-
-          <strong class='joining_players_club'>Join the Players Club</strong> to find out which card is in play for you right now during this cycle, so you can clarify what’s happening for you right now.  It's FREE to join.
-      button_last: "See Your Previous Card"
-      button_current: "See Your Current Card"
-      button_next: "See Your Next Card"
     daily:
-      button_current: "My Card for Today"
       header: "Today's Card"
       subheader: "This card will be with you until midnight."
-      
-  guest:
+  acquaintance:
+    birth:
+      header: "Their Birth Card"
     personality:
       header: "Their Personality Card"
-      description: |
-        The Personality Card is the second most important card in their life. They may even be more identified with it than the Birth Card. It’s how they show up in their world. 
-
-        <strong class='joining_players_club'>Join the Players Club</strong> to find out your Personality Card.  It's FREE to join.
-      cusp_picker: "This birthday is on an astrological cusp. To correctly determine the Personality Card, we need to know which is their Western Astrological sign. If you know it, please click it here:"
-      cusp_unsure: "If you are unsure of their Astrological Birth Sign, you may"
-      cusp_unsure_two: "with the time and place of your birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up an Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again."
-      button: "Jump Over the Cusp"
+      subheader: "This card is the second most important card in their life. They may even be more identified with it than their Birth Card. It’s how they show up in their world."
     yearly:
       header_last: "Last Yearly Card"
       header: "Their Yearly Card"
       header_next: "Coming Yearly Card"
       subheader: "This card represents the main theme of the year. Your year is from your last birthday until your next birthday."
-      description: |
-         Starting on our Birthday, we have new cards to play each year. Based on which cards are in play, we have specific challenges to resolve and specific opportunities for growth. 
-
-         <strong class='joining_players_club'>Join the Players Club</strong> to find out the card that indicates the central theme of your life this year.  It's FREE to join.
-      button_last: See Last Year's Card
-      button_current: "See This Year's Card"
-      button_next: "See Next Year's Card"
     planetary:
       header_last: "Previous 52-Day Card"
       header: "Their 52-Day Card"
       header_next: "Coming 52-Day Card"
       subheader: "This card represents the current period of their year. It indicates a specific energy pattern in play for this 52-day cycle."
-      description: |
-          During our year, from Birthday to Birthday, we move through seven specific cycles of influence. Each cycle in the year is 52 days long. 
 
-          <strong class='joining_players_club'>Join the Players Club</strong> to find out which card is in play for you right now during this cycle, so you can clarify what’s happening for you right now.  It's FREE to join.
+button:
+  member:
+    birth:
+      button_current: "My Birth Card"
+    personality:
+      button: "Jump Over the Cusp"
+    yearly:
+      button_last: "See Last Year's Card"
+      button_current: "See This Year's Card"
+      button_next: "See Next Year's Card"
+    planetary:
+      button_last: "See Your Previous Card"
+      button_current: "See Your Current Card"
+      button_next: "See Your Next Card"
+    daily:
+      button_current: "My Card for Today"
+  acquaintance:
+    personality:
+      button: "Jump Over the Cusp"
+    yearly:
+      button_last: See Last Year's Card
+      button_current: "See This Year's Card"
+    planetary:
       button_last: "See Their Previous Card"
       button_current: "See Their Current Card"
-      button_next: "See Their Next Card"
+
+preview:
+  personality:
+    description: |
+      Your Personality Card is the second most important card in your life. You may even be more identified with it than your Birth Card. It’s how you show up in your world. 
+
+      <strong class='joining_players_club'>Join the Players Club</strong> to find out your Personality Card.  It's FREE to join.
+  yearly:
+    description: |
+      Starting on our Birthday, we have new cards to play each year. Based on which cards are in play, we have specific challenges to resolve and specific opportunities for growth. 
+
+      <strong class='joining_players_club'>Join the Players Club</strong> to find out the card that indicates the central theme of your life this year.  It's FREE to join.
+  planetary:
+    description: |
+      During our year, from Birthday to Birthday, we move through seven specific cycles of influence. Each cycle in the year is 52 days long. 
+
+      <strong class='joining_players_club'>Join the Players Club</strong> to find out which card is in play for you right now during this cycle, so you can clarify what’s happening for you right now.  It's FREE to join.
       
-
-member_form:
-  header: "Join The Players Club for FREE"
-  subheader: "It's FREE"
-  description: |
-    Look up your cards to play. And look up other people's cards too!
-
-    Create your FREE Player Profile.
-
-    - You'll receive a temporary password and other important information emailed to you. So please make sure to provide a valid email you check regularly. 
-
-  privacy_policy: |
-    <span class='terms'>Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.</span>
-
-subscription:
-  teaser:
-    header: See More Cards
-    subheader: Become a member
-    offer: |
-      For $1.99 per month, you may have information about
-
-      * Your upcoming yearly card
-      * Your upcoming 52-day card
-      * The date your cards will change
-      * YOUR DAILY CARD FOR EVERY SINGLE DAY
-
-      Cool huh?
-    accept: Yes, begin my 7-day trial.
-    defer: No, this is enough for now.
-
-book:
-  question: "Want to learn more?"
-  answer: "Get the book."
+cusp:
+  member:
+    personality:
+      cusp_picker: "Your birthday is on an astrological cusp. To correctly determine your Personality Card, we need to know which is your Western Astrological sign. If you know it, please click it here:"
+      cusp_unsure: "If you are unsure of your Astrological Birth Sign, you may"
+      cusp_unsure_two: "with the time and place of your birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up your Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again."
+      
+  acquaintance:
+    personality:
+      cusp_picker: "This birthday is on an astrological cusp. To correctly determine the Personality Card, we need to know which is their Western Astrological sign. If you know it, please click it here:"
+      cusp_unsure: "If you are unsure of their Astrological Birth Sign, you may"
+      cusp_unsure_two: "with the time and place of their birth, and we will look it up for you. We will respond to your email in about 24 hours. Alternately, there are free lookup tools on the web for you to look up an Astrological sign. And, if you want, you can play with each Astrological Sign option to see which Personality Card appears. A button will link you back to this page to change your choice again."

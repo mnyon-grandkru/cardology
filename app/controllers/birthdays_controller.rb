@@ -16,7 +16,7 @@ class BirthdaysController < ApplicationController
       @querent = 'member'
     else
       @pronoun = "Their"
-      @querent = 'guest'
+      @querent = 'acquaintance'
     end
     if @birthday.astrological_sign.is_cusp?
       @personality_card = nil
@@ -97,7 +97,7 @@ class BirthdaysController < ApplicationController
     @birthday.zodiac_sign = params[:zodiac_sign].intern
     @card = @birthday.personality_card
     @header_text = 'Their Personality Card'
-    @querent = 'guest'
+    @querent = 'acquaintance'
     @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
     render :template => 'birthdays/replace_card.js.erb'
   end

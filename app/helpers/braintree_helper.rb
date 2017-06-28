@@ -2,7 +2,7 @@ module BraintreeHelper
 
   def checkout_form
     braintree_dropin +
-    form_with(:url => subscriptions_path, :id => "payment-form") do |subscription_form|
+    form_with(:url => subscriptions_path, :id => "subscription_payment") do |subscription_form|
       tag.div(:id => 'bt-dropin') +
       subscription_form.hidden_field(:payment_method_nonce, :id => 'nonce') +
       subscription_form.hidden_field(:member_id, :value => @member.id) +

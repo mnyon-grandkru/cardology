@@ -1,24 +1,25 @@
 braintreeClientToken = undefined
 
 initializeBraintree = ->
-  form = document.querySelector('#payment-form')
   client_token = braintreeClientToken
   braintree.dropin.create {
     authorization: client_token
     container: '#bt-dropin'
     paypal: flow: 'vault'
   }, (createErr, instance) ->
-    form.addEventListener 'submit', (event) ->
+    $(document).on 'submit', '#subscription_form', (event) ->
       event.preventDefault()
       instance.requestPaymentMethod (err, payload) ->
         if err
           console.log 'Error', err
           return
-        # Add the nonce to the form and submit
-        document.querySelector('#nonce').value = payload.nonce
-        form.submit()
+        $('#nonce').val payload.nonce
+        $('#subscription_form').submit()
         return
       return
     return
-  checkout = new Demo(formID: 'payment-form')
-  return
+  checkout = new Demo(formID: 'subscription_form')
+
+  $('.pane').on 'click', '.subscribe', ->
+    console.log('bram')
+    $('#subscription_form').trigger 'submit'

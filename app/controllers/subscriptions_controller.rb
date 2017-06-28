@@ -9,7 +9,7 @@ class SubscriptionsController < ApplicationController
     customer_creation = Braintree::Customer.create(
       :first_name => @member.name,
       :email => @member.email,
-      :payment_method_nonce => params[:nonce]
+      :payment_method_nonce => params[:payment_method_nonce]
     )
     if customer_creation.success?
       @member.braintree_id = customer_creation.customer.id

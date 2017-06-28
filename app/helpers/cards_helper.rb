@@ -7,9 +7,9 @@ module CardsHelper
           "#{marketing_text 'book', 'question'} #{link_to(marketing_text('book', 'answer'), ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
         end
       end +
-      content_tag(:header, marketing_text('card_previews', 'member', reading.to_s, 'header'), :class => 'preview_header', :id => "#{reading}_preview_header") +
+      content_tag(:header, marketing_text('heading', 'member', reading.to_s, 'header'), :class => 'preview_header', :id => "#{reading}_preview_header") +
       div_for(Card.last, :explication_of) do
-        mark_up marketing_text('card_previews', 'member', reading.to_s, 'description')
+        mark_up marketing_text('preview', reading.to_s, 'description')
       end
     end
   end
