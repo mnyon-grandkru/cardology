@@ -19,8 +19,8 @@ initializeBraintree = (dropin) ->
       return
     return
 
-  $('.pane').on 'click', '.subscribe', (event) ->
-    $('.braintree_container').show()
+  $('.pane').on 'click', '.subscribe', ->
+    $(this).prev('.braintree_container').show()
 
 $(document).on 'turbolinks:load', ->
   $.each $('.braintree_container'), (i, container) ->
