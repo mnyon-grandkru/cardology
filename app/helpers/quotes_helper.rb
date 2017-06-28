@@ -1,6 +1,6 @@
 module QuotesHelper
   def quote
-    q = Quote.random
+    q = Quote.order_by_rand.take
     return unless q
     content_tag :div, :class => 'quote_single' do
       [

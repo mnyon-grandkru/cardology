@@ -1,25 +1,61 @@
 module ReadingsHelper
   def card_reading_pane card, reading, title, subtitle, side = 'front', &block
-    div_for @birthday, "#{reading}_card_for", :class => "card_reading_pane pane #{side}" do
-      content_tag(:header, title) +
-      content_tag(:header, subtitle, :class => 'subtitle') +
-      if card
-        div_for(card, :identification_of) do
-          div_for(card, :name_of) do
-            card.name
+    if side == 'fore' && @member.subscription_status != 'active'
+      subscription_marketing_pane
+    else
+      div_for @birthday, "#{reading}_card_for", :class => "card_reading_pane pane #{side}" do
+        content_tag(:header, title) +
+        content_tag(:header, subtitle, :class => 'subtitle') +
+        if card
+          div_for(card, :identification_of) do
+            div_for(card, :name_of) do
+              card.name
+            end +
+            image_tag(card.image, :class => 'card_face_image') +
+            div_for(Card.last, :opportunities_on) do
+              "Want to learn more? #{link_to("Get the book.", ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
+            end
           end +
-          image_tag(card.image, :class => 'card_face_image') +
-          div_for(Card.last, :opportunities_on) do
-            "Want to learn more? #{link_to("Get the book.", ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
+          div_for(card, :explication_of) do
+            mark_up interpretation_of(card, reading)
           end
         end +
-        div_for(card, :explication_of) do
-          mark_up interpretation_of(card, reading)
+        if block_given?
+          capture(&block)
+        end
+      end
+    end
+  end
+  
+  def subscription_marketing_pane
+    card = @birthday.birth_card
+    div_for @birthday, 'subscription_marketing_for', :class => "card_reading_pane pane fore" do
+      content_tag(:header, 'See More Cards') +
+      content_tag(:header, 'Become a member', :class => 'subtitle') +
+      div_for(card, :identification_of) do
+        div_for(card, :name_of) do
+          card.name
+        end +
+        image_tag(card.image, :class => 'card_face_image') +
+        div_for(Card.last, :opportunities_on) do
+          "Want to learn more? #{link_to("Get the book.", ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
         end
       end +
-      if block_given?
-        capture(&block)
-      end
+      div_for(card, :explication_of) do
+        mark_up <<-MARKETING
+For $1.99 per month, you may have information about
+
+* Your upcoming yearly card
+* Your upcoming 52-day card
+* The next date your cards change
+* YOUR DAILY CARD FOR EVERY SINGLE DAY
+
+Cool huh?
+        
+        MARKETING
+      end +
+      link_to('Yes, begin my 7-day trial.', 'javascript: null', :class => 'call_to_action trailing lunar_navigation') +
+      link_to('No, this is enough for now.', 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation')
     end
   end
   
