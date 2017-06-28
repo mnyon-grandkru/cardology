@@ -108,7 +108,11 @@ class Birthday < ApplicationRecord
   end
   
   def card_for_last_planet
-    card_for_the_planetary_period_on_date(Date.today - 52.days)
+    card_for_the_planetary_period_on_date Date.today - 52.days
+  end
+  
+  def card_for_next_planet
+    card_for_the_planetary_period_on_date Date.today + 52.days
   end
   
   def card_for_the_planetary_period_on_date date
