@@ -109,4 +109,17 @@ member_form:
 
   privacy_policy: |
     <span class='terms'>Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.</span>
-    
+
+subscription:
+  teaser:
+    header: See More Cards
+    subheader: Become a member
+    offer: |
+      For $1.99 per month, you may have information about
+
+      * Your upcoming yearly card
+      * Your upcoming 52-day card
+      * YOUR DAILY CARD FOR EVERY SINGLE DAY
+
+      Cool huh?
+    accept: Yes, begin my 7-day trial.

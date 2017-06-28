@@ -30,8 +30,8 @@ module ReadingsHelper
   def subscription_marketing_pane
     card = @birthday.birth_card
     div_for @birthday, 'subscription_marketing_for', :class => "card_reading_pane pane fore" do
-      content_tag(:header, 'See More Cards') +
-      content_tag(:header, 'Become a member', :class => 'subtitle') +
+      content_tag(:header, marketing_text('subscription', 'teaser', 'header')) +
+      content_tag(:header, marketing_text('subscription', 'teaser', 'subheader'), :class => 'subtitle') +
       div_for(card, :identification_of) do
         div_for(card, :name_of) do
           card.name
@@ -42,20 +42,10 @@ module ReadingsHelper
         end
       end +
       div_for(card, :explication_of) do
-        mark_up <<-MARKETING
-For $1.99 per month, you may have information about
-
-* Your upcoming yearly card
-* Your upcoming 52-day card
-* The next date your cards change
-* YOUR DAILY CARD FOR EVERY SINGLE DAY
-
-Cool huh?
-        
-        MARKETING
+        mark_up marketing_text 'subscription', 'teaser', 'offer'
       end +
-      link_to('Yes, begin my 7-day trial.', 'javascript: null', :class => 'call_to_action trailing lunar_navigation') +
-      link_to('No, this is enough for now.', 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation')
+      link_to(marketing_text('subscription', 'teaser', 'accept'), 'javascript: null', :class => 'call_to_action trailing lunar_navigation') +
+      link_to(marketing_text('subscription', 'teaser', 'defer'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation')
     end
   end
   
