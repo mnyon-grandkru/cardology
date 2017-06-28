@@ -2,10 +2,7 @@ module CardsHelper
   def card_preview reading
     content_tag :div, :id => "#{reading}_card_preview", :class => 'pane card_preview' do
       div_for(Card.last, :identification_of) do
-        image_tag(Card.send("#{reading}_card_back_image"), :class => 'card_face_image') +
-        div_for(Card.last, :opportunities_on) do
-          "#{marketing_text 'book', 'question'} #{link_to(marketing_text('book', 'answer'), ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
-        end
+        image_tag(Card.send("#{reading}_card_back_image"), :class => 'card_face_image')
       end +
       content_tag(:header, marketing_text('heading', 'member', reading.to_s, 'header'), :class => 'preview_header', :id => "#{reading}_preview_header") +
       div_for(Card.last, :explication_of) do
