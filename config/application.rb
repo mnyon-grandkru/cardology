@@ -14,5 +14,6 @@ module Cardology
     config.action_dispatch.default_headers["X-Content-Security-Policy"] = "FRAME-ANCESTORS https://*.lifeelevated.life";
     config.action_dispatch.default_headers["Content-Security-Policy"] = "FRAME-ANCESTORS https://*.lifeelevated.life";
     config.action_dispatch.default_headers["X-Frame-Options"] = "FRAME-ANCESTORS https://www.lifeelevated.life/";
+    config.action_dispatch.default_headers["Access-Control-Allow-Origin"] = "*";
   end
 end

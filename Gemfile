@@ -26,6 +26,7 @@ gem 'memoist'
 gem 'rollbar'
 gem 'oj'
 gem 'braintree'
+gem 'js-routes'
 
 group :development, :test do
   gem 'byebug', platform: :mri
