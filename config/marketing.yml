@@ -13,9 +13,6 @@ member_form:
     <span class='terms'>Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.</span>
 
 subscription:
-  checkout:
-    button: "See Today's Card"
-    submit: "Yes, I'm Ready!"
   teaser:
     header: See More Cards
     subheader: Become a member
@@ -64,7 +61,7 @@ heading:
       header: "Your Birth Card"
     personality:
       header: "Your Personality Card"
-      subheader: "This card is the second most important card in your life. You may even be more identified with it than your Birth Card. It’s how you show up in your world."
+      subheader: 
     yearly:
       header_last: "Last Yearly Card"
       header: "Your Yearly Card"
@@ -83,7 +80,7 @@ heading:
       header: "Their Birth Card"
     personality:
       header: "Their Personality Card"
-      subheader: "This card is the second most important card in their life. They may even be more identified with it than their Birth Card. It’s how they show up in their world."
+      subheader: 
     yearly:
       header_last: "Last Yearly Card"
       header: "Their Yearly Card"
