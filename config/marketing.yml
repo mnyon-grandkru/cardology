@@ -34,7 +34,7 @@ card_previews:
     yearly:
       header_last: "Last Yearly Card"
       header: "Your Yearly Card"
-      header_next: "Next Yearly Card"
+      header_next: "Coming Yearly Card"
       subheader: "This card represents the main theme of your year. Your year starts from your last birthday until your next birthday."
       description: |
          Starting on our Birthday, we have new cards to play each year. Based on which cards are in play, we have specific challenges to resolve and specific opportunities for growth. 
@@ -46,7 +46,7 @@ card_previews:
     planetary:
       header_last: "Previous 52-Day Card"
       header: "Your 52-Day Card"
-      header_next: "Next 52-Day Card"
+      header_next: "Coming 52-Day Card"
       subheader: "This card represents the current period of your year. It indicates a specific energy pattern in play for this 52-day cycle."
       description: |
           During our year, from Birthday to Birthday, we move through seven specific cycles of influence. Each cycle in the year is 52 days long. 
@@ -74,19 +74,19 @@ card_previews:
     yearly:
       header_last: "Last Yearly Card"
       header: "Their Yearly Card"
-      header_next: "Next Yearly Card"
+      header_next: "Coming Yearly Card"
       subheader: "This card represents the main theme of the year. Your year is from your last birthday until your next birthday."
       description: |
          Starting on our Birthday, we have new cards to play each year. Based on which cards are in play, we have specific challenges to resolve and specific opportunities for growth. 
 
          <strong class='joining_players_club'>Join the Players Club</strong> to find out the card that indicates the central theme of your life this year.  It's FREE to join.
-      button_last: "See Last Year's Card"
+      button_last: See Last Year's Card
       button_current: "See This Year's Card"
       button_next: "See Next Year's Card"
     planetary:
       header_last: "Previous 52-Day Card"
       header: "Their 52-Day Card"
-      header_next: "Next 52-Day Card"
+      header_next: "Coming 52-Day Card"
       subheader: "This card represents the current period of their year. It indicates a specific energy pattern in play for this 52-day cycle."
       description: |
           During our year, from Birthday to Birthday, we move through seven specific cycles of influence. Each cycle in the year is 52 days long. 
@@ -119,7 +119,13 @@ subscription:
 
       * Your upcoming yearly card
       * Your upcoming 52-day card
+      * The date your cards will change
       * YOUR DAILY CARD FOR EVERY SINGLE DAY
 
       Cool huh?
     accept: Yes, begin my 7-day trial.
+    defer: No, this is enough for now.
+
+book:
+  question: "Want to learn more?"
+  answer: "Get the book."

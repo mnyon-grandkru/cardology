@@ -13,7 +13,7 @@ module ReadingsHelper
             end +
             image_tag(card.image, :class => 'card_face_image') +
             div_for(Card.last, :opportunities_on) do
-              "Want to learn more? #{link_to("Get the book.", ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
+              "#{marketing_text 'book', 'question'} #{link_to(marketing_text('book', 'answer'), ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
             end
           end +
           div_for(card, :explication_of) do
@@ -38,7 +38,7 @@ module ReadingsHelper
         end +
         image_tag(card.image, :class => 'card_face_image') +
         div_for(Card.last, :opportunities_on) do
-          "Want to learn more? #{link_to("Get the book.", ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
+          "#{marketing_text 'book', 'question'} #{link_to(marketing_text('book', 'answer'), ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
         end
       end +
       div_for(card, :explication_of) do

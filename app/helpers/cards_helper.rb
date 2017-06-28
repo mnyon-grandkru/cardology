@@ -4,7 +4,7 @@ module CardsHelper
       div_for(Card.last, :identification_of) do
         image_tag(Card.send("#{reading}_card_back_image"), :class => 'card_face_image') +
         div_for(Card.last, :opportunities_on) do
-          "Want to learn more? #{link_to("Get the book.", ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
+          "#{marketing_text 'book', 'question'} #{link_to(marketing_text('book', 'answer'), ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
         end
       end +
       content_tag(:header, marketing_text('card_previews', 'member', reading.to_s, 'header'), :class => 'preview_header', :id => "#{reading}_preview_header") +
