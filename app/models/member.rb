@@ -7,7 +7,7 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   
   enum :zodiac_sign => [:aries, :taurus, :gemini, :cancer, :leo, :virgo, :libra, :scorpio, :sagittarius, :capricorn, :aquarius, :pisces]
-  
+  enum :subscription_status => [:active, :overdue, :cancelled]
   belongs_to :birthday
   belongs_to :lookup
   

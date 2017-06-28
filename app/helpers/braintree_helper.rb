@@ -2,24 +2,26 @@ module BraintreeHelper
 
   def checkout_form
     braintree_dropin +
-    form_with(:url => "/checkouts", :id => "payment-form") do |subscription_form|
+    form_with(:url => subscriptions_path, :id => "payment-form") do |subscription_form|
       tag.div(:id => 'bt-dropin') +
-      subscription_form.hidden_field :id => 'nonce', :name => 'payment_method_nonce'
-      subscription_form.submit
+      subscription_form.hidden_field(:payment_method_nonce, :id => 'nonce') +
+      subscription_form.hidden_field(:member_id, :value => @member.id) +
+      subscription_form.submit('Join to see your Daily Card!', :id => 'subscribe_button')
     end
   end
   
   def braintree_dropin
     tag.script(:src => "https://js.braintreegateway.com/web/dropin/1.2.0/js/dropin.min.js") +
     tag.script do
-      "$.ajax({
-        url: '#{new_subscription_path}',
-        success: function(data) {
-          braintreeClientToken = data.client_token;
-          initializeBraintree();
-        }
-      })"
+      "$(document).on('turbolinks:load', function() {
+        $.ajax({
+          url: '#{new_subscription_path}',
+          success: function(data) {
+            braintreeClientToken = data.client_token;
+            initializeBraintree();
+          }
+        });
+      });"
     end
   end
-  
 end
