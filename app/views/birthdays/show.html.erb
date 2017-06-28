@@ -27,7 +27,6 @@
       <% if @querent == 'member' && @member.subscribed? %>
         <%= card_reading_pane @birthday.card_for_today, :daily, marketing_text('heading', @querent, 'daily', 'header'), marketing_text('heading', @querent, 'daily', 'subheader'), 'back' do %>
           <%= link_to marketing_text('button', @querent, 'birth', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
-          <%= quote %>
         <% end %>
       <% end %>
     <% end %>
@@ -65,12 +64,10 @@
       <%= card_reading_pane @birthday.card_for_this_year, :yearly, marketing_text('heading', @querent, 'yearly', 'header'), marketing_text('heading', @querent, 'yearly', 'subheader') do %>
         <%= link_to marketing_text('button', @querent, 'yearly', 'button_last'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
         <%= link_to marketing_text('button', @querent, 'yearly', 'button_next'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' if @querent == 'member' && braintree_enabled? %>
-        <%= quote %>
       <% end %>
   
       <%= card_reading_pane @birthday.card_for_last_year, :yearly, marketing_text('heading', @querent, 'yearly', 'header_last'), marketing_text('heading', @querent, 'yearly', 'subheader'), 'back' do %>
         <%= link_to marketing_text('button', @querent, 'yearly', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
-        <%= quote %>
       <% end %>
       
       <%= card_reading_pane @birthday.card_for_next_year, :yearly, marketing_text('heading', @querent, 'yearly', 'header_next'), marketing_text('heading', @querent, 'yearly', 'subheader'), 'fore' do %>
