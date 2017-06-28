@@ -16,6 +16,11 @@ new_teammates:
   subheader: "Look Up Someone Else's Cards"
   instructions: "Enter their Date of Birth"
 
+navigation:
+  lookup: 'Birth Card Lookup'
+  reading: 'My Reading'
+  log_out: 'Log Out'
+
 card_previews:
   member:
     birth:

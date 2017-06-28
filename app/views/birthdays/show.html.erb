@@ -1,8 +1,8 @@
 <%= clearleft %>
-<%= link_to 'Birth Card Lookup', new_birthday_path, :id => 'new_lookup_link', :class => 'lunar_navigation' %>
+<%= link_to marketing_text('navigation', 'lookup'), new_birthday_path, :id => 'new_lookup_link', :class => 'lunar_navigation' %>
 <% if params[:navigation_shown] %>
   <%= clearleft %><%= clearleft %><%= clearleft %>
-  <%= link_to 'My Reading', root_url, :class => 'lunar_navigation' %>
+  <%= link_to marketing_text('navigation', 'reading'), root_url, :class => 'lunar_navigation' %>
 <% end %>
 <%= clearleft %><%= clearleft %><%= clearleft %>
 <%= content_tag :div, :class => 'reading_display_container' do %>
