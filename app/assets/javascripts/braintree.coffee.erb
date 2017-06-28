@@ -1,9 +1,9 @@
 braintreeClientToken = undefined
 
-initializeBraintree = ->
+initializeBraintree = (dropin) ->
   braintree.dropin.create {
     authorization: braintreeClientToken
-    container: '.bt-dropin'
+    container: dropin
     paypal: flow: 'vault'
   }, (createErr, instance) ->
     $('.braintree_container').on 'submit', '.subscription_payment', (event) ->
@@ -23,10 +23,15 @@ initializeBraintree = ->
     $('.braintree_container').show()
 
 $(document).on 'turbolinks:load', ->
+  $.each $('.braintree_container'), (i, container) ->
+    id = '#bt-dropin-' + (i + 1)
+    initializeCheckout id
+  
+initializeCheckout = (dropin) ->
   $.ajax
     url: Routes.new_subscription_path()
     success: (data) ->
       braintreeClientToken = data.client_token
-      initializeBraintree()
+      initializeBraintree(dropin)
       return
   return
