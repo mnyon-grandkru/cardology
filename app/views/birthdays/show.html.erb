@@ -92,9 +92,13 @@
         <%= link_to marketing_text('button', @querent, 'planetary', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
       <% end %>
     <% end %>
-  <% end %>
   
-  <% if @member.subscribed? %>
-    <%= link_to 'I am ready to end my subscription.', cancel_subscriptions_path(:member_id => @member.id), :data => {:confirm => "Do you wish to suspend your subscription, #{@member.name}?"}, :method => :delete %>
+    <% if braintree_enabled? %>
+      <%= div_for @member, :subscription_management_for do %>
+        <% if @member.subscribed? %>
+          <%= link_to 'I am ready to end my subscription.', cancel_subscriptions_path(:member_id => @member.id), :data => {:confirm => "Do you wish to suspend your subscription, #{@member.name}?"}, :method => :delete %>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
