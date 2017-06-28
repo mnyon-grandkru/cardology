@@ -21,7 +21,7 @@ class SubscriptionsController < ApplicationController
       
       if subscription_creation.success?
         @member.subscription_status = 'active'
-        @message = "Thank you for becoming a member!  Your card for today is the #{@member.birthday.card_for_today.name}.  You can also look into the future at your upcoming cards."
+        @message = "Thank you for becoming a member!  Your card for today is the #{@member.birthday.card_for_today.name}.  You can also look into the future at your upcoming cards (refresh this page)."
       else
         @message = "Your transaction was not completed.  This may be due to bank security measures, which are very tight these days.  If you use a different payment method or contact your bank, perhaps the next attempt will succeed."
       end
@@ -32,6 +32,21 @@ class SubscriptionsController < ApplicationController
   end
   
   def cancel
+    @member = Member.find params[:member_id]
+    @customer = Braintree::Customer.find @member.braintree_id
+    subscriptions = Braintree::Subscription.search do |search|
+      search.plan_id.is ENV['BRAINTREE_SUBSCRIPTION_PLAN']
+    end
     
+    member_subscriptions = subscriptions.select { |subscription| subscription.transactions.last.customer_details.id == @customer.id rescue nil }.compact
+    if member_subscriptions.present?
+      member_subscriptions.each do |subscription|
+        cancellation_result = Braintree::Subscription.cancel subscription.id
+        Rails.logger.info cancellation_result.inspect
+      end
+      @member.subscription_status = 'cancelled'
+      @member.save
+    end
+    redirect_to @member.birthday
   end
 end

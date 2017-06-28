@@ -93,4 +93,8 @@
       <% end %>
     <% end %>
   <% end %>
+  
+  <% if @member.subscribed? %>
+    <%= link_to 'I am ready to end my subscription.', cancel_subscriptions_path(:member_id => @member.id), :data => {:confirm => "Do you wish to suspend your subscription, #{@member.name}?"}, :method => :delete %>
+  <% end %>
 <% end %>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   
   resources :subscriptions, :only => [:new, :create] do
-    member do
+    collection do
       delete :cancel
     end
   end
