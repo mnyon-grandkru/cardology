@@ -19,9 +19,10 @@ initializeBraintree = ->
       return
     return
 
-  # $('.pane').on 'click', '.subscribe', ->
-    # $('#subscription_payment').trigger 'submit'
-
+  $('.pane').on 'click', '.subscribe', ->
+    $('#braintree_container').show()
+    $('#braintree_container').focus()
+    $('.birth_card_for_birthday .subscribe').hide()
 
 $(document).on 'turbolinks:load', ->
   $.ajax
