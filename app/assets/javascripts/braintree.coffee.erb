@@ -3,26 +3,24 @@ braintreeClientToken = undefined
 initializeBraintree = ->
   braintree.dropin.create {
     authorization: braintreeClientToken
-    container: '#bt-dropin'
+    container: '.bt-dropin'
     paypal: flow: 'vault'
   }, (createErr, instance) ->
-    $('#braintree_container').on 'submit', '#subscription_payment', (event) ->
+    $('.braintree_container').on 'submit', '.subscription_payment', (event) ->
       event.preventDefault()
-      $('#braintree_container').off 'submit'
+      $('.braintree_container').off 'submit'
       instance.requestPaymentMethod (err, payload) ->
         if err
           console.log 'Error', err
           return
-        $('#nonce').val payload.nonce
-        $('#subscription_payment').submit()
+        $('.nonce').val payload.nonce
+        $(event.currentTarget).submit()
         return
       return
     return
 
-  $('.pane').on 'click', '.subscribe', ->
-    $('#braintree_container').show()
-    $('#braintree_container').focus()
-    $('.birth_card_for_birthday .subscribe').hide()
+  $('.pane').on 'click', '.subscribe', (event) ->
+    $('.braintree_container').show()
 
 $(document).on 'turbolinks:load', ->
   $.ajax

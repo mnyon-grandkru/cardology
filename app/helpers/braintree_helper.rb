@@ -1,21 +1,15 @@
 module BraintreeHelper
-
-  def checkout_display_button
-    link_to marketing_text('subscription', 'checkout', 'button'), "javascript: $('#braintree_container').show();", :class => 'subscribe call_to_action trailing lunar_navigation'
-  end
-
   def checkout_form
     if braintree_enabled?
-      content_tag(:div, :id => 'braintree_container') do
+      content_tag(:div, :class => 'braintree_container') do
         braintree_dropin +
-        form_with(:url => subscriptions_path, :id => "subscription_payment") do |subscription_form|
-          tag.div(:id => 'bt-dropin') +
-          subscription_form.hidden_field(:payment_method_nonce, :id => 'nonce') +
+        form_with(:url => subscriptions_path, :class => "subscription_payment") do |subscription_form|
+          tag.div(:class => 'bt-dropin') +
+          subscription_form.hidden_field(:payment_method_nonce, :class => 'nonce') +
           subscription_form.hidden_field(:member_id, :value => @member.id) +
           subscription_form.submit(marketing_text('subscription', 'checkout', 'submit'), :id => 'subscribe_button')
         end
-      end +
-      checkout_display_button
+      end
     end
   end
   

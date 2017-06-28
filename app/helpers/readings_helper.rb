@@ -44,6 +44,7 @@ module ReadingsHelper
       div_for(card, :explication_of) do
         mark_up marketing_text 'subscription', 'teaser', 'offer'
       end +
+      checkout_form +
       link_to(marketing_text('subscription', 'teaser', 'accept'), 'javascript: null', :class => 'subscribe call_to_action trailing lunar_navigation') +
       link_to(marketing_text('subscription', 'teaser', 'defer'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation')
     end
