@@ -60,6 +60,12 @@ img.image_gallery {
   -webkit-transform: rotateY(179deg);
           transform: rotateY(179deg);
 }
+.panel.skip .front {
+  z-index: 900;
+
+  -webkit-transform: rotateY(-179deg);
+          transform: rotateY(-179deg);
+}
 
 .panel .back {
   float: none;
@@ -83,6 +89,35 @@ img.image_gallery {
 }
 
 .panel.flip .back {
+  z-index: 1000;
+  height: auto;
+
+  -webkit-transform: rotateX(0) rotateY(0);
+          transform: rotateX(0) rotateY(0);
+}
+
+.panel .fore {
+  float: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 800;
+
+  -webkit-transform: rotateY(179deg);
+          transform: rotateY(179deg);
+
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+
+  /* -- transition is the magic sauce for animation -- */
+  -webkit-transition: all .8s ease-in-out;
+          transition: all .8s ease-in-out;
+}
+
+.panel.skip .fore {
   z-index: 1000;
   height: auto;
 

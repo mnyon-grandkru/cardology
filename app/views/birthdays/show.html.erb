@@ -60,12 +60,17 @@
     <%= content_tag :div, :class => "panel yearly" do %>
       <%= card_reading_pane @birthday.card_for_this_year, :yearly, marketing_text('card_previews', @querent, 'yearly', 'header'), marketing_text('card_previews', @querent, 'yearly', 'subheader') do %>
         <%= link_to marketing_text('card_previews', @querent, 'yearly', 'button_last'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
+        <%= link_to marketing_text('card_previews', @querent, 'yearly', 'button_next'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
         <%= quote %>
       <% end %>
   
       <%= card_reading_pane @birthday.card_for_last_year, :yearly, marketing_text('card_previews', @querent, 'yearly', 'header_last'), marketing_text('card_previews', @querent, 'yearly', 'subheader'), 'back' do %>
         <%= link_to marketing_text('card_previews', @querent, 'yearly', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
         <%= quote %>
+      <% end %>
+      
+      <%= card_reading_pane @birthday.card_for_next_year, :yearly, marketing_text('card_previews', @querent, 'yearly', 'header_next'), marketing_text('card_previews', @querent, 'yearly', 'subheader'), 'fore' do %>
+        <%= link_to marketing_text('card_previews', @querent, 'yearly', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
       <% end %>
     <% end %>
   

@@ -14,3 +14,8 @@ window.attachFlippers = ->
     $(this).closest('.panel').toggleClass 'flip'
     $.scrollTo($(this).closest('.panel'), 1000)
     event.preventDefault()
+  
+  $('.card_reading_pane').on 'click', '.skip_card', (event) ->
+    $(this).closest('.panel').toggleClass 'skip'
+    $.scrollTo($(this).closest('.panel'), 1000)
+    event.preventDefault()

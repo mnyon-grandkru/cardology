@@ -84,7 +84,11 @@ class Birthday < ApplicationRecord
   end
   
   def card_for_last_year
-    card_for_the_year_on_date(Date.today - 1.year)
+    card_for_the_year_on_date Date.today - 1.year
+  end
+  
+  def card_for_next_year
+    card_for_the_year_on_date Date.today + 1.year
   end
   
   def card_for_the_year_on_date date
