@@ -70,7 +70,7 @@ class Birthday < ApplicationRecord
   end
   
   def card_for_today
-    spread_ordinal = ((weeks_since_birth + 45) % 90)
+    spread_ordinal = weeks_since_birth % 90
     spread = Spread.find_by(:age => spread_ordinal)
     position_of_birth_card = spread.position_of birth_card
     position = position_of_birth_card.position - position_in_week
