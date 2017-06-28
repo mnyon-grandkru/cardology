@@ -15,7 +15,7 @@
     <% end %>
     <%= content_tag :div, :class => "panel birth" do %>
       <%= card_reading_pane @birthday.birth_card, :birth, "#@pronoun Birth Card", "For #{@birthday.birthdate.strftime("%b %e %Y")}" do %>
-        <% if @member.subscription_status == 'active' %>
+        <% if @member.subscribed? %>
           <%= link_to marketing_text('card_previews', @querent, 'daily', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
         <% else %>
           <%= checkout_form %>

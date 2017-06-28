@@ -1,6 +1,6 @@
 module ReadingsHelper
   def card_reading_pane card, reading, title, subtitle, side = 'front', &block
-    if side == 'fore' && @member.subscription_status != 'active'
+    if side == 'fore' && !@member.subscribed?
       subscription_marketing_pane
     else
       div_for @birthday, "#{reading}_card_for", :class => "card_reading_pane pane #{side}" do
