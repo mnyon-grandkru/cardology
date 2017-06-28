@@ -115,6 +115,14 @@ class Birthday < ApplicationRecord
     card_for_the_planetary_period_on_date Date.today + 52.days
   end
   
+  def days_until_next_planet
+    52 - (days_since_birthday_on_date(Date.today) % 52)
+  end
+  
+  def date_of_next_planet
+    Date.today + days_until_next_planet.days
+  end
+  
   def card_for_the_planetary_period_on_date date
     return Card.joker if birth_card == Card.joker
     spread = Spread.find_by(:age => age_on_date(date))

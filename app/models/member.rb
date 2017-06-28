@@ -11,6 +11,10 @@ class Member < ApplicationRecord
   belongs_to :birthday
   belongs_to :lookup
   
+  def subscribed?
+    subscription_status == 'active'
+  end
+  
   def self.generate_password
     ENV['INITIAL_PASSWORD']
   end
