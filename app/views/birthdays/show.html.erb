@@ -15,7 +15,7 @@
     <% end %>
     <%= content_tag :div, :class => "panel birth" do %>
       <%= card_reading_pane @birthday.birth_card, :birth, "#@pronoun Birth Card", "For #{@birthday.birthdate.strftime("%b %e %Y")}" do %>
-        <% if @querent == 'member' %>
+        <% if @querent == 'member' && braintree_enabled? %>
           <%= link_to marketing_text('button', @querent, 'daily', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
         <% end %>
       <% end %>
