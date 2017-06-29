@@ -2,7 +2,6 @@ module BraintreeHelper
   def checkout_form
     if braintree_enabled?
       content_tag(:div, :class => 'braintree_container') do
-        braintree_dropin +
         form_with(:url => subscriptions_path, :class => "subscription_payment") do |subscription_form|
           tag.div(:id => "bt-dropin-#{dropin_count}") +
           subscription_form.hidden_field(:payment_method_nonce, :class => 'nonce') +
@@ -13,7 +12,7 @@ module BraintreeHelper
     end
   end
   
-  def braintree_dropin
+  def braintree_script
     tag.script :src => "https://js.braintreegateway.com/web/dropin/1.2.0/js/dropin.min.js"
   end
   
