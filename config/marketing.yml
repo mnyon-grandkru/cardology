@@ -27,6 +27,8 @@ subscription:
       Cool huh?
     accept: Yes, begin my 7-day trial.
     defer: No, this is enough for now.
+  checkout:
+    submit: Yes, I'm ready
 
 book:
   question: "Want to learn more?"
