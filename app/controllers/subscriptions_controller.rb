@@ -21,9 +21,9 @@ class SubscriptionsController < ApplicationController
       
       if subscription_creation.success?
         @member.subscription_status = 'active'
-        @message = "Thank you for becoming a member!  Your card for today is the #{@member.birthday.card_for_today.name}.  You can also look into the future at your upcoming cards (refresh this page)."
+        @message = "#{view_context.marketing_text('subscription', 'transaction', 'succeeded_first')}#{@member.birthday.card_for_today.name}#{view_context.marketing_text('subscription', 'transaction', 'succeeded_second')}"
       else
-        @message = "Your transaction was not completed.  This may be due to bank security measures, which are very tight these days.  If you use a different payment method or contact your bank, perhaps the next attempt will succeed."
+        @message = view_context.marketing_text('subscription', 'transaction', 'failed')
       end
     else
       p customer_creation.errors
