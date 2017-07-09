@@ -12,25 +12,25 @@ initializeBraintree = (dropin) ->
       instance.requestPaymentMethod (err, payload) ->
         if err
           console.log 'Error', err
-          return 1
+          return
         $('.nonce').val payload.nonce
         $(event.currentTarget).submit()
-        return 1
-      return 1
-    return 1
+        return
+      return
+    return
 
   $('.pane').on 'click', '.subscribe', ->
     $(this).prev('.braintree_container').show()
     $(this).hide()
-    return 1
-  return 1
+    return false
+  return false
 
 $(document).on 'turbolinks:load', ->
   $.each $('.braintree_container'), (i, container) ->
     id = '#bt-dropin-' + (i + 1)
     initializeCheckout id
-    return 1
-  return 1
+    return
+  return
   
 initializeCheckout = (dropin) ->
   $.ajax
@@ -38,5 +38,5 @@ initializeCheckout = (dropin) ->
     success: (data) ->
       braintreeClientToken = data.client_token
       initializeBraintree(dropin)
-      return 1
-  return 1
+      return
+  return
