@@ -19,16 +19,16 @@ subscription:
     offer: |
       For $1.97 per month, you will discover
 
-      * Your upcoming Yearly Card
-      * Your upcoming 52-day Card
-      * The exact date your 52-day Card will change
-      * Your personal Daily Card for each and every day!
+      * Your upcoming Yearly Card, so you can see what's coming.
+      * Your upcoming 52-day Card, so you can plan accordingly.
+      * The exact date your 52-day Card will change...
+      * And your personal Daily Card for each and every day!
 
       Cool huh?
-    accept: Yes, begin my 7-day trial.
+    accept: Yes, begin my FREE 7-day trial.
     defer: No, this is enough for now.
   checkout:
-    submit: Yes, I'm ready
+    submit: Yes, I'm ready to learn more!
   transaction:
     succeeded_first: "Thank you for becoming a member!  Your card for today is the "
     succeeded_second: ".  You can also look into the future at your upcoming cards (refresh this page)."
@@ -80,7 +80,7 @@ heading:
       header_last: "Previous 52-Day Card"
       header: "Your 52-Day Card"
       header_next: "Coming 52-Day Card"
-      subheader: "This card represents the current period of your year. It indicates a specific energy pattern in play for this 52-day cycle."
+      subheader: "This card represents a specific energy pattern in play for this 52-day cycle."
     daily:
       header: "Today's Card"
       subheader: "This card will be with you until midnight."
