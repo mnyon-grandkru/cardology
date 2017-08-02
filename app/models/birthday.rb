@@ -22,7 +22,7 @@ class Birthday < ApplicationRecord
   end
   
   def age
-    ((Date.today - birthdate) / (1.year.to_f / 1.day.to_f)).floor
+    ((Date.current - birthdate) / (1.year.to_f / 1.day.to_f)).floor
   end
   
   def actual_age_on_date date
@@ -41,11 +41,11 @@ class Birthday < ApplicationRecord
   end
   
   def days_since_birthday #including the birthday
-    days_since_birthday_on_date Date.today
+    days_since_birthday_on_date Date.current
   end
   
   def days_since_birthday_on_date date
-    today = Date.today
+    today = Date.current
     if date.month > month
       last_birthday = Date.new date.year, month, day
     elsif date.month < month || date.day < day
@@ -58,7 +58,7 @@ class Birthday < ApplicationRecord
   end
   
   def days_since_birth
-    Date.today - birthdate
+    Date.current - birthdate
   end
   
   def weeks_since_birth
@@ -80,15 +80,15 @@ class Birthday < ApplicationRecord
   end
   
   def card_for_this_year
-    card_for_the_year_on_date Date.today
+    card_for_the_year_on_date Date.current
   end
   
   def card_for_last_year
-    card_for_the_year_on_date Date.today - 1.year
+    card_for_the_year_on_date Date.current - 1.year
   end
   
   def card_for_next_year
-    card_for_the_year_on_date Date.today + 1.year
+    card_for_the_year_on_date Date.current + 1.year
   end
   
   def card_for_the_year_on_date date
@@ -104,23 +104,23 @@ class Birthday < ApplicationRecord
   end
   
   def card_for_this_planet
-    card_for_the_planetary_period_on_date Date.today
+    card_for_the_planetary_period_on_date Date.current
   end
   
   def card_for_last_planet
-    card_for_the_planetary_period_on_date Date.today - 52.days
+    card_for_the_planetary_period_on_date Date.current - 52.days
   end
   
   def card_for_next_planet
-    card_for_the_planetary_period_on_date Date.today + 52.days
+    card_for_the_planetary_period_on_date Date.current + 52.days
   end
   
   def days_until_next_planet
-    52 - (days_since_birthday_on_date(Date.today) % 52)
+    52 - (days_since_birthday_on_date(Date.current) % 52)
   end
   
   def date_of_next_planet
-    Date.today + days_until_next_planet.days
+    Date.current + days_until_next_planet.days
   end
   
   def card_for_the_planetary_period_on_date date

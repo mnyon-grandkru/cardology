@@ -7,6 +7,7 @@ class BirthdaysController < ApplicationController
   end
   
   def show
+    Time.zone = ActiveSupport::TimeZone[session[:time_zone]] if session[:time_zone]
     @member = current_member || Member.find(params[:member_id])
     @birthday = Birthday.find params[:id]
     @birth_card = @birthday.birth_card

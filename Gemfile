@@ -27,6 +27,7 @@ gem 'rollbar'
 gem 'oj'
 gem 'braintree'
 gem 'js-routes'
+gem 'momentjs-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -54,4 +54,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
   config.log_level = :info
+  config.time_zone = 'Eastern Time (US & Canada)'
 end

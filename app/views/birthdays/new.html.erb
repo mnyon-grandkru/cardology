@@ -27,6 +27,7 @@
             <div class="actions">
               <%= submit_tag marketing_text('returning_players', 'button'), :id => 'login_submit_button' %>
             </div>
+            <%= hidden_field_tag :time_zone %>
           <% end %>
           <%= link_to marketing_text('returning_players', 'reset_name'), new_password_path(:member) %>
         </div>

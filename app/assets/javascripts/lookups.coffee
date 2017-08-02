@@ -25,3 +25,6 @@ $(document).on 'turbolinks:load', ->
 
   $('.joining_players_club').on 'click', ->
     $('#member_first_name').focus();
+
+  if $('#time_zone')
+    $('#time_zone').val moment().format('Z')

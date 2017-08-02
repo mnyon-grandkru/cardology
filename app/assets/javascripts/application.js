@@ -16,4 +16,5 @@
 //= require jquery.scrollTo
 //= require turbolinks
 //= require js-routes
+//= require moment
 //= require_tree .
