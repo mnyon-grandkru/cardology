@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 $(document).on 'turbolinks:load', ->
   $('#getresponse_delivery').validate()
   $('.member_form_container').on 'submit', '#getresponse_delivery', (event) ->

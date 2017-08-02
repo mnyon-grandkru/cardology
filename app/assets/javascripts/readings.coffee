@@ -7,7 +7,10 @@ window.resizeReading = ->
     if ($(p).hasClass('flip'))
       $(p).height $(p).find('.card_reading_pane.back').outerHeight() + 30
     else
-      $(p).height $(p).find('.card_reading_pane.front').outerHeight() + 30
+      if ($(p).hasClass('skip'))
+        $(p).height $(p).find('.card_reading_pane.fore').outerHeight() + 30
+      else
+        $(p).height $(p).find('.card_reading_pane.front').outerHeight() + 30
 
 window.attachFlippers = ->
   $('.card_reading_pane').off('click').on 'click', '.flip_card', (event) ->
