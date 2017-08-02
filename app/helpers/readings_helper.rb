@@ -1,7 +1,7 @@
 module ReadingsHelper
   def card_reading_pane card, reading, title, subtitle, side = 'front', &block
-    if side == 'fore' && !@member.subscribed?
-      subscription_marketing_pane
+    if side != 'front' && !@member.subscribed?
+      subscription_marketing_pane side
     else
       div_for @birthday, "#{reading}_card_for", :class => "card_reading_pane pane #{side}" do
         content_tag(:header, title) +
@@ -27,9 +27,9 @@ module ReadingsHelper
     end
   end
   
-  def subscription_marketing_pane
+  def subscription_marketing_pane side = 'fore'
     card = @birthday.birth_card
-    div_for @birthday, 'subscription_marketing_for', :class => "card_reading_pane pane fore" do
+    div_for @birthday, 'subscription_marketing_for', :class => "card_reading_pane pane #{side}" do
       content_tag(:header, marketing_text('subscription', 'teaser', 'header')) +
       content_tag(:header, marketing_text('subscription', 'teaser', 'subheader'), :class => 'subtitle') +
       div_for(card, :identification_of) do
