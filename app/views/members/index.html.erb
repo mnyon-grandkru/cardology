@@ -1,6 +1,6 @@
 <%= tag.div do %>
   <% @members.each do |member| %>
-    <%= div_for member do %>
+    <%= div_for member, :class => 'administrative_details' do %>
       <%= div_for member, :email_of do %>
         <%= member.email %>
       <% end %>
