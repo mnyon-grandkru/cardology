@@ -1,0 +1,26 @@
+<%= tag.div do %>
+  <% @members.each do |member| %>
+    <%= div_for member do %>
+      <%= div_for member, :email_of do %>
+        <%= member.email %>
+      <% end %>
+      
+      <%= div_for member, :name_of do %>
+        <%= member.name %>
+      <% end %>
+      
+      <%= div_for member, :birthday_of do %>
+        <%= member.birthday&.name %>
+      <% end %>
+      
+      <%= div_for member, :sign_in_count_of do %>
+        logged in <%= pluralize member.sign_in_count, 'time' %>
+      <% end %>
+      
+      <%= div_for member, :subscription_status_of do %>
+        <%= "subscribed" if member.subscription_status == 'active' %>
+      <% end %>
+    <% end %>
+    <hr>
+  <% end %>
+<% end %>

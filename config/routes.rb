@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :cards
   resources :faces
   resources :suits
+  resources :members, :only => :index
   
   post '/member_save' => 'members#create', :as => 'member_save'
   put '/member_assign_zodiac/:id' => 'members#update', :as => 'member_assign_zodiac'

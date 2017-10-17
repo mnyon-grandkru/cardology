@@ -43,6 +43,14 @@ class MembersController < ApplicationController
     end
   end
   
+  def index
+    if can? :read, Member
+      @members = Member.all
+    else
+      redirect_to(root_url) && return
+    end
+  end
+  
   private
   
   def member_params
