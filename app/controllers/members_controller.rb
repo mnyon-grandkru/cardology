@@ -45,7 +45,11 @@ class MembersController < ApplicationController
   
   def index
     if can? :read, Member
-      @members = Member.all
+      if params[:filter] == 'subscribed'
+        @members = Member.where :subscription_status => Member.subscription_statuses['active']
+      else
+        @members = Member.all
+      end
     else
       redirect_to(root_url) && return
     end

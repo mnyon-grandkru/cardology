@@ -1,3 +1,10 @@
+<%= pluralize @members.count, 'member' %>
+<%= tag.br %>
+<% if params[:filter] == 'subscribed' %>
+  <%= link_to 'all', :filter => nil %>
+<% else %>
+  <%= link_to 'subscribed', :filter => 'subscribed' %>
+<% end %>
 <%= tag.div do %>
   <% @members.each do |member| %>
     <%= div_for member, :class => 'administrative_details' do %>
