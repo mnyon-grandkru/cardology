@@ -35,7 +35,7 @@ subscription:
     failed: Your transaction was not completed.  This may be due to bank security measures, which are very tight these days.  If you use a different payment method or contact your bank, perhaps the next attempt will succeed.
   unsubscribe:
     link: I am ready to end my subscription.
-    confirm: Do you wish to suspend your subscription?
+    confirm: Are you sure you wish to end your subscription?
   cancellation:
     policy: After the 7-day introductory free trial, you will be billed automatically each month. We keep all your information strictly private. We do not share your information with any third parties. You may cancel your subscription at any time.
 
