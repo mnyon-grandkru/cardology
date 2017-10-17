@@ -87,6 +87,9 @@
     <% end %>
   
     <% if braintree_enabled? %>
+      <%= tag.div :id => 'cancellation_policy' do %>
+        <%= marketing_text('subscription', 'cancellation', 'policy') %>
+      <% end %>
       <%= div_for @member, :subscription_management_for do %>
         <% if @member.subscribed? %>
           <%= link_to marketing_text('subscription', 'unsubscribe', 'link'), cancel_subscriptions_path(:member_id => @member.id), :data => {:confirm => marketing_text('subscription', 'unsubscribe', 'confirm')}, :method => :delete %>

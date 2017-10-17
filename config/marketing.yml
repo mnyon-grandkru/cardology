@@ -36,6 +36,8 @@ subscription:
   unsubscribe:
     link: I am ready to end my subscription.
     confirm: Do you wish to suspend your subscription?
+  cancellation:
+    policy: After the 7-day introductory free trial, you will be billed automatically each month. We keep all your information strictly private. We do not share your information with any third parties. You may cancel your subscription at any time.
 
 book:
   question: "Want to learn more?"
