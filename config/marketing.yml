@@ -43,6 +43,10 @@ book:
   question: "Want to learn more?"
   answer: "Get the book."
 
+coaching:
+  question: Want to learn more?
+  answer: Ask Alexander
+
 new_players:
   header: "New Players"
   subheader: "Find Out Your Birth Card"
