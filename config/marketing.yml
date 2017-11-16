@@ -37,7 +37,7 @@ subscription:
     link: I am ready to end my subscription.
     confirm: Are you sure you wish to end your subscription?
   cancellation:
-    policy: After the 7-day introductory free trial, you will be billed automatically each month. We keep all your information strictly private. We do not share your information with any third parties. You may cancel your subscription at any time.
+    policy: Policy for Premium Users:  Once you have entered your Credit Card information, you begin your 7-day introductory free trial. After that, you will be billed $1.97 automatically each month. We keep all your information strictly private. We do not share your information with any third parties. You may cancel your subscription at any time, including during the 7-day introductory free trial.
 
 book:
   question: "Want to learn more?"
