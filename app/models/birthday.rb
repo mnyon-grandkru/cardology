@@ -61,12 +61,24 @@ class Birthday < ApplicationRecord
     Date.current - birthdate
   end
   
+  def days_since_birth_on_date date
+    date - birthdate
+  end
+  
   def weeks_since_birth
     days_since_birth / 7
   end
   
+  def weeks_since_birth_on_date date
+    days_since_birth_on_date(date) / 7
+  end
+  
   def position_in_week
     (days_since_birth % 7) + 1
+  end
+  
+  def position_in_week_on_date date
+    (days_since_birth_on_date(date) % 7) + 1
   end
   
   def card_for_today
@@ -74,6 +86,16 @@ class Birthday < ApplicationRecord
     spread = Spread.find_by(:age => spread_ordinal)
     position_of_birth_card = spread.position_of birth_card
     position = position_of_birth_card.position - position_in_week
+    position = 52 + position if position < 0
+    place = Place.find_by :spread_id => spread.id, :position => position
+    place.card
+  end
+  
+  def card_for_date date
+    spread_ordinal = weeks_since_birth_on_date(date) % 90
+    spread = Spread.find_by(:age => spread_ordinal)
+    position_of_birth_card = spread.position_of birth_card
+    position = position_of_birth_card.position - position_in_week_on_date(date)
     position = 52 + position if position < 0
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
