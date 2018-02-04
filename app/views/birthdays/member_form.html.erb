@@ -35,6 +35,9 @@
         <input type="hidden" name="start_day" value="0" />
       </form>
     </div>
-    <%= mark_up marketing_text('member_form', 'privacy_policy')%>
+    <span class='terms'>
+      <%= mark_up marketing_text('member_form', 'privacy_policy') %>
+      <%= mark_up marketing_text('subscription', 'cancellation', 'policy') %>
+    </span>
   <% end %>
 <% end %>

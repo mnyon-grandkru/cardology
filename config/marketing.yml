@@ -10,7 +10,7 @@ member_form:
 
   instructions: "Create Your FREE Player Profile"
   privacy_policy: |
-    <span class='terms'>Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.</span>
+    Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.
 
 subscription:
   teaser:
