@@ -16,8 +16,8 @@ class Member < ApplicationRecord
     traits = {
       :name => name,
       :email => email,
-      :campaign => {:campaignId => ENV['GETRESPONSE_PLAYERS_CLUB_ID']}#,
-      # :customFieldValues => [{:customFieldId => 'custom_BirthDate', :value => [birthday.birthdate_string]}]
+      :campaign => {:campaignId => ENV['GETRESPONSE_PLAYERS_CLUB_ID']},
+      :customFieldValues => [{:customFieldId => ENV['GETRESPONSE_BIRTHDATE_ID'], :value => [birthday.birthdate_string]}]
     }
     client.contacts.create traits
   end
