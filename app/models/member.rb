@@ -11,6 +11,17 @@ class Member < ApplicationRecord
   belongs_to :birthday
   belongs_to :lookup
   
+  def add_to_players_club_campaign
+    client = GetResponse::Api.new
+    traits = {
+      :name => name,
+      :email => email,
+      :campaign => {:campaignId => ENV['GETRESPONSE_PLAYERS_CLUB_ID']}#,
+      # :customFieldValues => [{:customFieldId => 'custom_BirthDate', :value => [birthday.birthdate_string]}]
+    }
+    client.contacts.create traits
+  end
+  
   def subscribed?
     subscription_status == 'active'
   end

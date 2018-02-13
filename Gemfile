@@ -28,6 +28,7 @@ gem 'oj'
 gem 'braintree'
 gem 'js-routes'
 gem 'momentjs-rails'
+gem 'get_response'
 
 group :development, :test do
   gem 'byebug', platform: :mri

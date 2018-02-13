@@ -21,6 +21,7 @@ class SubscriptionsController < ApplicationController
       
       if subscription_creation.success?
         @member.subscription_status = 'active'
+        @member.add_to_players_club_campaign
         @message = "#{view_context.marketing_text('subscription', 'transaction', 'succeeded_first')}#{@member.birthday.card_for_today.name}#{view_context.marketing_text('subscription', 'transaction', 'succeeded_second')}"
       else
         @message = view_context.marketing_text('subscription', 'transaction', 'failed')
