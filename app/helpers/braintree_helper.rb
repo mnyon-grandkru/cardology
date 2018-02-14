@@ -13,7 +13,7 @@ module BraintreeHelper
   end
   
   def braintree_script
-    tag.script :src => "https://js.braintreegateway.com/web/dropin/1.2.0/js/dropin.min.js"
+    tag.script :src => "https://js.braintreegateway.com/web/dropin/1.9.4/js/dropin.min.js"
   end
   
   def dropin_count
