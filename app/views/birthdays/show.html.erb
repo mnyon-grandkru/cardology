@@ -93,8 +93,6 @@
       <%= div_for @member, :subscription_management_for do %>
         <% if @member.subscribed? %>
           <%= link_to marketing_text('subscription', 'unsubscribe', 'link'), cancel_subscriptions_path(:member_id => @member.id), :data => {:confirm => marketing_text('subscription', 'unsubscribe', 'confirm')}, :method => :delete %>
-        <% else %>
-          <%= braintree_script %>
         <% end %>
       <% end %>
     <% end %>
