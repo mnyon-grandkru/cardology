@@ -6,6 +6,23 @@
   <%= link_to 'subscribed', :filter => 'subscribed' %>
 <% end %>
 <%= tag.div do %>
+  <%= tag.div :class => 'administrative_details' do %>
+    <%= tag.div do %>
+      <%= link_to 'Email', :order => 'email' %>
+    <% end %>
+    
+    <%= tag.div do %>
+      <%= link_to 'Name', :order => 'name' %>
+    <% end %>
+    
+    <%= tag.div do %>
+    <% end %>
+    
+    <%= tag.div do %>
+      <%= link_to 'Account Duration', :order => 'created_at desc'%>
+    <% end %>
+  <% end %>
+  
   <% @members.each do |member| %>
     <%= div_for member, :class => 'administrative_details' do %>
       <%= div_for member, :email_of do %>
@@ -22,6 +39,7 @@
       
       <%= div_for member, :sign_in_count_of do %>
         logged in <%= pluralize member.sign_in_count, 'time' %>
+        since joining <%= pluralize member.account_age, 'day' %> ago on <%= member.created_at.strftime "%m/%d/%y" %>
       <% end %>
       
       <%= div_for member, :subscription_status_of do %>

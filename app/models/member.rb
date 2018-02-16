@@ -26,6 +26,10 @@ class Member < ApplicationRecord
     subscription_status == 'active'
   end
   
+  def account_age
+    ((Time.now - created_at) / 1.day).floor
+  end
+  
   def self.generate_password
     ENV['INITIAL_PASSWORD']
   end

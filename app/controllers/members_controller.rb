@@ -48,7 +48,7 @@ class MembersController < ApplicationController
       if params[:filter] == 'subscribed'
         @members = Member.where :subscription_status => Member.subscription_statuses['active']
       else
-        @members = Member.all
+        @members = Member.order params[:order]
       end
     else
       redirect_to(root_url) && return
