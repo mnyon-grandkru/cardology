@@ -92,6 +92,11 @@
       <% end %>
       <%= div_for @member, :subscription_management_for do %>
         <% if @member.subscribed? %>
+          <% if @member.subscription_past_due? %>
+            <%= content_tag :div, :class => 'payment' do %>
+              <%= payment_method_update_form @member %>
+            <% end %>
+          <% end %>
           <%= link_to marketing_text('subscription', 'unsubscribe', 'link'), cancel_subscriptions_path(:member_id => @member.id), :data => {:confirm => marketing_text('subscription', 'unsubscribe', 'confirm')}, :method => :delete %>
         <% end %>
       <% end %>

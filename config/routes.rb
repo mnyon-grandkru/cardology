@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root :to => 'birthdays#mine'
   end
   
-  resources :subscriptions, :only => [:new, :create] do
+  resources :subscriptions, :only => [:new, :create, :update] do
     collection do
       delete :cancel
     end

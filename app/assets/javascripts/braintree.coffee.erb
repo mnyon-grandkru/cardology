@@ -19,7 +19,7 @@ initializeBraintree = (dropin) ->
       return
     return
 
-  $('.pane').on 'click', '.subscribe', ->
+  $('.pane, .payment').on 'click', '.subscribe', ->
     $(this).prev('.braintree_container').show()
     $(this).hide()
     return false

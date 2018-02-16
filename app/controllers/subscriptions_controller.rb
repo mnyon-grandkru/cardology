@@ -32,6 +32,36 @@ class SubscriptionsController < ApplicationController
     @member.save
   end
   
+  def update
+    @member = Member.find params[:id]
+    @customer = Braintree::Customer.find @member.braintree_id
+    customer_update = Braintree::Customer.update(
+      @customer.id,
+      :payment_method_nonce => params[:payment_method_nonce]
+    )
+    if customer_update.success?
+      token = customer_update.customer.payment_methods.last.token
+      
+      subscriptions = Braintree::Subscription.search do |search|
+        search.plan_id.is ENV['BRAINTREE_SUBSCRIPTION_PLAN']
+      end
+    
+      member_subscriptions = subscriptions.select { |subscription| subscription.transactions.last.customer_details.id == @customer.id rescue nil }.compact
+      if member_subscriptions.present?
+        member_subscriptions.each do |subscription|
+          subscription_update = Braintree::Subscription.update(
+            subscription.id,
+            :payment_method_token => token
+          )
+          
+          if subscription_update.success?
+            @member.update_attribute :subscription_status, 'active'
+          end
+        end
+      end
+    end
+  end
+  
   def cancel
     @member = Member.find params[:member_id]
     @customer = Braintree::Customer.find @member.braintree_id
@@ -45,7 +75,7 @@ class SubscriptionsController < ApplicationController
         cancellation_result = Braintree::Subscription.cancel subscription.id
         Rails.logger.info cancellation_result.inspect
       end
-      @member.subscription_status = 'cancelled'
+      @member.subscription_status = 'canceled'
       @member.save
     end
     redirect_to @member.birthday
