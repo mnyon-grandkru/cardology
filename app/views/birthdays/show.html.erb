@@ -95,8 +95,10 @@
           <% if @member.subscription_past_due? %>
             <%= content_tag :div, :class => 'payment' do %>
               <%= payment_method_update_form @member %>
+              <%= link_to(marketing_text('subscription', 'update', 'accept'), 'javascript: null', :class => 'subscribe call_to_action trailing lunar_navigation') %>
             <% end %>
           <% end %>
+          <%= link_to marketing_text('subscription', 'update', 'initiate'), manage_subscription_path(:member_id => @member.id), :remote => true %>
           <%= link_to marketing_text('subscription', 'unsubscribe', 'link'), cancel_subscriptions_path(:member_id => @member.id), :data => {:confirm => marketing_text('subscription', 'unsubscribe', 'confirm')}, :method => :delete %>
         <% end %>
       <% end %>

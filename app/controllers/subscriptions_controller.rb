@@ -33,7 +33,7 @@ class SubscriptionsController < ApplicationController
   end
   
   def update
-    @member = Member.find params[:id]
+    @member = Member.find params[:member_id]
     @customer = Braintree::Customer.find @member.braintree_id
     customer_update = Braintree::Customer.update(
       @customer.id,
@@ -62,6 +62,10 @@ class SubscriptionsController < ApplicationController
       end
     end
     @message ||= view_context.marketing_text('subscription', 'update', 'failed')
+  end
+  
+  def manage
+    @member = Member.find params[:member_id]
   end
   
   def cancel

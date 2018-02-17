@@ -25,13 +25,6 @@ initializeBraintree = (dropin) ->
     return false
   return false
 
-$(document).on 'turbolinks:load', ->
-  $.each $('.braintree_container'), (i, container) ->
-    id = '#bt-dropin-' + (i + 1)
-    initializeCheckout id
-    return
-  return
-  
 initializeCheckout = (dropin) ->
   $.ajax
     url: Routes.new_subscription_path()
@@ -40,3 +33,16 @@ initializeCheckout = (dropin) ->
       initializeBraintree(dropin)
       return
   return
+
+initializeContainers = ->
+  $.each $('.braintree_container'), (i, container) ->
+    id = '#bt-dropin-' + (i + 1)
+    initializeCheckout id
+    return
+  return
+
+$(document).on 'turbolinks:load', ->
+  initializeContainers()
+
+$(document).on 'payment:setup', ->
+  initializeContainers()

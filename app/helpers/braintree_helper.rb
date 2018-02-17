@@ -17,10 +17,7 @@ module BraintreeHelper
   end
   
   def payment_method_update_form member
-    content_tag(:div) do
-      payment_form(subscription_path(member), :patch, marketing_text('subscription', 'update', 'submit')) +
-      link_to(marketing_text('subscription', 'update', 'accept'), 'javascript: null', :class => 'subscribe call_to_action trailing lunar_navigation')
-    end
+    payment_form(subscription_path(member), :patch, marketing_text('subscription', 'update', 'submit'))
   end
   
   def dropin_count

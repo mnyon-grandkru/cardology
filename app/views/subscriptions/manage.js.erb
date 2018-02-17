@@ -1,0 +1,3 @@
+$('.subscription_management_for_member').prepend('<%=j content_tag :div, payment_method_update_form(@member), :class => 'payment' %>');
+$('.braintree_container').show();
+$(document).trigger('payment:setup');
