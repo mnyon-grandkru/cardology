@@ -38,6 +38,11 @@ class InterpretationsController < ApplicationController
     redirect_to :action => :index
   end
   
+  def destroy
+    @interpretation = Interpretation.find params[:id]
+    @interpretation.destroy
+  end
+  
   def interpretation_params
     params.require(:interpretation).permit(:reading, :explanation, :card_id)
   end
