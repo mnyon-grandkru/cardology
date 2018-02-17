@@ -35,6 +35,9 @@ subscription:
     failed: Your transaction was not completed.  This may be due to bank security measures, which are very tight these days.  If you use a different payment method or contact your bank, perhaps the next attempt will succeed.
   update:
     accept: "Do you need to update your payment information?"
+    submit: "Update my payment."
+    succeeded: "Thank you."
+    failed: "That payment method was not finalized."
   unsubscribe:
     link: I am ready to end my subscription.
     confirm: Are you sure you wish to end your subscription?

@@ -56,10 +56,12 @@ class SubscriptionsController < ApplicationController
           
           if subscription_update.success?
             @member.update_attribute :subscription_status, 'active'
+            @message = view_context.marketing_text('subscription', 'update', 'succeeded')
           end
         end
       end
     end
+    @message ||= view_context.marketing_text('subscription', 'update', 'failed')
   end
   
   def cancel
