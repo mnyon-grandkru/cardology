@@ -24,3 +24,5 @@ config/initializers/aalpha_dev_constants.rb
 
 *.dump
 .DS_Store
+
+*.request
