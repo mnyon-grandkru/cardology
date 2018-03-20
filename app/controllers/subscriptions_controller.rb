@@ -21,6 +21,7 @@ class SubscriptionsController < ApplicationController
       
       if subscription_creation.success?
         @member.subscription_status = 'active'
+        @member.subscriptions << subscription_creation.subscription.id
         @member.add_to_players_club_campaign
         @message = "#{view_context.marketing_text('subscription', 'transaction', 'succeeded_first')}#{@member.birthday.card_for_today.name}#{view_context.marketing_text('subscription', 'transaction', 'succeeded_second')}"
       else
@@ -35,29 +36,26 @@ class SubscriptionsController < ApplicationController
   def update
     @member = Member.find params[:member_id]
     @customer = Braintree::Customer.find @member.braintree_id
+    Rails.logger.info "About to update payment method:"
     customer_update = Braintree::Customer.update(
       @customer.id,
       :payment_method_nonce => params[:payment_method_nonce]
     )
     if customer_update.success?
-      token = customer_update.customer.payment_methods.last.token
+      token = customer_update.customer.payment_methods.sort_by(&:created_at).last.token
+      Rails.logger.info "The payment method was updated to #{token}."
       
-      subscriptions = Braintree::Subscription.search do |search|
-        search.plan_id.is ENV['BRAINTREE_SUBSCRIPTION_PLAN']
-      end
-    
-      member_subscriptions = subscriptions.select { |subscription| subscription.transactions.last.customer_details.id == @customer.id rescue nil }.compact
-      if member_subscriptions.present?
-        member_subscriptions.each do |subscription|
-          subscription_update = Braintree::Subscription.update(
-            subscription.id,
-            :payment_method_token => token
-          )
-          
-          if subscription_update.success?
-            @member.update_attribute :subscription_status, 'active'
-            @message = view_context.marketing_text('subscription', 'update', 'succeeded')
-          end
+      Rails.logger.info "About to update the subscription:"
+      @member.subscriptions.each do |subscription_id|
+        subscription_update = Braintree::Subscription.update(
+          subscription_id,
+          :payment_method_token => token
+        )
+        
+        if subscription_update.success?
+          Rails.logger.info "The subscription was updated."
+          @member.update_attribute :subscription_status, 'active'
+          @message = view_context.marketing_text('subscription', 'update', 'succeeded')
         end
       end
     end
@@ -70,20 +68,14 @@ class SubscriptionsController < ApplicationController
   
   def cancel
     @member = Member.find params[:member_id]
-    @customer = Braintree::Customer.find @member.braintree_id
-    subscriptions = Braintree::Subscription.search do |search|
-      search.plan_id.is ENV['BRAINTREE_SUBSCRIPTION_PLAN']
-    end
     
-    member_subscriptions = subscriptions.select { |subscription| subscription.transactions.last.customer_details.id == @customer.id rescue nil }.compact
-    if member_subscriptions.present?
-      member_subscriptions.each do |subscription|
-        cancellation_result = Braintree::Subscription.cancel subscription.id
-        Rails.logger.info cancellation_result.inspect
-      end
-      @member.subscription_status = 'canceled'
-      @member.save
+    @member.subscriptions.each do |subscription_id|
+      cancellation_result = Braintree::Subscription.cancel subscription_id
+      Rails.logger.info cancellation_result.inspect
     end
+    @member.subscriptions = []
+    @member.subscription_status = 'canceled'
+    @member.save
     redirect_to @member.birthday
   end
 end
