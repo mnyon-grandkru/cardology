@@ -19,4 +19,11 @@ namespace :subscriptions do
       end
     end
   end
+  
+  desc 'Determine if any subscriptions are past due'
+  task :audit => :environment do
+    Member.all.each do |member|
+      member.verify_subscription_payments_current rescue nil
+    end
+  end
 end

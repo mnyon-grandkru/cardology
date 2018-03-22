@@ -29,16 +29,9 @@ class Member < ApplicationRecord
   end
   
   def verify_subscription_payments_current
-    @customer = Braintree::Customer.find braintree_id
-    subscriptions = Braintree::Subscription.search do |search|
-      search.plan_id.is ENV['BRAINTREE_SUBSCRIPTION_PLAN']
-    end
-    
-    member_subscriptions = subscriptions.select { |subscription| subscription.transactions.last.customer_details.id == @customer.id rescue nil }.compact
-    if member_subscriptions.present?
-      member_subscriptions.each do |subscription|
-        update_attributes :subscription_status => subscription.status.parameterize.underscore
-      end
+    subscriptions.each do |subscription_id|
+      subscription = Braintree::Subscription.find subscription_id
+      update_attributes :subscription_status => subscription.status.parameterize.underscore
     end
   end
   
