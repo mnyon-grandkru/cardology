@@ -37,7 +37,9 @@
     </div>
     <span class='terms'>
       <%= mark_up marketing_text('member_form', 'privacy_policy') %>
-      <%= mark_up marketing_text('subscription', 'cancellation', 'policy') %>
     </span>
   <% end %>
+<% end %>
+<%= tag.div :id => 'cancellation_policy' do %>
+  <%= marketing_text('subscription', 'cancellation', 'policy') %>
 <% end %>
