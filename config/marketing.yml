@@ -96,6 +96,9 @@ heading:
     daily:
       header: "Today's Card"
       subheader: "This card will be with you until midnight."
+    tomorrow:
+      header: "Tonight's Card"
+      subheader: "This card has been with you since midnight."
   acquaintance:
     birth:
       header: "Their Birth Card"

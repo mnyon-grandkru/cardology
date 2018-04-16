@@ -22,3 +22,7 @@ window.attachFlippers = ->
     $(this).closest('.panel').toggleClass 'skip'
     $.scrollTo($(this).closest('.panel'), 1000)
     event.preventDefault()
+
+window.cinderellaFlip = ->
+  $('.panel.birth').removeClass 'skip'
+  $('.panel.birth').addClass 'flip'

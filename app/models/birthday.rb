@@ -73,6 +73,10 @@ class Birthday < ApplicationRecord
     card_for_date Date.current
   end
   
+  def card_for_tomorrow
+    card_for_date Date.tomorrow
+  end
+  
   def card_for_date date
     spread_ordinal = weeks_since_birth_on_date(date) % 90
     spread = Spread.find_by(:age => spread_ordinal)
