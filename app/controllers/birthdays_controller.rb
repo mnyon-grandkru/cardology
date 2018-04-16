@@ -27,6 +27,7 @@ class BirthdaysController < ApplicationController
     @personality_card_explanation = @personality_card&.interpretations&.where(:reading => :personality)&.last&.explanation
     @personality_card_explanation ||= @personality_card&.interpretations&.where(:reading => :birth)&.last&.explanation
     @scroll_to_top = params[:scroll_to_top]
+    @time_until_midnight = Time.now.seconds_until_end_of_day
   end
   
   def replace_card

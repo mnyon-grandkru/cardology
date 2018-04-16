@@ -21,6 +21,8 @@
       <% end %>
       
       <% if @querent == 'member' %>
+        <%= javascript_tag "setTimeout(cinderellaFlip, #{@time_until_midnight * 1000});" %>
+      
         <%= card_reading_pane @birthday.card_for_tomorrow, :daily, marketing_text('heading', @querent, 'tomorrow', 'header'), "For #{Date.current.strftime("%-m/%-d/%Y")}<br>#{marketing_text('heading', @querent, 'tomorrow', 'subheader')}".html_safe, 'back' do %>
         <% end %>
       
