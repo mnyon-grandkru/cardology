@@ -43,7 +43,7 @@ subscription:
     link: I am ready to end my subscription.
     confirm: Are you sure you wish to end your subscription?
   cancellation:
-    policy: "Policy for Premium Users: If you choose to upgrade your Free Membership at a later date, you may enter your Credit Card information to become a a Premium Member. Once you have entered your Credit Card information, you begin a 7-day introductory free trial of your Premium Membership. After the trial period, you will be billed $1.97 automatically each month. We keep all your information strictly private. We do not share your information with any third parties. You may cancel your subscription at any time, including during the 7-day introductory free Premium trial."
+    policy: "Policy for Premium Users: Once you enter your Credit Card information, you begin a 7-day introductory free trial of your Premium Membership. After the trial period, you will be billed $1.97 automatically each month. We keep all your information strictly private. We do not share your information with any third parties. You may cancel your subscription at any time, including during the 7-day introductory free Premium trial."
 
 book:
   question: "Want to learn more?"
@@ -65,7 +65,7 @@ returning_players:
   button: "Get Back In The Game"
   email_name: "Profile Email"
   password_name: "Password"
-  remember_name: "By checking this box, you'll stay logged in and will have easy access when you return."
+  remember_name: "By checking this box, you'll stay logged in and have easy access when you return."
   reset_name: "Reset Password"
 new_teammates:
   subheader: "Look Up Someone Else's Cards"
