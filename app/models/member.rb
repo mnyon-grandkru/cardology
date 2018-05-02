@@ -1,5 +1,6 @@
 class Member < ApplicationRecord
   after_create :deliver_temporary_password
+  before_update :acknowledge_subscription_status_change
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   enum :zodiac_sign => [:aries, :taurus, :gemini, :cancer, :leo, :virgo, :libra, :scorpio, :sagittarius, :capricorn, :aquarius, :pisces]
   enum :subscription_status => [:active, :past_due, :canceled]
@@ -22,6 +23,12 @@ class Member < ApplicationRecord
   
   def subscribed?
     ['active', 'past_due'].include? subscription_status
+  end
+  
+  def acknowledge_subscription_status_change
+    if subscription_status_changed? :from => 'active', :to => 'past_due'
+      PaymentMailer.with(:member => self).missed.deliver
+    end
   end
   
   def subscription_past_due?

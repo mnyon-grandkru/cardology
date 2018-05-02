@@ -3,6 +3,7 @@ default: &default
 
 development:
   <<: *default
+  # database: cardology_production_copy
   database: cardology_development
 
 test:
