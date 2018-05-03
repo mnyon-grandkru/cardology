@@ -81,6 +81,7 @@ class Birthday < ApplicationRecord
     spread_ordinal = weeks_since_birth_on_date(date) % 90
     spread = Spread.find_by(:age => spread_ordinal)
     position_of_birth_card = spread.position_of birth_card
+    return Card.joker unless position_of_birth_card
     position = position_of_birth_card.position - position_in_week_on_date(date)
     position = 52 + position if position < 0
     place = Place.find_by :spread_id => spread.id, :position => position
