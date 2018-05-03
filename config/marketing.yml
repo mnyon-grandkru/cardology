@@ -12,6 +12,12 @@ member_form:
   privacy_policy: |
     Policy for Free Members: Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.
 
+password:
+  incorrect: |
+    Oops, it looks like you're entering the wrong password.<br>
+    The temporary password is 'ENV['INITIAL_PASSWORD']'.<br>
+    You can reset your password via the link below.
+
 subscription:
   teaser:
     header: See More Cards

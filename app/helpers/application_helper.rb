@@ -10,6 +10,9 @@ module ApplicationHelper
       Rails.logger.info "Marketing text for #{keys} is not configured."
       copy = ''
     end
+    if copy =~ /(ENV\[\'\w+\'\])/
+      copy.gsub!($1, eval($1))
+    end
     copy
   end
   
