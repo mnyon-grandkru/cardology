@@ -6,6 +6,32 @@ RSpec.describe Birthday, type: :model do
     expect(@birthday.name).to include('April')
   end
   
+  describe "calculating age" do
+    context "on birthday" do
+      before do
+        @birthday = Fabricate :birthday, :year => 1984, :month => 4, :day => 8
+      end
+      
+      after do
+        travel_back
+      end
+      
+      context "age 10" do
+        it "should be incremented" do
+          tenth_birthday = Time.zone.local(1994, 4, 8, 12, 0, 0).to_date
+          expect(@birthday.age_on_date(tenth_birthday)).to eq(10)
+        end
+      end
+      
+      context "age 34" do
+        it "should be incremented" do
+          thirty_fourth_birthday = Time.zone.local(2018, 4, 8, 12, 0, 0).to_date
+          expect(@birthday.age_on_date(thirty_fourth_birthday)).to eq(34)
+        end
+      end
+    end
+  end
+  
   context "birthday in August 1980" do
     before do
       @birthday = Fabricate :birthday, :year => 1980, :month => 8, :day => 20
@@ -65,6 +91,40 @@ RSpec.describe Birthday, type: :model do
         @jan23 = @birthday.card_for_today
         expect(@jan21.name).to include('Two of Hearts')
         expect(@jan23.name).to include('Two of Hearts')
+      end
+    end
+  end
+  
+  context "birthday in April 1984" do
+    before do
+      @birthday = Fabricate :birthday, :year => 1984, :month => 4, :day => 8
+    end
+    
+    after do
+      travel_back
+    end
+    
+    context "before 34th birthday" do
+      before do
+        travel_to Time.zone.local(2018, 4, 7, 12, 0, 0)
+      end
+      
+      describe "yearly card" do
+        it "for this year is Eight of Hearts" do
+          expect(@birthday.card_for_this_year.name).to include("Eight of Hearts")
+        end
+      end
+    end
+    
+    context "on 34th birthday" do
+      before do
+        travel_to Time.zone.local(2018, 4, 8, 12, 0, 0)
+      end
+      
+      describe "yearly card" do
+        it "for this year is Ten of Clubs" do
+          expect(@birthday.card_for_this_year.name).to include("Ten of Clubs")
+        end
       end
     end
   end

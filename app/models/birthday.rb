@@ -21,23 +21,27 @@ class Birthday < ApplicationRecord
     Date.new year, month, day
   end
   
-  def age
-    ((Date.current - birthdate) / (1.year.to_f / 1.day.to_f)).floor
-  end
-  
   def actual_age_on_date date
-    ((date - birthdate) / (1.year.to_f / 1.day.to_f)).floor
+    if (date.month == birthdate.month && date.day == birthdate.day)
+      date.year - birthdate.year
+    else
+      ((date - birthdate) / (1.year.to_f / 1.day.to_f)).floor
+    end
   end
   
   def age_on_date date
     actual_age = actual_age_on_date date
     if actual_age > 89
-      90 - age
+      90 - actual_age
     elsif actual_age < 0
-      90 + age
+      90 + actual_age
     else
       actual_age
     end
+  end
+  
+  def age
+    actual_age_on_date Date.current
   end
   
   def days_since_birthday #including the birthday
@@ -78,10 +82,10 @@ class Birthday < ApplicationRecord
   end
   
   def card_for_date date
+    return Card.joker if birth_card == Card.joker
     spread_ordinal = weeks_since_birth_on_date(date) % 90
     spread = Spread.find_by(:age => spread_ordinal)
     position_of_birth_card = spread.position_of birth_card
-    return Card.joker unless position_of_birth_card
     position = position_of_birth_card.position - position_in_week_on_date(date)
     position = 52 + position if position < 0
     place = Place.find_by :spread_id => spread.id, :position => position
