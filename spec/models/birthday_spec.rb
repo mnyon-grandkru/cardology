@@ -126,6 +126,12 @@ RSpec.describe Birthday, type: :model do
           expect(@birthday.card_for_this_year.name).to include("Ten of Clubs")
         end
       end
+      
+      describe "planetary card", :focus => true do
+        it "for this period is Ace of Spades" do
+          expect(@birthday.card_for_this_planet.name).to include("Ace of Spades")
+        end
+      end
     end
   end
 end
