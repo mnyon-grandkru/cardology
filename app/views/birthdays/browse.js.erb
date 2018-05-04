@@ -1,1 +1,3 @@
-$('.daily_card_for_birthday.fore').replaceWith('<%=j card_reading_pane @card, :daily, @header, @subheader, 'fore' %>');
+$('.daily_card_for_birthday.fore').replaceWith(function() {
+  return $('<%=j card_reading_pane @card, :daily, @header, @subheader, 'fore' %>').fadeIn();
+});
