@@ -58,6 +58,24 @@ class BirthdaysController < ApplicationController
     render :template => 'birthdays/replace_card.js.erb'
   end
   
+  def browse
+    @member = current_member || Member.find(params[:member_id])
+    @birthday = Birthday.find params[:id]
+    if params[:day] == 'tomorrow'
+      @card = @birthday.card_for_tomorrow
+      @header = view_context.marketing_text('heading', 'member', 'tomorrow', 'header')
+      @subheader = "For #{Date.tomorrow.strftime("%-m/%-d/%Y")} #{view_context.link_to '[yesterday]', browse_birthday_path(@birthday, :day => 'yesterday', :member_id => @member.id), :remote => true} #{view_context.link_to '[today]', browse_birthday_path(@birthday, :day => 'today', :member_id => @member.id), :remote => true}<br>#{view_context.marketing_text('heading', 'member', 'tomorrow', 'subheader')}".html_safe
+    elsif params[:day] == 'today'
+      @card = @birthday.card_for_today
+      @header = view_context.marketing_text('heading', 'member', 'daily', 'header')
+      @subheader = "For #{Date.current.strftime("%-m/%-d/%Y")} #{view_context.link_to '[yesterday]', browse_birthday_path(@birthday, :day => 'yesterday', :member_id => @member.id), :remote => true} #{view_context.link_to '[tomorrow]', browse_birthday_path(@birthday, :day => 'tomorrow', :member_id => @member.id), :remote => true}<br>#{view_context.marketing_text('heading', 'member', 'daily', 'subheader')}".html_safe
+    elsif params[:day] == 'yesterday'
+      @card = @birthday.card_for_yesterday
+      @header = view_context.marketing_text('heading', 'member', 'yesterday', 'header')
+      @subheader = "For #{Date.yesterday.strftime("%-m/%-d/%Y")} #{view_context.link_to '[today]', browse_birthday_path(@birthday, :day => 'today', :member_id => @member.id), :remote => true} #{view_context.link_to '[tomorrow]', browse_birthday_path(@birthday, :day => 'tomorrow', :member_id => @member.id), :remote => true}<br>#{view_context.marketing_text('heading', 'member', 'yesterday', 'subheader')}".html_safe
+    end
+  end
+  
   def new
     @date = rand((50.years.ago)..20.years.ago)
     if current_member
@@ -66,6 +84,11 @@ class BirthdaysController < ApplicationController
     else
       @goal = view_context.marketing_text('new_players', 'subheader')
       @instructions = view_context.marketing_text('new_players', 'instructions')
+      
+      if cookies[:previous_visit].blank?
+        @password_explanation = view_context.marketing_text('returning_players', 'password_hint')
+        cookies[:previous_visit] = true
+      end
     end
   end
   
@@ -90,7 +113,7 @@ class BirthdaysController < ApplicationController
     @goal = view_context.marketing_text('new_players', 'subheader')
     @instructions = view_context.marketing_text('new_players', 'instructions')
     @email = params[:member][:email]
-    @password_explanation = "Oops, it looks like you're entering the wrong password.<br>The temporary password was emailed to you when you signed up.<br>Please check your email for the password.".html_safe
+    @password_explanation = view_context.marketing_text('password', 'incorrect').html_safe
     render 'new.html.erb'
   end
   
