@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     member do
       get :replace_card
       get :personality_for_zodiac
+      get :browse
     end
   end
   resources :places

@@ -81,6 +81,10 @@ class Birthday < ApplicationRecord
     card_for_date Date.tomorrow
   end
   
+  def card_for_yesterday
+    card_for_date Date.yesterday
+  end
+  
   def card_for_date date
     return Card.joker if birth_card == Card.joker
     spread_ordinal = weeks_since_birth_on_date(date) % 90
