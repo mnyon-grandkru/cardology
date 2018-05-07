@@ -12,6 +12,7 @@ class MembersController < ApplicationController
     @member.password = Member.generate_password
     @member.password_confirmation = @member.password
     @member.save
+    cookies[:new_registration] = true
     sign_in @member
     redirect_to birthday_path @member.birthday, :member_id => @member.id, :scroll_to_top => true
   end

@@ -85,9 +85,9 @@ class BirthdaysController < ApplicationController
       @goal = view_context.marketing_text('new_players', 'subheader')
       @instructions = view_context.marketing_text('new_players', 'instructions')
       
-      if cookies[:previous_visit].blank?
+      if cookies[:new_registration] == 'true'
         @password_explanation = view_context.marketing_text('returning_players', 'password_hint')
-        cookies[:previous_visit] = true
+        cookies[:new_registration] = false
       end
     end
   end
