@@ -46,6 +46,10 @@ class Member < ApplicationRecord
     ((Time.now - created_at) / 1.day).floor
   end
   
+  def account_hour
+    (((Time.now - created_at) / 1.hour) - 24*account_age).round
+  end
+  
   def self.generate_password
     ENV['INITIAL_PASSWORD']
   end

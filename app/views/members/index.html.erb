@@ -39,7 +39,7 @@
       
       <%= div_for member, :sign_in_count_of do %>
         logged in <%= pluralize member.sign_in_count, 'time' %>
-        since joining <%= pluralize member.account_age, 'day' %> ago on <%= member.created_at.strftime "%m/%d/%y" %>
+        since joining <%= pluralize member.account_age, 'day' %> and <%= pluralize member.account_hour, 'hour' %> ago on <%= member.created_at.strftime "%m/%d/%y at %H:%M" %>
       <% end %>
       
       <%= div_for member, :subscription_status_of do %>
