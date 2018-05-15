@@ -26,7 +26,7 @@
         <%= card_reading_pane @birthday.card_for_tomorrow, :daily, marketing_text('heading', @querent, 'cinderella', 'header'), "For #{Date.current.strftime("%-m/%-d/%Y")}<br>#{marketing_text('heading', @querent, 'cinderella', 'subheader')}".html_safe, 'back' do %>
         <% end %>
       
-        <%= card_reading_pane @birthday.card_for_today, :daily, marketing_text('heading', @querent, 'daily', 'header'), "For #{Date.current.strftime("%-m/%-d/%Y")} #{link_to '[yesterday]', browse_birthday_path(@birthday, :day => 'yesterday'), :remote => true} #{link_to '[tomorrow]', browse_birthday_path(@birthday, :day => 'tomorrow'), :remote => true}<br>#{marketing_text('heading', @querent, 'daily', 'subheader')}".html_safe, 'fore' do %>
+        <%= card_reading_pane @birthday.card_for_today, :daily, marketing_text('heading', @querent, 'daily', 'header'), "For #{Date.current.strftime("%-m/%-d/%Y")} #{link_to '[yesterday]', browse_birthday_path(@birthday, :day => 'yesterday', :member_id => @member.id), :remote => true} #{link_to '[tomorrow]', browse_birthday_path(@birthday, :day => 'tomorrow', :member_id => @member.id), :remote => true}<br>#{marketing_text('heading', @querent, 'daily', 'subheader')}".html_safe, 'fore' do %>
           <%= link_to marketing_text('button', @querent, 'birth', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
         <% end %>
       <% end %>
