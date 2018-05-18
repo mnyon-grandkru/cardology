@@ -5,6 +5,7 @@ class SubscriptionsController < ApplicationController
   
   def create
     @member = Member.find params[:member_id]
+    return if params[:payment_method_nonce].blank?
     customer_creation = Braintree::Customer.create(
       :first_name => @member.name,
       :email => @member.email,
