@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get :manage
     end
     collection do
+      post :upgrade
       delete :cancel
     end
   end

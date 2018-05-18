@@ -3,7 +3,7 @@ class Member < ApplicationRecord
   before_update :acknowledge_subscription_status_change
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   enum :zodiac_sign => [:aries, :taurus, :gemini, :cancer, :leo, :virgo, :libra, :scorpio, :sagittarius, :capricorn, :aquarius, :pisces]
-  enum :subscription_status => [:active, :past_due, :canceled]
+  enum :subscription_status => [:active, :past_due, :canceled, :upgraded]
   attr_default :subscriptions, []
   serialize :subscriptions
 
@@ -19,6 +19,10 @@ class Member < ApplicationRecord
       :customFieldValues => [{:customFieldId => ENV['GETRESPONSE_BIRTHDATE_ID'], :value => [birthday.birthdate_string]}]
     }
     client.contacts.create traits
+  end
+  
+  def add_to_players_club_salon
+    MemberMailer.with(:member => self).salon.deliver
   end
   
   def subscribed?

@@ -34,6 +34,24 @@ class SubscriptionsController < ApplicationController
     @member.save
   end
   
+  def upgrade
+    customer = Braintree::Customer.find current_member.braintree_id
+    token = customer.payment_methods[0].token
+    
+    subscription_creation = Braintree::Subscription.create(
+      :payment_method_token => token,
+      :plan_id => ENV['BRAINTREE_SALON_SUBSCRIPTION_PLAN']
+    )
+    
+    if subscription_creation.success?
+      @member = current_member
+      @member.subscription_status = 'upgraded'
+      @member.subscriptions << subscription_creation.subscription.id
+      @member.add_to_players_club_salon
+      @message = view_context.marketing_text 'subscription', 'upgrade', 'succeeded'
+    end
+  end
+  
   def update
     @member = Member.find params[:member_id]
     @customer = Braintree::Customer.find @member.braintree_id

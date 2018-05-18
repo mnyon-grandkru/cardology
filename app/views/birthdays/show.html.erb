@@ -90,6 +90,14 @@
         <%= link_to marketing_text('button', @querent, 'planetary', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
       <% end %>
     <% end %>
+    
+    <%= content_tag :div, :class => 'salon' do %>
+      <% if @member.subscription_status == 'active' %>
+        <%= link_to 'Access the Salon!', upgrade_subscriptions_path, :method => :post, :remote => true %>
+      <% elsif @member.subscription_status == 'upgraded' %>
+        <%= link_to 'Access the Salon!', ENV['PLAYERS_CLUB_SALON_URL'] %>
+      <% end %>
+    <% end %>
   
     <% if braintree_enabled? %>
       <%= tag.div :id => 'cancellation_policy' do %>
