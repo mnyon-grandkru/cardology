@@ -92,7 +92,7 @@
     <% end %>
     
     <%= content_tag :div, :class => 'salon' do %>
-      <% if @member.subscription_status == 'active' %>
+      <% if salon_open? && @member.subscription_status == 'active' %>
         <%= link_to 'Access the Salon!', upgrade_subscriptions_path, :method => :post, :remote => true %>
       <% elsif @member.subscription_status == 'upgraded' %>
         <%= link_to 'Access the Salon!', ENV['PLAYERS_CLUB_SALON_URL'] %>

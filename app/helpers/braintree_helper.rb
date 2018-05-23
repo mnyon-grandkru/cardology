@@ -27,4 +27,8 @@ module BraintreeHelper
   def braintree_enabled?
     ENV['BRAINTREE_ENABLED'] == 'true'
   end
+  
+  def salon_open?
+    ENV['SALON_OPEN'] ==  'true'
+  end
 end
