@@ -16,7 +16,7 @@ password:
   incorrect: |
     Oops, it looks like you're entering the wrong password.<br>
     The temporary password is 'ENV['INITIAL_PASSWORD']'.<br>
-    You can reset your password via the link below.
+    You can also reset your password via the link below.
 
 subscription:
   teaser:
@@ -26,9 +26,12 @@ subscription:
       For $1.97 per month, you will discover
 
       * Your upcoming Yearly Card, so you can see what's coming.
-      * Your upcoming 52-day Card, so you can plan accordingly.
-      * The exact date your 52-day Card will change...
-      * And your personal Daily Card for each and every day!
+      * Last year's Yearly Card, so you can review and distill important lessons.
+      * Your upcoming 52-Day Card, so you can plan accordingly.
+      * Your previous 52-Day Card, so you can process what just happened.
+      * The exact date your 52-Day Card will change...
+      * Your personal Daily Card for each and every day.
+      * And, now you can also see Yesterday's Daily Card plus Tomorrow's Daily Card to plan your days accordingly!
 
       Cool huh?
     accept: Yes, begin my FREE 7-day trial.
