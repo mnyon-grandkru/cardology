@@ -5,6 +5,8 @@ module InterpretationsHelper
       card.interpretations.where(:reading => reading).last&.explanation || interpretation_of(card, :birth)
     when :daily
       card.interpretations.where(:reading => reading).last&.explanation || interpretation_of(card, :yearly)
+    when :planetary
+      card.interpretations.where(:reading => reading).last&.explanation || interpretation_of(card, :yearly)
     else
       card.interpretations.where(:reading => reading).last.explanation
     end

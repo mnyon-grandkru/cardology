@@ -77,16 +77,16 @@
     <% end %>
   
     <%= content_tag :div, :class => "panel planetary" do %>
-      <%= card_reading_pane @birthday.card_for_this_planet, :yearly, marketing_text('heading', @querent, 'planetary', 'header'), marketing_text('heading', @querent, 'planetary', 'subheader') + (@member.subscribed? ? "  This cycle ends on #{@birthday.date_of_next_planet.strftime("%-m/%-d.")}" : '') do %>
+      <%= card_reading_pane @birthday.card_for_this_planet, :planetary, marketing_text('heading', @querent, 'planetary', 'header'), marketing_text('heading', @querent, 'planetary', 'subheader') + (@member.subscribed? ? "  This cycle ends on #{@birthday.date_of_next_planet.strftime("%-m/%-d.")}" : '') do %>
         <%= link_to marketing_text('button', @querent, 'planetary', 'button_next'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' if @querent == 'member' && braintree_enabled? %>
         <%= link_to marketing_text('button', @querent, 'planetary', 'button_last'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
       <% end %>
       
-      <%= card_reading_pane @birthday.card_for_last_planet, :yearly, marketing_text('heading', @querent, 'planetary', 'header_last'), marketing_text('heading', @querent, 'planetary', 'subheader'), 'back' do %>
+      <%= card_reading_pane @birthday.card_for_last_planet, :planetary, marketing_text('heading', @querent, 'planetary', 'header_last'), marketing_text('heading', @querent, 'planetary', 'subheader'), 'back' do %>
         <%= link_to marketing_text('button', @querent, 'planetary', 'button_current'), 'javascript: null', :class => 'flip_card call_to_action trailing lunar_navigation' %>
       <% end %>
       
-      <%= card_reading_pane @birthday.card_for_next_planet, :yearly, marketing_text('heading', @querent, 'planetary', 'header_next'), marketing_text('heading', @querent, 'planetary', 'subheader'), 'fore' do %>
+      <%= card_reading_pane @birthday.card_for_next_planet, :planetary, marketing_text('heading', @querent, 'planetary', 'header_next'), marketing_text('heading', @querent, 'planetary', 'subheader'), 'fore' do %>
         <%= link_to marketing_text('button', @querent, 'planetary', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
       <% end %>
     <% end %>
