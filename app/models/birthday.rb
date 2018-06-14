@@ -140,10 +140,30 @@ class Birthday < ApplicationRecord
     Date.current + days_until_next_planet.days
   end
   
+  def planetary_period_on_date date
+    (days_since_birthday_on_date(date) / 52) + 1
+  end
+  
+  def planet_on_date date
+    planet_indices.invert[planetary_period_on_date date].to_s.capitalize + '.'
+  end
+  
+  def current_planet
+    planet_on_date Date.current
+  end
+  
+  def last_planet
+    planet_on_date Date.current - 52.days
+  end
+  
+  def next_planet
+    planet_on_date Date.current + 52.days
+  end
+  
   def card_for_the_planetary_period_on_date date
     return Card.joker if birth_card == Card.joker
     spread = Spread.find_by(:age => age_on_date(date))
-    planetary_position = (days_since_birthday_on_date(date) / 52) + 1
+    planetary_position = planetary_period_on_date date
     return Card.joker if planetary_position > 7
     position_of_birth_card = spread.position_of birth_card
     position = position_of_birth_card.position - planetary_position
@@ -313,29 +333,23 @@ class Birthday < ApplicationRecord
     end
   end
   
+  def planet_indices
+    {
+      :mercury => 1,
+      :venus => 2,
+      :mars => 3,
+      :jupiter => 4,
+      :saturn => 5,
+      :uranus => 6,
+      :neptune => 7,
+      :pluto => 8,
+      :sun => 0,
+      :moon => -1
+    }
+  end
+  
   def number_for_planet planet
-    case planet
-    when :mercury
-      1
-    when :venus
-      2
-    when :mars
-      3
-    when :jupiter
-      4
-    when :saturn
-      5
-    when :uranus
-      6
-    when :neptune
-      7
-    when :pluto
-      8
-    when :sun
-      0
-    when :moon
-      -1
-    end
+    planet_indices[planet]
   end
   
   def reading
