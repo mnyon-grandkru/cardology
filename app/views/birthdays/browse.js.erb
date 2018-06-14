@@ -1,3 +1,7 @@
 $('.daily_card_for_birthday.fore').replaceWith(function() {
   return $('<%=j card_reading_pane @card, :daily, @header, @subheader, 'fore' %>').fadeIn();
 });
+$('.daily_card_for_birthday.fore').append(
+  $('<%= link_to marketing_text('button', 'member', 'birth', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>')
+);
+attachFlippers();
