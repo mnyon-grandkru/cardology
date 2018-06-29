@@ -26,12 +26,13 @@ subscription:
       For $1.97 per month, you will discover
 
       * Your upcoming Yearly Card, so you can see what's coming.
-      * Last year's Yearly Card, so you can review and distill important lessons.
+      * Last year's Yearly Card, so you can review important life lessons.
       * Your upcoming 52-Day Card, so you can plan accordingly.
       * Your previous 52-Day Card, so you can process what just happened.
+      * The planetary meaning of your 52-Day Cycle.
       * The exact date your 52-Day Card will change...
       * Your personal Daily Card for each and every day.
-      * And, now you can also see Yesterday's Daily Card plus Tomorrow's Daily Card to plan your days accordingly!
+      * Now you can also see Yesterday's Daily Card plus Tomorrow's Daily Card to plan your days accordingly!
 
       Cool huh?
     accept: Yes, begin my FREE 7-day trial.
@@ -46,7 +47,7 @@ subscription:
   upgrade:
     succeeded: "Wonderful choice.  Join us in the Salon at ENV['PLAYERS_CLUB_SALON_URL'] .  The address has been emailed to you."
   update:
-    initiate: "I would like to change my payment method."
+    initiate: "I would like to update my payment method."
     accept: "Do you need to update your payment information?"
     submit: "Update my payment."
     succeeded: "Thank you."
