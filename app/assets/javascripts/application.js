@@ -17,5 +17,4 @@
 //= require turbolinks
 //= require js-routes
 //= require moment
-//= require braintree_dropin
 //= require_tree .
