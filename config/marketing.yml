@@ -23,7 +23,7 @@ subscription:
     header: See More Cards
     subheader: Become a member
     offer: |
-      For $1.97 per month, you will discover
+      For $ENV['MONTHLY_PRICE'] per month, you will discover
 
       * Your upcoming Yearly Card, so you can see what's coming.
       * Last year's Yearly Card, so you can review important life lessons.
@@ -56,7 +56,7 @@ subscription:
     link: I am ready to end my subscription.
     confirm: Are you sure you wish to end your subscription?
   cancellation:
-    policy: "Policy for Premium Users: Once you enter your Credit Card information, you begin a 7-day introductory free trial of your Premium Membership. After the trial period, you will be billed $1.97 automatically each month. We keep all your information strictly private. We do not share your information with any third parties. You may cancel your subscription at any time, including during the 7-day introductory free Premium trial."
+    policy: "Policy for Premium Users: Once you enter your Credit Card information, you begin a 7-day introductory free trial of your Premium Membership. After the trial period, you will be billed $ENV['MONTHLY_PRICE'] automatically each month. We keep all your information strictly private. We do not share your information with any third parties. You may cancel your subscription at any time, including during the 7-day introductory free Premium trial."
 
 book:
   question: "Want to learn more?"
