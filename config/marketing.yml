@@ -79,7 +79,7 @@ returning_players:
   button: "Get Back In The Game"
   email_name: "Profile Email"
   password_name: "Password"
-  remember_name: "Check this box to stay logged in when you return."
+  remember_name: "Check This Box To Stay Logged In"
   reset_name: "Reset Password"
 new_teammates:
   subheader: "Look Up Someone Else's Cards"
