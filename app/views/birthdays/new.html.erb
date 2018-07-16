@@ -4,7 +4,7 @@
   <div id="landing">
     <div id="new_players" class="landing_table submission pane">
       <%= content_tag :header, marketing_text('new_players', 'header'), :id => 'new_players_header' unless current_member %>
-      <%= content_tag :header, content_tag(:b, @goal), :class => 'call_to_action' %>
+      <%= content_tag :header, content_tag(:b, mark_up(@goal)), :class => 'call_to_action' %>
       <%= content_tag :header, @instructions, :class => 'call_to_action' %>
       <%= form_for Birthday.new :date => @date do |birthday_form| %>
         <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br>
