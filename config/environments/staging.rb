@@ -95,3 +95,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.time_zone = 'Eastern Time (US & Canada)'
 end
+
+Devise.setup do |config|
+  config.secret_key = ENV['SECRET_KEY_BASE']
+end
