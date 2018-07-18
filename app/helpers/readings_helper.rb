@@ -13,7 +13,11 @@ module ReadingsHelper
             end +
             image_tag(card.image, :class => 'card_face_image') +
             div_for(Card.last, :opportunities_on) do
-              "#{marketing_text 'book', 'question'} #{link_to(marketing_text('book', 'answer'), ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
+              if reading == :yearly
+                "#{marketing_text 'coaching', 'question'} #{link_to(marketing_text('coaching', 'answer'), ENV['COACHING_PURCHASE_LINK'], :target => '_blank')}".html_safe
+              else
+                "#{marketing_text 'book', 'question'} #{link_to(marketing_text('book', 'answer'), ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
+              end
             end
           end +
           div_for(card, :explication_of) do
