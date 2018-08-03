@@ -21,20 +21,21 @@ password:
 subscription:
   teaser:
     header: See More Cards
-    subheader: Become a member
+    subheader: Become a member and a supporter of our mission to share this game-changing Knowledge.
     offer: |
-      For $ENV['MONTHLY_PRICE'] per month, you will discover
+      For $ENV['MONTHLY_PRICE'] per month, you'll discover
 
       * Your upcoming Yearly Card, so you can see what's coming.
       * Last year's Yearly Card, so you can review important life lessons.
       * Your upcoming 52-Day Card, so you can plan accordingly.
       * Your previous 52-Day Card, so you can process what just happened.
-      * The planetary meaning of your 52-Day Cycle.
       * The exact date your 52-Day Card will change...
-      * Your personal Daily Card for each and every day.
-      * Now you can also see Yesterday's Daily Card plus Tomorrow's Daily Card to plan your days accordingly!
+      * Your personal Daily Card for each and every day. Plus Yesterday's Daily Card plus Tomorrow's Daily Card to plan your days accordingly!
+      * AND we'll send you some Training Videos via your email that will help you play your cards right, so you can unlock the life you really want.
+      * Not to mention that your contribution supports us to continue our mission of sharing this game-changing knowledge!
 
-      Cool huh?
+      It all starts with a Free 7-day trial so you can check it out at no risk to you. Cancel at any time.
+      
     accept: Yes, begin my FREE 7-day trial.
     defer: No, this is enough for now.
   checkout:
