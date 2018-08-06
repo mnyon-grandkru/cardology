@@ -26,7 +26,7 @@ class Member < ApplicationRecord
   end
   
   def subscribed?
-    ['active'].include? subscription_status
+    ['active', 'past_due'].include? subscription_status
   end
   
   def acknowledge_subscription_status_change
