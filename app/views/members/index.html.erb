@@ -20,7 +20,9 @@
     <% end %>
     
     <%= tag.div do %>
-      <%= link_to 'Account Duration', :order => 'created_at desc'%>
+      <%= link_to 'New', :order => 'created_at desc' %>
+      <%= link_to 'Active', :order => 'last_sign_in_at desc' %>
+      <%= link_to 'Prolific', :order => 'sign_in_count desc nulls last' %>
     <% end %>
   <% end %>
   
@@ -39,8 +41,8 @@
       <% end %>
       
       <%= div_for member, :sign_in_count_of do %>
-        logged in <%= pluralize member.sign_in_count, 'time' %>
-        since joining <%= pluralize member.account_age, 'day' %> and <%= pluralize member.account_hour, 'hour' %> ago on <%= member.created_at.strftime "%m/%d/%y at %H:%M" %>
+        logged in <%= link_to pluralize(member.sign_in_count, 'time'), '#', :title => member.last_sign_in_at&.strftime("%l:%M %p on %m/%d/%y") %>
+        since joining <%= pluralize member.account_age, 'day' %> and <%= pluralize member.account_hour, 'hour' %> ago on <%= member.created_at.strftime "%l:%M %p on %m/%d/%y" %>
       <% end %>
       
       <%= div_for member, :subscription_status_of do %>
