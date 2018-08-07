@@ -6,6 +6,7 @@ class Member < ApplicationRecord
   enum :subscription_status => [:active, :past_due, :canceled, :upgraded]
   attr_default :subscriptions, []
   serialize :subscriptions
+  attr_accessor :days_past_due
 
   belongs_to :birthday
   belongs_to :lookup
@@ -32,6 +33,7 @@ class Member < ApplicationRecord
   def acknowledge_subscription_status_change
     if subscription_status_changed? :from => 'active', :to => 'past_due'
       PaymentMailer.with(:member => self).missed.deliver
+      self.due_date = @days_past_due.days.ago
     end
   end
   
@@ -42,6 +44,7 @@ class Member < ApplicationRecord
   def verify_subscription_payments_current
     subscriptions.each do |subscription_id|
       subscription = Braintree::Subscription.find subscription_id
+      @days_past_due = subscription.days_past_due
       update_attributes :subscription_status => subscription.status.parameterize.underscore
     end
   end
