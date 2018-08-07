@@ -11,6 +11,8 @@ class Member < ApplicationRecord
   belongs_to :birthday
   belongs_to :lookup
   
+  scope :past_due, lambda { where :subscription_status => 'past_due' }
+  
   def add_to_players_club_campaign
     client = GetResponse::Api.new
     traits = {
@@ -46,6 +48,16 @@ class Member < ApplicationRecord
       subscription = Braintree::Subscription.find subscription_id
       @days_past_due = subscription.days_past_due
       update_attributes :subscription_status => subscription.status.parameterize.underscore
+    end
+  end
+  
+  def notify_past_due timing
+    PaymentMailer.with(:member => self, :timing => timing).unresolved.deliver
+  end
+  
+  def cancel_subscription! # this may need to be revisited if we allow concurrent subscriptions for various membership features
+    # perhaps it should take an argument indicating which plan is being unsubscribed from
+    subscriptions.each do |subscription_id|
     end
   end
   

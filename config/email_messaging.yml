@@ -1,0 +1,29 @@
+players_club:
+  delinquent:
+    unresolved:
+      salutation: "Hi there and thanks for joining us in the Life Elevated Players Club."
+      opening:    "A few days ago we encountered a problem trying to charge your Credit Card."
+      message:    "If you like, please update the card information to ensure uninterrupted access to the Players Club."
+      invitation: "Here's the link: <ENV['PLAYERS_CLUB_URL']>"
+      conclusion: "See you back in the game."
+      sign_off: |
+        with love,
+        Your Players Club Team
+    late:
+      salutation: "Hi there and thanks for joining us in the Life Elevated Players Club."
+      opening:    "Last week we encountered a problem trying to charge your Credit Card."
+      message:    "Please update your card information, or you will lose access to the Players Club."
+      invitation: "Here's the link: <ENV['PLAYERS_CLUB_URL']>"
+      conclusion: "See you back in the game."
+      sign_off: |
+        with love,
+        Your Players Club Team
+    over:
+      salutation: "Hi there and thanks for joining us in the Life Elevated Players Club."
+      opening:    "We encountered a problem trying to charge your Credit Card."
+      message:    "At this time, your access to the Players Club will be curtailed."
+      conclusion: "When you are ready, you are welcome to rejoin the Players Club."
+      invitation: "Here's the link: <ENV['PLAYERS_CLUB_URL']>"
+      sign_off: |
+        with love,
+        Your Players Club Team

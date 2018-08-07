@@ -26,4 +26,20 @@ namespace :subscriptions do
       member.verify_subscription_payments_current rescue nil
     end
   end
+  
+  desc 'Remind past due members'
+  task :remind => :environment do
+    Member.past_due.each do |member|
+      time_elapsed = (Date.today - member.due_date.to_date).to_i
+      case time_elapsed
+      when 3
+        member.notify_past_due 'unresolved'
+      when 6
+        member.notify_past_due 'late'
+      when 7
+        member.notify_past_due 'over'
+        member.cancel_subscription!
+      end
+    end
+  end
 end

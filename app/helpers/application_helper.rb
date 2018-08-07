@@ -19,7 +19,28 @@ module ApplicationHelper
   def marketing_copy
     YAML.load(File.read(Rails.root.join('config', 'marketing.yml')))
   end
-  memoize :marketing_copy
+  
+  def email_text *keys
+    paragraphs = email_copy
+    begin
+      keys.each do |key|
+        paragraphs = paragraphs[key]
+      end
+    rescue StandardError => error
+      Rails.logger.info "Email text for #{keys} is not configured."
+      paragraphs = []
+    end
+    copy = paragraphs.values.join "\n\n"
+    if copy =~ /(ENV\[\'\w+\'\])/
+      copy.gsub!($1, eval($1))
+    end
+    copy
+  end
+  
+  def email_copy
+    YAML.load(File.read(Rails.root.join('config', 'email_messaging.yml')))
+  end
+  memoize :marketing_copy, :email_copy
   
   def clearboth
     content_tag :div, '', :class => 'clearboth'
