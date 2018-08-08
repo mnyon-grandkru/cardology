@@ -34,10 +34,11 @@ namespace :subscriptions do
       case time_elapsed
       when 3
         member.notify_past_due 'unresolved'
-      when 6
+      when 10
         member.notify_past_due 'late'
-      when 7
+      when 25
         member.notify_past_due 'over'
+      when 27
         member.cancel_subscription!
       end
     end
