@@ -1,29 +1,29 @@
 players_club:
   delinquent:
     unresolved:
-      salutation: "Hi there and thanks for joining us in the Life Elevated Players Club."
+      salutation: "Hi there, and thanks again for joining us in the Life Elevated Players Club."
       opening:    "A few days ago we encountered a problem trying to charge your Credit Card."
-      message:    "If you like, please update the card information to ensure uninterrupted access to the Players Club."
-      invitation: "Here's the link: <ENV['PLAYERS_CLUB_URL']>"
+      message:    "And because we know how much you value clarity and because we know you're commmitted to playing your cards right, we want to ensure you have uninterrupted access to the Players Club."
+      invitation: "So please click here to update your Credit Card information: <ENV['PLAYERS_CLUB_URL']>"
       conclusion: "See you back in the game."
       sign_off: |
         with love,
         Your Players Club Team
     late:
-      salutation: "Hi there and thanks for joining us in the Life Elevated Players Club."
-      opening:    "Last week we encountered a problem trying to charge your Credit Card."
-      message:    "Please update your card information, or you will lose access to the Players Club."
-      invitation: "Here's the link: <ENV['PLAYERS_CLUB_URL']>"
+      salutation: "Hi there, from your Players Club team."
+      opening:    "We want to let you know that last week we encountered a problem trying to charge your Credit Card."
+      message:    "And because we know how much you value clarity and because we know you're commmitted to playing your cards right, we want to ensure you have uninterrupted access to the Players Club. So, please update your card information, or unfortunately you'll lose access to the Players Club."
+      invitation: "Click here to update your Credit Card information: <ENV['PLAYERS_CLUB_URL']>"
       conclusion: "See you back in the game."
       sign_off: |
         with love,
         Your Players Club Team
     over:
-      salutation: "Hi there and thanks for joining us in the Life Elevated Players Club."
-      opening:    "We encountered a problem trying to charge your Credit Card."
-      message:    "At this time, your access to the Players Club will be curtailed."
-      conclusion: "When you are ready, you are welcome to rejoin the Players Club."
-      invitation: "Here's the link: <ENV['PLAYERS_CLUB_URL']>"
+      salutation: "Hi there, from your Players Club team"
+      opening:    "We want to let you know that we have encountered a problem trying to charge your Credit Card. And this is our third email to you."
+      message:    "Because we know how much you value clarity and because we know you're commmitted to playing your cards right, we want to ensure you have uninterrupted access to the Players Club."
+      conclusion: "So, you have 48 hous to update your Credit Card information or else your access to the Players Club will be curtailed."
+      invitation: "Click here to update your Credit Card information: <ENV['PLAYERS_CLUB_URL']>"
       sign_off: |
         with love,
         Your Players Club Team
