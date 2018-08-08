@@ -58,7 +58,9 @@ class Member < ApplicationRecord
   def cancel_subscription! # this may need to be revisited if we allow concurrent subscriptions for various membership features
     # perhaps it should take an argument indicating which plan is being unsubscribed from
     subscriptions.each do |subscription_id|
+      @cancellation_result = Braintree::Subscription.cancel subscription_id
     end
+    update_attributes :subscription_status => 'canceled', :subscriptions => [] if @cancellation_result.success?
   end
   
   def account_age
