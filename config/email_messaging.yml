@@ -1,5 +1,15 @@
 players_club:
   delinquent:
+    missed:
+      salutation: "Hi there and thanks for joining us in the Life Elevated Players Club."
+      opening:    "We want to let you know that we've encountered a problem trying to charge the Credit Card you listed for payment."
+      situation:  "We were unable to process the Credit Card Number as entered."
+      message:    "And because we know you want to find out what's in the cards for you, we encourage you to return to the Players Club and re-enter your Credit Card information so that you can play your cards right each and every day."
+      invitation: "Here's the link: <ENV['PLAYERS_CLUB_URL']>"
+      conclusion: "See you back in the game."
+      sign_off: |
+        with love,
+        Your Players Club Team
     unresolved:
       salutation: "Hi there, and thanks again for joining us in the Life Elevated Players Club."
       opening:    "A few days ago we encountered a problem trying to charge your Credit Card."

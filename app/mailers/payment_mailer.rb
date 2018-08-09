@@ -2,7 +2,9 @@ class PaymentMailer < ApplicationMailer
   include ApplicationHelper
   def missed
     @member = params[:member]
-    mail :to => @member.email, :subject => marketing_text('subscription', 'transaction', 'past_due')
+    @subject = marketing_text 'subscription', 'transaction', 'past_due'
+    @body = mark_up email_text 'players_club', 'delinquent', 'missed'
+    mail :to => @member.email, :subject => @subject, :body => @body, :content_type => 'text/html'
   end
   
   def unresolved
