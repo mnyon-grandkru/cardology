@@ -11,6 +11,7 @@ widget:
       sign_off: |
         with love,
         Your Players Club Team
+
 players_club:
   delinquent:
     missed:
@@ -50,3 +51,15 @@ players_club:
       sign_off: |
         with love,
         Your Players Club Team
+
+logistics:
+  password:
+    reset:
+      salutation:
+      opening:
+      message:    "Follow this link to update your password for the Players Club on LifeElevated.life/players"
+      invitation: "<%= link_to 'Set new password', %Q|ENV['PLAYERS_CLUB_URL']?reset_password_token=#{@token}| %> (click within 24 hours)"
+      conclusion: "If you have any trouble resetting your password, please contact ENV['CUSTOMER_SUPPORT_EMAIL_ADDRESS']."
+      sign_off: |
+        Thank you!
+        Your Life Elevated Teammates
