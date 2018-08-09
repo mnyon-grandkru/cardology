@@ -46,13 +46,13 @@ class MembersController < ApplicationController
   
   def index
     if can? :read, Member
-      if params[:filter] == 'subscribed'
-        @members = Member.where :subscription_status => Member.subscription_statuses['active']
+      @members = if params[:filter] == 'subscribed'
+        Member.where :subscription_status => Member.subscription_statuses['active']
       elsif params[:order] == 'birthday'
-        @members = Member.joins(:birthday).order('birthdays.month', 'birthdays.day', 'birthdays.year')
+        Member.joins(:birthday).order('birthdays.month', 'birthdays.day', 'birthdays.year')
       else
-        @members = Member.order params[:order]
-      end
+        Member.order params[:order]
+      end.page(params[:page])
     else
       redirect_to(root_url) && return
     end

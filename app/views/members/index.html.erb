@@ -21,11 +21,11 @@
     
     <%= tag.div do %>
       <%= link_to 'New', :order => 'created_at desc' %>
-      <%= link_to 'Active', :order => 'last_sign_in_at desc' %>
+      <%= link_to 'Active', :order => 'last_sign_in_at desc nulls last' %>
       <%= link_to 'Prolific', :order => 'sign_in_count desc nulls last' %>
     <% end %>
   <% end %>
-  
+  <%= paginate @members %>
   <% @members.each do |member| %>
     <%= div_for member, :class => 'administrative_details' do %>
       <%= div_for member, :email_of do %>
@@ -52,3 +52,4 @@
     <hr>
   <% end %>
 <% end %>
+<%= paginate @members %>

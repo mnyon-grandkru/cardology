@@ -13,6 +13,8 @@ class Member < ApplicationRecord
   
   scope :past_due, lambda { where :subscription_status => 'past_due' }
   
+  paginates_per 52
+  
   def add_to_players_club_campaign
     client = GetResponse::Api.new
     traits = {
