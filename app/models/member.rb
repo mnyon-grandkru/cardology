@@ -78,6 +78,6 @@ class Member < ApplicationRecord
   end
   
   def deliver_temporary_password
-    MemberMailer.temporary_password(self).deliver
+    MemberMailer.with(:member => self).temporary_password.deliver
   end
 end

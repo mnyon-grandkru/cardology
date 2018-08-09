@@ -34,7 +34,8 @@ module ApplicationHelper
     if copy =~ /(ENV\[\'\w+\'\])/
       copy.gsub!($1, eval($1))
     end
-    copy
+    template = ERB.new copy
+    template.result binding
   end
   
   def email_copy
