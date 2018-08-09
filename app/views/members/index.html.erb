@@ -42,7 +42,7 @@
       
       <%= div_for member, :sign_in_count_of do %>
         logged in <%= link_to pluralize(member.sign_in_count, 'time'), '#', :title => member.last_sign_in_at&.strftime("%l:%M %p on %m/%d/%y") %>
-        since joining <%= pluralize member.account_age, 'day' %> and <%= pluralize member.account_hour, 'hour' %> ago on <%= member.created_at.strftime "%l:%M %p on %m/%d/%y" %>
+        since joining <%= pluralize member.account_age, 'day' %> and <%= pluralize member.account_hour, 'hour' %> ago at <%= member.created_at.strftime "%l:%M %p on %m/%d/%y" %>
       <% end %>
       
       <%= div_for member, :subscription_status_of do %>
