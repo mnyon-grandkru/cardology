@@ -64,7 +64,7 @@ Rails.application.configure do
     :user_name => ENV["MANDRILL_USERNAME"],
     :password  => ENV["MANDRILL_PASSWORD"], # SMTP password is any valid API key
     :authentication => 'login', # Mandrill supports 'plain' or 'login'
-    :domain => 'cardology-api-staging.herokuapp.com', # your domain to identify your server when connecting
+    :domain => 'lifeelevated.life', # your domain to identify your server when connecting
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
