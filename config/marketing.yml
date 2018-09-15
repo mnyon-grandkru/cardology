@@ -73,9 +73,8 @@ coaching:
 new_players:
   header: "New Players"
   subheader: |
-    Find Out Your Birth Card
-
-    and look up your Yearly Cards too!
+    First, find out your Birth Card
+    and then look up your Yearly Cards too!
   instructions: "Enter your Date of Birth:"
   button: "Go"
 returning_players:
