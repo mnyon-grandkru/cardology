@@ -144,7 +144,7 @@ heading:
 button:
   member:
     birth:
-      button_current: "My Birth Card"
+      button_current: "See Your Birth Card"
     personality:
       button: "Jump Over the Cusp"
     yearly:
@@ -156,7 +156,7 @@ button:
       button_current: "See Your Current Card"
       button_next: "See Your Next Card"
     daily:
-      button_current: "My Card for Today"
+      button_current: "See Your Personal Daily Card"
   acquaintance:
     personality:
       button: "Jump Over the Cusp"
