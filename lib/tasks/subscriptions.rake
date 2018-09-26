@@ -43,4 +43,21 @@ namespace :subscriptions do
       end
     end
   end
+  
+  desc 'Change price of subscriptions'
+  task :price_change => :environment do
+    gateway = Braintree::Gateway.new(
+      :environment => :production,
+      :merchant_id => ENV["BT_MERCHANT_ID"],
+      :public_key => ENV["BT_PUBLIC_KEY"],
+      :private_key => ENV["BT_PRIVATE_KEY"]
+    )
+    
+    Member.players_club_subscribed.find_each do |member|
+      member.subscriptions.each do |subscription_id|
+        update_result = gateway.subscription.update(subscription_id, :price => '2.97')
+        puts update_result.inspect
+      end
+    end
+  end
 end

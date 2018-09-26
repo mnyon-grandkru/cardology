@@ -11,6 +11,8 @@ class Member < ApplicationRecord
   belongs_to :birthday
   belongs_to :lookup
   
+  scope :players_club_subscribed, lambda { where :subscription_status => 'active' }
+  
   scope :past_due, lambda { where :subscription_status => 'past_due' }
   
   paginates_per 52
