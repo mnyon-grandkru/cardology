@@ -26,10 +26,12 @@ gem 'memoist'
 gem 'attr_default'
 gem 'rollbar'
 gem 'oj'
+gem 'awesome_print'
 gem 'braintree'
 gem 'js-routes'
 gem 'momentjs-rails'
 gem 'get_response'
+gem 'get_response_api', :path => '/Users/michaelschwab/src/get_response_api'
 
 group :development, :test do
   gem 'byebug', platform: :mri

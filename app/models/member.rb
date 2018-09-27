@@ -28,6 +28,24 @@ class Member < ApplicationRecord
     client.contacts.create traits
   end
   
+  def players_club_email_membership
+    get_response_api.contacts(:email_address => email, :campaign_id => ENV['GETRESPONSE_PLAYERS_CLUB_ID']).first['contactId']
+  end
+  
+  def mail_campaigns
+    client = GetResponse::Api.new
+    lists = client.search_contacts.retrieve(:email => email)
+    lists.body.map { |result| result['name'] }
+  end
+  
+  def get_response_api
+    @client ||= GetResponseApi::Client.new ENV['GETRESPONSE_API_TOKEN']
+  end
+  
+  def email_lists
+    
+  end
+  
   def add_to_players_club_salon
     MemberMailer.with(:member => self).salon.deliver
   end
