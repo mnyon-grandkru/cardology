@@ -87,6 +87,7 @@ class Member < ApplicationRecord
       @cancellation_result = Braintree::Subscription.cancel subscription_id
     end
     update_attributes :subscription_status => 'canceled', :subscriptions => [] if @cancellation_result.success?
+    remove_from_players_club_campaign
   end
   
   def account_age
