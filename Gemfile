@@ -31,7 +31,7 @@ gem 'braintree'
 gem 'js-routes'
 gem 'momentjs-rails'
 gem 'get_response'
-gem 'get_response_api', :path => '/Users/michaelschwab/src/get_response_api'
+gem 'get_response_api', :github => 'mikeymicrophone/get_response_api'
 
 group :development, :test do
   gem 'byebug', platform: :mri

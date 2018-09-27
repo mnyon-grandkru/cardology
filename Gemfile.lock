@@ -6,8 +6,9 @@ GIT
     jquery-scrollto-rails (1.4.3)
       railties (> 3.1, < 6.0)
 
-PATH
-  remote: /Users/michaelschwab/src/get_response_api
+GIT
+  remote: git://github.com/mikeymicrophone/get_response_api.git
+  revision: bfd7e9cd0953adb86547352d6d93bdb38b4be17d
   specs:
     get_response_api (0.3.1)
       httparty (~> 0.15)
@@ -121,7 +122,7 @@ GEM
       json (~> 1.8.6)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    httparty (0.15.6)
+    httparty (0.16.2)
       multi_xml (>= 0.5.2)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)

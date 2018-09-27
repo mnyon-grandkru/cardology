@@ -28,6 +28,10 @@ class Member < ApplicationRecord
     client.contacts.create traits
   end
   
+  def remove_from_players_club_campaign
+    get_response_api.remove_contact players_club_email_membership
+  end
+  
   def players_club_email_membership
     get_response_api.contacts(:email_address => email, :campaign_id => ENV['GETRESPONSE_PLAYERS_CLUB_ID']).first['contactId']
   end
