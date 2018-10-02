@@ -2,9 +2,9 @@ widget:
   membership:
     begins:
       salutation: "Welcome to the Players Club."
-      opening:    "Welcome to the game of your life!"
+      opening:    "Welcome to the profound game of your life!"
       situation:  "We are excited you decided to play with us.  Life is a game that is more fun when we all play together."
-      message:    "Here is your temporary password to login when you return: **<%= @password %>**"
+      message:    "Here is your password to login when you return: **<%= @password %>**"
       invitation: "And here is the link to return to the Players Club: <ENV['PLAYERS_CLUB_URL']>"
       reminder:   "You can always reset this password if you wish by simply following the Reset Password link under the Returning Players login."
       conclusion: "And remember to live your life like it's your favorite game to play!"
