@@ -2,7 +2,7 @@ member_form:
   header: "Join The Players Club for FREE"
   subheader: "It's FREE"
   description: |
-    Look up your cards to play. Discover your Personality Card, your Yearly Card, and your 52-Day Card. And look up other people's cards too!
+    Look up your cards to play! Discover your Personality Card, your Yearly Card, and your 52-Day Card. And look up other people's cards too!
 
     Create your FREE Player Profile.
 
@@ -10,7 +10,7 @@ member_form:
 
   instructions: "Create Your FREE Player Profile"
   privacy_policy: |
-    Policy for Free Members: Your email address is safe with us. We will never share it with anyone. And you may always opt out of emails or unsubscribe at a later date if you wish.
+    Policy for Free Members: Your email address is safe with us. We will never share it with anyone. And you may always unsubscribe at any time.
 
 password:
   incorrect: |
@@ -25,7 +25,7 @@ subscription:
     offer: |
       For $ENV['MONTHLY_PRICE'] per month, you'll discover
 
-      * Your personal Daily Card. This is a biggie. Knowing this Card aligns your life for success each and every day!
+      * Your personal Daily Card. This is a biggie. Knowing the meaning of this Card aligns your life for success each and every day!
       * Your upcoming Yearly Card, so you can see what's coming and your previous Yearly Card, so you can review your life lessons.
       * Your upcoming 52-Day Card, so you can plan accordingly and your previous 52-Day Card, so you can process what just happened in your life.
       * The meaning of the Planetary influence of your 52-Day Cycle, so you have greater awareness to play your cards right.
