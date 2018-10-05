@@ -18,6 +18,10 @@
     
     <%= yield %>
     
+    <script>
+      window.logged_in_member = <%= current_member.present? %>;
+    </script>
+    
     <%= google_analytics %>
   </body>
 </html>
