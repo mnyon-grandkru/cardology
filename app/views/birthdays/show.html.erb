@@ -1,9 +1,13 @@
-<%= link_to marketing_text('navigation', 'upgrade'), '#first_card_panel', :id => 'upgrade_button', :class => 'lunar_navigation' %>
+<% unless current_member.subscribed? %>
+  <%= link_to marketing_text('navigation', 'upgrade'), '#first_card_panel', :id => 'upgrade_button', :class => 'lunar_navigation' %>
+<% end %>
 <%= clearleft %>
 <%= link_to marketing_text('navigation', 'lookup'), new_birthday_path, :id => 'new_lookup_link', :class => 'lunar_navigation' %>
 <% if params[:navigation_shown] %>
   <%= clearleft %><%= clearleft %><%= clearleft %>
   <%= link_to marketing_text('navigation', 'reading'), root_url, :class => 'lunar_navigation' %>
+<% elsif !current_member.subscribed? %>
+  <%= clearleft %><%= clearleft %><%= clearleft %><%= clearleft %>
 <% end %>
 <%= clearleft %><%= clearleft %><%= clearleft %>
 <%= content_tag :div, :class => 'reading_display_container' do %>
