@@ -18,6 +18,8 @@
       <%= card_reading_pane @birthday.birth_card, :birth, "#@pronoun Birth Card", "For #{@birthday.birthdate.strftime("%b %e %Y")}" do %>
         <% if @querent == 'member' && braintree_enabled? %>
           <%= link_to marketing_text('button', @querent, 'daily', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
+        <% else %>
+          <%= link_to '[This is actually my birthday]', member_assign_zodiac_path(current_member, :member => {:birthday_id => @birthday}), :method => :put, :data => {:confirm => 'Change your account to this birthday?'} %>
         <% end %>
       <% end %>
       
