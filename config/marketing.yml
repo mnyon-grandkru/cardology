@@ -93,6 +93,7 @@ navigation:
   lookup: 'Birth Card Lookup'
   reading: 'My Reading'
   log_out: 'Log Out'
+  upgrade: 'Upgrade My Membership'
 
 heading:
   member:

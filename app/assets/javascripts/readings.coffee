@@ -1,6 +1,11 @@
 $(document).on 'turbolinks:load', ->
   setInterval(resizeReading, 50)
   attachFlippers()
+  
+  $('#upgrade_button').on 'click', (event) ->
+    $('#first_card_panel').toggleClass 'flip'
+    $.scrollTo($('#first_card_panel'), 1000)
+    event.preventDefault()
 
 window.resizeReading = ->
   $('.panel').each (i, p) ->

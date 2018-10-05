@@ -1,3 +1,4 @@
+<%= link_to marketing_text('navigation', 'upgrade'), '#first_card_panel', :id => 'upgrade_button', :class => 'lunar_navigation' %>
 <%= clearleft %>
 <%= link_to marketing_text('navigation', 'lookup'), new_birthday_path, :id => 'new_lookup_link', :class => 'lunar_navigation' %>
 <% if params[:navigation_shown] %>
@@ -13,7 +14,7 @@
         For Life
       </div>
     <% end %>
-    <%= content_tag :div, :class => "panel birth" do %>
+    <%= content_tag :div, :class => "panel birth", :id => 'first_card_panel' do %>
       <%= card_reading_pane @birthday.birth_card, :birth, "#@pronoun Birth Card", "For #{@birthday.birthdate.strftime("%b %e %Y")}" do %>
         <% if @querent == 'member' && braintree_enabled? %>
           <%= link_to marketing_text('button', @querent, 'daily', 'button_current'), 'javascript: null', :class => 'skip_card call_to_action trailing lunar_navigation' %>
