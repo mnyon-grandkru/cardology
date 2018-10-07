@@ -20,6 +20,7 @@
     
     <script>
       window.logged_in_member = <%= current_member.present? %>;
+      window.logged_in_member_email = '<%= current_member&.email %>';
     </script>
     
     <%= google_analytics %>

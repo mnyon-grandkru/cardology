@@ -4,8 +4,8 @@ $(document).on('turbolinks:load', function() {
       return;
     }
     if (event.data == 'CS') {
-      if (member_is_logged_in()) { // Your session check
-        window.parent.postMessage('YES', 'http://players.lifeelevated.life');
+      if (member_is_logged_in()) {
+        window.parent.postMessage(window.logged_in_member_email, 'http://players.lifeelevated.life');
       } else {
         window.parent.postMessage('NO', 'http://players.lifeelevated.life');
       }
@@ -16,6 +16,7 @@ $(document).on('turbolinks:load', function() {
 });
 
 window.logged_in_member = false;
+window.logged_in_member_email = '';
 
 function member_is_logged_in() {
   return window.logged_in_member;
