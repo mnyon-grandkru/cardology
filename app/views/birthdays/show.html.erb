@@ -1,4 +1,4 @@
-<% unless current_member.subscribed? %>
+<% unless @member.subscribed? %>
   <%= link_to marketing_text('navigation', 'upgrade'), '#first_card_panel', :id => 'upgrade_button', :class => 'lunar_navigation' %>
 <% end %>
 <%= clearleft %>
@@ -6,7 +6,7 @@
 <% if params[:navigation_shown] %>
   <%= clearleft %><%= clearleft %><%= clearleft %>
   <%= link_to marketing_text('navigation', 'reading'), root_url, :class => 'lunar_navigation' %>
-<% elsif !current_member.subscribed? %>
+<% elsif @member.subscribed? %>
   <%= clearleft %><%= clearleft %><%= clearleft %><%= clearleft %>
 <% end %>
 <%= clearleft %><%= clearleft %><%= clearleft %>
