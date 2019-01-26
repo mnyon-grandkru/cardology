@@ -1,0 +1,27 @@
+<%= form_with(model: celestial, local: true) do |form| %>
+  <% if celestial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(celestial.errors.count, "error") %> prohibited this celestial from being saved:</h2>
+
+      <ul>
+      <% celestial.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :birthday_id %>
+    <%= form.text_field :birthday_id, id: :celestial_birthday_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :celestial_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

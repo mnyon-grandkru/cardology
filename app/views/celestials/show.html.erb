@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @celestial.birthday.name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @celestial.name %>
+</p>
+
+<%= link_to 'Edit', edit_celestial_path(@celestial) %> |
+<%= link_to 'Back', celestials_path %>

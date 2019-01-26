@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :celestials
   resources :quotes
   devise_for :members, :controllers => {:sessions => 'sessions', :passwords => 'passwords'}
   

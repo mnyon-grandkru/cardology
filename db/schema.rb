@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180806221605) do
+ActiveRecord::Schema.define(version: 20190126222700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20180806221605) do
     t.datetime "updated_at", null: false
     t.index ["face_id"], name: "index_cards_on_face_id"
     t.index ["suit_id"], name: "index_cards_on_suit_id"
+  end
+
+  create_table "celestials", force: :cascade do |t|
+    t.bigint "birthday_id"
+    t.bigint "member_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["birthday_id"], name: "index_celestials_on_birthday_id"
+    t.index ["member_id"], name: "index_celestials_on_member_id"
   end
 
   create_table "faces", id: :serial, force: :cascade do |t|
@@ -115,6 +125,8 @@ ActiveRecord::Schema.define(version: 20180806221605) do
 
   add_foreign_key "cards", "faces"
   add_foreign_key "cards", "suits"
+  add_foreign_key "celestials", "birthdays"
+  add_foreign_key "celestials", "members"
   add_foreign_key "interpretations", "cards"
   add_foreign_key "lookups", "birthdays"
   add_foreign_key "places", "cards"

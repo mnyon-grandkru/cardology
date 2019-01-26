@@ -95,6 +95,11 @@ navigation:
   log_out: 'Log Out'
   upgrade: 'Upgrade My Membership'
 
+preserving:
+  add: 'Save Date'
+  alter: 'Edit'
+  remove: 'Remove'
+
 heading:
   member:
     birth:

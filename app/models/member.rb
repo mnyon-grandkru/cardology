@@ -10,6 +10,7 @@ class Member < ApplicationRecord
 
   belongs_to :birthday
   belongs_to :lookup
+  has_many :celestials
   
   scope :players_club_subscribed, lambda { where :subscription_status => 'active' }
   

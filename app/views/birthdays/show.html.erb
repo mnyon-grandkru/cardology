@@ -6,10 +6,15 @@
 <% if params[:navigation_shown] %>
   <%= clearleft %><%= clearleft %><%= clearleft %>
   <%= link_to marketing_text('navigation', 'reading'), root_url, :class => 'lunar_navigation' %>
+  <%= clearleft %><%= clearleft %><%= clearleft %>
+  <%= link_to marketing_text('preserving', 'add'), celestials_path(:celestial => {:birthday_id => @birthday}), :method => :post, :class => 'lunar_navigation' unless @member.celestials.map(&:birthday).include?(@birthday) %>
 <% elsif @member.subscribed? %>
   <%= clearleft %><%= clearleft %><%= clearleft %><%= clearleft %>
 <% end %>
 <%= clearleft %><%= clearleft %><%= clearleft %>
+<% @member.celestials.each do |celestial| %>
+  <%= link_to celestial.identifier, birthday_path(celestial.birthday, :navigation_shown => true), :class => 'lunar_navigation' %>
+<% end %>
 <%= content_tag :div, :class => 'reading_display_container' do %>
   <%= div_for @birthday do %>
     <%= content_tag :div, :class => 'card_group_heading', :id => 'birth_cards_header' do %>

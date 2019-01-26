@@ -1,6 +1,7 @@
 Cusp = Struct.new(:leader, :follower, :is_cusp?)
 class Birthday < ApplicationRecord
   has_many :members
+  has_many :celestials
   attr_accessor :date, :zodiac_sign
   
   def name
