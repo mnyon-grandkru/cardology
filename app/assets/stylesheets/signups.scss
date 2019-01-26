@@ -11,6 +11,11 @@ a.lunar_navigation {
     background-color:  #F67C4C; //#D8812D;
     cursor: pointer;
   };
+  
+  &.axis {
+    font-size: 0.75em;
+    background-color: #e62524;
+  }
 }
 
 form#new_birthday {

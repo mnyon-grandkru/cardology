@@ -14,8 +14,9 @@
   <tbody>
     <% @celestials.each do |celestial| %>
       <tr>
-        <td><%= celestial.birthday %></td>
+        <td><%= celestial.birthday.name %></td>
         <td><%= celestial.name %></td>
+        <td><%= celestial.member.name %></td>
         <td><%= link_to 'Show', celestial %></td>
         <td><%= link_to 'Edit', edit_celestial_path(celestial) %></td>
         <td><%= link_to 'Destroy', celestial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
