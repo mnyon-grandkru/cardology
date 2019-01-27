@@ -19,3 +19,18 @@ form.interview {
 #exit_thanks {
   text-align: center;
 }
+
+#exit_options {
+  margin-top: 25px;
+  text-align: center;
+  
+  #exit_remain {
+    color: #E7791F;
+    font-size: 1.3em;
+  }
+
+  #exit_leave {
+    color: #97384B;
+    font-size: 0.9em;
+  }
+}

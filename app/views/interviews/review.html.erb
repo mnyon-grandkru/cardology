@@ -1,6 +1,7 @@
 <%= content_tag :div, marketing_text('exit_interview', 'thanks'), :id => 'exit_thanks' %>
 
-
-<%= link_to marketing_text('exit_interview', 'remain'), current_member.birthday %>
-
-<%= link_to marketing_text('exit_interview', 'leave'), cancel_subscriptions_path(:member_id => current_member.id), :method => :delete, :data => {:confirm => marketing_text('exit_interview', 'confirm')} %>
+<div id="exit_options">
+  <%= link_to marketing_text('exit_interview', 'remain'), current_member.birthday, :id => 'exit_remain' %>
+  <br><br><br>
+  <%= link_to marketing_text('exit_interview', 'leave'), cancel_subscriptions_path(:member_id => current_member.id), :method => :delete, :data => {:confirm => marketing_text('exit_interview', 'confirm')}, :id => 'exit_leave' %>
+</div>
