@@ -1,0 +1,53 @@
+<%= form_with(model: interview, local: true, :class => 'interview') do |form| %>
+  <% if interview.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(interview.errors.count, "error") %> prohibited this interview from being saved:</h2>
+
+      <ul>
+      <% interview.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="discussion">
+    <%= marketing_text('exit_interview', 'expected') %>
+  </div>
+
+  <div class="field">
+    <%= form.check_box :expected, id: :interview_expected %>
+    <%= form.label :expected, 'Yes' %>
+  </div>
+  
+  <div class="discussion">
+    <%= marketing_text('exit_interview', 'frequent') %>
+  </div>
+
+  <div class="field">
+    <%= form.check_box :frequent, id: :interview_frequent %>
+    <%= form.label :frequent, 'Yes' %>
+  </div>
+
+  <div class="discussion">
+    <%= marketing_text('exit_interview', 'useful') %>
+  </div>
+
+  <div class="field">
+    <%= form.check_box :useful, id: :interview_useful %>
+    <%= form.label :useful, 'Yes' %>
+  </div>
+
+  <div class="discussion">
+    <%= marketing_text('exit_interview', 'thoughts') %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thoughts, 'My Thoughts:' %><br>
+    <%= form.text_area :thoughts, id: :interview_thoughts %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :Proceed %>
+  </div>
+<% end %>

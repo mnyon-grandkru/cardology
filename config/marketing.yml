@@ -101,6 +101,16 @@ preserving:
   alter: 'Edit'
   remove: 'Remove'
 
+exit_interview:
+  expected: "Did this service match your expectations?"
+  useful: "Was the wisdom in the readings useful to you?"
+  frequent: "Would this service be valuable to you if you accessed it more often?"
+  thoughts: "Please share your thoughts at this time."
+  thanks: "Thank you for the input shared.  Now, do you wish to remain subscribed to this Club?"
+  remain: "I choose to remain."
+  leave: "I am ready to conclude my subscription."
+  confirm: "This will end your subscription to the Players Club."
+
 heading:
   member:
     birth:

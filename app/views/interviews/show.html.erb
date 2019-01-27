@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Expected:</strong>
+  <%= @interview.expected %>
+</p>
+
+<p>
+  <strong>Frequent:</strong>
+  <%= @interview.frequent %>
+</p>
+
+<p>
+  <strong>Useful:</strong>
+  <%= @interview.useful %>
+</p>
+
+<p>
+  <strong>Thoughts:</strong>
+  <%= @interview.thoughts %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @interview.member %>
+</p>
+
+<p>
+  <strong>Braintree subscription:</strong>
+  <%= @interview.braintree_subscription_id %>
+</p>
+
+<%= link_to 'Edit', edit_interview_path(@interview) %> |
+<%= link_to 'Back', interviews_path %>

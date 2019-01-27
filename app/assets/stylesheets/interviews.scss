@@ -1,0 +1,21 @@
+form.interview {
+  margin: auto;
+  
+  .discussion {
+    font-style: italic;
+    padding: 10px;
+  }
+  
+  .field, .actions {
+    text-align: center;
+  }
+  
+  #interview_thoughts {
+    width: 380px;
+    height: 100px;
+  }
+}
+
+#exit_thanks {
+  text-align: center;
+}

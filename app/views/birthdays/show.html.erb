@@ -125,7 +125,7 @@
           <% else %>
             <%= link_to marketing_text('subscription', 'update', 'initiate'), manage_subscription_path(:member_id => @member.id), :remote => true %>
           <% end %>
-          <%= link_to marketing_text('subscription', 'unsubscribe', 'link'), cancel_subscriptions_path(:member_id => @member.id), :data => {:confirm => marketing_text('subscription', 'unsubscribe', 'confirm')}, :method => :delete %>
+          <%= link_to marketing_text('subscription', 'unsubscribe', 'link'), new_interview_path %>
         <% end %>
       <% end %>
     <% end %>

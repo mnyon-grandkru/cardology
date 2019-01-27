@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :interviews do
+    collection do
+      get :review
+    end
+  end
   resources :celestials
   resources :quotes
   devise_for :members, :controllers => {:sessions => 'sessions', :passwords => 'passwords'}

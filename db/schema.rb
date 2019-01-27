@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190126222700) do
+ActiveRecord::Schema.define(version: 20190127011916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,18 @@ ActiveRecord::Schema.define(version: 20190126222700) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_interpretations_on_card_id"
+  end
+
+  create_table "interviews", force: :cascade do |t|
+    t.boolean "expected"
+    t.boolean "frequent"
+    t.boolean "useful"
+    t.text "thoughts"
+    t.bigint "member_id"
+    t.string "braintree_subscription_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_interviews_on_member_id"
   end
 
   create_table "lookups", id: :serial, force: :cascade do |t|
@@ -128,6 +140,7 @@ ActiveRecord::Schema.define(version: 20190126222700) do
   add_foreign_key "celestials", "birthdays"
   add_foreign_key "celestials", "members"
   add_foreign_key "interpretations", "cards"
+  add_foreign_key "interviews", "members"
   add_foreign_key "lookups", "birthdays"
   add_foreign_key "places", "cards"
   add_foreign_key "places", "spreads"
