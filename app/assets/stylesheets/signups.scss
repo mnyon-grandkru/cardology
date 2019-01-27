@@ -8,13 +8,17 @@ a.lunar_navigation {
   transition: all 0.6s;
   
   &:hover {
-    background-color:  #F67C4C; //#D8812D;
+    background-color:  #F7C610; //#D8812D;
     cursor: pointer;
   };
   
   &.axis {
     font-size: 0.75em;
-    background-color: #e62524;
+    background-color: #e64d22;
+    
+    &:hover {
+      background-color: #96000E;
+    }
   }
 }
 

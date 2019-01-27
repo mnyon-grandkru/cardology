@@ -97,6 +97,7 @@ navigation:
 
 preserving:
   add: 'Save Date'
+  dub: 'Add Name'
   alter: 'Edit'
   remove: 'Remove'
 
