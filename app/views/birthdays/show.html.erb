@@ -12,7 +12,7 @@
   <%= clearleft %><%= clearleft %><%= clearleft %><%= clearleft %>
 <% end %>
 <%= clearleft %><%= clearleft %><%= clearleft %>
-<% @member.celestials.each do |celestial| %>
+<% @member.celestials.joins(:birthday).order('birthdays.year', 'birthdays.month', 'birthdays.day').each do |celestial| %>
   <%= celestial_button_for celestial, @birthday %>
 <% end %>
 <%= content_tag :div, :class => 'reading_display_container' do %>
