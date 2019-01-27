@@ -18,6 +18,8 @@
   <div class="field">
     <%= form.check_box :expected, id: :interview_expected %>
     <%= form.label :expected, 'Yes' %>
+    <%= check_box_tag :not_expected %>
+    <%= label_tag 'No' %>
   </div>
   
   <div class="discussion">
@@ -27,6 +29,8 @@
   <div class="field">
     <%= form.check_box :frequent, id: :interview_frequent %>
     <%= form.label :frequent, 'Yes' %>
+    <%= check_box_tag :not_frequent %>
+    <%= label_tag 'No' %>
   </div>
 
   <div class="discussion">
@@ -36,6 +40,8 @@
   <div class="field">
     <%= form.check_box :useful, id: :interview_useful %>
     <%= form.label :useful, 'Yes' %>
+    <%= check_box_tag :not_useful %>
+    <%= label_tag 'No' %>
   </div>
 
   <div class="discussion">
