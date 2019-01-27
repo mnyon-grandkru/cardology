@@ -21,7 +21,7 @@ class CelestialsController < ApplicationController
 
     respond_to do |format|
       if @celestial.save
-        format.html { redirect_to @celestial, notice: 'Celestial was successfully created.' }
+        format.html { redirect_to @celestial.birthday }
         format.json { render :show, status: :created, location: @celestial }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class CelestialsController < ApplicationController
   def update
     respond_to do |format|
       if @celestial.update celestial_params
-        format.html { redirect_to @celestial, notice: 'Celestial was successfully updated.' }
+        format.html { redirect_to @celestial.birthday }
         format.json { render :show, status: :ok, location: @celestial }
       else
         format.html { render :edit }
@@ -45,7 +45,7 @@ class CelestialsController < ApplicationController
   def destroy
     @celestial.destroy
     respond_to do |format|
-      format.html { redirect_to celestials_url, notice: 'Celestial was successfully destroyed.' }
+      format.html { redirect_to current_member.birthday }
       format.json { head :no_content }
     end
   end
