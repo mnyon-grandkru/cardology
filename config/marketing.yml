@@ -106,9 +106,9 @@ exit_interview:
   useful: "Was the wisdom in the readings useful to you?"
   frequent: "Would this service be valuable to you if you accessed it more often?"
   thoughts: "Please share your thoughts at this time."
-  thanks: "Thank you for the input shared.  Now, do you wish to remain subscribed to this Club?"
-  remain: "I choose to remain."
-  leave: "I am ready to conclude my subscription."
+  thanks: "Thank you for sharing your input. And we're wondering: Did you you watch the free training videos that were emailed to you? These videos explain how to utilize this information to start activating magical experiences in your life.  And sometimes it does take time to get accustomed to working with these cards as a magical toolkit.  Would you like to give it another try for this month?"
+  remain: "Yes, Ok, on second thought, I'll stay. I'd like to give this Players Club another try."
+  leave: "Thanks, but I'm ready to conclude my subscription now."
   confirm: "This will end your subscription to the Players Club."
 
 heading:
