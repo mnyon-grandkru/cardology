@@ -115,6 +115,7 @@ exit_interview:
   specific: "The information is not detailed or specific enough."
   applicable: "I don't know what to do with this information or how to apply it in my life."
   thoughts: "Other. Please let us know what we're missing or how we can improve this service."
+  signoff: "Thank you for helping us to elevate our game."
   thanks: "Thank you for the input shared.  Now, do you wish to remain subscribed to this Club?"
   remain: "I choose to remain."
   leave: "I am ready to conclude my subscription."
