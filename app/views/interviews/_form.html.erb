@@ -11,45 +11,45 @@
     </div>
   <% end %>
 
-  <div class="discussion">
-    <%= marketing_text('exit_interview', 'expected') %>
+  <%= marketing_text('exit_interview', 'instructions') %>
+  <div class="field">
+    <%= form.check_box :unused, id: :interview_unused %>
+    <%= form.label :unused, marketing_text('exit_interview', 'unused') %>
   </div>
 
   <div class="field">
-    <%= form.check_box :expected, id: :interview_expected %>
-    <%= form.label :expected, 'Yes' %>
-    <%= check_box_tag :not_expected %>
-    <%= label_tag 'No' %>
+    <%= form.check_box :elsewhere, id: :interview_elsewhere %>
+    <%= form.label :elsewhere, marketing_text('exit_interview', 'elsewhere') %>
+  </div>
+
+  <div class="field">
+    <%= form.check_box :cumbersome, id: :interview_cumbersome %>
+    <%= form.label :cumbersome, marketing_text('exit_interview', 'cumbersome') %>
   </div>
   
-  <div class="discussion">
-    <%= marketing_text('exit_interview', 'frequent') %>
+  <div class="field">
+    <%= form.check_box :expense, id: :interview_expense %>
+    <%= form.label :expense, marketing_text('exit_interview', 'expense') %>
+  </div>
+  
+  <div class="field">
+    <%= form.check_box :accuracy, id: :interview_accuracy %>
+    <%= form.label :accuracy, marketing_text('exit_interview', 'accuracy') %>
+  </div>
+  
+  <div class="field">
+    <%= form.check_box :specific, id: :interview_specific %>
+    <%= form.label :specific, marketing_text('exit_interview', 'specific') %>
+  </div>
+  
+  <div class="field">
+    <%= form.check_box :applicable, id: :interview_applicable %>
+    <%= form.label :applicable, marketing_text('exit_interview', 'applicable') %>
   </div>
 
   <div class="field">
-    <%= form.check_box :frequent, id: :interview_frequent %>
-    <%= form.label :frequent, 'Yes' %>
-    <%= check_box_tag :not_frequent %>
-    <%= label_tag 'No' %>
-  </div>
-
-  <div class="discussion">
-    <%= marketing_text('exit_interview', 'useful') %>
-  </div>
-
-  <div class="field">
-    <%= form.check_box :useful, id: :interview_useful %>
-    <%= form.label :useful, 'Yes' %>
-    <%= check_box_tag :not_useful %>
-    <%= label_tag 'No' %>
-  </div>
-
-  <div class="discussion">
-    <%= marketing_text('exit_interview', 'thoughts') %>
-  </div>
-
-  <div class="field">
-    <%= form.label :thoughts, 'My Thoughts:' %><br>
+    <%= check_box_tag :other %>
+    <%= form.label :thoughts, marketing_text('exit_interview', 'thoughts') %><br>
     <%= form.text_area :thoughts, id: :interview_thoughts %>
   </div>
 
@@ -57,3 +57,5 @@
     <%= form.submit :Proceed %>
   </div>
 <% end %>
+
+:unused, :elsewhere, :cumbersome, :expense, :accuracy, :specific, :applicable

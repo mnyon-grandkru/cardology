@@ -5,9 +5,13 @@
 <table>
   <thead>
     <tr>
-      <th>Expected</th>
-      <th>Frequent</th>
-      <th>Useful</th>
+      <th>Unused</th>
+      <th>Elsewhere</th>
+      <th>Cumbersome</th>
+      <th>Expense</th>
+      <th>Accuracy</th>
+      <th>Specific</th>
+      <th>Applicable</th>
       <th>Thoughts</th>
       <th>Member</th>
       <th>Braintree subscription</th>
@@ -18,11 +22,15 @@
   <tbody>
     <% @interviews.each do |interview| %>
       <tr>
-        <td><%= interview.expected %></td>
-        <td><%= interview.frequent %></td>
-        <td><%= interview.useful %></td>
+        <td><%= interview.unused %></td>
+        <td><%= interview.elsewhere %></td>
+        <td><%= interview.cumbersome %></td>
+        <td><%= interview.expense %></td>
+        <td><%= interview.accuracy %></td>
+        <td><%= interview.specific %></td>
+        <td><%= interview.applicable %></td>
         <td><%= interview.thoughts %></td>
-        <td><%= interview.member %></td>
+        <td><%= interview.member.name %></td>
         <td><%= interview.braintree_subscription_id %></td>
         <td><%= link_to 'Show', interview %></td>
         <td><%= link_to 'Edit', edit_interview_path(interview) %></td>

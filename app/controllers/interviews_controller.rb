@@ -54,6 +54,6 @@ class InterviewsController < ApplicationController
     end
 
     def interview_params
-      params.require(:interview).permit(:expected, :frequent, :useful, :thoughts, :member_id, :braintree_subscription_id)
+      params.require(:interview).permit(:unused, :elsewhere, :cumbersome, :expense, :accuracy, :specific, :applicable, :thoughts, :member_id, :braintree_subscription_id)
     end
 end

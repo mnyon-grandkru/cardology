@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190127011916) do
+ActiveRecord::Schema.define(version: 20190129023352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,14 +60,18 @@ ActiveRecord::Schema.define(version: 20190127011916) do
   end
 
   create_table "interviews", force: :cascade do |t|
-    t.boolean "expected"
-    t.boolean "frequent"
-    t.boolean "useful"
+    t.boolean "unused"
+    t.boolean "elsewhere"
+    t.boolean "cumbersome"
     t.text "thoughts"
     t.bigint "member_id"
     t.string "braintree_subscription_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "expense"
+    t.boolean "accuracy"
+    t.boolean "specific"
+    t.boolean "applicable"
     t.index ["member_id"], name: "index_interviews_on_member_id"
   end
 

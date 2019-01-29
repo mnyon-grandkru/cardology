@@ -102,10 +102,19 @@ preserving:
   remove: 'Remove'
 
 exit_interview:
-  expected: "Did this service match your expectations?"
-  useful: "Was the wisdom in the readings useful to you?"
-  frequent: "Would this service be valuable to you if you accessed it more often?"
-  thoughts: "Please share your thoughts at this time."
+  instructions: |
+    Because we're committed to helping you elevate your life with spiritual knowledge and because we want to elevate our own game, please take a moment to help us understand why this service did not satisfy you.
+
+    Please check ALL the reasons that apply.
+  
+  unused: "I just don't use it."
+  elsewhere: "I can find this same information elsewhere on other websites/apps."
+  cumbersome: "It's too cumbersome to login each time."
+  expense: "I'm trying to reduce my monthly expenses."
+  accuracy: "The information about my cards is just not accurate."
+  specific: "The information is not detailed or specific enough."
+  applicable: "I don't know what to do with this information or how to apply it in my life."
+  thoughts: "Other. Please let us know what we're missing or how we can improve this service."
   thanks: "Thank you for the input shared.  Now, do you wish to remain subscribed to this Club?"
   remain: "I choose to remain."
   leave: "I am ready to conclude my subscription."
