@@ -15,6 +15,7 @@ class Member < ApplicationRecord
   has_many :celestials
   
   scope :players_club_subscribed, lambda { where :subscription_status => 'active' }
+  scope :players_club_mailing, lambda { where "campaigns like '%players_club%'" }
   
   scope :past_due, lambda { where :subscription_status => 'past_due' }
   

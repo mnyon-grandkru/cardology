@@ -75,6 +75,7 @@ class SubscriptionsController < ApplicationController
           Rails.logger.info "The subscription was updated."
           Braintree::Subscription.retry_charge(subscription_id)
           @member.update_attribute :subscription_status, 'active'
+          @member.add_to_players_club_campaign
           @message = view_context.marketing_text('subscription', 'update', 'succeeded')
         end
       end
