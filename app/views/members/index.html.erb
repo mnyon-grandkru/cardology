@@ -46,6 +46,9 @@
       <% end %>
       
       <%= div_for member, :subscription_status_of do %>
+        <%= content_tag :span, :id => dom_id(member, :campaigns_of), :class => 'campaigns_of_member' do %>
+          <%= member.campaigns.to_sentence %>
+        <% end %>
         <%= "subscribed" if member.subscription_status == 'active' %>
       <% end %>
     <% end %>
