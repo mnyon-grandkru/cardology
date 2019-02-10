@@ -6,6 +6,8 @@ class Member < ApplicationRecord
   enum :subscription_status => [:active, :past_due, :canceled, :upgraded]
   attr_default :subscriptions, []
   serialize :subscriptions
+  attr_default :campaigns, []
+  serialize :campaigns
   attr_accessor :days_past_due
 
   belongs_to :birthday
