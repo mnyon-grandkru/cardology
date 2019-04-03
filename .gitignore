@@ -26,3 +26,5 @@ config/initializers/aalpha_dev_constants.rb
 .DS_Store
 
 *.request
+
+db/dumps/straggler_subscribers.txt

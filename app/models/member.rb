@@ -51,7 +51,7 @@ class Member < ApplicationRecord
   end
   
   def email_lists
-    
+    get_response_api.contacts(:email_address => email).map { |contact| contact['campaign']['name'] rescue nil }.compact
   end
   
   def add_to_players_club_salon
@@ -61,6 +61,14 @@ class Member < ApplicationRecord
   def subscribed?
     ['active', 'past_due'].include? subscription_status
   end
+  
+  def on_mailing_list?
+    campaigns.include? ENV['GETRESPONSE_CAMPAIGN_NAME']
+  end
+  
+  # def active_for_authentication?
+  #   subscribed? || on_mailing_list? || (created_at > 2.days.ago)
+  # end
   
   def acknowledge_subscription_status_change
     if subscription_status_changed? :from => 'active', :to => 'past_due'
