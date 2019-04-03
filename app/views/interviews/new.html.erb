@@ -1,5 +1,4 @@
-<div class="pane">
-  <h1>Exit Interview</h1>
-
+<%= tag.div :class => 'pane front' do %>
+  <%= content_tag :h1, 'Exit Interview' %>
   <%= render 'form', interview: @interview %>
-</div>
+<% end %>

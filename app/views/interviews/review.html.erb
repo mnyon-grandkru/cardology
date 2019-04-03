@@ -1,7 +1,9 @@
-<%= content_tag :div, marketing_text('exit_interview', 'thanks'), :id => 'exit_thanks' %>
+<%= tag.div :class => 'pane back' do %>
+  <%= content_tag :div, marketing_text('exit_interview', 'thanks'), :id => 'exit_thanks' %>
 
-<div id="exit_options">
-  <%= link_to marketing_text('exit_interview', 'remain'), current_member.birthday, :id => 'exit_remain' %>
-  <br><br><br>
-  <%= link_to marketing_text('exit_interview', 'leave'), cancel_subscriptions_path(:member_id => current_member.id), :method => :delete, :data => {:confirm => marketing_text('exit_interview', 'confirm')}, :id => 'exit_leave' %>
-</div>
+  <%= tag.div :id => 'exit_options' do %>
+    <%= link_to marketing_text('exit_interview', 'remain'), current_member.birthday, :id => 'exit_remain' %>
+    <br><br><br>
+    <%= link_to marketing_text('exit_interview', 'leave'), cancel_subscriptions_path(:member_id => current_member.id), :method => :delete, :data => {:confirm => marketing_text('exit_interview', 'confirm')}, :id => 'exit_leave' %>
+  <% end %>
+<% end %>

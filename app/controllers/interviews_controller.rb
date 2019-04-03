@@ -21,7 +21,6 @@ class InterviewsController < ApplicationController
     @interview.braintree_subscription_id = current_member.subscriptions
 
     @interview.save
-    redirect_to :action => :review
   end
   
   def review
