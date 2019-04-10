@@ -116,7 +116,11 @@ exit_interview:
   applicable: "I don't know what to do with this information or how to apply it in my life."
   thoughts: "Other. Please let us know what we're missing or how we can improve this service."
   signoff: "Thank you for helping us to elevate our game."
-  thanks: "Thank you for sharing your input. And we're wondering: Did you you watch the free training videos that were emailed to you? These videos explain how to utilize this information to start activating magical experiences in your life.  And sometimes it does take time to get accustomed to working with these cards as a magical toolkit.  Would you like to give it another try for this month?"
+  
+  review_title: "Review"
+  review_thanks: "Thank you for sharing your input."
+  review_videos: "And we're wondering: Did you you watch the free training videos that were emailed to you? These videos explain how to utilize this information to start activating magical experiences in your life.  And sometimes it does take time to get accustomed to working with these cards as a magical toolkit."
+  review_invitation: "Would you like to give it another try for this month?"
   remain: "Yes, Ok, on second thought, I'll stay. I'd like to give this Players Club another try."
   leave: "Thanks, but I'm ready to conclude my subscription now."
   confirm: "This will end your subscription to the Players Club."

@@ -1,5 +1,8 @@
 <%= tag.div :class => 'pane back' do %>
-  <%= content_tag :div, marketing_text('exit_interview', 'thanks'), :id => 'exit_thanks' %>
+  <%= content_tag :h2, marketing_text('exit_interview', 'review_title'), :id => 'exit_thanks' %>
+  <%= content_tag :div, marketing_text('exit_interview', 'review_thanks'), :id => 'exit_thanks' %>
+  <%= content_tag :div, marketing_text('exit_interview', 'review_videos'), :id => 'exit_thanks' %>
+  <%= content_tag :div, marketing_text('exit_interview', 'review_invitation'), :id => 'exit_thanks' %>
 
   <%= tag.div :id => 'exit_options' do %>
     <%= link_to marketing_text('exit_interview', 'remain'), current_member.birthday, :id => 'exit_remain' %>
