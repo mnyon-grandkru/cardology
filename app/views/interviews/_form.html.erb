@@ -56,6 +56,6 @@
   <%= marketing_text 'exit_interview', 'signoff' %>
 
   <div class="actions">
-    <%= form.submit :Proceed %>
+    <%= link_to 'Proceed', 'javascript: null;', :id => 'interview_submission', :class => 'lunar_navigation' %>
   </div>
 <% end %>

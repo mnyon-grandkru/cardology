@@ -123,9 +123,13 @@
               <%= link_to(marketing_text('subscription', 'update', 'accept'), 'javascript: null', :class => 'subscribe call_to_action trailing lunar_navigation') %>
             <% end %>
           <% else %>
-            <%= link_to marketing_text('subscription', 'update', 'initiate'), manage_subscription_path(:member_id => @member.id), :remote => true %>
+            <%= tag.span do %>
+              <%= link_to marketing_text('subscription', 'update', 'initiate'), manage_subscription_path(:member_id => @member.id), :remote => true %>
+            <% end %>
           <% end %>
-          <%= link_to marketing_text('subscription', 'unsubscribe', 'link'), new_interview_path, :remote => true, :id => 'exit_interview_initiate' %>
+          <%= tag.span do %>
+            <%= link_to marketing_text('subscription', 'unsubscribe', 'link'), new_interview_path, :remote => true, :id => 'exit_interview_initiate' %>
+          <% end %>
         <% end %>
       <% end %>
       <%= tag.div :id => 'exit_interview', :class => 'panel' %>

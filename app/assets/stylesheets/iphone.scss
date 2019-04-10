@@ -68,11 +68,25 @@
     margin: 10px 0px 20px 0px;
   }
   
+  .subscription_management_for_member {
+    text-align: left;
+    padding: 22px;
+    
+    span {
+      display: inline-block;
+      width: 146px;
+    }
+  }
+  
   #exit_interview {
     width: 262px;
     
+    h1 {
+      text-align: center;
+    }
+    
     .pane {
-      height: 1050px;
+      height: 1120px;
       margin: 0;
       padding: 10px 15px;
       
