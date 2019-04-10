@@ -103,26 +103,26 @@ preserving:
 
 exit_interview:
   instructions: |
-    Because we're committed to helping you elevate your life with spiritual knowledge and because we want to elevate our own game, please take a moment to help us understand why this service did not satisfy you.
+    Because we're committed to helping you elevate your life and because we want to elevate our own game, please take a moment to help us understand why this service did not satisfy you.
 
     Please check ALL the reasons that apply.
   
   unused: "I just don't use it."
-  elsewhere: "I can find this same information elsewhere on other websites/apps."
+  elsewhere: "I can find this same information elsewhere."
   cumbersome: "It's too cumbersome to login each time."
   expense: "I'm trying to reduce my monthly expenses."
   accuracy: "The information about my cards is just not accurate."
-  specific: "The information is not detailed or specific enough."
-  applicable: "I don't know what to do with this information or how to apply it in my life."
-  thoughts: "Other. Please let us know what we're missing or how we can improve this service."
+  specific: "The information here is not detailed enough."
+  applicable: "I don't know how to use this information and apply it in my life."
+  thoughts: "Other. Please let us know how we can improve this service."
   signoff: "Thank you for helping us to elevate our game."
   
-  review_title: "Review"
-  review_thanks: "Thank you for sharing your input."
-  review_videos: "And we're wondering: Did you you watch the free training videos that were emailed to you? These videos explain how to utilize this information to start activating magical experiences in your life.  And sometimes it does take time to get accustomed to working with these cards as a magical toolkit."
-  review_invitation: "Would you like to give it another try for this month?"
-  remain: "Yes, Ok, on second thought, I'll stay. I'd like to give this Players Club another try."
-  leave: "Thanks, but I'm ready to conclude my subscription now."
+  review_title: "One Last Invitation..."
+  review_thanks: "Thank you for sharing your input. We really appreciate it."
+  review_videos: "And we're wondering: Did you you watch the free training videos? These videos (that were emailed to you) explain how to best utilize this information to start activating magical experiences in your life.  And sometimes it does take time to get accustomed to working with these cards as a magical toolkit."
+  review_invitation: "Would you like to give this Players Club another try for this month?"
+  remain: "Yes, Ok, on second thought, I'll give it another try."
+  leave: "Thanks, but I'm ready to end my subscription now."
   confirm: "This will end your subscription to the Players Club."
 
 heading:
