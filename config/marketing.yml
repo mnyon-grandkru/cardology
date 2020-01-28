@@ -128,9 +128,9 @@ exit_interview:
 heading:
   member:
     birth:
-      header: "Your Birth Card"
+      header: "Birth Card"
     personality:
-      header: "Your Personality Card"
+      header: "Personality Card"
       subheader: 
     yearly:
       header_last: "Last Yearly Card"
