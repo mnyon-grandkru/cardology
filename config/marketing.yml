@@ -4,7 +4,7 @@ member_form:
   description: |
     Look up your cards to play! Discover your Personality Card, your Yearly Card, and your 52-Day Card. And look up other people's cards too!
 
-    Create your FREE Player Profile.
+    Create your FREE Player Profile. Please be sure that you've entered your own Birth Date when you set this profile. Click the orange Birth Card Lookup if you need to change the Birth Date to your own before signing up here.
 
     - You'll receive a temporary password and other important information emailed to you. So please make sure to provide a valid email you check regularly. 
 
@@ -73,7 +73,7 @@ new_players:
   subheader: |
     First, look up a Birth Card, yours or someone else's.
     Afterwards, you can join to look up Yearly Cards too!
-  instructions: "Enter your Date of Birth:"
+  instructions: "Enter the Date of Birth:"
   button: "Go"
 returning_players:
   header: "Returning Players"
