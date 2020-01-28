@@ -71,10 +71,10 @@ coaching:
   answer: Ask Alexander
 
 new_players:
-  header: "New Players"
+  header: "Birth Card Lookup"
   subheader: |
-    First, look up a Birth Card, yours or someone else's.
-    Afterwards, you can join to look up Yearly Cards too!
+    Enter a Birth Date, yours or someone else's.
+    Afterwards, if you want, you can join to look up Yearly Cards too!
   instructions: "Enter the Date of Birth:"
   button: "Go"
 returning_players:
