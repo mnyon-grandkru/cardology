@@ -73,9 +73,8 @@ coaching:
 new_players:
   header: "Birth Card Lookup"
   subheader: |
-    Enter a Birth Date, yours or someone else's.
+    Simply enter a Birth Date. Afterwards you can join to look up Yearly Cards too!
     
-    Afterwards, if you want, you can join to look up Yearly Cards too!
   instructions: "Enter the Date of Birth:"
   button: "Go"
 returning_players:
