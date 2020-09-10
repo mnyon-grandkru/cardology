@@ -2,20 +2,22 @@ $(document).on 'turbolinks:load', ->
   $('#simplero_delivery').validate()
   $('#signup').on 'submit', '#simplero_delivery', (event) ->
     $.ajax
-      url: '/member_save'
-      method: 'POST'
-      data:
-        member:
-          birthday_id: $('div.birthday').data('birthday_id')
-          name: $('#first_names').val()
-          email: $('#email').val()
-          lookup_id: $('div.birthday').data('lookup_id')
-    
-    $.ajax
       url: 'https://sourcecards.simplero.com/optin/b24zsq7f18NUxEhYeC56YbMi/173105'
       method: 'POST'
       data:
         $(this).serialize()
+    
+    setTimeout (->
+      $.ajax
+        url: '/member_save'
+        method: 'POST'
+        data:
+          member:
+            birthday_id: $('div.birthday').data('birthday_id')
+            name: $('#first_names').val()
+            email: $('#email').val()
+            lookup_id: $('div.birthday').data('lookup_id')
+    ), 100
     
     event.preventDefault()
 
