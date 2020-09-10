@@ -25,9 +25,9 @@
     <% end %>
     <div id="signup" class="submission">
       <%= content_tag :header, marketing_text('member_form', 'instructions') %>
-      <form action="https://sourcecards.simplero.com/optin/b24zsq7f18NUxEhYeC56YbMi/173105" method="post" id="getresponse_delivery" class="member_signup_credential_entry"><img src="https://www.thesourcecards.com/F/173105" width="1" height="1" alt="." />
-        <input type="text" placeholder="First Name" name="first_names" requred="required"><br/>
-        <input type="email" placeholder="Email" name="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required="required"><br/>
+      <form action="https://sourcecards.simplero.com/optin/b24zsq7f18NUxEhYeC56YbMi/173105" method="post" id="simplero_delivery" class="member_signup_credential_entry"><img src="https://www.thesourcecards.com/F/173105" width="1" height="1" alt="." />
+        <input type="text" placeholder="First Name" name="first_names" id="first_names" requred="required"><br/>
+        <input type="email" placeholder="Email" name="email" id="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required="required"><br/>
         
         <input name="submit" value="Go" type="submit" class="simplero-submit" id="submit">
         <input type="hidden" name="customer[field_146326_value]" value="<%= @birthday.birthdate_string %>">
