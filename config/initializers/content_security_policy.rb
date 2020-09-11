@@ -1,7 +1,8 @@
 SecureHeaders::Configuration.default do |config|
   config.csp = {
+    default_src: %w('*'), # nothing allowed by default
     frame_src: %w(lifeelevated.life thesourcecards.com)
-    # default_src: %w('none'), # nothing allowed by default
+
     # script_src: %w(cdn.example.com),
     # connect_src: %w('self'),
     # img_src: %w(cdn.example.com data:),
