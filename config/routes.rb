@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :deliveries do
+    collection do
+      get :entrance
+    end
+  end
+  
   resources :interviews do
     collection do
       get :review

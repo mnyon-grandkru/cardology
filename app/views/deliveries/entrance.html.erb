@@ -1,0 +1,12 @@
+<div id="card_reading_delivery_zone">
+  <div id="birthday_selection_tool">
+    <%= form_for Birthday.new :date => @date do |birthday_form| %>
+      <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br>
+      <%= birthday_form.submit marketing_text('new_players', 'button') %>
+    <% end %>
+  </div>
+  
+  <div id="card_reading_display">
+    
+  </div>
+</div>
