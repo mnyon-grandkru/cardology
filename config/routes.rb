@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     collection do
       get :entrance
     end
+    member do
+      get :access
+    end
   end
   
   resources :interviews do
