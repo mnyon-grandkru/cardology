@@ -1,5 +1,5 @@
 class BirthdaysController < ApplicationController
-  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'lifeelevated.life' or request.domain == 'thesourcecards.com' }
+  skip_before_action :verify_authenticity_token, :if => lambda { Rails.logger.info request.domain; request.domain == 'lifeelevated.life' or request.domain == 'thesourcecards.com' }
   before_action :redirect_customer, :only => :index
   
   def index
