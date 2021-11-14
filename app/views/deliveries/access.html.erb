@@ -1,19 +1,35 @@
 <div id="access_card_delivery_zone">
   <div id="birth_card_delivery_zone" class="first card pane">
-    <div id="birth_card_title_line">
-      Your birth card is <%= @birth_card.name %>
+    <div class="back">
+      <%= image_tag asset_path('blue-round-sourcecards-lowrez.png'), :id => '' %>
     </div>
-    <%= image_tag @birth_card.image %>
+    
+    <div class="front">
+      <div id="birth_card_title_line">
+        Your birth card is <%= @birth_card.name %>
+      </div>
+      <%= image_tag @birth_card.image %>
+    </div>
   </div>
   
   <div id="personality_card_delivery_zone" class="middle card pane">
-    <div id="personality_card_title_line">
-      Your personality card is <%= @personality_card&.name %>
+    <div class="back">
+      <%= image_tag asset_path('blue-round-sourcecards-lowrez.png'), :id => '' %>
     </div>
-    <%= image_tag @personality_card&.image %>
+    
+    <div class="front">
+      <div id="personality_card_title_line">
+        Your personality card is <%= @personality_card&.name %>
+      </div>
+      <%= image_tag @personality_card&.image %>
+    </div>
   </div>
   
   <div id="birthday_card_delivery_zone" class="last card pane">
+    <div class="back">
+      <%= image_tag asset_path('blue-round-sourcecards-lowrez.png'), :id => '' %>
+    </div>
     birthday card
+    <%= @birthday.name %>
   </div>
 </div>
