@@ -101,8 +101,10 @@ class BirthdaysController < ApplicationController
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
     @birth_card = @birthday.birth_card
     @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation
+    Rails.logger.info request.referrer
+    
     previous_location = Rails.application.routes.recognize_path request.referrer rescue nil
-    if previous_location && previous_location[:controller] == "deliveries"
+    if (previous_location && previous_location[:controller] == "deliveries") || request.referrer =~ /deliveries/
       redirect_to access_delivery_path(@birthday)
     else
       if current_member
