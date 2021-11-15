@@ -1,6 +1,12 @@
+#card_reading_delivery_zone {
+  width: 700px;
+  height: 500px;
+}
+
 #access_card_delivery_zone {
   
-  .card.pane {
+  .delivery_zone {
+    display: inline-block;
     
     img {
       width: 240px;
