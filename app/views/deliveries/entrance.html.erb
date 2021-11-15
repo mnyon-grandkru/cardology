@@ -3,6 +3,7 @@
     <%= form_for Birthday.new :date => @date do |birthday_form| %>
       <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br>
       <%= birthday_form.submit marketing_text('new_players', 'button') %>
+      <%= hidden_field_tag :source_cards, true %>
     <% end %>
   </div>
   
