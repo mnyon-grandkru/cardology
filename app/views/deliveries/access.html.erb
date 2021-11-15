@@ -1,35 +1,44 @@
 <div id="access_card_delivery_zone">
-  <div id="birth_card_delivery_zone" class="first delivery_zone">
-    <div class="back">
-      <%= image_tag asset_path('blue-round-sourcecards-lowrez.png'), :id => '' %>
-    </div>
-    
-    <div class="front">
-      <div id="birth_card_title_line">
-        Your birth card is <%= @birth_card.name %>
+  <div id="birth_card_delivery_zone" class="delivery_zone">
+    <div class="panel">
+      <div class="front flip_card">
+        <%= image_tag asset_path('blue-round-sourcecards-lowrez.png'), :id => '' %>
       </div>
-      <%= image_tag @birth_card.image %>
+    
+      <div class="back">
+        <div id="birth_card_title_line">
+          Your birth card is <%= @birth_card.name %>
+        </div>
+        <%= image_tag @birth_card.image %>
+      </div>
     </div>
   </div>
   
-  <div id="personality_card_delivery_zone" class="middle delivery_zone">
-    <div class="back">
-      <%= image_tag asset_path('blue-round-sourcecards-lowrez.png'), :id => '' %>
-    </div>
-    
-    <div class="front">
-      <div id="personality_card_title_line">
-        Your personality card is <%= @personality_card&.name %>
+  <div id="personality_card_delivery_zone" class="delivery_zone">
+    <div class="panel">
+      <div class="front flip_card">
+        <%= image_tag asset_path('blue-round-sourcecards-lowrez.png'), :id => '' %>
       </div>
-      <%= image_tag @personality_card&.image %>
+    
+      <div class="back">
+        <div id="personality_card_title_line">
+          Your personality card is <%= @personality_card&.name %>
+        </div>
+        <%= image_tag @personality_card&.image %>
+      </div>
     </div>
   </div>
   
-  <div id="birthday_card_delivery_zone" class="last delivery_zone">
-    <div class="back">
-      <%= image_tag asset_path('blue-round-sourcecards-lowrez.png'), :id => '' %>
+  <div id="birthday_card_delivery_zone" class="delivery_zone">
+    <div class="panel">
+      <div class="front flip_card">
+        <%= image_tag asset_path('blue-round-sourcecards-lowrez.png'), :id => '' %>
+      </div>
+    
+      <div class="back">
+        birthday card
+        <%= @birthday.name %>
+      </div>
     </div>
-    birthday card
-    <%= @birthday.name %>
   </div>
 </div>
