@@ -38,8 +38,10 @@
       </div>
     
       <div class="back">
-        birthday card
-        <%= @birthday.name %>
+        <%= image_tag @birthday_card if @birthday_card %>
+        <div id="birthday_name" class="title_line">
+          <%= @birthday.name %>
+        </div>
       </div>
     </div>
   </div>
