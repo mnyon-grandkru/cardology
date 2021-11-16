@@ -8,6 +8,10 @@ class Birthday < ApplicationRecord
     birthdate.strftime("%B %-d, %Y")
   end
   
+  def month_day
+    birthdate.strftime("%B %-d")
+  end
+  
   def birthdate_string
     birthdate.strftime("%Y-%m-%d")
   end

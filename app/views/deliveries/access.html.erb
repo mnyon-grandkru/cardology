@@ -43,7 +43,7 @@
         <%= link_to birthday_card_url(@birthday, @birth_card), :class => 'nodeco', :target => :blank do %>
           <%= image_tag @birthday_card if @birthday_card %>
           <div id="birthday_name" class="title_line">
-            <%= @birthday.name %>
+            <%= @birthday.month_day %>
           </div>
         <% end %>
       </div>

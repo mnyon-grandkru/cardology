@@ -1,6 +1,6 @@
 class DeliveriesController < ApplicationController
   def entrance
-    @date = DateTime.now
+    @date = rand(Date.civil(1900)...Date.civil(1901))
   end
   
   def access
