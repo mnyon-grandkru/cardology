@@ -8,9 +8,11 @@
       <div class="back">
         <%= image_tag @birth_card.image %>
         
-        <div id="birth_card_title_line" class="title_line">
-          Your birth card is <br><%= @birth_card.name %>
-        </div>
+        <%= link_to source_card_url(@birth_card), :class => 'nodeco' do %>
+          <div id="birth_card_title_line" class="title_line">
+            Your birth card is <br><%= @birth_card.name %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -24,9 +26,11 @@
       <div class="back">
         <%= image_tag @personality_card&.image %>
         
-        <div id="personality_card_title_line" class="title_line">
-          Your personality card is <br><%= @personality_card&.name %>
-        </div>
+        <%= link_to source_card_url(@personality_card), :class => 'nodeco' do %>
+          <div id="personality_card_title_line" class="title_line">
+            Your personality card is <br><%= @personality_card&.name %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
