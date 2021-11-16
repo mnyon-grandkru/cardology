@@ -1,9 +1,16 @@
 #card_reading_delivery_zone {
-  width: 1000px;
+//  width: 1000px;
   height: 500px;
 }
 
 #access_card_delivery_zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .panel {
+    display: block;
+  }
   
   .delivery_zone {
     display: inline-block;
