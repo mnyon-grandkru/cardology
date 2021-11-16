@@ -6,10 +6,11 @@
       </div>
     
       <div class="back">
-        <div id="birth_card_title_line">
-          Your birth card is <%= @birth_card.name %>
-        </div>
         <%= image_tag @birth_card.image %>
+        
+        <div id="birth_card_title_line" class="title_line">
+          Your birth card is <br><%= @birth_card.name %>
+        </div>
       </div>
     </div>
   </div>
@@ -21,10 +22,11 @@
       </div>
     
       <div class="back">
-        <div id="personality_card_title_line">
-          Your personality card is <%= @personality_card&.name %>
-        </div>
         <%= image_tag @personality_card&.image %>
+        
+        <div id="personality_card_title_line" class="title_line">
+          Your personality card is <br><%= @personality_card&.name %>
+        </div>
       </div>
     </div>
   </div>

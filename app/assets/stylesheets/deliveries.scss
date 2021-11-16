@@ -7,10 +7,28 @@
   
   .delivery_zone {
     display: inline-block;
+    text-align: center;
     
     img {
       width: 240px;
       border-radius: 11px;
+    }
+    
+    .title_line {
+      text-align: center;
+      width: 200px;
+      border: 2px solid black;
+      border-radius: 11px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      padding: 8px;
+      font-family: 'Abel';
+      font-size: 19px;
+      color: #192070;
+      background-color: black;
+      opacity: 0.8;
+      margin-top: -5px;
+      margin-left: 10px;
     }
   }
 }
