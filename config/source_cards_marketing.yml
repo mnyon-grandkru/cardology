@@ -3,3 +3,14 @@ new_players:
   instructions: |
     Enter a birth date - then click the cards to flip them over.
   button: "Go"
+
+card_reading:
+  birth_card:
+    identification: "Your Birth Card is the"
+    instructions: "Click to learn more."
+  personality_card:
+    identification: "Your Personality Card is"
+    instructions: "Click to see more."
+  birthday_card:
+    identification: "For the birthday"
+    instructions: "you can find cards here."

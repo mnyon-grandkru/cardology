@@ -9,7 +9,9 @@
         <%= link_to source_card_url(@birth_card), :class => 'nodeco', :target => :blank do %>
           <%= image_tag @birth_card.image %>
           <div id="birth_card_title_line" class="title_line">
-            Your birth card is <br><%= @birth_card.name %>
+            <%= source_cards_marketing_text 'card_reading', 'birth_card', 'identification' %> <br>
+            <%= @birth_card.name %><br>
+            <%= source_cards_marketing_text 'card_reading', 'birth_card', 'instructions' %>
           </div>
         <% end %>
       </div>
@@ -26,7 +28,9 @@
         <%= link_to source_card_url(@personality_card), :class => 'nodeco', :target => :blank do %>
           <%= image_tag @personality_card&.image %>
           <div id="personality_card_title_line" class="title_line">
-            Your personality card is <br><%= @personality_card&.name %>
+            <%= source_cards_marketing_text 'card_reading', 'personality_card', 'identification' %> <br>
+            <%= @personality_card&.name %><br>
+            <%= source_cards_marketing_text 'card_reading', 'personality_card', 'instructions' %>
           </div>
         <% end %>
       </div>
@@ -43,7 +47,9 @@
         <%= link_to birthday_card_url(@birthday, @birth_card), :class => 'nodeco', :target => :blank do %>
           <%= image_tag @birthday_card if @birthday_card %>
           <div id="birthday_name" class="title_line">
-            <%= @birthday.month_day %>
+            <%= source_cards_marketing_text 'card_reading', 'birthday_card', 'identification' %><br>
+            <%= @birthday.month_day %><br>
+            <%= source_cards_marketing_text 'card_reading', 'birthday_card', 'instructions' %>
           </div>
         <% end %>
       </div>
