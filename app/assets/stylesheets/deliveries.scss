@@ -1,6 +1,17 @@
 #card_reading_delivery_zone {
-//  width: 1000px;
   height: 500px;
+  
+  #widget_title {
+    text-align: center;
+    color: bisque;
+    text-shadow: 0px 5px 4px #448;
+  }
+  
+  #widget_instructions {
+    text-align: center;
+    color: bisque;
+    text-shadow: 0px 3px 4px #448;
+  }
 }
 
 #access_card_delivery_zone {
