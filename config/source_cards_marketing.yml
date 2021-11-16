@@ -1,0 +1,5 @@
+new_players:
+  header: "Birth Card Lookup"
+  instructions: |
+    Enter a birth date - then click the cards to flip them over.
+  button: "Go"

@@ -1,8 +1,10 @@
 <div id="card_reading_delivery_zone">
   <div id="birthday_selection_tool">
+    <header id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></header>
+    <section id="widget_instructions"><%= source_cards_marketing_text 'new_players', 'instructions' %></section>
     <%= form_for Birthday.new :date => @date do |birthday_form| %>
       <%= birthday_form.date_select :date, :order => [:month, :day] %><br>
-      <%= birthday_form.submit marketing_text('new_players', 'button') %>
+      <%= birthday_form.submit source_cards_marketing_text('new_players', 'button') %>
       <%= hidden_field_tag :source_cards, true %>
     <% end %>
   </div>

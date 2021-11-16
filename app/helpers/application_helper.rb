@@ -20,6 +20,26 @@ module ApplicationHelper
     YAML.load(File.read(Rails.root.join('config', 'marketing.yml')))
   end
   
+  def source_cards_marketing_text *keys
+    copy = source_cards_marketing_copy
+    begin
+      keys.each do |key|
+        copy = copy[key]
+      end
+    rescue StandardError => error
+      Rails.logger.info "Marketing text for #{keys} is not configured."
+      copy = ''
+    end
+    if copy =~ /(ENV\[\'\w+\'\])/
+      copy.gsub!($1, eval($1))
+    end
+    copy
+  end
+  
+  def source_cards_marketing_copy
+    YAML.load(File.read(Rails.root.join('config', 'source_cards_marketing.yml')))
+  end
+  
   def email_text *keys
     paragraphs = email_copy
     begin
