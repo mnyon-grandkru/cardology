@@ -1,6 +1,6 @@
 module DeliveriesHelper
   def source_card_url card
-    'https://www.thesourcecards.com/' + card.name.gsub(' ', '-')
+    'https://www.thesourcecards.com/' + card.name.gsub(' ', '-') if card
   end
   
   def birthday_card_url birthday, card

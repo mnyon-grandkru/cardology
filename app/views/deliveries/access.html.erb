@@ -26,7 +26,7 @@
     
       <div class="back">
         <%= link_to source_card_url(@personality_card), :class => 'nodeco', :target => :blank do %>
-          <%= image_tag @personality_card&.image %>
+          <%= image_tag @personality_card.image if @personality_card %>
           <div id="personality_card_title_line" class="title_line">
             <%= source_cards_marketing_text 'card_reading', 'personality_card', 'identification' %> <br>
             <%= @personality_card&.name %><br>
