@@ -10,7 +10,8 @@
           <%= image_tag @birth_card.image %>
           <div id="birth_card_title_line" class="title_line">
             <%= source_cards_marketing_text 'card_reading', 'birth_card', 'identification' %> <br>
-            <%= @birth_card.name %><br>
+            <%= @birth_card.name %>.<br>
+            <%= source_cards_marketing_text 'card_reading', 'birth_card', 'symbolizing' %><br>
             <%= source_cards_marketing_text 'card_reading', 'birth_card', 'instructions' %>
           </div>
         <% end %>
@@ -29,7 +30,8 @@
           <%= image_tag @personality_card.image if @personality_card %>
           <div id="personality_card_title_line" class="title_line">
             <%= source_cards_marketing_text 'card_reading', 'personality_card', 'identification' %> <br>
-            <%= @personality_card&.name %><br>
+            <%= @personality_card&.name %>.<br>
+            <%= source_cards_marketing_text 'card_reading', 'personality_card', 'symbolizing' %><br>
             <%= source_cards_marketing_text 'card_reading', 'personality_card', 'instructions' %>
           </div>
         <% end %>
