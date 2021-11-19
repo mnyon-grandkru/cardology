@@ -3,7 +3,7 @@ new_players:
   instructions: |
     Put in Your Birth Date. Then Click Enter.
   button: "Enter"
-  invitation: "Click on each Card to discover the game of your life."
+  invitation: "Click on each Card to see the game of your life."
 
 card_reading:
   birth_card:
