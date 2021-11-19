@@ -1,7 +1,13 @@
-#card_reading_delivery_zone {
-//  height: 500px;
+.widget_heading {
+  border: 2px solid black;
+  border-radius: 11px;
+  background-color: black;
+  opacity: 0.8;
+  margin: 10px 25% 10px 25%;
+  
   
   #widget_title {
+    font-size: 2em;
     text-align: center;
     color: bisque;
     text-shadow: 0px 5px 4px #448;
@@ -42,7 +48,7 @@
       padding: 4px;
       font-family: 'Abel';
       font-size: 19px;
-      color: #192070;
+      color: bisque;
       background-color: black;
       opacity: 0.8;
       margin-top: -5px;
