@@ -1,3 +1,5 @@
+// The enclosing iframe is set at 1200 wide and 750 tall.
+
 .widget_heading {
   border: 2px solid black;
   border-radius: 11px;
@@ -17,6 +19,16 @@
     text-align: center;
     color: bisque;
     text-shadow: 0px 3px 4px #448;
+  }
+}
+
+#birthday_selection_tool {
+  padding: 18px;
+  
+  #new_birthday input[type="submit"] {
+    margin-top: 19px;
+    width: 146px;
+    font-size: 1em;
   }
 }
 
