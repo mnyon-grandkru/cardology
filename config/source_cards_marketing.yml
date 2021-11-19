@@ -17,3 +17,6 @@ card_reading:
   birthday_card:
     identification: "For the birthday of"
     instructions: "To discover more about your birthday, click above on your Birthday Card"
+
+navigation:
+  another_lookup: "Look Up Another Birthday"
