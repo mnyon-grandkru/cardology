@@ -1,9 +1,9 @@
 new_players:
   header: "Source Card Lookup"
   instructions: |
-    Enter a Birth Date. Click Go. Then click on the cards to flip them over.
-  button: "Go"
-  invitation: "Now you can flip the cards that were found."
+    Put in Your Birth Date. Then Click Enter.
+  button: "Enter"
+  invitation: "Click on each Card to discover the game of your life."
 
 card_reading:
   birth_card:
@@ -16,4 +16,4 @@ card_reading:
     instructions: "Click the Card to learn more."
   birthday_card:
     identification: "For the birthday of"
-    instructions: "To discover more about your birthday, click the Birthday Card"
+    instructions: "To discover more about your birthday, click above on your Birthday Card"
