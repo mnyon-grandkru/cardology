@@ -1,16 +1,18 @@
 new_players:
-  header: "Birth Card Lookup"
+  header: "Source Card Lookup"
   instructions: |
-    Enter a birth date - then click the cards to flip them over.
+    Enter a Birth Date. Click Go. Then click on the cards to flip them over.
   button: "Go"
 
 card_reading:
   birth_card:
     identification: "Your Birth Card is the"
-    instructions: "Click to learn more."
+    "It symbolizes the fundamental experience of your life."
+    instructions: "Click the Card to learn more."
   personality_card:
-    identification: "Your Personality Card is"
-    instructions: "Click to see more."
+    identification: "Your Personality Card is the"
+    "It symbolizes the identity that may define you."
+    instructions: "Click the Card to learn more."
   birthday_card:
-    identification: "For the birthday"
-    instructions: "you can find cards here."
+    identification: "For"
+    instructions: "To discover more about your birthday, click the Birthday Card"
