@@ -6,13 +6,13 @@ new_players:
 
 card_reading:
   birth_card:
-    identification: "Your Birth Card is the . It symbolizes the fundamental experience of your life."
+    identification: "Your Birth Card is the . This pattern symbolizes the fundamental experience of your life."
     
     instructions: "Click the Card to learn more."
   personality_card:
-    identification: "Your Personality Card is the . It symbolizes the identity that may define you."
+    identification: "Your Personality Card is the . This pattern symbolizes the identity that may define you."
     
     instructions: "Click the Card to learn more."
   birthday_card:
-    identification: "For"
+    identification: "For the birthday of"
     instructions: "To discover more about your birthday, click the Birthday Card"
