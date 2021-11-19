@@ -3,6 +3,7 @@ new_players:
   instructions: |
     Enter a Birth Date. Click Go. Then click on the cards to flip them over.
   button: "Go"
+  invitation: "Now you can flip the cards that were found."
 
 card_reading:
   birth_card:
