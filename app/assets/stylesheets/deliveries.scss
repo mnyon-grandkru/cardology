@@ -1,4 +1,4 @@
-// The enclosing iframe is set at 1200 wide and 770 tall.
+// The enclosing iframe is set at 1200 wide and 800 tall.
 
 .widget_heading {
   border: 2px solid black;
@@ -63,7 +63,7 @@
       color: bisque;
       background-color: black;
       opacity: 0.8;
-      margin-top: -5px;
+      margin-top: -6px;
       margin-left: 14px;
     }
     
@@ -89,7 +89,8 @@
     border-radius: 11px;
     padding: 9px;
     background-color: black;
-    opacity: 0.8;    
+    opacity: 0.8;
+    margin-left: -29px;
   }
 }
 
