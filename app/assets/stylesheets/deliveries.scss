@@ -106,11 +106,17 @@
   
   .zodiac_selection {
     display: block;
+    margin-top: 7px;
     text-decoration: none;
-    color: bisque;
+    background-color: bisque;
     padding: 18px;
-    border: 2px solid black;
+    border: 2px solid bisque;
     border-radius: 11px;
+    
+    img.sign_icon {
+      width: 20px;
+      border-radius: 0px;
+    }
   }
 }
 
