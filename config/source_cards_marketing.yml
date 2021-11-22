@@ -14,7 +14,7 @@ card_reading:
     identification: "Your Personality Card is the"
     symbolizing: "This pattern symbolizes the identity that may define you."
     instructions: "Click the Card to learn more."
-    cusp: "This birthday is on an astrological cusp.  Which one is your sign?"
+    cusp: "Your birthday is on an astrological cusp.  In standard Western astrology, which one is your sign?"
   birthday_card:
     identification: "For the birthday of"
     instructions: "To learn more about the patterns of your birthday and to get inspiration for your life, click above on your Birthday Card."
