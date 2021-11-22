@@ -31,14 +31,13 @@
       </div>
     
       <div class="back">
-        <%= link_to source_card_url(@personality_card), :class => 'nodeco', :target => :blank do %>
-          <%= image_tag @personality_card.image if @personality_card %>
-          <div id="personality_card_title_line" class="title_line">
-            <%= source_cards_marketing_text 'card_reading', 'personality_card', 'identification' %> <br>
-            <%= @personality_card&.name %>.<br>
-            <%= source_cards_marketing_text 'card_reading', 'personality_card', 'symbolizing' %><br>
-            <%= source_cards_marketing_text 'card_reading', 'personality_card', 'instructions' %>
+        <% if @birthday.zodiac_for_birthday.is_cusp? %>
+          <div id="zodiac">
+            <%= source_cards_marketing_text 'card_reading', 'personality_card', 'cusp' %>
+            <%= zodiac_picker_for nil, @birthday %>
           </div>
+        <% else %>
+          <%= personality_card_reading_link @personality_card %>
         <% end %>
       </div>
     </div>

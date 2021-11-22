@@ -92,3 +92,25 @@
     opacity: 0.8;    
   }
 }
+
+#zodiac {
+  color: bisque;
+  border: 2px solid black;
+  border-radius: 22px;
+  width: 200px;
+  height: 340px;
+  background-color: black;
+  opacity: 0.8;
+  padding: 20px;
+  
+  .zodiac_selection {
+    display: block;
+    text-decoration: none;
+    color: bisque;
+    padding: 18px;
+    border: 2px solid black;
+    border-radius: 11px;
+  }
+}
+
+
