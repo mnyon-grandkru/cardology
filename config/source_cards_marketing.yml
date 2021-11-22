@@ -17,7 +17,7 @@ card_reading:
     cusp: "This birthday is on an astrological cusp.  Which one is your sign?"
   birthday_card:
     identification: "For the birthday of"
-    instructions: "To discover what it might look like for you to play your cards right, click above on your Birthday Card"
+    instructions: "To learn more about the patterns of your birthday and to get inspiration for your life, click above on your Birthday Card."
 
 navigation:
   another_lookup: "Look Up Another Birthday"
