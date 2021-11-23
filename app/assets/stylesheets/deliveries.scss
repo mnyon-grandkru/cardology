@@ -106,18 +106,24 @@
   
   .zodiac_selection {
     display: block;
-    margin-top: 7px;
+    margin-top: 17px;
     text-decoration: none;
     background-color: bisque;
     padding: 18px;
     border: 2px solid bisque;
     border-radius: 11px;
+    color: #0D1452;
     
     img.sign_icon {
-      width: 20px;
+      width: 35px;
       border-radius: 0px;
+      float: left;
+    }
+  }
+  
+  .zodiac_selection:first-of-type {
+    img {
+      float: right;
     }
   }
 }
-
-
