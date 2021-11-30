@@ -9,13 +9,15 @@ $(document).on 'turbolinks:load', ->
 
 window.resizeReading = ->
   $('.panel').each (i, p) ->
+    image_height = $(p).find('img.source_cards_card_design').height()
+    title_line_height = $(p).find('.title_line').height()
     if ($(p).hasClass('flip'))
-      $(p).height $(p).find('.pane.back').outerHeight() + 30
+      $(p).height $(p).find('.pane.back').outerHeight() + 30 + image_height + title_line_height
     else
       if ($(p).hasClass('skip'))
         $(p).height $(p).find('.pane.fore').outerHeight() + 30
       else
-        $(p).height $(p).find('.pane.front').outerHeight() + 30
+        $(p).height $(p).find('.pane.front').outerHeight() + 30 + image_height
 
 window.attachFlippers = ->
   $('.card_reading_pane, .delivery_zone').off('click').on 'click', '.flip_card', (event) ->
