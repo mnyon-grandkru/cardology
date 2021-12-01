@@ -31,18 +31,10 @@
   }
 }
 
-//@media (max-width : 667px) {
-//  #access_card_delivery_zone {
-//    flex-direction: column;
-//  }
-//}
-
 #access_card_delivery_zone {
   display: flex;
   align-items: center;
   justify-content: center;
-//  vertical-align: top;
-//  flex-direction: row;
   
   .panel {
     display: block;
