@@ -19,6 +19,10 @@
         width: 143px;
         align-items: center;
       }
+      
+      .widget_heading {
+        margin: 10px 13% 10px 13%
+      }
     </style>
   <% end %>
   
@@ -26,7 +30,7 @@
     <div id="birth_card_delivery_zone" class="delivery_zone">
       <div class="panel">
         <div class="front">
-          <%= image_tag asset_path 'blue-round-sourcecards-lowrez.png' %>
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
         </div>
       </div>
     </div>
@@ -34,7 +38,7 @@
     <div id="personality_card_delivery_zone" class="delivery_zone">
       <div class="panel">
         <div class="front">
-          <%= image_tag asset_path 'blue-round-sourcecards-lowrez.png' %>
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
         </div>
       </div>
     </div>
@@ -42,7 +46,7 @@
     <div id="birthday_card_delivery_zone" class="delivery_zone">
       <div class="panel">
         <div class="front">
-          <%= image_tag asset_path 'blue-round-sourcecards-lowrez.png' %>
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
         </div>
       </div>
     </div>
