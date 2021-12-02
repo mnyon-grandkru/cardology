@@ -102,7 +102,7 @@ class BirthdaysController < ApplicationController
     @birth_card = @birthday.birth_card
     @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation
     if params[:source_cards]
-      redirect_to access_delivery_path(@birthday)
+      redirect_to access_delivery_path(@birthday, :spread_direction => params[:spread_direction])
     else
       if current_member
         redirect_to birthday_path(@birthday, :navigation_shown => true, :member_id => current_member.id)

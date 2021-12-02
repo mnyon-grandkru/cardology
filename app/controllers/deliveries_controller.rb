@@ -1,9 +1,6 @@
 class DeliveriesController < ApplicationController
   def entrance
     @date = rand(Date.civil(1900)...Date.civil(1901))
-    if params[:spread_direction] == 'vertical'
-      session[:vertical_spread] = true
-    end
   end
   
   def access

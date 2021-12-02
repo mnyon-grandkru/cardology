@@ -8,10 +8,11 @@
       <%= birthday_form.date_select :date, :order => [:month, :day] %><br>
       <%= birthday_form.submit source_cards_marketing_text('new_players', 'button') %>
       <%= hidden_field_tag :source_cards, true %>
+      <%= hidden_field_tag :spread_direction, params[:spread_direction] %>
     <% end %>
   </div>
   
-  <% if session[:vertical_spread] %>
+  <% if params[:spread_direction] == 'vertical' %>
     <style>
       #access_card_delivery_zone {
         flex-direction: column;

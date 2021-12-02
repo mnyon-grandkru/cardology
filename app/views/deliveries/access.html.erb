@@ -3,7 +3,7 @@
   <section id="widget_instructions"><%= source_cards_marketing_text 'new_players', 'invitation' %></section>
 </div>
 
-<% if session[:vertical_spread] %>
+<% if params[:spread_direction] == 'vertical' %>
   <style>
     #access_card_delivery_zone {
       flex-direction: column;
