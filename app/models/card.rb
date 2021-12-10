@@ -36,6 +36,8 @@ class Card < ApplicationRecord
   def numeric_name
     if face.name == 'Joker'
       'Joker'
+    elsif [1, 11, 12, 13].include? face.number
+      "#{face.name} of #{suit.name}"
     else
       "#{face.number} of #{suit.name}"
     end
