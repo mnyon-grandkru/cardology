@@ -8,7 +8,7 @@ new_players:
 card_reading:
   birth_card:
     identification: "Your Birth Card is the"
-    symbolizing: "This primary pattern symbolizes the fundamental experience of your life."
+    symbolizing: "This underlying pattern symbolizes the fundamental experience of your life."
     instructions: "Click the Card to learn more."
   personality_card:
     identification: "Your Personality Card is the"
