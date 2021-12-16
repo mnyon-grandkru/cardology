@@ -1,0 +1,86 @@
+<div class="widget_heading">
+  <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></section>
+  <section id="widget_instructions"><%= source_cards_marketing_text 'new_players', 'invitation' %></section>
+</div>
+
+<% if params[:spread_direction] == 'vertical' %>
+  <style>
+    #access_card_delivery_zone {
+      flex-direction: column;
+      width: 143px;
+      align-items: center;
+    }
+    
+    .widget_heading {
+      margin: 10px 13% 10px 13%
+    }
+    
+    .lower_navigation a {
+      margin-left: 0px;
+    }
+  </style>
+<% end %>
+
+<div id="access_card_delivery_zone">
+  <div id="birth_card_delivery_zone" class="delivery_zone">
+    <div class="panel">
+      <div class="front flip_card">
+        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+      </div>
+    
+      <div class="back">
+        <%= link_to source_card_url(@birth_card), :class => 'nodeco', :target => :blank do %>
+          <%= image_tag @birth_card.image %>
+          <div id="birth_card_title_line" class="title_line">
+            <%= source_cards_marketing_text 'card_reading', 'birth_card', 'identification' %> <br>
+            <%= @birth_card.name %>.<br>
+            <%= source_cards_marketing_text 'card_reading', 'birth_card', 'symbolizing' %><br>
+            <%= source_cards_marketing_text 'card_reading', 'birth_card', 'instructions' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div id="personality_card_delivery_zone" class="delivery_zone">
+    <div class="panel">
+      <div class="front flip_card">
+        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+      </div>
+    
+      <div class="back">
+        <% if @birthday.zodiac_for_birthday.is_cusp? %>
+          <div id="zodiac">
+            <%= source_cards_marketing_text 'card_reading', 'personality_card', 'cusp' %>
+            <%= zodiac_picker_for nil, @birthday %>
+          </div>
+        <% else %>
+          <%= personality_card_reading_link @personality_card %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div id="birthday_card_delivery_zone" class="delivery_zone">
+    <div class="panel">
+      <div class="front flip_card">
+        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+      </div>
+    
+      <div class="back">
+        <%= link_to birthday_card_url(@birthday, @birth_card), :class => 'nodeco', :target => :blank do %>
+          <%= image_tag @birthday_card if @birthday_card %>
+          <div id="birthday_name" class="title_line">
+            <%= source_cards_marketing_text 'card_reading', 'birthday_card', 'identification' %><br>
+            <%= @birthday.month_day %>.<br>
+            <%= source_cards_marketing_text 'card_reading', 'birthday_card', 'instructions' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= clearboth %>
+<div class="lower_navigation">
+  <%= link_to source_cards_marketing_text('navigation', 'another_lookup'), entrance_deliveries_path(:spread_direction => params[:spread_direction]), :onclick => "$.scrollTo($('#widget_title'))" %>
+</div>

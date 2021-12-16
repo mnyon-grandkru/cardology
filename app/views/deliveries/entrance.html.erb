@@ -1,0 +1,58 @@
+<div id="card_reading_delivery_zone">
+  <div class="widget_heading">
+    <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></section>
+    <section id="widget_instructions"><%= source_cards_marketing_text 'new_players', 'instructions' %></section>
+  </div>
+  <div id="birthday_selection_tool">
+    <%= form_for Birthday.new :date => @date do |birthday_form| %>
+      <%= birthday_form.date_select :date, :order => [:month, :day] %><br>
+      <%= birthday_form.submit source_cards_marketing_text('new_players', 'button') %>
+      <%= hidden_field_tag :source_cards, true %>
+      <%= hidden_field_tag :spread_direction, params[:spread_direction] %>
+    <% end %>
+  </div>
+  
+  <% if params[:spread_direction] == 'vertical' %>
+    <style>
+      #access_card_delivery_zone {
+        flex-direction: column;
+        width: 143px;
+        align-items: center;
+      }
+      
+      .widget_heading {
+        margin: 10px 13% 10px 13%
+      }
+      
+      .lower_navigation a {
+        margin-left: 0px;
+      }
+    </style>
+  <% end %>
+  
+  <div id="access_card_delivery_zone">
+    <div id="birth_card_delivery_zone" class="delivery_zone">
+      <div class="panel">
+        <div class="front">
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+        </div>
+      </div>
+    </div>
+  
+    <div id="personality_card_delivery_zone" class="delivery_zone">
+      <div class="panel">
+        <div class="front">
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+        </div>
+      </div>
+    </div>
+  
+    <div id="birthday_card_delivery_zone" class="delivery_zone">
+      <div class="panel">
+        <div class="front">
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

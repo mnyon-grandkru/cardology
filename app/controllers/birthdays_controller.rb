@@ -1,5 +1,5 @@
 class BirthdaysController < ApplicationController
-  skip_before_action :verify_authenticity_token, :if => lambda { request.domain == 'lifeelevated.life' }
+  skip_before_action :verify_authenticity_token, :if => lambda { ['lifeelevated.life', 'thesourcecards.com', 'herokuapp.com'].include? request.domain }
   before_action :redirect_customer, :only => :index
   
   def index
@@ -101,10 +101,14 @@ class BirthdaysController < ApplicationController
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
     @birth_card = @birthday.birth_card
     @birth_card_explanation = @birth_card.interpretations.where(:reading => :birth).last&.explanation
-    if current_member
-      redirect_to birthday_path(@birthday, :navigation_shown => true, :member_id => current_member.id)
+    if params[:source_cards]
+      redirect_to access_delivery_path(@birthday, :spread_direction => params[:spread_direction])
     else
-      render :template => 'birthdays/member_form'
+      if current_member
+        redirect_to birthday_path(@birthday, :navigation_shown => true, :member_id => current_member.id)
+      else
+        render :template => 'birthdays/member_form'
+      end
     end
   end
   
@@ -123,8 +127,12 @@ class BirthdaysController < ApplicationController
     @card = @birthday.personality_card
     @header_text = 'Their Personality Card'
     @querent = 'acquaintance'
-    @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
-    render :template => 'birthdays/replace_card.js.erb'
+    if params[:source_cards]
+      render :template => 'birthdays/display_card.js.erb'
+    else
+      @card_explanation = @card.interpretations.where(:reading => :personality).last&.explanation || @card.interpretations.where(:reading => :birth).last&.explanation
+      render :template => 'birthdays/replace_card.js.erb'
+    end
   end
   
   def birthday_params

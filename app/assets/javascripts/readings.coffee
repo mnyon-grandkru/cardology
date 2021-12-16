@@ -9,21 +9,23 @@ $(document).on 'turbolinks:load', ->
 
 window.resizeReading = ->
   $('.panel').each (i, p) ->
+    image_height = $(p).find('img.source_cards_card_design').height()
+    title_line_height = $(p).find('.title_line').height()
     if ($(p).hasClass('flip'))
-      $(p).height $(p).find('.pane.back').outerHeight() + 30
+      $(p).height $(p).find('.pane.back').outerHeight() + 30 + image_height + title_line_height
     else
       if ($(p).hasClass('skip'))
         $(p).height $(p).find('.pane.fore').outerHeight() + 30
       else
-        $(p).height $(p).find('.pane.front').outerHeight() + 30
+        $(p).height $(p).find('.pane.front').outerHeight() + 30 + image_height
 
 window.attachFlippers = ->
-  $('.card_reading_pane').off('click').on 'click', '.flip_card', (event) ->
+  $('.card_reading_pane, .delivery_zone').off('click').on 'click', '.flip_card', (event) ->
     $(this).closest('.panel').toggleClass 'flip'
     $.scrollTo($(this).closest('.panel'), 1000)
     event.preventDefault()
   
-  $('.card_reading_pane').on 'click', '.skip_card', (event) ->
+  $('.card_reading_pane, .delivery_zone').on 'click', '.skip_card', (event) ->
     $(this).closest('.panel').toggleClass 'skip'
     $.scrollTo($(this).closest('.panel'), 1000)
     event.preventDefault()

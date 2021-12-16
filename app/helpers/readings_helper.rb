@@ -55,12 +55,19 @@ module ReadingsHelper
   end
   
   def zodiac_picker_for member, birthday
-    if birthday == member.birthday
+    if member.nil?
+      link_to(image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.leader}.png"), :class => 'sign_icon') + birthday.zodiac_for_birthday.leader.capitalize.to_s, personality_for_zodiac_birthday_path(birthday, :zodiac_sign => birthday.zodiac_for_birthday.leader, :source_cards => true), :remote => true, :class => 'zodiac_selection') +
+      link_to(image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.follower}.png"), :class => 'sign_icon') + birthday.zodiac_for_birthday.follower.capitalize, personality_for_zodiac_birthday_path(birthday, :zodiac_sign => birthday.zodiac_for_birthday.follower, :source_cards => true), :remote => true, :class => 'zodiac_selection')
+    elsif birthday == member&.birthday
       link_to(birthday.zodiac_for_birthday.leader.capitalize, member_assign_zodiac_path(:id => member.id, :member => {:zodiac_sign => birthday.zodiac_for_birthday.leader}), :method => :put, :remote => true, :class => 'zodiac_selection flip_card') +
       link_to(birthday.zodiac_for_birthday.follower.capitalize, member_assign_zodiac_path(:id => member.id, :member => {:zodiac_sign => birthday.zodiac_for_birthday.follower}), :method => :put, :remote => true, :class => 'zodiac_selection flip_card')
     else
       link_to(birthday.zodiac_for_birthday.leader.capitalize, personality_for_zodiac_birthday_path(birthday, :zodiac_sign => birthday.zodiac_for_birthday.leader), :remote => true, :class => 'zodiac_selection flip_card') +
       link_to(birthday.zodiac_for_birthday.follower.capitalize, personality_for_zodiac_birthday_path(birthday, :zodiac_sign => birthday.zodiac_for_birthday.follower), :remote => true, :class => 'zodiac_selection flip_card')
     end
+  end
+  
+  def quick_zodiac_picker birthday
+    
   end
 end

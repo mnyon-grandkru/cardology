@@ -1,0 +1,128 @@
+// The enclosing iframe is set at 1200 wide and 800 tall.
+
+.widget_heading {
+  border: 2px solid black;
+  border-radius: 11px;
+  background-color: black;
+  opacity: 0.8;
+  margin: 10px 33% 10px 33%;
+  
+  #widget_title {
+    font-size: 2em;
+    text-align: center;
+    color: bisque;
+    text-shadow: 0px 5px 4px #448;
+  }
+  
+  #widget_instructions {
+    text-align: center;
+    color: bisque;
+    text-shadow: 0px 3px 4px #448;
+  }
+}
+
+#birthday_selection_tool {
+  padding: 18px;
+  
+  #new_birthday input[type="submit"] {
+    margin-top: 19px;
+    width: 146px;
+    font-size: 1em;
+  }
+}
+
+#access_card_delivery_zone {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  
+  .panel {
+    display: block;
+  }
+  
+  .delivery_zone {
+    display: inline-block;
+    text-align: center;
+    
+    img {
+      width: 240px;
+      border-radius: 11px;
+    }
+    
+    .title_line {
+      text-align: center;
+      width: 200px;
+      border: 2px solid black;
+      border-radius: 11px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      padding: 4px;
+      font-family: 'Abel';
+      font-size: 19px;
+      color: bisque;
+      background-color: black;
+      opacity: 0.8;
+      margin-top: -6px;
+      margin-left: 14px;
+    }
+    
+    a.nodeco {
+      text-decoration: none;
+    }
+  }
+}
+
+.lower_navigation {
+  margin-top: 9px;
+  text-align: center;
+  font-family: 'Abel';
+  font-size: 19px;
+  color: bisque;
+  
+  a {
+    text-decoration: none;
+    color: bisque;
+    
+    border: 2px solid #b76228;
+    border-radius: 11px;
+    padding: 9px;
+    background-color: #b76228;
+    opacity: 0.9;
+    
+    margin-left: -17px;
+  }
+}
+
+#zodiac {
+  color: bisque;
+  border: 2px solid black;
+  border-radius: 22px;
+  width: 200px;
+  height: 340px;
+  background-color: black;
+  opacity: 0.8;
+  padding: 20px;
+  
+  .zodiac_selection {
+    display: block;
+    margin-top: 17px;
+    text-decoration: none;
+    background-color: bisque;
+    padding: 18px;
+    border: 2px solid bisque;
+    border-radius: 11px;
+    color: #0D1452;
+    
+    img.sign_icon {
+      width: 35px;
+      border-radius: 0px;
+      float: left;
+    }
+  }
+  
+  .zodiac_selection:first-of-type {
+    img {
+      float: right;
+    }
+  }
+}

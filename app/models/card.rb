@@ -33,6 +33,16 @@ class Card < ApplicationRecord
     inspect
   end
   
+  def numeric_name
+    if face.name == 'Joker'
+      'Joker'
+    elsif [1, 11, 12, 13].include? face.number
+      "#{face.name} of #{suit.name}"
+    else
+      "#{face.number} of #{suit.name}"
+    end
+  end
+  
   def self.card_back_image
     find_by(:face => Face.find_by(:name => 'Card Back'))&.image
   end
