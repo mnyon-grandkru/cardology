@@ -145,6 +145,38 @@ class Birthday < ApplicationRecord
     Date.current + days_until_next_planet.days
   end
   
+  def last_birthday
+    birthday_year = if Date.current.month > month
+      Date.current.year
+    elsif Date.current.month == month
+      if Date.current.day >= day
+        Date.current.year
+      else
+        Date.current.year - 1
+      end
+    else
+      Date.current.year - 1
+    end
+    Date.civil birthday_year, month, day
+  end
+  
+  def dates_of_planetary_shifts
+    [last_birthday,
+    last_birthday + 52.days,
+    last_birthday + (52*2).days,
+    last_birthday + (52*3).days,
+    last_birthday + (52*4).days,
+    last_birthday + (52*5).days,
+    last_birthday + (52*6).days
+  ]
+  end
+  
+  def transition_message date
+    card_for_the_planetary_period_on_date(date) +
+    ' in ' +
+    planet_on_date(date)
+  end
+  
   def planetary_period_on_date date
     (days_since_birthday_on_date(date) / 52) + 1
   end
@@ -359,6 +391,22 @@ class Birthday < ApplicationRecord
   
   def reading
     "Birth Card: #{birth_card.inspect}<br>This Year: #{card_for_this_year.inspect}<br>52-day Card: #{card_for_this_planet.inspect}"
+  end
+  
+  PLANETS = ['Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+  
+  def triples_for_year
+    triples = []
+    dates_of_planetary_shifts.each_with_index do |date, index|
+      triples << [date, PLANETS[index], card_for_the_planetary_period_on_date(date)]
+    end
+    triples
+  end
+  
+  def calendar_string
+    triples_for_year.map do |date, planet, card|
+      "Move to #{card.name} in #{planet} on #{date.strftime("%B %-d")}"
+    end.join(".\n")
   end
   
   memoize :birth_card
