@@ -1,0 +1,19 @@
+<%= calendar(:number_of_days => 365) do |date| %>
+  <% if @friend_transition_dates.include? date %>
+    <%= date.strftime "%B %-d" %><br>
+    <% if @transition_dates.include? date %>
+      <% @transition = @transitions.select { |transition| transition.first == date }.first %>
+      <%= "#{@transition.last.name} in #{@transition[1]}" %><br>
+    <% end %>
+    <% @friend_transition = @friend_transitions.select { |transition| transition.first == date }.first %>
+    <%= "#{@friend_transition[2].name} in #{@friend_transition[1]} for #{@friend_transition[3].name}" %>
+  <% elsif @transition_dates.include? date %>
+    <%= date.strftime "%B %-d" %><br>
+    <% @transition = @transitions.select { |transition| transition.first == date }.first %>
+    <%= "#{@transition.last.name} in #{@transition[1]}" %>
+  <% elsif date.day == 1 %>
+    <%= date.strftime "%B %-d" %>
+  <% else %>
+    <%= date.strftime "%-d" %>
+  <% end %>
+<% end %>
