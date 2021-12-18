@@ -160,14 +160,18 @@ class Birthday < ApplicationRecord
     Date.civil birthday_year, month, day
   end
   
-  def dates_of_planetary_shifts
-    [last_birthday,
-    last_birthday + 52.days,
-    last_birthday + (52*2).days,
-    last_birthday + (52*3).days,
-    last_birthday + (52*4).days,
-    last_birthday + (52*5).days,
-    last_birthday + (52*6).days
+  def next_birthday
+    last_birthday + 1.year
+  end
+  
+  def dates_of_planetary_shifts birthday_for_year
+    [birthday_for_year,
+    birthday_for_year + 52.days,
+    birthday_for_year + (52*2).days,
+    birthday_for_year + (52*3).days,
+    birthday_for_year + (52*4).days,
+    birthday_for_year + (52*5).days,
+    birthday_for_year + (52*6).days
   ]
   end
   
@@ -397,7 +401,10 @@ class Birthday < ApplicationRecord
   
   def triples_for_year
     triples = []
-    dates_of_planetary_shifts.each_with_index do |date, index|
+    dates_of_planetary_shifts(last_birthday).each_with_index do |date, index|
+      triples << [date, PLANETS[index], card_for_the_planetary_period_on_date(date)]
+    end
+    dates_of_planetary_shifts(next_birthday).each_with_index do |date, index|
       triples << [date, PLANETS[index], card_for_the_planetary_period_on_date(date)]
     end
     triples

@@ -1,4 +1,4 @@
-<%= calendar(:number_of_days => 365) do |date| %>
+<%= calendar(:number_of_days => 500) do |date| %>
   <% if @friend_transition_dates.include? date %>
     <%= date.strftime "%B %-d" %><br>
     <% if @transition_dates.include? date %>
