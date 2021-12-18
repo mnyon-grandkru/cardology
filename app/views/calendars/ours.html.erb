@@ -2,11 +2,13 @@
   <% if @friend_transition_dates.include? date %>
     <%= date.strftime "%B %-d" %><br>
     <% if @transition_dates.include? date %>
-      <% @transition = @transitions.select { |transition| transition.first == date }.first %>
-      <%= "#{@transition.last.name} in #{@transition[1]}" %><br>
+      <% @transitions.select { |transition| transition.first == date }.each do |transition| %>
+        <%= "#{transition.last.name} in #{transition[1]}" %><br>
+      <% end %>
     <% end %>
-    <% @friend_transition = @friend_transitions.select { |transition| transition.first == date }.first %>
-    <%= "#{@friend_transition[2].name} in #{@friend_transition[1]} for #{@friend_transition[3].name}" %>
+    <% @friend_transition = @friend_transitions.select { |transition| transition.first == date }.each do |transition| %>
+    <%= "#{transition[2].name} in #{transition[1]} for #{transition[3].name}" %>
+    <% end %>
   <% elsif @transition_dates.include? date %>
     <%= date.strftime "%B %-d" %><br>
     <% @transition = @transitions.select { |transition| transition.first == date }.first %>

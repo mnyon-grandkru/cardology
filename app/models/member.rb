@@ -21,7 +21,7 @@ class Member < ApplicationRecord
   
   paginates_per 52
   
-  def celestials_transisions
+  def celestials_transitions
     quartets = []
     celestials.each do |celestial|
       celestial.birthday.triples_for_year.each do |date, planet, card|
