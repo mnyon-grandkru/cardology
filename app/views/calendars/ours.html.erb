@@ -3,7 +3,7 @@
     <%= date.strftime "%B %-d" %><br>
     <% if @transition_dates.include? date %>
       <% @transitions.select { |transition| transition.first == date }.each do |transition| %>
-        <%= "#{transition.last.name} in #{transition[1]}" %><br>
+        <%= "#{transition.last.name} in #{transition[1]}" %> for you<br>
       <% end %>
     <% end %>
     <% @friend_transition = @friend_transitions.select { |transition| transition.first == date }.each do |transition| %>
@@ -12,7 +12,7 @@
   <% elsif @transition_dates.include? date %>
     <%= date.strftime "%B %-d" %><br>
     <% @transition = @transitions.select { |transition| transition.first == date }.first %>
-    <%= "#{@transition.last.name} in #{@transition[1]}" %>
+    <%= "#{@transition.last.name} in #{@transition[1]}" %> for you
   <% elsif date.day == 1 %>
     <%= date.strftime "%B %-d" %>
   <% else %>
