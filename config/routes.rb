@@ -54,6 +54,10 @@ Rails.application.routes.draw do
   get '/calendars/mine' => 'calendars#mine'
   get '/calendars/ours' => 'calendars#ours'
   
+  get '/guidances/prompt' => 'guidances#prompt'
+  get '/guidances/show' => 'guidances#show'
+  post '/guidances/show' => 'guidances#show'
+  
   post '/member_save' => 'members#create', :as => 'member_save'
   put '/member_assign_zodiac/:id' => 'members#update', :as => 'member_assign_zodiac'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
