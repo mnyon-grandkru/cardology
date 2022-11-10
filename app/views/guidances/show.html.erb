@@ -1,9 +1,12 @@
 <div>
-  <%= @birthday.birth_card.name %>
+  <%= @birthday.birth_card.name %><br>
+  <%= image_tag @birthday.birth_card.image.url, :width => 100 %>
 </div>
 <div>
-  <%= @birthday.card_for_this_planet.name %>
+  <%= @birthday.card_for_this_planet.name %><br>
+  <%= image_tag @birthday.card_for_this_planet.image.url, :width => 100 %>
 </div>
 <div>
-  <%= @birthday.card_for_this_year.name %>
+  <%= @birthday.card_for_this_year.name %><br>
+  <%= image_tag @birthday.card_for_this_year.image.url, :width => 100 %>
 </div>
