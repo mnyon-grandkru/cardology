@@ -1,15 +1,30 @@
-<div>
-  Birth Card<br>
-  <%= @birthday.birth_card.name %><br>
-  <%= image_tag @birthday.birth_card.image.url, :width => 100 %>
+
+<div class="flexcard">
+   <%= card_reading_pane @birthday.birth_card, :birth, marketing_text('heading', 'member', 'birth', 'header'), "For #{@birthday.birthdate.strftime("%b %e %Y")}"%>
+  <%= card_reading_pane @birthday.card_for_this_planet, :planetary, marketing_text('heading', @querent, 'planetary', 'header'), marketing_text('heading', @querent, 'planetary', 'subheader')  %>
+   <%= card_reading_pane @birthday.card_for_this_year, :yearly, marketing_text('heading', 'member', 'yearly', 'header'), marketing_text('heading', @querent, 'yearly', 'subheader') %>
 </div>
-<div>
-  Planetary Card<br>
-  <%= @birthday.card_for_this_planet.name %><br>
-  <%= image_tag @birthday.card_for_this_planet.image.url, :width => 100 %>
-</div>
-<div>
-  Card for this Year<br>
-  <%= @birthday.card_for_this_year.name %><br>
-  <%= image_tag @birthday.card_for_this_year.image.url, :width => 100 %>
-</div>
+<style>
+  .flexcard{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 41px;
+  }
+  .card_reading_pane{
+      width: 30%;
+  }
+  .card_face_image {
+          float: right;
+          margin: 5px;
+          width: 120px;
+          border-radius: 5px;
+        }
+  .flexcarditems{
+    clear: both;
+  }
+  .name_of_card{
+    text-align: right;
+    font-weight: bold;
+  }
+</style>
+
