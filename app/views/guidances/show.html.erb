@@ -1,29 +1,29 @@
+  <div class = "flexing">
 
-<div id="access_card_delivery_zone" style = "padding-top:40px">
-  <div id="birthday_card_delivery_zone" class="delivery_zone" style = "padding-right:110px">
+  <div  class="delivery_zone">
     <div class="panel">
       <div class="front flip_card">
-        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'guidance_style' %>
+        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 200px;", :class => 'guidance_style' %>
       </div>
       <div class="back">
         <%= card_reading_pane_gui @birthday.card_for_today, :daily, marketing_text('heading', 'member', 'daily', 'header'), marketing_text('heading', 'daily', 'subheader') %>
        </div>
       </div>
   </div>
-  <div id="birthday_card_delivery_zone" class="delivery_zone"  style = "padding-right:110px">
+  <div  class="delivery_zone">
     <div class="panel">
       <div class="front flip_card">
-        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'guidance_style' %>
+        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), style: "width: 200px;",:class => 'guidance_style' %>
       </div> 
       <div class="back">
          <%= card_reading_pane_gui @birthday.card_for_this_planet, :planetary, marketing_text('heading', 'member', 'planetary', 'header'), marketing_text('heading', @querent, 'planetary', 'subheader')  %>
       </div>
     </div>
   </div>
-  <div id="birthday_card_delivery_zone" class="delivery_zone">
+  <div  class="delivery_zone">
     <div class="panel">
      <div class="front flip_card">
-       <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'guidance_style' %>
+       <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 200px;", :class => 'guidance_style' %>
       </div>
       <div class="back">
         <%= card_reading_pane_gui @birthday.card_for_this_year, :yearly, marketing_text('heading', 'member', 'yearly', 'header'), marketing_text('heading', @querent, 'yearly', 'subheader') %>
@@ -32,8 +32,15 @@
   </div>
 </div>
 <style>
+
+  .flexing{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+
+  }
   .card_reading_pane_gui{
-    width: 30%;
+    width: 20%;
   }
   .card_face_image_gui{
     float: right;
@@ -45,6 +52,10 @@
     text-align: right;
     font-weight: bold;
   }
+
+
+
+
 </style>
     
 
