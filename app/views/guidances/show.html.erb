@@ -3,27 +3,27 @@
   <div  class="delivery_zone">
     <div class="panel">
       <div class="front flip_card">
-        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 200px;", :class => 'guidance_style' %>
+        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 150px;", :class => 'guidance_style' %>
       </div>
       <div class="back">
         <%= card_reading_pane_gui @birthday.card_for_today, :daily, marketing_text('heading', 'member', 'daily', 'header'), marketing_text('heading', 'daily', 'subheader') %>
        </div>
       </div>
   </div>
-  <div  class="delivery_zone">
+  <div  class="delivery_zone"  style ="padding-left:42px;">
     <div class="panel">
       <div class="front flip_card">
-        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), style: "width: 200px;",:class => 'guidance_style' %>
+        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), style: "width: 150px;",:class => 'guidance_style' %>
       </div> 
       <div class="back">
          <%= card_reading_pane_gui @birthday.card_for_this_planet, :planetary, marketing_text('heading', 'member', 'planetary', 'header'), marketing_text('heading', @querent, 'planetary', 'subheader')  %>
       </div>
     </div>
   </div>
-  <div  class="delivery_zone">
+  <div  class="delivery_zone" style ="padding-left:54px;">
     <div class="panel">
      <div class="front flip_card">
-       <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 200px;", :class => 'guidance_style' %>
+       <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 150px;", :class => 'guidance_style' %>
       </div>
       <div class="back">
         <%= card_reading_pane_gui @birthday.card_for_this_year, :yearly, marketing_text('heading', 'member', 'yearly', 'header'), marketing_text('heading', @querent, 'yearly', 'subheader') %>
@@ -35,7 +35,7 @@
 
   .flexing{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     padding-top: 50px;
 
   }

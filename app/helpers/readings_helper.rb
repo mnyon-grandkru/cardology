@@ -72,7 +72,7 @@ module ReadingsHelper
   end
   def card_reading_pane_gui card, reading, title, subtitle
     
-    div_for @birthday, "#{reading}_card_for", :class => "card_reading_pane_gui pane", style: "width: 320px;" do
+    div_for @birthday, "#{reading}_card_for", :class => "card_reading_pane_gui pane", style: "width: 235px;" do
       content_tag(:header, title) +
       content_tag(:header, subtitle, :class => 'subtitle') +
       if card
@@ -80,7 +80,7 @@ module ReadingsHelper
           div_for(card, :name_of) do
             card.name
           end +
-          image_tag(card.image, :class => 'card_face_image_gui', style:"width:125px") +
+          image_tag(card.image, :class => 'card_face_image_gui', style:"width:85px") +
           div_for(Card.last, :opportunities_on) do
            
           end
