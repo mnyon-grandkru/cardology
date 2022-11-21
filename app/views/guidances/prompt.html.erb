@@ -1,9 +1,13 @@
 
 <h2><b> Enter your Birthdate</b></h2>
+
 <%= form_for Birthday.new(:date => @date), :url => guidances_show_path do |birthday_form| %>
   <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br>
+  <div onclick="myFunction()">
   <%= birthday_form.submit marketing_text('new_players', 'button') %>
+  </div>
 <% end %>
+
 <div id="access_card_delivery_zone">
     <div class="delivery_zone">
       <div class="panel">
@@ -32,6 +36,7 @@
 </div>
 
 <style>
+
 body {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
@@ -57,9 +62,9 @@ body {
     text-align: center;
 }
 h2{text-align: center;}
-    @media only screen and (min-width: 310px) and (max-width: 767px){
-        #access_card_delivery_zone{
-        flex-direction:column;
-        }
-    }
 </style>
+<script>
+function myFunction() {
+document.getElementById("access_card_delivery_zone").classList.add('test');
+}
+</script>

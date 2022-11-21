@@ -1,10 +1,10 @@
      
   <h2><b>Click on each Source Card to flip it Over!</b></h2>
-  <div class = "prompt_card_guidance_zone">
+  <div id = "guidance_zone">
     <div  class="delivery_zone">
       <div class="panel">
         <div class="front flip_card">
-          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 250px;", :class => 'guidance_style' %>
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %>
         </div>
         <div class="back">
           <%= card_reading_pane_gui @birthday.card_for_today, :daily, marketing_text('heading', 'member', 'daily', 'header'), marketing_text('heading', 'daily', 'subheader') %>
@@ -14,7 +14,7 @@
     <div  class="delivery_zone"  style ="padding-left:90px;">
       <div class="panel">
         <div class="front flip_card">
-          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), style: "width: 250px;",:class => 'guidance_style' %>
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), style: "width: 250px;",:class => 'source_cards_card_design' %>
         </div> 
         <div class="back">
           <%= card_reading_pane_gui @birthday.card_for_this_planet, :planetary, marketing_text('heading', 'member', 'planetary', 'header'), marketing_text('heading', @querent, 'planetary', 'subheader')  %>
@@ -22,28 +22,35 @@
       </div>
     </div>
     <div  class="delivery_zone" style ="padding-left:70px;">
-      <div class="panel">
-      <div class="front flip_card">
-        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 250px;", :class => 'guidance_style' %>
-      </div>
+        <div class="panel">
+       <div class="front flip_card">
+        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %>
+        </div>
         <div class="back">
           <%= card_reading_pane_gui @birthday.card_for_this_year, :yearly, marketing_text('heading', 'member', 'yearly', 'header'), marketing_text('heading', @querent, 'yearly', 'subheader') %>
         </div>
-        </div>
+     </div>
     </div>
-</div>
+  </div>
 
    
     <style>
     h2{text-align: center;}
 
 
-      .prompt_card_guidance_zone{
+     #guidance_zone{
         display: flex;
         justify-content: flex-start;
         padding-top: 50px;
 
       }
+
+@media(min-width: 310px) and (max-width: 767px){
+  #guidance_zone{
+    flex-direction: column;
+    align-items: center;
+  }
+}
       .card_reading_pane_gui{
         width: 20%;
       }
