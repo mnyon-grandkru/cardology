@@ -1,10 +1,35 @@
 
-
+<h2><b> Enter your Birthdate</b></h2>
 <%= form_for Birthday.new(:date => @date), :url => guidances_show_path do |birthday_form| %>
   <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br>
   <%= birthday_form.submit marketing_text('new_players', 'button') %>
 <% end %>
-
+<div id="access_card_delivery_zone">
+    <div class="delivery_zone">
+      <div class="panel">
+        <div class="front">
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+        </div>
+      </div>
+    </div>
+  
+    <div class="delivery_zone">
+      <div class="panel">
+        <div class="front">
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+        </div>
+      </div>
+    </div>
+  
+    <div class="delivery_zone">
+      <div class="panel">
+        <div class="front">
+          <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <style>
 body {
@@ -26,4 +51,15 @@ body {
         background-position: 0% 50%;
     }
 }
+
+.delivery_zone{
+    padding-top: 40px;
+    text-align: center;
+}
+h2{text-align: center;}
+    @media only screen and (min-width: 310px) and (max-width: 767px){
+        #access_card_delivery_zone{
+        flex-direction:column;
+        }
+    }
 </style>
