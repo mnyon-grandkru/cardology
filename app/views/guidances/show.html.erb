@@ -1,4 +1,4 @@
-     
+<body class = "body">
   <h2><b>Click on each Source Card to flip it Over!</b></h2>
   <div id = "guidance_zone">
     <div  class="delivery_zone">
@@ -7,85 +7,103 @@
           <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %>
         </div>
         <div class="back">
-          <%= card_reading_pane_gui @birthday.card_for_today, :daily, marketing_text('heading', 'member', 'daily', 'header'), marketing_text('heading', 'daily', 'subheader') %>
+          <div class= "pane" >
+            <div class = "constant">
+              <b>Your daily card: <%=@birthday.card_for_today.name%></b>
+              <p class= "pad">
+              <%= image_tag @birthday.card_for_today.image,style: "width: 150px;"%>
+              </p>
+            </div>
+          <%@a = @birthday.card_for_today.interpretations.where(reading: "daily").last&.explanation%>
+          <%@b = @a.split("\r\n\r\n")%>
+          <% c =@b.length%>
+          <div class="owl-carousel owl-theme image-slider">
+            <div> <%=@b[0]%></div>
+            <div> <%=@b[1]%></div>
+            <div> <%=@b[2]%></div>
+            <%if @b[3] != nil && @b[3]!= ""%>
+              <div> <%=@b[3]%></div>
+            <%end%>  
+            </div>
+          </div>
         </div>
-        </div>
+      </div> 
     </div>
-    <div  class="delivery_zone"  style ="padding-left:90px;">
+    <div class="delivery_zone" style ="padding-left:60px;" >
       <div class="panel">
         <div class="front flip_card">
           <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), style: "width: 250px;",:class => 'source_cards_card_design' %>
         </div> 
         <div class="back">
-          <%= card_reading_pane_gui @birthday.card_for_this_planet, :planetary, marketing_text('heading', 'member', 'planetary', 'header'), marketing_text('heading', @querent, 'planetary', 'subheader')  %>
+        <div class= "pane"  >
+          <div class = "constant">
+            <b>Your 52 day card: <%=@birthday.card_for_the_planetary_period_on_date(Date.current).name%></b>
+            <p class= "pad">
+              <%= image_tag @birthday.card_for_this_planet.image,style: "width: 150px;" %>
+            </p>
+          </div>
+          <%@a = @birthday.card_for_the_planetary_period_on_date(Date.current).interpretations.where(reading: "yearly").last&.explanation%>
+          <%@b = @a.split("\r\n\r\n")%>
+          <%c =@b.length%>
+            <div class="owl-carousel owl-theme image-slider">
+              <div> <%=@b[0]%></div>
+              <div> <%=@b[1]%></div>
+              <div> <%=@b[2]%></div>
+              <%if @b[3] != nil && @b[3]!= ""%>
+                    <div> <%=@b[3]%></div>
+              <%end%>
+    
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-    <div  class="delivery_zone" style ="padding-left:70px;">
+    <div  class="delivery_zone" style ="padding-left:60px;" >
         <div class="panel">
-       <div class="front flip_card">
+        <div class="front flip_card">
         <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %>
         </div>
         <div class="back">
-          <%= card_reading_pane_gui @birthday.card_for_this_year, :yearly, marketing_text('heading', 'member', 'yearly', 'header'), marketing_text('heading', @querent, 'yearly', 'subheader') %>
+          <div class= "pane" >
+            <div class = "constant">    
+              <b>Your Yearly card: <%=@birthday.card_for_this_year.name%></b>
+              <p class= "pad">
+              <%= image_tag @birthday.card_for_this_year.image,style: "width: 150px;"%>
+              </p>
+            </div>
+            <%@a = @birthday.card_for_this_year.interpretations.where(reading: "yearly").last&.explanation%>
+            <%@b = @a.split("\r\n\r\n")%>
+            <% c =@b.length%>
+              <div class="owl-carousel owl-theme image-slider" id = "Testcarousel">     
+                <div> <%=@b[0]%></div>
+                <div> <%=@b[1]%></div>
+                <div> <%=@b[2]%></div>
+                <%if @b[3] != nil && @b[3]!= ""%>
+                        <div> <%=@b[3]%></div>
+                <%end %>
+              </div>
+            </div>
+
+          </div>
         </div>
-     </div>
+      </div>
     </div>
-  </div>
 
-   
-    <style>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+<style>
     h2{text-align: center;}
-
-
-     #guidance_zone{
-        display: flex;
-        justify-content: flex-start;
-        padding-top: 50px;
-
-      }
-
-@media(min-width: 310px) and (max-width: 767px){
-  #guidance_zone{
-    flex-direction: column;
-    align-items: center;
-  }
-}
-      .card_reading_pane_gui{
-        width: 20%;
-      }
-      .card_face_image_gui{
-        float: right;
-        margin: 5px;
-        width: 120px;
-        border-radius: 5px;
-      }
-      .name_of_card{
-        text-align: right;
-        font-weight: bold;
-      }
-
-    body {
-        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
-        height: 100vh;
-    }
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-    
-        50% {
-            background-position: 100% 50%;
-        }
-    
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-
-
 </style>
     
 

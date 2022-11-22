@@ -16,5 +16,6 @@
 //= require jquery.scrollTo
 //= require turbolinks
 //= require js-routes
+//= require owl.carousel
 //= require moment
 //= require_tree .
