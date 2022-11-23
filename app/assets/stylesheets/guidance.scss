@@ -34,7 +34,7 @@
 #guidance_zone{
     display: flex;
     justify-content: flex-start;
-    padding-top: 20px;
+
   }
 @media(min-width: 310px) and (max-width: 767px){
         #guidance_zone{
@@ -68,11 +68,35 @@ h2{text-align: center;}
     align-items: center;
     }
 .pane{    
-
+  padding-left: 10px;
   width: 235px;
   height: 750px;
+  background-color: rgba(255, 255, 255, 0.75);
   }
 
 .owl-item{
     text-align: justify;
+  }
+
+  .prompt_heading {
+    color: antiquewhite;
+    border: 2px solid black;
+    border-radius: 11px;
+    background-color: black;
+    opacity: 0.8;
+    margin: 10px 22% 4px 25%;
+
+    
+    #prompt_title {
+      font-size: 2em;
+      text-align: center;
+      color: bisque;
+      text-shadow: 0px 5px 4px #448;
+    }
+    
+    #prompt_instructions {
+      text-align: center;
+      color: bisque;
+      text-shadow: 0px 3px 4px #448;
+    }
   }
