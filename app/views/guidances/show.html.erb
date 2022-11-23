@@ -1,5 +1,7 @@
 <body class = "body">
-  <h2><b>Click on each Source Card to flip it Over!</b></h2>
+    <div class="widget_heading">
+            <section id="widget_title">Click on each Source Card to flip it over!</section>
+    </div>
   <div id = "guidance_zone">
     <div  class="delivery_zone">
       <div class="panel">
@@ -7,10 +9,12 @@
           <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %>
         </div>
         <div class="back">
+          <div class="widget_heading">
+            <section id="widget_instructions">Personal Daily Card </section>
+          </div>
           <div class= "pane" >
             <div class = "constant">
-              <b>Your daily card: <%=@birthday.card_for_today.name%></b>
-              <p class= "pad">
+              <b>Your Daily Card: <%=@birthday.card_for_today.name%></b>              <p class= "pad">
               <%= image_tag @birthday.card_for_today.image,style: "width: 150px;"%>
               </p>
             </div>
@@ -34,10 +38,13 @@
         <div class="front flip_card">
           <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), style: "width: 250px;",:class => 'source_cards_card_design' %>
         </div> 
-        <div class="back">
+        <div class="back">          
+          <div class="widget_heading">
+            <section id="widget_instructions">52-Day Card</section>
+          </div>
         <div class= "pane"  >
           <div class = "constant">
-            <b>Your 52 day card: <%=@birthday.card_for_the_planetary_period_on_date(Date.current).name%></b>
+            <b>Your 52 Day Card: <%=@birthday.card_for_the_planetary_period_on_date(Date.current).name%></b>
             <p class= "pad">
               <%= image_tag @birthday.card_for_this_planet.image,style: "width: 150px;" %>
             </p>
@@ -65,6 +72,9 @@
         <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %>
         </div>
         <div class="back">
+          <div class="widget_heading">
+            <section id="widget_instructions">Yearly Theme Card</section>
+          </div>
           <div class= "pane" >
             <div class = "constant">    
               <b>Your Yearly card: <%=@birthday.card_for_this_year.name%></b>
