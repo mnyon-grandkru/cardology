@@ -4,27 +4,25 @@ $(document).ready(function(){
         loop:true,
         margin:0,
         responsiveClass:true,
+        nav:true,
+        navText:["❰","❯"],
         responsive:{
             0:{
-                items:1,
-                nav:true,
-                autoHeight:true
-            },
+                items:1
+                
+                  },
             400:{
-                items:1,
-                nav:true,
-              autoHeight:true
-            },
+                items:1
+                
+                },
             600:{
-                items:1,
-                nav:true,
-              autoHeight:true
-            },
+                items:1
+                
+                },
             1000:{
-                items:1,
-                nav:false,
-              autoHeight:true
-            }
+                items:1
+               
+                }
         }
     })
   });

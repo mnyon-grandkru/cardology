@@ -100,3 +100,33 @@ h2{text-align: center;}
       text-shadow: 0px 3px 4px #448;
     }
   }
+  .wrapper{
+    width: 100%;
+   
+    display: flex;
+    align-items: center;
+  }
+  .wrapper .owl-nav{
+    color: cornflowerblue;
+  }
+  
+  .wrapper .owl-prev, .wrapper .owl-next{
+    position: absolute;
+    top: 35%;
+    font-size: 2.5rem !important;
+    border-radius: 100%;
+    font-weight: bold;
+
+  }
+  .wrapper .owl-prev{
+    left: -30px;
+    top: 25px;
+  }
+   .wrapper .owl-next{
+    left: 245px;
+    top: 25px;
+  }
+
+
+
+  
