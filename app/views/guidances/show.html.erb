@@ -1,22 +1,22 @@
 <body class = "body">
 
-            <%def gui(str)%>
-                <%if str.length> 490%> 
-                      <%a = text_carousel(str)%>
-                                           <div> <%=a[0]%></div>
-                                           <div> <%=a[1]%></div>
-                <%else%>
-                     <div> <%=str%></div>
-                <%end%>
-             <%end%>
-
- <%= clearleft %>
+            <% def show_carousel(carousel_text) %>
+                <% if carousel_text.length> 490 %> 
+                      <% split_carousel_text = text_carousel(carousel_text) %>
+                                           <div> <%=  split_carousel_text[0] %> </div>
+                                           <div> <%= split_carousel_text[1] %> </div>
+                <% else %>
+                     <div> <%= carousel_text %> </div>
+                <% end %>
+             <% end %>
+             
+  <%= clearleft %>
   <%= link_to "Look up another Birthdate  ", guidances_prompt_path,:id => 'new_lookup_link', :class => 'lunar_navigation'%>
-  <%=clearboth%>
-    <div class="widget_heading">
-          <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></section>
-            <section id="widget_instructions">Click on each Source Card to flip it over!</section>
-    </div>
+  <%= clearboth %>
+  <div class="widget_heading">
+        <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></section>
+          <section id="widget_instructions">Click on each Source Card to flip it over!</section>
+  </div>
   <div id = "guidance_zone">
         <div  class="delivery_zone">
           <div class="panel">
@@ -27,23 +27,22 @@
               <div class="prompt_heading">
                 <b>Personal Daily Card </b>
               </div>
-              <div class= "pane" >
+              <div class= "pane_guidance" >
                 <div class = "constant">
                   <b>Your Daily Card: <%=@birthday.card_for_today.name%></b>              <p class= "pad">
                   <%= image_tag @birthday.card_for_today.image,style: "width: 150px;"%>
                   </p>
                 </div>
-              <%@a = @birthday.card_for_today.interpretations.where(reading: "daily").last&.explanation%>
-              <%@b = @a.split("\r\n\r\n")%>
-              <% c =@b.length%>
+              <%  daily_interpretation = @birthday.card_for_today.interpretations.where(reading: "daily").last&.explanation%>
+              <% para_interpretations = daily_interpretation.split("\r\n\r\n")%>
               <div class= "wrapper">
                 <div class="owl-carousel owl-theme image-slider">
-                  <%gui(@b[0])%>
-                  <%gui(@b[1])%>
-                  <%gui(@b[2])%>
-                  <%if @b[3] != nil && @b[3]!= ""%>
-                      <%gui(@b[3])%>
-                  <%end%>  
+                  <% show_carousel(para_interpretations[0])%>
+                  <% show_carousel(para_interpretations[1])%>
+                  <% show_carousel(para_interpretations[2])%>
+                  <%if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
+                      <% show_carousel(para_interpretations[3])%>
+                  <% end %>  
                   </div>
                </div> 
               </div>
@@ -59,24 +58,24 @@
               <div class="prompt_heading">
                 <b>52-Day Card</b>
               </div>
-            <div class= "pane"  >
+            <div class= "pane_guidance"  >
                 <div class = "constant">
                   <b>Your 52 Day Card: <%=@birthday.card_for_the_planetary_period_on_date(Date.current).name%></b>
                   <p class= "pad">
                     <%= image_tag @birthday.card_for_this_planet.image,style: "width: 150px;" %>
                   </p>
                 </div>
-                <%@a = @birthday.card_for_the_planetary_period_on_date(Date.current).interpretations.where(reading: "yearly").last&.explanation%>
-                <%@b = @a.split("\r\n\r\n")%>
-                <%c =@b.length%>
+                <% planetary_interpretation = @birthday.card_for_the_planetary_period_on_date(Date.current).interpretations.where(reading: "yearly").last&.explanation%>
+                <%para_interpretations = planetary_interpretation.split("\r\n\r\n")%>
+             
                 <div class= "wrapper">
                 <div class="owl-carousel owl-theme image-slider">
-                  <%gui(@b[0])%>
-                 <%gui(@b[1])%>
-                 <%gui(@b[2])%>
-                <%if @b[3] != nil && @b[3]!= ""%>
-                  <%gui(@b[3])%>
-                <%end%>  
+                 <% show_carousel(para_interpretations[0])%>
+                 <% show_carousel(para_interpretations[1])%>
+                 <% show_carousel(para_interpretations[2])%>
+                <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
+                  <% show_carousel(para_interpretations[3])%>
+                <% end %>  
                 </div>
                 </div>
               </div>
@@ -93,24 +92,23 @@
                 <div class="prompt_heading">
                   <b>Yearly Theme Card</b>
                 </div>
-              <div class= "pane" >
+              <div class= "pane_guidance" >
                 <div class = "constant">    
                   <b>Your Yearly card: <%=@birthday.card_for_this_year.name%></b>
                   <p class= "pad">
                   <%= image_tag @birthday.card_for_this_year.image,style: "width: 150px;"%>
                   </p>
                 </div>
-                  <%@a = @birthday.card_for_this_year.interpretations.where(reading: "yearly").last&.explanation%>
-                  <%@b = @a.split("\r\n\r\n")%>
-                  <% c =@b.length%>
+                  <% yearly_interpretation = @birthday.card_for_this_year.interpretations.where(reading: "yearly").last&.explanation%>
+                  <% para_interpretations = yearly_interpretation.split("\r\n\r\n")%>
                   <div class= "wrapper">
                   <div class="owl-carousel owl-theme image-slider" id = "Testcarousel">     
-                    <%gui(@b[0])%>
-                 <%gui(@b[1])%>
-                 <%gui(@b[2])%>
-                <%if @b[3] != nil && @b[3]!= ""%>
-                  <%gui(@b[3])%>
-                <%end%>  
+                   <% show_carousel(para_interpretations[0])%>
+                   <% show_carousel(para_interpretations[1])%>
+                   <% show_carousel(para_interpretations[2])%>
+                      <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
+                        <% show_carousel(para_interpretations[3])%>
+                      <% end %>  
                   </div>
                   </div>
                 </div>

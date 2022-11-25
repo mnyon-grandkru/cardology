@@ -6,6 +6,7 @@ $(document).ready(function(){
         responsiveClass:true,
         nav:true,
         navText:["❰","❯"],
+        smartSpeed: 1400,
         responsive:{
             0:{
                 items:1
