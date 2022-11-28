@@ -29,7 +29,11 @@
               </div>
               <div class= "pane_guidance" >
                 <div class = "constant">
-                  <b>Your Daily Card: <%=@birthday.card_for_today.name%></b>              <p class= "pad">
+                  <b><%=@birthday.card_for_today.name%> <br> For <%=@birthday.birthdate.strftime("%b %e %Y")%>
+                  <br>
+                   <%= marketing_text('heading','member' ,'daily', 'subheader') %>  
+                  </b>  
+                  <p class= "pad">
                   <%= image_tag @birthday.card_for_today.image,style: "width: 150px;"%>
                   </p>
                 </div>
@@ -60,7 +64,12 @@
               </div>
             <div class= "pane_guidance"  >
                 <div class = "constant">
-                  <b>Your 52 Day Card: <%=@birthday.card_for_the_planetary_period_on_date(Date.current).name%></b>
+                  <b><%=@birthday.card_for_the_planetary_period_on_date(Date.current).name%>
+                      <br>
+                      <%= marketing_text('heading','member' ,'planetary', 'subheader') %>  
+                      <%= @birthday.current_planet %>
+                      <%="  This cycle ends on #{@birthday.date_of_next_planet.strftime("%-m/%-d.")}"%>
+                  </b>
                   <p class= "pad">
                     <%= image_tag @birthday.card_for_this_planet.image,style: "width: 150px;" %>
                   </p>
@@ -93,8 +102,11 @@
                   <b>Yearly Theme Card</b>
                 </div>
               <div class= "pane_guidance" >
-                <div class = "constant">    
-                  <b>Your Yearly card: <%=@birthday.card_for_this_year.name%></b>
+                <div class = "constant">  
+                  <b><%=@birthday.card_for_this_year.name%>
+                  <br>
+                     <%= marketing_text('heading','member' ,'yearly', 'subheader') %> 
+                  </b>
                   <p class= "pad">
                   <%= image_tag @birthday.card_for_this_year.image,style: "width: 150px;"%>
                   </p>
