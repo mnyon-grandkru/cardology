@@ -61,11 +61,20 @@ h2{text-align: center;}
 .owl-nav {
 
 }
+  .owl-dot span {
+    width: 10px;
+    height: 10px;
+    margin: 5px 7px;
+    background: rgb(230, 144, 15) !important;
+    display: block;
+  
+}
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
     background: rgb(32, 10, 226) !important;
     border: 1px solid black;
   }
+
 .constant{
     align-items: center;
     }
