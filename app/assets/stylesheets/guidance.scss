@@ -1,8 +1,5 @@
 .test {
-  /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: shake 0.5s;
-
-  /* When the animation is finished, start again */
   animation-iteration-count: 1;
 }
 
@@ -23,25 +20,19 @@
 
 .delivery_zone{
     padding-top: 40px;
-   
+   width: 50%;
 }
 .prompt_zone{
-  width: 25%;
+  width: 50%;
   padding-top: 40px;
   text-align: center;  
 }
 
 #guidance_zone{
     display: flex;
-    justify-content: flex-start;
 
   }
-@media(min-width: 310px) and (max-width: 767px){
-        #guidance_zone{
-        flex-direction: column;
-        align-items: center;
-        }
-}
+
 .body {
 
     background-image: asset-url('StarField.jpg');
@@ -73,10 +64,40 @@ h2{text-align: center;}
 .owl-theme .owl-dots .owl-dot:hover span {
     background: rgb(32, 10, 226) !important;
     border: 1px solid black;
+    
   }
+  .owl-item{
+    text-align: justify;
+  }
+  .wrapper .owl-nav{
+    color: rgba(13, 2, 117, 0.993);
+  }
+  
+  .wrapper .owl-prev, .wrapper .owl-next{
+    
+    top: 10%;
+    border-radius: 100%;
+    font-weight: bold;
+
+  }
+  .wrapper .owl-prev{
+    
+    top: 25px;
+  }
+   .wrapper .owl-next{
+   
+    top: 25px;
+  }
+  .carousel_style{
+    padding-left: 17px;
+  }
+.owl-nav, button.owl.owl-next,button.owl.prev{
+  font-size: 30px;
+}
 
 .constant{
     align-items: center;
+    padding-left: 17px;
     }
 .pane_guidance{    
   display: inline-block;
@@ -90,9 +111,6 @@ h2{text-align: center;}
   background-color: rgba(255, 255, 255, 0.75);
   }
 
-.owl-item{
-    text-align: justify;
-  }
 
   .prompt_heading {
     color: antiquewhite;
@@ -123,30 +141,5 @@ h2{text-align: center;}
     display: flex;
     align-items: center;
   }
-  .wrapper .owl-nav{
-    color: rgba(13, 2, 117, 0.993);
-  }
-  
-  .wrapper .owl-prev, .wrapper .owl-next{
-    
-    top: 10%;
-    border-radius: 100%;
-    font-weight: bold;
-
-  }
-  .wrapper .owl-prev{
-    
-    top: 25px;
-  }
-   .wrapper .owl-next{
-   
-    top: 25px;
-  }
-  .constant{
-    padding-left: 17px;
-  }
-  .carousel_style{
-    padding-left: 17px;
-  }
-
+ 
   

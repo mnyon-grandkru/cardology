@@ -5,24 +5,21 @@ $(document).ready(function(){
         margin:0,
         responsiveClass:true,
         nav:true,
-        navText:["❰","❯"],
+        autoHeight: true,
+        navText:["◀","▶"],
         smartSpeed: 1400,
         responsive:{
             0:{
                 items:1
-                
                   },
             400:{
                 items:1
-                
                 },
             600:{
                 items:1
-                
                 },
             1000:{
                 items:1
-               
                 }
         }
     })

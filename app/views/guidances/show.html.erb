@@ -1,7 +1,7 @@
 <body class = "body">
 
             <% def show_carousel(carousel_text) %>
-                <% if carousel_text.length > 350 %> 
+                <% if carousel_text != nil && carousel_text.length > 350 %> 
                     <% split_carousel_text = text_carousel(carousel_text) %>
                     <div class = "carousel_style"> <%=  split_carousel_text[0] %> </div>
                     <% if split_carousel_text[1] != nil%>
@@ -19,8 +19,8 @@
         <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></section>
           <section id="widget_instructions">Click on each Source Card to flip it over!</section>
   </div>
-  <div id = "guidance_zone">
-        <div  class="delivery_zone">
+  <div id = "guidance_zone" class = 'guidance_zone_media'>
+        <div  class="delivery_zone" style= "padding-left: 70px;">
           <div class="panel">
             <div class="front flip_card">
               <%= image_tag (asset_path 'blueorangeround-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %> 
@@ -50,7 +50,7 @@
                   <% show_carousel(para_interpretations[0])%>
                   <% show_carousel(para_interpretations[1])%>
                   <% show_carousel(para_interpretations[2])%>
-                  <%if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
+                  <% if para_interpretations[3] != nil && para_interpretations[3]!= "" %>
                       <% show_carousel(para_interpretations[3])%>
                   <% end %>  
                   </div>
@@ -59,7 +59,7 @@
             </div>
           </div> 
         </div>
-        <div class="delivery_zone" style ="padding-left:60px;" >
+        <div class="delivery_zone" >
           <div class="panel">
             <div class="front flip_card">
               <%= image_tag (asset_path 'blueorangeround-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %> 
@@ -81,16 +81,16 @@
                   </p>
                 </div>
                 <% planetary_interpretation = @birthday.card_for_the_planetary_period_on_date(Date.current).interpretations.where(reading: "yearly").last&.explanation%>
-                <%para_interpretations = planetary_interpretation.split("\r\n\r\n")%>
+                <% para_interpretations = planetary_interpretation.split("\r\n\r\n")%>
              
                 <div class= "wrapper">
                 <div class="owl-carousel owl-theme image-slider">
                  <% show_carousel(para_interpretations[0])%>
                  <% show_carousel(para_interpretations[1])%>
                  <% show_carousel(para_interpretations[2])%>
-                <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
+                 <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
                   <% show_carousel(para_interpretations[3])%>
-                <% end %>  
+                 <% end %>  
                 </div>
                 </div>
               </div>
@@ -98,7 +98,7 @@
             </div>
           </div>
         </div>
-        <div  class="delivery_zone" style ="padding-left:60px;" >
+        <div  class="delivery_zone"  >
             <div class="panel">
               <div class="front flip_card">
                 <%= image_tag (asset_path 'blueorangeround-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %> 
@@ -133,7 +133,8 @@
               </div>
             </div>
           </div>
-     </div>     
+     </div> 
+     
 </body>
     
 

@@ -10,7 +10,7 @@
     <%= birthday_form.submit marketing_text('new_players', 'button') %>
     </div>
   <% end %>
-  <div  id="guidance_zone" >
+  <div  id="guidance_zone" class= "guidance_zone_media" >
     <div class="prompt_zone" >
           <%= image_tag (asset_path 'blueorangeround-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %> 
     </div>
@@ -23,11 +23,19 @@
   </div>
 </div>
 </body>
+
+
 <style>
 #guidance_zone{
   justify-content: center;
 }
-
+  @media only screen and (min-device-width: 320px) and (max-device-width: 806px){
+        .guidance_zone_media{
+          display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+}
 
 </style>
 <script>
