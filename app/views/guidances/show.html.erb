@@ -1,50 +1,50 @@
 <body class = "body">
 
-            <% def show_carousel(carousel_text) %>
-                <% if carousel_text != nil && carousel_text.length > 350 %> 
-                    <% split_carousel_text = text_carousel(carousel_text) %>
-                    <div class = "carousel_style"> <%=  split_carousel_text[0] %> </div>
-                    <% if split_carousel_text[1] != nil%>
-                        <div class = "carousel_style"> <%= split_carousel_text[1] %> </div>
-                        <% end %>
-                <% else %>
-                     <div class = "carousel_style"> <%= carousel_text %> </div>
-                <% end %>
-             <% end %>
-             
+  <% def show_carousel(carousel_text) %>
+      <% if carousel_text != nil && carousel_text.length > 350 %> 
+          <% split_carousel_text = text_carousel(carousel_text) %>
+          <div class = "carousel_style"> <%=  split_carousel_text[0] %> </div>
+          <% if split_carousel_text[1] != nil%>
+              <div class = "carousel_style"> <%= split_carousel_text[1] %> </div>
+              <% end %>
+      <% else %>
+            <div class = "carousel_style"> <%= carousel_text %> </div>
+      <% end %>
+    <% end %>         
   <%= clearleft %>
   <%= link_to "Look up another Birthdate  ", guidances_prompt_path,:id => 'new_lookup_link', :class => 'lunar_navigation'%>
   <%= clearboth %>
+
   <div class="widget_heading">
         <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></section>
           <section id="widget_instructions">Click on each Source Card to flip it over!</section>
   </div>
-  <div id = "guidance_zone" class = 'guidance_zone_media'>
-        <div  class="delivery_zone" style= "padding-left: 70px;">
-          <div class="panel">
-            <div class="front flip_card">
-              <%= image_tag (asset_path 'blueorangeround-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %> 
+
+  <div id = "guidance_zone">
+    <div  class="delivery_zone" style= "padding-left: 70px;">
+      <div class="panel">
+        <div class="front flip_card">
+          <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
+        </div>
+          <div class="back">
+            <div class="prompt_heading">
+              <b>Personal Daily Card </b>
             </div>
-            <div class="back">
-              <div class="prompt_heading">
-                <b>Personal Daily Card </b>
+            <div class= "pane_guidance" >
+              <div class = "constant">
+                <b style = "font-size: x-large;"><%=@birthday.card_for_today.name%> </b> 
+                <span>
+                <br>
+                <b>  For <%= DateTime.now.strftime("%b %e %Y") %> </b>   
+                <br>
+                This card represents your personal energy pattern in play until midnight tonight.
+                </span>
+                <p class= "pad">
+                <%= image_tag @birthday.card_for_today.image,style: "width: 150px;"%>
+                </p>
               </div>
-              <div class= "pane_guidance" >
-                <div class = "constant">
-                  <b style = "font-size: x-large;"><%=@birthday.card_for_today.name%> </b> 
-                  <span>
-                      <br>
-                        <b>  For <%= DateTime.now.strftime("%b %e %Y") %> </b>   
-                      <br>
-                     This card represents your personal energy pattern in play until midnight tonight.
-                  </span>
-                
-                  <p class= "pad">
-                  <%= image_tag @birthday.card_for_today.image,style: "width: 150px;"%>
-                  </p>
-                </div>
               <%  daily_interpretation = @birthday.card_for_today.interpretations.where(reading: "daily").last&.explanation%>
-              <% para_interpretations = daily_interpretation.split("\r\n\r\n")%>
+              <%  para_interpretations = daily_interpretation.split("\r\n\r\n")%>
               <div class= "wrapper">
                 <div class="owl-carousel owl-theme image-slider">
                   <% show_carousel(para_interpretations[0])%>
@@ -53,89 +53,94 @@
                   <% if para_interpretations[3] != nil && para_interpretations[3]!= "" %>
                       <% show_carousel(para_interpretations[3])%>
                   <% end %>  
-                  </div>
-               </div> 
               </div>
-            </div>
-          </div> 
-        </div>
-        <div class="delivery_zone" >
-          <div class="panel">
-            <div class="front flip_card">
-              <%= image_tag (asset_path 'blueorangeround-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %> 
             </div> 
-            <div class="back">          
-              <div class="prompt_heading">
-                <b>52-Day Card</b>
-              </div>
-            <div class= "pane_guidance"  >
-                <div class = "constant">
-                  <b style = "font-size: x-large;"><%=@birthday.card_for_the_planetary_period_on_date(Date.current).name%> </b>
-                      <br>
-                      <%= marketing_text('heading','member' ,'planetary', 'subheader') %>  
-                      <%= @birthday.current_planet %>
-                      <%="  This cycle ends on #{@birthday.date_of_next_planet.strftime("%-m/%-d.")}"%>
-                 
-                  <p class= "pad">
-                    <%= image_tag @birthday.card_for_this_planet.image,style: "width: 150px;" %>
-                  </p>
-                </div>
-                <% planetary_interpretation = @birthday.card_for_the_planetary_period_on_date(Date.current).interpretations.where(reading: "yearly").last&.explanation%>
-                <% para_interpretations = planetary_interpretation.split("\r\n\r\n")%>
-             
-                <div class= "wrapper">
-                <div class="owl-carousel owl-theme image-slider">
-                 <% show_carousel(para_interpretations[0])%>
-                 <% show_carousel(para_interpretations[1])%>
-                 <% show_carousel(para_interpretations[2])%>
-                 <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
-                  <% show_carousel(para_interpretations[3])%>
-                 <% end %>  
-                </div>
-                </div>
-              </div>
+          </div>
+        </div>
+      </div> 
+    </div>
 
+    <div class="delivery_zone" >
+      <div class="panel">
+        <div class="front flip_card">
+          <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
+        </div> 
+        <div class="back">          
+          <div class="prompt_heading">
+             <b>52-Day Card</b>
+          </div>
+          <div class= "pane_guidance"  >
+            <div class = "constant">
+              <b style = "font-size: x-large;"><%=@birthday.card_for_the_planetary_period_on_date(Date.current).name%> </b>
+              <br>
+              <%= marketing_text('heading','member' ,'planetary', 'subheader') %>  
+              <%= @birthday.current_planet %>
+              <%="  This cycle ends on #{@birthday.date_of_next_planet.strftime("%-m/%-d.")}"%>
+              <p class= "pad">
+                <%= image_tag @birthday.card_for_this_planet.image,style: "width: 150px;" %>
+              </p>
+            </div>
+            <% planetary_interpretation = @birthday.card_for_the_planetary_period_on_date(Date.current).interpretations.where(reading: "yearly").last&.explanation%>
+            <% para_interpretations = planetary_interpretation.split("\r\n\r\n")%>
+            <div class= "wrapper">
+              <div class="owl-carousel owl-theme image-slider">
+                <% show_carousel(para_interpretations[0])%>
+                <% show_carousel(para_interpretations[1])%>
+                <% show_carousel(para_interpretations[2])%>
+                <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
+                <% show_carousel(para_interpretations[3])%>
+                <% end %>  
+              </div>
             </div>
           </div>
         </div>
-        <div  class="delivery_zone"  >
-            <div class="panel">
-              <div class="front flip_card">
-                <%= image_tag (asset_path 'blueorangeround-lowrez.png'),style: "width: 250px;", :class => 'source_cards_card_design' %> 
-              </div>
-              <div class="back">
-                <div class="prompt_heading">
-                  <b>Yearly Theme Card</b>
-                </div>
-              <div class= "pane_guidance" >
-                <div class = "constant">  
-                  <b style = "font-size: x-large;"><%=@birthday.card_for_this_year.name%>        </b>
-                  <br>
-                     <%= marketing_text('heading','member' ,'yearly', 'subheader') %> 
-          
-                  <p class= "pad">
-                  <%= image_tag @birthday.card_for_this_year.image,style: "width: 150px;"%>
-                  </p>
-                </div>
-                  <% yearly_interpretation = @birthday.card_for_this_year.interpretations.where(reading: "yearly").last&.explanation%>
-                  <% para_interpretations = yearly_interpretation.split("\r\n\r\n")%>
-                  <div class= "wrapper">
-                  <div class="owl-carousel owl-theme image-slider" id = "Testcarousel">     
-                   <% show_carousel(para_interpretations[0])%>
-                   <% show_carousel(para_interpretations[1])%>
-                   <% show_carousel(para_interpretations[2])%>
-                      <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
-                        <% show_carousel(para_interpretations[3])%>
-                      <% end %>  
-                  </div>
-                  </div>
-                </div>
+      </div>
+    </div>
+
+    <div class="delivery_zone"  >
+      <div class="panel">
+        <div class="front flip_card">
+            <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
+        </div>
+        <div class="back">
+          <div class="prompt_heading">
+           <b>Yearly Theme Card</b>
+          </div>
+          <div class= "pane_guidance" >
+            <div class = "constant">  
+              <b style = "font-size: x-large;"><%=@birthday.card_for_this_year.name%>        </b>
+              <br>
+              <%= marketing_text('heading','member' ,'yearly', 'subheader') %> 
+              <p class= "pad">
+              <%= image_tag @birthday.card_for_this_year.image,style: "width: 150px;"%>
+              </p>
+            </div>
+            <% yearly_interpretation = @birthday.card_for_this_year.interpretations.where(reading: "yearly").last&.explanation%>
+            <% para_interpretations = yearly_interpretation.split("\r\n\r\n")%>
+            <div class= "wrapper">
+              <div class="owl-carousel owl-theme image-slider" id = "Testcarousel">     
+                <% show_carousel(para_interpretations[0])%>
+                <% show_carousel(para_interpretations[1])%>
+                <% show_carousel(para_interpretations[2])%>
+                  <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
+                    <% show_carousel(para_interpretations[3])%>
+                  <% end %>  
               </div>
             </div>
           </div>
-     </div> 
-     
+
+       </div>
+     </div>
+   </div> 
+  </div> 
 </body>
+
+<style>
+  .source_cards_card_design {
+    width: 250px;
+  }
+
+</style>
     
 
 
