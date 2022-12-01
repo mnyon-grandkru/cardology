@@ -1,4 +1,4 @@
-.test {
+.wobble {
   animation: shake 0.5s;
   animation-iteration-count: 1;
 }
@@ -150,7 +150,7 @@ h2{text-align: center;}
       padding-left: 70px;
     }
 }
-@media only screen and (min-width: 300px) and (max-width: 767px){
+@media only screen and (min-width: 250px) and (max-width: 767px){
   .guidance_prompt_media{
   display: flex;
   flex-direction: column;
@@ -160,6 +160,26 @@ h2{text-align: center;}
     padding-left: 70px;
   }
 }
+@media only screen and (min-device-width: 300px) and (max-device-width: 767px){
+  .guidance_show_media{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  .add_height {
+    min-height: 960px;
 
- 
-  
+  }
+}
+@media only screen and (min-width: 250px) and (max-width: 767px){
+  .guidance_show_media{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  .add_height {
+    min-height: 960px;
+
+  }
+}
+

@@ -20,9 +20,9 @@
           <section id="widget_instructions">Click on each Source Card to flip it over!</section>
   </div>
 
-  <div id = "guidance_zone">
-    <div  class="delivery_zone" style= "padding-left: 70px;">
-      <div class="panel">
+  <div id = "guidance_zone" class= "guidance_show_media">
+    <div  class="delivery_zone" id = "delivery_first" style= "padding-left: 70px;">
+      <div class="panel" onclick="myFunction()">
         <div class="front flip_card">
           <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
         </div>
@@ -32,15 +32,15 @@
             </div>
             <div class= "pane_guidance" >
               <div class = "constant">
-                <b style = "font-size: x-large;"><%=@birthday.card_for_today.name%> </b> 
-                <span>
-                <br>
-                <b>  For <%= DateTime.now.strftime("%b %e %Y") %> </b>   
-                <br>
+                <div style = "text-align: center;">
+                  <b style = "font-size: x-large;"><%=@birthday.card_for_today.name%> </b> 
+                  <br>
+                  <b>  For <%= DateTime.now.strftime("%b %e %Y") %> </b>  
+                </div>
                 This card represents your personal energy pattern in play until midnight tonight.
                 </span>
                 <p class= "pad">
-                <%= image_tag @birthday.card_for_today.image,style: "width: 150px;"%>
+                <%= image_tag @birthday.card_for_today.image,style: "width: 150px; border-radius: 5px;"%>
                 </p>
               </div>
               <%  daily_interpretation = @birthday.card_for_today.interpretations.where(reading: "daily").last&.explanation%>
@@ -60,24 +60,25 @@
       </div> 
     </div>
 
-    <div class="delivery_zone" >
-      <div class="panel">
-        <div class="front flip_card">
+    <div class="delivery_zone" id = "delivery_second">
+      <div class="panel" onclick="myFunction2()">
+        <div class="front flip_card" >
           <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
         </div> 
-        <div class="back">          
+        <div class="back" id="card52">          
           <div class="prompt_heading">
              <b>52-Day Card</b>
           </div>
           <div class= "pane_guidance"  >
             <div class = "constant">
-              <b style = "font-size: x-large;"><%=@birthday.card_for_the_planetary_period_on_date(Date.current).name%> </b>
-              <br>
+              <div style = "text-align: center;">
+               <b style = "font-size: x-large;"><%=@birthday.card_for_the_planetary_period_on_date(Date.current).name%> </b>
+              </div> 
               <%= marketing_text('heading','member' ,'planetary', 'subheader') %>  
               <%= @birthday.current_planet %>
               <%="  This cycle ends on #{@birthday.date_of_next_planet.strftime("%-m/%-d.")}"%>
               <p class= "pad">
-                <%= image_tag @birthday.card_for_this_planet.image,style: "width: 150px;" %>
+                <%= image_tag @birthday.card_for_this_planet.image,style: "width: 150px; border-radius: 5px;" %>
               </p>
             </div>
             <% planetary_interpretation = @birthday.card_for_the_planetary_period_on_date(Date.current).interpretations.where(reading: "yearly").last&.explanation%>
@@ -97,22 +98,23 @@
       </div>
     </div>
 
-    <div class="delivery_zone"  >
+    <div class="delivery_zone">
       <div class="panel">
-        <div class="front flip_card">
+        <div class="front flip_card" id = "btn_zone">
             <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
         </div>
-        <div class="back">
+        <div class="back" id= "card_year">
           <div class="prompt_heading">
            <b>Yearly Theme Card</b>
           </div>
           <div class= "pane_guidance" >
-            <div class = "constant">  
-              <b style = "font-size: x-large;"><%=@birthday.card_for_this_year.name%>        </b>
-              <br>
+            <div class = "constant">
+             <div style = "text-align: center;">  
+              <b style = "font-size: x-large;"><%=@birthday.card_for_this_year.name%></b>
+             </div> 
               <%= marketing_text('heading','member' ,'yearly', 'subheader') %> 
               <p class= "pad">
-              <%= image_tag @birthday.card_for_this_year.image,style: "width: 150px;"%>
+              <%= image_tag @birthday.card_for_this_year.image,style: "width: 150px; border-radius: 5px;"%>
               </p>
             </div>
             <% yearly_interpretation = @birthday.card_for_this_year.interpretations.where(reading: "yearly").last&.explanation%>
@@ -139,8 +141,17 @@
   .source_cards_card_design {
     width: 250px;
   }
-
+  
 </style>
+
+<script>
+  function myFunction() {
+    document.getElementById("delivery_first").classList.add('add_height');  
+  }     
+  function myFunction2() {
+    document.getElementById("delivery_second").classList.add('add_height');
+  }       
+</script>
     
 
 
