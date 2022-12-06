@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   get '/guidances/prompt' => 'guidances#prompt'
   get '/guidances/show' => 'guidances#show'
   post '/guidances/show' => 'guidances#show'
+  get '/guidances/browse' => 'guidances#browse'
   
   post '/member_save' => 'members#create', :as => 'member_save'
   put '/member_assign_zodiac/:id' => 'members#update', :as => 'member_assign_zodiac'

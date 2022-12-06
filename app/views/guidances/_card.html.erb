@@ -1,0 +1,105 @@
+
+      
+      <% if params[:day] == 'tomorrow'%>
+        <%@card = @birthday.card_for_tomorrow%>
+      <% elsif params[:day] == 'yesterday'%>  
+        <%@card = @birthday.card_for_yesterday%>
+
+      <% else%>  
+            <%@card = @birthday.card_for_today%>
+            <%@date = DateTime.now%>
+       <%end%>
+      <div class="prompt_heading">
+        <b>Personal Daily Card </b>
+      </div>
+   
+      <div class= "pane_guidance" >
+      
+        <div class = "constant">
+          <div style = "text-align: center;">
+            <b style = "font-size: x-large;"><%=@card.name%> </b> 
+            <br>
+              <b>  For <%= @date.strftime("%b %e %Y")  %> </b>  
+
+          </div>
+          This card represents your personal energy pattern in play until midnight tonight.
+          </span>
+          <p class= "pad">
+      
+          <%= image_tag @card.image,style: "width: 150px; border-radius: 5px;"%>
+          </p>
+
+
+          
+
+        </div>
+        <% daily_interpretation = @card.interpretations.where(reading: "daily").last&.explanation%>
+       
+        <%  para_interpretations = daily_interpretation.split("\r\n\r\n")%>
+        <div class= "wrapper">
+          <div class="owl-carousel owl-theme image-slider">
+          
+            <% show_carousel(para_interpretations[0])%>
+            <% show_carousel(para_interpretations[1])%>
+            <% show_carousel(para_interpretations[2])%>
+         
+            <% if para_interpretations[3] != nil && para_interpretations[3]!= "" %>
+                <% show_carousel(para_interpretations[3])%>
+            <% end %>  
+       
+          </div>
+      </div> 
+  </div> 
+    
+    <%if  params[:day] == "yesterday"%>
+    <div class = "button_daily_card">
+      <%= link_to 'today', guidances_browse_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to 'tomorrow', guidances_browse_path( :day => 'tomorrow'),:remote => true ,:class => 'lunar_navigation'%>
+          </div>
+
+    <%elsif params[:day] == "tomorrow"%>
+    <div class = "button_daily_card">
+     <%= link_to 'today', guidances_browse_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to 'yesterday', guidances_browse_path( :day => 'yesterday'),:remote => true ,:class => 'lunar_navigation'%>
+     </div>
+
+    <%else%>
+      <div class = "button_daily_card">
+      <%= link_to 'yesterday', guidances_browse_path( :day => 'yesterday'),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to 'tomorrow', guidances_browse_path( :day => 'tomorrow'),:remote => true ,:class => 'lunar_navigation'%>
+      </div>
+    <%end%>
+<script> 
+$(document).ready(function(){
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:0,
+        responsiveClass:true,
+        nav:true,
+        autoHeight: true,
+        navText:["◀","▶"],
+        smartSpeed: 1400,
+        responsive:{
+            0:{
+                items:1
+                  },
+            400:{
+                items:1
+                },
+            600:{
+                items:1
+                },
+            1000:{
+                items:1
+                }
+        }
+    })
+  });
+
+</script>
+<style>
+.button_daily_card{
+  padding-left: 40px
+}
+
+</style>
