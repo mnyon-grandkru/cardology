@@ -5,7 +5,6 @@ $(document).ready(function(){
         margin:0,
         responsiveClass:true,
         nav:true,
-        autoHeight: true,
         navText:["◀","▶"],
         smartSpeed: 1400,
         responsive:{

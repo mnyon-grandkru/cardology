@@ -49,57 +49,25 @@
        
           </div>
       </div> 
-  </div> 
+ 
     
     <%if  params[:day] == "yesterday"%>
     <div class = "button_daily_card">
-      <%= link_to 'today', guidances_browse_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to 'tomorrow', guidances_browse_path( :day => 'tomorrow'),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "Tomorrow's Card", guidances_daily_card_path( :day => 'tomorrow'),:remote => true ,:class => 'lunar_navigation'%>
           </div>
 
     <%elsif params[:day] == "tomorrow"%>
     <div class = "button_daily_card">
-     <%= link_to 'today', guidances_browse_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to 'yesterday', guidances_browse_path( :day => 'yesterday'),:remote => true ,:class => 'lunar_navigation'%>
+     <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "Yesterday's Card", guidances_daily_card_path( :day => 'yesterday'),:remote => true ,:class => 'lunar_navigation'%>
      </div>
 
     <%else%>
       <div class = "button_daily_card">
-      <%= link_to 'yesterday', guidances_browse_path( :day => 'yesterday'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to 'tomorrow', guidances_browse_path( :day => 'tomorrow'),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "Yesterday's Card", guidances_daily_card_path( :day => 'yesterday'),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "Tomorrow's Card", guidances_daily_card_path( :day => 'tomorrow'),:remote => true ,:class => 'lunar_navigation'%>
       </div>
     <%end%>
-<script> 
-$(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
-        loop:true,
-        margin:0,
-        responsiveClass:true,
-        nav:true,
-        autoHeight: true,
-        navText:["◀","▶"],
-        smartSpeed: 1400,
-        responsive:{
-            0:{
-                items:1
-                  },
-            400:{
-                items:1
-                },
-            600:{
-                items:1
-                },
-            1000:{
-                items:1
-                }
-        }
-    })
-  });
-
-</script>
-<style>
-.button_daily_card{
-  padding-left: 40px
-}
-
-</style>
+ </div> 
+<%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>
