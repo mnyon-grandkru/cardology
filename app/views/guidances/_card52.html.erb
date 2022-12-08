@@ -1,67 +1,68 @@
-      <% if params[:planet] == 'next'%>
-        <%@card = @birthday.card_for_next_planet%>
-            <% @planet =@birthday.next_planet %>
-            <% @date =Date.current  + 52.days%>
+<% if params[:planet] == 'next' %>
+  <% @card = @birthday.card_for_next_planet %>
+  <% @planet =@birthday.next_planet %>
+  <% @date =Date.current  + 52.days %>
 
-      <% elsif params[:planet] == 'last'%>  
-            <%@card = @birthday.card_for_last_planet%>
-             <%=@planet =@birthday.last_planet %>
-             <% @date =Date.current  - 52.days%>
-      <% else%>  
-            <%@card = @birthday.card_for_this_planet%>
-            <% @planet =@birthday.current_planet %>
-            <%@date = DateTime.now%>
-       <%end%>
+<% elsif params[:planet] == 'last' %>  
+  <% @card = @birthday.card_for_last_planet %>
+  <% @planet =@birthday.last_planet %>
+  <% @date =Date.current  - 52.days %>
+<% else %>  
+  <% @card = @birthday.card_for_this_planet %>
+  <% @planet =@birthday.current_planet %>
+  <% @date = DateTime.now %>
+<% end %>
 <div class="prompt_heading">
-<b>52-Day Card</b>
+  <b>52-Day Card</b>
 </div>
-<div class= "pane_guidance"  >
-<div class = "constant">
+<div class= "pane_guidance">
+  <div class = "constant">
     <div style = "text-align: center;">
-        <b style = "font-size: x-large;"><%= @card.name%> </b>
+      <b style = "font-size: x-large;"><%= @card.name %> </b>
     </div> 
-    <%= marketing_text('heading','member' ,'planetary', 'subheader') %>  
-    <%= @planet %>
-    <%="  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
-    <p class= "pad">
+      <%= marketing_text('heading','member' ,'planetary', 'subheader') %>  
+      <%= @planet %>
+      <%="  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
+      <p class= "pad">
         <%= image_tag @card.image,style: "width: 150px; border-radius: 5px;" %>
-    </p>
-    </div>
-  
-    <% planetary_interpretation = @card.interpretations.where(reading: "yearly").last&.explanation%>
+      </p>
+  </div>
+    <% planetary_interpretation = @card.interpretations.where(reading: "yearly").last&.explanation %>
     <% para_interpretations = planetary_interpretation.split("\r\n\r\n")%>
     <div class= "wrapper">
-        <div class="owl-carousel owl-theme image-slider" >
-        <% show_carousel(para_interpretations[0])%>
-        <% show_carousel(para_interpretations[1])%>
-        <% show_carousel(para_interpretations[2])%>
-        <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
-        <% show_carousel(para_interpretations[3])%>
+      <div class="owl-carousel owl-theme image-slider" >
+        <% if para_interpretations[0] != nil && para_interpretations[0]!= "" %>
+         <% show_carousel(para_interpretations[0])%>
+        <% end %>
+        <% if para_interpretations[1] != nil && para_interpretations[1]!= "" %>
+         <% show_carousel(para_interpretations[1])%>
+        <% end %>
+        <% if para_interpretations[2] != nil && para_interpretations[2]!= "" %>
+         <% show_carousel(para_interpretations[2])%>
+        <% end %>
+        <% if para_interpretations[3] != nil && para_interpretations[3]!= "" %>
+         <% show_carousel(para_interpretations[3]) %>
         <% end %>  
-        </div>
+      </div>
     </div>
 
 
-  <%if  params[:planet] == "last"%>
+  <% if  params[:planet] == "last" %>
     <div class = "button_daily_card">
-      <%= link_to "See Your Current Card", guidances_card52_path( :planet => 'current'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "See Your Next Card", guidances_card52_path( :planet => 'next'),:remote => true ,:class => 'lunar_navigation'%>
-          </div>
-
-    <%elsif params[:planet] == "next"%>
+      <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current'),:remote => true ,:class => 'lunar_navigation' %>
+      <%= link_to "See Next 52-Day Card", guidances_card52_path( :planet => 'next'),:remote => true ,:class => 'lunar_navigation' %>
+    </div>
+  <% elsif params[:planet] == "next" %>
     <div class = "button_daily_card">
-     <%= link_to "See Your Current Card", guidances_card52_path( :planet => 'current'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "See Your Previous Card", guidances_card52_path( :planet => 'last'),:remote => true ,:class => 'lunar_navigation'%>
-     </div>
+      <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current'),:remote => true ,:class => 'lunar_navigation' %>
+      <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last'),:remote => true ,:class => 'lunar_navigation' %>
+    </div>
 
-    <%else%>
-      <div class = "button_daily_card">
-      <%= link_to "See Your Last Card", guidances_card52_path( :planet => 'last'),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "See Your Next Card", guidances_card52_path( :planet => 'next'),:remote => true ,:class => 'lunar_navigation'%>
-      </div>
-    <%end%>
+  <% else %>
+    <div class = "button_daily_card">
+      <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last'),:remote => true ,:class => 'lunar_navigation' %>
+      <%= link_to "  See Next 52-Day Card  ", guidances_card52_path( :planet => 'next'),:remote => true ,:class => 'lunar_navigation' %>
+    </div>
+  <% end %>
 </div>
-
-
-
 <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>
