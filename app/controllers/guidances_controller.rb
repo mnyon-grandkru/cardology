@@ -13,23 +13,36 @@ class GuidancesController < ApplicationController
 
   def daily_card
     @birthday = Birthday.find(@@birthdate)
-    if params[:day] == 'today'
-      @date = DateTime.now
-    elsif params[:day] == 'yesterday'
+      
+    if params[:day] == 'yesterday'
+      @header = 'yesterday'
+      @card = @birthday.card_for_yesterday
       @date = DateTime.yesterday
     elsif params[:day] == 'tomorrow'
+      @card = @birthday.card_for_tomorrow
+      @header = 'tomorrow'
       @date = DateTime.tomorrow
+    else  
+      @card = @birthday.card_for_today
+      @header = 'daily'
+      @date = DateTime.now
     end
   
   end
   def card52
     @birthday = Birthday.find(@@birthdate)
     if params[:planet] == 'current'
-      
+      @card = @birthday.card_for_this_planet
+      @planet =@birthday.current_planet
+      @date = DateTime.now
     elsif params[:planet] == 'last'
-    
+      @card = @birthday.card_for_last_planet
+      @planet =@birthday.last_planet
+      @date =Date.current  - 52.days
     elsif params[:planet] == 'next'
-     
+      @card = @birthday.card_for_next_planet
+      @planet =@birthday.next_planet
+      @date =Date.current  + 52.days
     end
   
   end
@@ -37,11 +50,11 @@ class GuidancesController < ApplicationController
   def year_card
     @birthday = Birthday.find(@@birthdate)
     if params[:year] == 'current'
-      
+      @card = @birthday.card_for_this_year
     elsif params[:year] == 'last'
-    
+      @card = @birthday.card_for_last_year
     elsif params[:year] == 'next'
-     
+      @card = @birthday.card_for_next_year
     end
   
   end
