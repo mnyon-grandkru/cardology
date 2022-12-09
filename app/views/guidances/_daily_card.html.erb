@@ -1,12 +1,7 @@
-<% if params[:day] == 'tomorrow' %>
- <% @card = @birthday.card_for_tomorrow %>
-<% elsif params[:day] == 'yesterday' %>  
-  <% @card = @birthday.card_for_yesterday %>
-<% else %>  
+<% if params[:day] == nil %>
   <% @card = @birthday.card_for_today %>
   <% @date = DateTime.now %>
 <% end %>
-
 <div class="prompt_heading">
   <b>Personal Daily Card </b>
 </div>
@@ -17,29 +12,15 @@
       <b style = "font-size: x-large;"><%= @card.name %> </b><br>
       <b>  For <%= @date.strftime("%b %e %Y")  %> </b>  
     </div>
-      <span>This card represents your personal energy pattern in play until midnight tonight.</span>
+            <%= marketing_text('heading','member' ,@header || 'daily', 'subheader') %>  
+
       <p class= "pad">
       <%= image_tag @card.image,style: "width: 150px; border-radius: 5px;" %>
       </p>
   </div>
-  <% daily_interpretation = @card.interpretations.where(reading: "daily").last&.explanation %>
-  <%  para_interpretations = daily_interpretation.split("\r\n\r\n") %>
-  <div class= "wrapper">
-    <div class="owl-carousel owl-theme image-slider">
-      <% if para_interpretations[0] != nil && para_interpretations[0]!= "" %>
-        <% show_carousel(para_interpretations[0])%>
-      <% end %>
-      <% if para_interpretations[1] != nil && para_interpretations[1]!= "" %>
-       <% show_carousel(para_interpretations[1])%>
-      <% end %>
-      <% if para_interpretations[2] != nil && para_interpretations[2]!= "" %>
-        <% show_carousel(para_interpretations[2])%>
-      <% end %>
-      <% if para_interpretations[3] != nil && para_interpretations[3]!= "" %>
-        <% show_carousel(para_interpretations[3])%>
-      <% end %>  
-    </div>
-  </div> 
+           <%= render "guidances/carousel_reading" %>
+
+
   <%if  params[:day] == "yesterday"%>
     <div class = "button_daily_card">
       <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today'),:remote => true ,:class => 'lunar_navigation'%>

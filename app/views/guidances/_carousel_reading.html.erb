@@ -1,0 +1,18 @@
+     <% yearly_interpretation = @card.interpretations.where(reading: "yearly").last&.explanation%>
+     <% para_interpretations = yearly_interpretation.split("\r\n\r\n")%>
+    <div class= "wrapper">
+      <div class="owl-carousel owl-theme image-slider" id = "Testcarousel">     
+        <% if para_interpretations[0] != nil && para_interpretations[0]!= ""%>
+         <% show_carousel(para_interpretations[0])%>
+        <% end %>
+        <% if para_interpretations[1] != nil && para_interpretations[1]!= ""%>
+         <% show_carousel(para_interpretations[1])%>
+        <% end %>
+        <% if para_interpretations[2] != nil && para_interpretations[2]!= ""%>
+         <% show_carousel(para_interpretations[2])%>
+        <% end %>
+        <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
+         <% show_carousel(para_interpretations[3])%>
+        <% end %>  
+      </div>
+    </div>

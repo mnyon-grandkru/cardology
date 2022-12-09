@@ -1,12 +1,7 @@
-<% if params[:year] == 'next'%>
-  <%@card = @birthday.card_for_next_year%>
-<% elsif params[:year] == 'last'%>  
-  <%@card = @birthday.card_for_last_year%>
-<% else%>  
+<% if params[:year] == nil%>
   <%@card = @birthday.card_for_this_year%>
   <%@date = DateTime.now%>
 <%end%>
-
 
 <div class="prompt_heading">
  <b>Yearly Theme Card</b>
@@ -14,33 +9,14 @@
 <div class= "pane_guidance" >
     <div class = "constant">
       <div style = "text-align: center;">  
-        <b style = "font-size: x-large;"><%=@birthday.card_for_this_year.name%></b>
+        <b style = "font-size: x-large;"><%=@card.name%></b>
       </div> 
        <%= marketing_text('heading','member' ,'yearly', 'subheader') %> 
       <p class= "pad">
        <%= image_tag @card.image,style: "width: 150px; border-radius: 5px;"%>
       </p>
     </div>
-       <% yearly_interpretation = @card.interpretations.where(reading: "yearly").last&.explanation%>
-       <% para_interpretations = yearly_interpretation.split("\r\n\r\n")%>
-    <div class= "wrapper">
-      <div class="owl-carousel owl-theme image-slider" id = "Testcarousel">     
-        <% if para_interpretations[0] != nil && para_interpretations[0]!= ""%>
-         <% show_carousel(para_interpretations[0])%>
-        <% end %>
-        <% if para_interpretations[1] != nil && para_interpretations[1]!= ""%>
-         <% show_carousel(para_interpretations[1])%>
-        <% end %>
-        <% if para_interpretations[2] != nil && para_interpretations[2]!= ""%>
-         <% show_carousel(para_interpretations[2])%>
-        <% end %>
-        <% if para_interpretations[3] != nil && para_interpretations[3]!= ""%>
-         <% show_carousel(para_interpretations[3])%>
-        <% end %>  
-      </div>
-    </div>
-
-
+     <%= render "guidances/carousel_reading" %>
    <%if  params[:year] == "last"%>
     <div class = "button_daily_card">
       <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current'),:remote => true ,:class => 'lunar_navigation'%>
