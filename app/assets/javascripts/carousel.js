@@ -5,7 +5,7 @@ $(document).ready(function(){
         margin:0,
         responsiveClass:true,
         nav:true,
-        navText:["◀","▶"],
+        navText:["<span class='hello1'>&#60;</span>","<span class='hello1'>&#62;</span>"],
         smartSpeed: 1400,
         responsive:{
             0:{

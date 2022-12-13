@@ -46,8 +46,8 @@
       </div>
     </div>
 
-     <div class="delivery_zone">
-        <div class="panel">
+     <div class="delivery_zone" id = "delivery_third">
+        <div class="panel" onclick="myFunction3()">
           <div class="front flip_card" id = "btn_zone">
               <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
           </div>
@@ -70,6 +70,9 @@
   }     
   function myFunction2() {
     document.getElementById("delivery_second").classList.add('add_height');
+  }       
+  function myFunction3() {
+    document.getElementById("delivery_third").classList.add('add_height');
   }       
 </script>
     
