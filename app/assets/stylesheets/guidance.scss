@@ -21,6 +21,10 @@
   padding-top: 40px;
   width: 50%;
 }
+#delivery_first{
+  padding-left: 70px;
+}
+
 
 .prompt_zone{
   width: 50%;
@@ -139,7 +143,9 @@ h2{
     }
 }
 
-  
+.source_cards_card_design {
+  width: 250px;
+}
 .wrapper{
   width: 100%;
   display: flex;
@@ -154,6 +160,9 @@ h2{
   .delivery_zone{
     padding-left: 70px;
   }
+  .source_cards_card_design {
+    width: 190px;
+  }
 }
 
 @media only screen and (min-width: 250px) and (max-width: 767px){
@@ -162,8 +171,9 @@ h2{
     flex-direction: column;
     align-items: center;
   }
-  .delivery_zone{
-    padding-left: 70px;
+
+  .source_cards_card_design {
+    width: 190px;
   }
 }
 @media only screen and (min-device-width: 300px) and (max-device-width: 767px){
@@ -176,6 +186,9 @@ h2{
     min-height: 1050px;
 
   }
+  .source_cards_card_design {
+    width: 190px;
+  }
 }
 @media only screen and (min-width: 250px) and (max-width: 767px){
   .guidance_show_media{
@@ -187,6 +200,13 @@ h2{
     min-height: 1050px;
 
   }
+  .source_cards_card_design {
+    width: 190px;
+  }
+  #delivery_first{
+    padding-left: 0px;
+  }
+  
 }
 
 .button_daily_card{
@@ -200,6 +220,7 @@ h2{
     padding: 5px 14px;
 
   }
+
   
 }
 
