@@ -21,9 +21,7 @@
   padding-top: 40px;
   width: 50%;
 }
-#delivery_first{
-  padding-left: 70px;
-}
+
 
 
 .prompt_zone{
@@ -157,9 +155,7 @@ h2{
     flex-direction: column;
     align-items: center;
   }
-  .delivery_zone{
-    padding-left: 70px;
-  }
+
   .source_cards_card_design {
     width: 190px;
   }
@@ -184,11 +180,13 @@ h2{
   }
   .add_height {
     min-height: 1050px;
+     padding-right: 50%;
 
   }
   .source_cards_card_design {
     width: 190px;
   }
+  
 }
 @media only screen and (min-width: 250px) and (max-width: 767px){
   .guidance_show_media{
@@ -198,15 +196,13 @@ h2{
   }
   .add_height {
     min-height: 1050px;
+    padding-right: 50%;
 
   }
   .source_cards_card_design {
     width: 190px;
   }
-  #delivery_first{
-    padding-left: 0px;
-  }
-  
+
 }
 
 .button_daily_card{
