@@ -178,9 +178,10 @@ h2{
   flex-direction: column;
   align-items: center;
   }
+
   .add_height {
     min-height: 1050px;
-     padding-right: 50%;
+   
 
   }
   .source_cards_card_design {
@@ -194,9 +195,12 @@ h2{
     flex-direction: column;
     align-items: center;
   }
+  .widget_heading{
+    margin: 15px 3% 10px 3%
+  }
   .add_height {
     min-height: 1050px;
-    padding-right: 50%;
+    padding-right: 170px;
 
   }
   .source_cards_card_design {
@@ -219,4 +223,5 @@ h2{
 
   
 }
+
 
