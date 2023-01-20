@@ -17,13 +17,11 @@
   <%= clearleft %>
   <%= link_to "Look up another Birthdate  ", guidances_prompt_path,:id => 'new_lookup_link', :class => 'lunar_navigation'%>
   <%= clearboth %>
-
   <div class="widget_heading">
         <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></section>
         <section id="widget_instructions">Click on each Source Card to flip it over!</section>
   </div>
   <div id = "guidance_zone" class= "guidance_show_media">
-
     <div  class="delivery_zone" id = "delivery_first" >
       <div class="panel" onclick="myFunction()">
         <div class="front flip_card">
@@ -34,7 +32,6 @@
         </div>
       </div> 
     </div>
-
     <div class="delivery_zone" id = "delivery_second">
       <div class="panel" onclick="myFunction2()">
         <div class="front flip_card" >
@@ -45,7 +42,6 @@
         </div>
       </div>
     </div>
-
      <div class="delivery_zone" id = "delivery_third">
         <div class="panel" onclick="myFunction3()">
           <div class="front flip_card" id = "btn_zone">
@@ -60,7 +56,6 @@
 </body>
 <style>
 </style>
-
 <script>
   function myFunction() {
     document.getElementById("delivery_first").classList.add('add_height');  
