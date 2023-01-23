@@ -168,13 +168,11 @@ h2{
       min-height: 1070px;
     }
     .pane_guidance{
-      width: 265px; 
+      width: 240px; 
       background-color: rgba(255, 255, 255, .85);
       color: black
     }
-    .delivery_zone {
-      text-align:  center;
-    }
+  
 }
 
 @media only screen and (min-width: 250px) and (max-width: 767px){
@@ -198,17 +196,14 @@ h2{
   }
   .add_height {
     min-height: 1070px;
-    padding-right: 170px;
+    // padding-right: 170px;
 
   }
   .pane_guidance{
-    width: 265px;
+    width: 240px; 
     background-color: rgba(255, 255, 255, .85);
     color: black
 
-  }
-  .delivery_zone {
-    text-align:  center;
   }
  
 }
