@@ -5,8 +5,8 @@ $(document).ready(function(){
         margin:0,
         responsiveClass:true,
         nav:true,
-        navText:["<span class='hello1'>&#60;</span>","<span class='hello1'>&#62;</span>"],
-        smartSpeed: 1400,
+        navText:["<span class='carousel_size'>&#60;</span>","<span class='carousel_size'>&#62;</span>"],
+        smartSpeed: 700,
         responsive:{
             0:{
                 items:1

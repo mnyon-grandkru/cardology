@@ -22,8 +22,6 @@
   width: 50%;
 }
 
-
-
 .prompt_zone{
   width: 50%;
   padding-top: 40px;
@@ -34,10 +32,10 @@
   display: flex;
 }
 
-.body {
-  background-image: asset-url('StarField.jpg');
-  background-size: cover;
-}
+// .body {
+//   background-image: asset-url('StarField.jpg');
+//   background-size: cover;
+// }
 
 .pad{
   padding-top: 7px;
@@ -98,7 +96,7 @@ h2{
 .owl-nav, button.owl.owl-next,button.owl.prev{
  font-size: 30px;
 }
-.hello1{
+.carousel_size{
   font-size: 40px;
 }
 .constant{
@@ -171,7 +169,11 @@ h2{
     }
     .pane_guidance{
       width: 265px; 
-      margin: 10px 20px 20px 20px; 
+      background-color: rgba(255, 255, 255, .85);
+      color: black
+    }
+    .delivery_zone {
+      text-align:  center;
     }
 }
 
@@ -180,6 +182,7 @@ h2{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
   }
 
   .source_cards_card_design {
@@ -200,7 +203,12 @@ h2{
   }
   .pane_guidance{
     width: 265px;
+    background-color: rgba(255, 255, 255, .85);
+    color: black
 
+  }
+  .delivery_zone {
+    text-align:  center;
   }
  
 }
