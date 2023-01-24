@@ -113,7 +113,7 @@ h2{
   // padding-left: 10px;
   width: 270px;
   height: 1000px;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.93);
   }
   
 .prompt_heading {
@@ -165,11 +165,11 @@ h2{
     }
   
     .add_height {
-      min-height: 1070px;
+      height: 1070px;
     }
     .pane_guidance{
-      width: 240px; 
-      background-color: rgba(255, 255, 255, .85);
+      width: 265px; 
+      background-color: rgba(255, 255, 255, .93);
       color: black
     }
   
@@ -195,13 +195,13 @@ h2{
     margin: 15px 3% 10px 3%
   }
   .add_height {
-    min-height: 1070px;
+    height: 1070px;
     // padding-right: 170px;
 
   }
   .pane_guidance{
-    width: 240px; 
-    background-color: rgba(255, 255, 255, .85);
+    width: 265px; 
+    background-color: rgba(255, 255, 255, .93);
     color: black
 
   }
