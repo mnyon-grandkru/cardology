@@ -23,7 +23,7 @@
   </div>
   <div id = "guidance_zone" class= "guidance_show_media">
     <div  class="delivery_zone" id = "delivery_first" >
-      <div class="panel" onclick="myFunction()">
+      <div class="panel" onclick="addheight()">
         <div class="front flip_card">
           <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
          </div>
@@ -33,7 +33,7 @@
       </div> 
     </div>
     <div class="delivery_zone" id = "delivery_second">
-      <div class="panel" onclick="myFunction2()">
+      <div class="panel" onclick="addheight2()">
         <div class="front flip_card" >
             <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
         </div> 
@@ -43,7 +43,7 @@
       </div>
     </div>
      <div class="delivery_zone" id = "delivery_third">
-        <div class="panel" onclick="myFunction3()">
+        <div class="panel" onclick="addheight3()">
           <div class="front flip_card" id = "btn_zone">
               <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
           </div>
@@ -57,13 +57,13 @@
 <style>
 </style>
 <script>
-  function myFunction() {
+  function addheight() {
     document.getElementById("delivery_first").classList.add('add_height');  
   }     
-  function myFunction2() {
+  function addheight2() {
     document.getElementById("delivery_second").classList.add('add_height');
   }       
-  function myFunction3() {
+  function addheight3() {
     document.getElementById("delivery_third").classList.add('add_height');
   }       
 </script>
