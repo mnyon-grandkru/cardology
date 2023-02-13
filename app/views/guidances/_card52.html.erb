@@ -1,8 +1,10 @@
 <% if params[:planet] == nil %>
   <% @card = @birthday.card_for_this_planet %>
   <% @planet =@birthday.current_planet %>
-  <% @date = DateTime.now %>
+  <% @date = @birthday.date_of_next_planet
+ %>
 <% end %>
+
 <div class="prompt_heading">
   <b>52-Day Card</b>
 </div>

@@ -34,15 +34,15 @@ class GuidancesController < ApplicationController
     if params[:planet] == 'current'
       @card = @birthday.card_for_this_planet
       @planet =@birthday.current_planet
-      @date = DateTime.now
+      @date = @birthday.date_of_next_planet
     elsif params[:planet] == 'last'
       @card = @birthday.card_for_last_planet
       @planet =@birthday.last_planet
-      @date =Date.current  - 52.days
+      @date = @birthday.date_of_next_planet  - 52.days
     elsif params[:planet] == 'next'
       @card = @birthday.card_for_next_planet
       @planet =@birthday.next_planet
-      @date =Date.current  + 52.days
+      @date = @birthday.date_of_next_planet  + 52.days
     end
   
   end
