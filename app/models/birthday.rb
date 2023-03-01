@@ -62,8 +62,7 @@ class Birthday < ApplicationRecord
     else
       last_birthday = Date.new date.year, month, day
     end
-    day_before_birthday = last_birthday - 1
-    (date - day_before_birthday).floor
+    (date - last_birthday).floor
   end
   
   def days_since_birth_on_date date
