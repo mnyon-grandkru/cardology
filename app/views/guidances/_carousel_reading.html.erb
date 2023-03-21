@@ -1,4 +1,4 @@
-     <% yearly_interpretation = @card.interpretations.where(reading: "yearly").last&.explanation%>
+     <% yearly_interpretation = @card.interpretations.where(reading: @header ||"yearly").last&.explanation%>
      <% para_interpretations = yearly_interpretation.split("\r\n\r\n")%>
     <div class= "wrapper">
       <div class="owl-carousel owl-theme image-slider" id = "Testcarousel">     
