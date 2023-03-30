@@ -73,11 +73,11 @@ coaching:
 new_players:
   header: "Birth Card Lookup"
   subheader: |
-    Simply enter a Birth Date. Afterwards, you can join to look up Yearly Cards too! 
+    Visit us at The Source Cards website to look up your Cards for free. 
   instructions: 
-  button: "Go"
+  button: "Click Here"
 returning_players:
-  header: "Returning Players"
+  header: "Look Up Your Current Personal Cards"
   subheader: "The Players Clubs Has Moved To The Source Cards"
   instructions: "A temporary password was emailed to you."
   password_hint: "The temporary password is 'ENV['INITIAL_PASSWORD']'"
