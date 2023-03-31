@@ -73,9 +73,9 @@ coaching:
 new_players:
   header: "Birth Card Lookup"
   subheader: |
-    Simply enter a Birth Date. Afterwards, you can join to look up Yearly Cards too! 
+   Visit us at the Source Cards to look up your Birth Card. 
   instructions: 
-  button: "Go"
+  button: "Click Here"
 returning_players:
   header: "Returning Players"
   subheader: "Login to get back in the game:"
