@@ -223,5 +223,22 @@ h2{
 
   
 }
+#new_url_source_card  {
+  margin-top: 30px;
+  width: 224px;
+}
+.new_source_card {
+  background-color: #335276;
+  color: white;
+  border: 2px solid #fff;
+  transition: all 0.3s;
+}
+
+.new_source_card :hover{
+  cursor: pointer;
+  background-color: #fff;
+  color: #335276;
+  border: 2px solid #335276;
+}
 
 

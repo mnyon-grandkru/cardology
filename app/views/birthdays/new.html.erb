@@ -6,10 +6,13 @@
       <%= content_tag :header, marketing_text('new_players', 'header'), :id => 'new_players_header' unless current_member %>
       <%= content_tag :header, content_tag(:b, mark_up(@goal)), :class => 'call_to_action' %>
       <%= content_tag :header, @instructions, :class => 'call_to_action' %>
-      <%= form_for Birthday.new :date => @date do |birthday_form| %>
+      <!-- <%= form_for Birthday.new :date => @date do |birthday_form| %>
         <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br>
         <%= birthday_form.submit marketing_text('new_players', 'button') %>
-      <% end %>
+      <% end %> -->
+      <div  id = "login_submit_button">
+        <%= button_to marketing_text('new_players', 'button'), "https://www.thesourcecards.com/", method: :get,onclick: "window.open('https://www.thesourcecards.com/'); return false;", class: "btn btn-primary" %>
+      </div>
     </div>
 
     <% unless current_member %>
@@ -17,7 +20,7 @@
         <div id="returning_players" class="pane">
           <%= content_tag :header, params[:message] || marketing_text('returning_players', 'header') %>
           <%= content_tag :header, marketing_text('returning_players', 'subheader'), :class => 'call_to_action' %>
-          <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>
+          <!-- <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>
             <%= signin_form.text_field :email, :placeholder => marketing_text('returning_players', 'email_name'), :class => 'spacious' %><br>
             <%#= signin_form.label :email, 'This is the email you entered<br>when you joined the Players Club.'.html_safe %>
             <%= signin_form.password_field :password, :placeholder => marketing_text('returning_players', 'password_name'), :class => 'spacious' %><br>
@@ -28,8 +31,11 @@
               <%= submit_tag marketing_text('returning_players', 'button'), :id => 'login_submit_button' %>
             </div>
             <%= hidden_field_tag :time_zone %>
-          <% end %>
-          <%= link_to marketing_text('returning_players', 'reset_name'), new_password_path(:member) %>
+          <% end %> -->
+          <!-- <%= link_to marketing_text('returning_players', 'reset_name'), new_password_path(:member) %> -->
+          <div  id = "login_submit_button">
+            <%= button_to marketing_text('returning_players', 'button'), "https://www.thesourcecards.com/", method: :get,onclick: "window.open('https://www.thesourcecards.com/three-card-reading'); return false;", class: "btn btn-primary" %>
+          </div>
         </div>
       </div>
     <% end %>
