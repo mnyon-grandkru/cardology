@@ -1,5 +1,6 @@
 new_players:
   header: "Source Card Lookup"
+  header1: "Three Card Reading"
   instructions: |
     Select Your Birth Date. Then Click Enter.
   button: "Enter"
