@@ -17,7 +17,7 @@
 
     <% unless current_member %>
       <div class="submission">
-        <div id="returning_players" class="pane">
+        <div id="new_players" class="pane">
           <%= content_tag :header, params[:message] || marketing_text('returning_players', 'header') %>
           <%= content_tag :header, marketing_text('returning_players', 'subheader'), :class => 'call_to_action' %>
           <!-- <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>

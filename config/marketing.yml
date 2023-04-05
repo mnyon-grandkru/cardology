@@ -76,12 +76,13 @@ new_players:
    Visit us at the Source Cards to look up your Birth Card. 
   instructions: 
   button: "Click Here"
+  button1: "Go"
 returning_players:
   header: "Look Up Your Current Personal Cards"
   subheader: "The Players Clubs Has Moved To The Source Cards"
   instructions: "A temporary password was emailed to you."
   password_hint: "The temporary password is 'ENV['INITIAL_PASSWORD']'"
-  button: "Get Back In The Game"
+  button: "Get In The Game"
   email_name: "Profile Email"
   password_name: "Password"
   remember_name: "Check This Box To Stay Logged In"
