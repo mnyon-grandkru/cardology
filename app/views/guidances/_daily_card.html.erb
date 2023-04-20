@@ -1,6 +1,6 @@
 <% if params[:day] == nil %>
   <% @card = @birthday.card_for_today %>
-  <% @date = DateTime.now %>
+  <% @date = Date.current %>
 <% end %>
 <div class="prompt_heading">
   <b>Personal Daily Card </b>

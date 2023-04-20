@@ -6,6 +6,7 @@ class GuidancesController < ApplicationController
   end
   
   def show
+    redirect_to guidances_prompt_path and return if params['birthday'].blank?
     @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
     @@birthdate = @birthday.id
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
@@ -25,7 +26,7 @@ class GuidancesController < ApplicationController
     else  
       @card = @birthday.card_for_today
       @header = 'daily'
-      @date = DateTime.now
+      @date = Date.current
     end
   
   end
@@ -58,6 +59,5 @@ class GuidancesController < ApplicationController
     end
   
   end
-
 
 end
