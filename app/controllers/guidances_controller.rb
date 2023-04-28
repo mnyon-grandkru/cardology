@@ -2,9 +2,30 @@ class GuidancesController < ApplicationController
   skip_before_action :verify_authenticity_token, :if => lambda { ['lifeelevated.life', 'thesourcecards.com', 'herokuapp.com' , 'blueprint.thesourcecards.com'].include? request.domain }
 
   def prompt
+    redirect_to guidances_initialize_payment_path and return if params['payment_successful'].blank?
     @date = rand((50.years.ago)..20.years.ago)
   end
-  
+
+  def payment
+    result = Braintree::Transaction.sale(
+      amount: "3.00",
+      payment_method_nonce: params[:nonce],
+      options: {
+        submit_for_settlement: true
+      }
+    )
+    if result.success?
+      redirect_to guidances_prompt_path(payment_successful: true)
+    else
+      flash[:error] = "Payment failed. Please try again."
+      redirect_to guidances_initialize_payment_path
+    end
+  end
+
+  def initialize_payment
+    @client_token = Braintree::ClientToken.generate
+  end
+
   def show
     redirect_to guidances_prompt_path and return if params['birthday'].blank?
     @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']

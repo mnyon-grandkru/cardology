@@ -1,0 +1,31 @@
+
+  <%= form_tag guidances_payment_path, id: "payment-form" do %>
+  <div id="dropin-container" style></div>
+  <%= hidden_field_tag :client_token, @client_token %>
+  <%= hidden_field_tag :payment_method_nonce, id: "payment_method_nonce" %>
+  <% end %>
+  <%= button_tag "Proceed to payment", class: "btn btn-primary", id: "pay-button" %>
+
+<script>
+  var form = document.getElementById('payment-form');
+  var clientToken = '<%= client_token %>';
+  var payButton = document.getElementById('pay-button');
+
+  braintree.dropin.create({
+    authorization: clientToken,
+    container: '#dropin-container'
+  }, function (createErr, instance) {
+    document.getElementById('pay-button').addEventListener('click', function () {
+      instance.requestPaymentMethod(function (err, payload) {
+      $.ajax({
+        url: '/guidances/payment',
+        type: 'POST',
+        contentType: 'application/json',
+        dataType: 'script',
+        data: JSON.stringify({ nonce: payload.nonce })
+      });
+      });
+    });
+  });
+</script>
+

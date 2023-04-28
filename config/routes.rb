@@ -60,7 +60,9 @@ Rails.application.routes.draw do
   get '/guidances/daily_card' => 'guidances#daily_card'
   get '/guidances/card52' => 'guidances#card52'
   get '/guidances/year_card' => 'guidances#year_card'
-  
+  post '/guidances/payment' => 'guidances#payment'
+  get '/guidances/initialize_payment' => 'guidances#initialize_payment'
+
   post '/member_save' => 'members#create', :as => 'member_save'
   put '/member_assign_zodiac/:id' => 'members#update', :as => 'member_assign_zodiac'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

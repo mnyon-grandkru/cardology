@@ -19,3 +19,4 @@
 //= require owl.carousel
 //= require moment
 //= require_tree .
+//= require jquery

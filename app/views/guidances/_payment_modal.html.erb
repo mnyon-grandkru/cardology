@@ -1,0 +1,7 @@
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <%= render partial: "guidances/payment", locals: { client_token: @client_token } %>
+    <button style="float: right;" onclick="document.getElementById('myModal').style.display='none'">Close</button>
+  </div>
+</div>

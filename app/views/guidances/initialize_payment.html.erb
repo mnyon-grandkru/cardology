@@ -1,0 +1,44 @@
+<body class = "body">
+  <div class="widget_heading">
+        <section id="widget_title">Flip Over These Three Cards For Only $3</section>
+  </div>
+  <div class="widget_heading">
+        <section id="widget_instructions">1. Your Yearly Theme Card</section>
+        <section id="widget_instructions">2. Your Current Cycle Card</section>
+        <section id="widget_instructions">3. Your Personal Daily Card</section>
+  </div>
+    <%= render partial: "guidances/payment_modal", locals: { client_token: @client_token } %>
+
+    <div style="text-align: center;margin-top: 2%;" >
+    <button onclick="document.getElementById('myModal').style.display='block'" class="lunar_navigation">Claim you cards</button>
+    </div>
+
+    <div  id="guidance_zone" class= "guidance_prompt_media" >
+    <div class="prompt_zone" >
+          <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
+    </div>
+    <div class="prompt_zone" >
+          <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %>      
+    </div>
+    <div class="prompt_zone" >
+          <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %>  
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var modal = document.getElementById('myModal');
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+});
+</script>
+<style>
+  #guidance_prompt_media{
+    justify-content: center;   
+  }
+</style>
