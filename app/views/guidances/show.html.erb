@@ -13,9 +13,9 @@
          <div class = "carousel_style"> <%= carousel_text %> </div>
       <%end%>
     <% end %>
-  <% end %>           
+  <% end %>
   <%= clearleft %>
-  <%= link_to "Look up another Birthdate  ", guidances_prompt_path,:id => 'new_lookup_link', :class => 'lunar_navigation'%>
+  <%= link_to "Look up another Birthdate  ",request.referrer,:id => 'new_lookup_link', :class => 'lunar_navigation'%>
   <%= clearboth %>
   <div class="widget_heading">
         <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header1' %></section>

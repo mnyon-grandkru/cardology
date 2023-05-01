@@ -2,7 +2,11 @@ class GuidancesController < ApplicationController
   skip_before_action :verify_authenticity_token, :if => lambda { ['lifeelevated.life', 'thesourcecards.com', 'herokuapp.com' , 'blueprint.thesourcecards.com'].include? request.domain }
 
   def prompt
-    redirect_to guidances_initialize_payment_path and return if params['payment_successful'].blank?
+    @date = rand((50.years.ago)..20.years.ago)
+  end
+
+  def lookup_cards
+    redirect_to guidances_initialize_payment_path if session[:transaction_token].blank?
     @date = rand((50.years.ago)..20.years.ago)
   end
 
@@ -15,7 +19,9 @@ class GuidancesController < ApplicationController
       }
     )
     if result.success?
-      redirect_to guidances_prompt_path(payment_successful: true)
+      flash[:success] = "Payment Successful. Check your fortune!"
+      session[:transaction_token] = SecureRandom.hex(16)
+      redirect_to guidances_lookup_cards_path
     else
       flash[:error] = "Payment failed. Please try again."
       redirect_to guidances_initialize_payment_path
@@ -27,10 +33,11 @@ class GuidancesController < ApplicationController
   end
 
   def show
-    redirect_to guidances_prompt_path and return if params['birthday'].blank?
+    redirect_back(fallback_location: root_path) and return if params['birthday'].blank?
     @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
     @@birthdate = @birthday.id
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
+    session[:transaction_token] = nil
   end
 
   def daily_card

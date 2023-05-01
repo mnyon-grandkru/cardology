@@ -1,0 +1,38 @@
+/* Flash message container */
+.flash-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+
+  /* Flash message */
+  .flash {
+    padding: 18px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.2em;
+    line-height: 1.2em;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Flash message - success */
+  .flash.success {
+    background-color: #ffffff;
+    color: #3c763d;
+    border: 1px solid #3c763d;
+  }
+
+  /* Flash message - error */
+  .flash.error {
+    background-color: #ffffff;
+    color: #a94442;
+    border: 1px solid #a94442;
+  }
+
+  /* Flash message - show animation */
+  .flash.show {
+    opacity: 1;
+  }

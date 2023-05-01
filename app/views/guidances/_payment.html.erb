@@ -4,18 +4,23 @@
   <%= hidden_field_tag :client_token, @client_token %>
   <%= hidden_field_tag :payment_method_nonce, id: "payment_method_nonce" %>
   <% end %>
-  <%= button_tag "Proceed to payment", class: "btn btn-primary", id: "pay-button" %>
+  <%= button_tag "Proceed to payment", class: "payment-button", id: "pay-button" %>
+
+  <div id="spinner-container" style="display:none">
+    <div class="spinner"></div>
+  </div>
 
 <script>
   var form = document.getElementById('payment-form');
   var clientToken = '<%= client_token %>';
-  var payButton = document.getElementById('pay-button');
+  var spinnerContainer = document.getElementById('spinner-container');
 
   braintree.dropin.create({
     authorization: clientToken,
     container: '#dropin-container'
   }, function (createErr, instance) {
     document.getElementById('pay-button').addEventListener('click', function () {
+      spinnerContainer.style.display = 'flex';
       instance.requestPaymentMethod(function (err, payload) {
       $.ajax({
         url: '/guidances/payment',
