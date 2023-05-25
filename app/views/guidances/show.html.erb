@@ -15,7 +15,7 @@
     <% end %>
   <% end %>
   <%= clearleft %>
-  <%= link_to "Look up another Birthdate  ", "#", :onclick=> "history.back()", :id => 'new_lookup_link', :class => 'lunar_navigation'%>
+  <%= link_to "Look up another Birthdate  ", :back, :id => 'new_lookup_link', :class => 'lunar_navigation', method: :get%>
   <%= clearboth %>
   <div class="widget_heading">
         <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
