@@ -2,7 +2,7 @@ new_players:
   header: "Choose Your Birthday"
   header1: "Three Card Reading"
   instructions: |
-    Then Click Enter.
+    Then Click Enter
   button: "Enter"
   invitation: "Click on each card to read the game of your life."
 
