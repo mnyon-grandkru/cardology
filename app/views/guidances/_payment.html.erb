@@ -15,13 +15,18 @@
   var clientToken = '<%= client_token %>';
   var spinnerContainer = document.getElementById('spinner-container');
 
-  braintree.dropin.create({
-    authorization: clientToken,
-    container: '#dropin-container'
-  }, function (createErr, instance) {
-    document.getElementById('pay-button').addEventListener('click', function () {
-      spinnerContainer.style.display = 'flex';
-      instance.requestPaymentMethod(function (err, payload) {
+braintree.dropin.create({
+  authorization: clientToken,
+  container: '#dropin-container',
+  paypal: {
+    flow: 'checkout',
+    amount: '3.00', // Set the payment amount here
+    currency: 'USD' // Set the currency here
+  }
+}, function (createErr, instance) {
+  document.getElementById('pay-button').addEventListener('click', function () {
+    spinnerContainer.style.display = 'flex';
+    instance.requestPaymentMethod(function (err, payload) {
       $.ajax({
         url: '/guidances/payment',
         type: 'POST',
@@ -29,8 +34,9 @@
         dataType: 'script',
         data: JSON.stringify({ nonce: payload.nonce })
       });
-      });
     });
   });
+});
+
 </script>
 
