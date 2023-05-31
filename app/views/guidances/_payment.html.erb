@@ -35,6 +35,7 @@
       instance.requestPaymentMethod(function (err, payload) {
         if (err) {
           alert('Request payment method error: ' + err);
+          stopSpinner();
           return;
         }
 
@@ -44,13 +45,21 @@
           contentType: 'application/json',
           dataType: 'script',
           data: JSON.stringify({ nonce: payload.nonce }),
+          // success: function (response) {
+          //   alert('Payment Successful')
+          // },
           error: function (xhr, status, error) {
             alert('Payment request error! Please try again.');
+            stopSpinner();
           }
         });
       });
     });
   });
+
+  function stopSpinner() {
+    spinnerContainer.style.display = 'none';
+  }
 </script>
 
 
