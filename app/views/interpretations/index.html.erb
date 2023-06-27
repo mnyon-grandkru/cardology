@@ -1,40 +1,97 @@
-<div>
-  <%= link_to 'new interpretation', new_interpretation_path, :id => 'new_interpretation_button' %><br>
-  <div class="interpretation_sort card_in_interpretation">
-    <%= link_to 'Sort by Card', sort_params.except(:by_face).merge(:sort => 'card_id') %><br>
-    <%= link_to 'Sort by Face', sort_params.except(:sort).merge(:by_face => true) %><br>
-    <%= link_to 'Sort by Reading', sort_params.except(:by_face).merge(:sort => 'reading') %>
+<style>
+  /* Overall container */
+  .interpretation-container {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Buttons */
+  .interpretation-container a {
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 8px 12px;
+    background-color: #e8830c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+
+  /* Sort section */
+  .interpretation-sort {
+    margin-top: 20px;
+  }
+
+  /* Interpretation cards */
+  .card-in-interpretation {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  /* Explanation section */
+  .explanation-of {
+    margin-bottom: 10px;
+  }
+
+  /* Control section */
+  .control-of {
+    margin-bottom: 20px;
+  }
+
+  .control-of a {
+    margin-right: 10px;
+    color: #ffffff; /* Change the color to white or any desired color */
+  }
+</style>
+<div class="interpretation-container">
+  <%= link_to 'New Interpretation', new_interpretation_path %><br>
+
+  <div class="interpretation-sort card-in-interpretation">
+    <%= link_to 'Sort by Card', sort_params.except(:by_face).merge(sort: 'card_id') %><br>
+    <%= link_to 'Sort by Face', sort_params.except(:sort).merge(by_face: true) %><br>
+    <%= link_to 'Sort by Reading', sort_params.except(:by_face).merge(sort: 'reading') %>
   </div>
-  <div class="interpretation_sort">
+
+  <div class="interpretation-sort">
     <%= link_to "All #{params[:reading]}", sort_params.except(:suit) %><br>
     <% Suit.actual.each do |suit| %>
-      <%= link_to suit.name, sort_params.merge(:suit => suit.name) %><br>
+      <%= link_to suit.name, sort_params.merge(suit: suit.name) %><br>
     <% end %>
   </div>
-  <div class="interpretation_sort reading_type_of_interpretation">
+
+  <div class="interpretation-sort reading_type_of_interpretation">
     <%= link_to "All #{params[:suit]}", sort_params.except(:reading) %><br>
     <% Interpretation.readings.each do |name, db_id| %>
-      <%= link_to name.capitalize, sort_params.merge(:reading => name) %><br>
+      <%= link_to name.capitalize, sort_params.merge(reading: name) %><br>
     <% end %>
   </div>
-</div>
-<%= paginate @interpretations %>
-<% @interpretations.each do |interpretation| %>
-  <%= div_for interpretation do %>
-    <%= div_for interpretation, :card_in, :class => 'interpretation_sort' do %>
-      <%= interpretation.card.name %> as
-    <% end %>
-    <%= div_for interpretation, :reading_type_of, :class => 'interpretation_sort' do %>
-      <%= interpretation.reading %>:
-    <% end %>
-    <%= div_for interpretation, :explanation_of, :class => 'interpretation_sort' do %>
-      <%= mark_up interpretation.explanation %>
-    <% end %>
-    <%= div_for interpretation, :control_of, :class => 'interpretation_sort' do %>
-      <%= link_to '[edit]', edit_interpretation_path(interpretation) %>
-      <%= link_to '[delete]', interpretation_path(interpretation), :method => :delete, :remote => true, :data => {:confirm => 'Please confirm that there is another interpretation for this reading!  Do you want to delete this one?'} %>
+
+  <%= paginate @interpretations %>
+
+  <% @interpretations.each do |interpretation| %>
+    <%= div_for interpretation do %>
+      <div class="card-in-interpretation">
+        <%= interpretation.card.name %> as
+      </div>
+
+      <div class="reading_type_of_interpretation">
+        <%= interpretation.reading %>:
+      </div>
+
+      <div class="explanation-of">
+        <%= mark_up interpretation.explanation %>
+      </div>
+
+      <div class="control-of">
+        <%= link_to '[Edit]', edit_interpretation_path(interpretation) %>
+        <%= link_to '[Delete]', interpretation_path(interpretation),
+                    method: :delete, remote: true,
+                    data: { confirm: 'Please confirm that there is another interpretation for this reading! Do you want to delete this one?' } %>
+      </div>
     <% end %>
   <% end %>
-<% end %>
-<%= paginate @interpretations %>
-<%= link_to 'new interpretation', new_interpretation_path %>
+
+  <%= paginate @interpretations %>
+
+  <%= link_to 'New Interpretation', new_interpretation_path %>
+</div>

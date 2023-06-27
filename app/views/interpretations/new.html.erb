@@ -1,17 +1,53 @@
-<%= form_for @interpretation do |interpretation_form| %>
-  <div>
-    <%= interpretation_form.select :card_id, options_from_collection_for_select(Card.ordered_deck << Card.joker, :id, :name, @interpretation.card_id), {:include_blank => 'Pick a card'}, {:required => true} %>
-  </div>
-  
-  <div>
-    <%= interpretation_form.text_area :explanation, :size => '52x26' %>
-  </div>
-  
-  <div>
-    <%= interpretation_form.select :reading, options_for_select(Interpretation.readings.keys) %>
-  </div>
-  
-  <div>
-    <%= interpretation_form.submit %>
-  </div>
-<% end %>
+<style>
+  /* Form container */
+  .interpretation-form-container {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Form input fields */
+  .interpretation-form-container input[type="text"],
+  .interpretation-form-container select,
+  .interpretation-form-container textarea {
+    display: block;
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  /* Submit button */
+  .interpretation-form-container input[type="submit"] {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #e8830c;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="interpretation-form-container">
+  <%= form_for @interpretation do |interpretation_form| %>
+    <div>
+      <%= interpretation_form.select :card_id, options_from_collection_for_select(Card.ordered_deck << Card.joker, :id, :name, @interpretation.card_id), { include_blank: 'Pick a card' }, { required: true } %>
+    </div>
+
+    <div>
+      <%= interpretation_form.text_area :explanation, size: '52x26' %>
+    </div>
+
+    <div>
+      <%= interpretation_form.select :reading, options_for_select(Interpretation.readings.keys) %>
+    </div>
+
+    <div>
+      <%= interpretation_form.submit %>
+    </div>
+  <% end %>
+</div>

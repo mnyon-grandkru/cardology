@@ -63,6 +63,8 @@ Rails.application.routes.draw do
   post '/guidances/payment' => 'guidances#payment'
   get '/guidances/initialize_payment' => 'guidances#initialize_payment'
   get '/guidances/lookup_cards' => 'guidances#lookup_cards'
+  get '/login_page' => "birthdays#login_page"
+
 
   post '/member_save' => 'members#create', :as => 'member_save'
   put '/member_assign_zodiac/:id' => 'members#update', :as => 'member_assign_zodiac'
