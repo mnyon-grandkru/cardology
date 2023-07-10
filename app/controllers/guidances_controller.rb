@@ -11,9 +11,13 @@ class GuidancesController < ApplicationController
   end
 
   def payment
+    @source = params[:source_website]  || "please enter source in query params"
     result = Braintree::Transaction.sale(
       amount: "3.00",
       payment_method_nonce: params[:nonce],
+      custom_fields: {
+        website_source: @source
+      },
       options: {
         submit_for_settlement: true
       }
@@ -29,6 +33,7 @@ class GuidancesController < ApplicationController
   end
 
   def initialize_payment
+    @source_website = params[:source] || "please enter source in query params"
     @client_token = Braintree::ClientToken.generate
   end
 
@@ -42,7 +47,7 @@ class GuidancesController < ApplicationController
 
   def daily_card
     @birthday = Birthday.find(@@birthdate)
-      
+
     if params[:day] == 'yesterday'
       @header = 'yesterday'
       @card = @birthday.card_for_yesterday
@@ -51,12 +56,12 @@ class GuidancesController < ApplicationController
       @card = @birthday.card_for_tomorrow
       @header = 'tomorrow'
       @date = DateTime.tomorrow
-    else  
+    else
       @card = @birthday.card_for_today
       @header = 'daily'
       @date = Date.current
     end
-  
+
   end
   def card52
     @birthday = Birthday.find(@@birthdate)
@@ -73,7 +78,7 @@ class GuidancesController < ApplicationController
       @planet =@birthday.next_planet
       @date = @birthday.date_of_next_planet  + 52.days
     end
-  
+
   end
 
   def year_card
@@ -85,7 +90,7 @@ class GuidancesController < ApplicationController
     elsif params[:year] == 'next'
       @card = @birthday.card_for_next_year
     end
-  
+
   end
 
 end
