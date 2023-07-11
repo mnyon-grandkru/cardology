@@ -15,7 +15,7 @@ class GuidancesController < ApplicationController
     result = Braintree::Transaction.sale(
       amount: "3.00",
       payment_method_nonce: params[:nonce],
-      store_id: @source
+      store_id: @source,
       custom_fields: {
         website_source: @source
       },
