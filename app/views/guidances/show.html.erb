@@ -1,19 +1,4 @@
 <body class = "body">
-  <% def show_carousel(carousel_text) %>
-    <% if carousel_text != nil && carousel_text.length > 450 %> 
-      <% split_carousel_text = text_carousel(carousel_text) %>
-      <% if split_carousel_text[0] != (nil || "" || " ")%>
-        <div class = "carousel_style"> <%=  split_carousel_text[0] %> </div>
-      <% end %>
-      <% if split_carousel_text[1] != (nil || "" || " ")%>
-         <div class = "carousel_style"> <%= split_carousel_text[1] %> </div>
-      <% end %>
-    <% else %>
-      <% if carousel_text != (nil || "" || " ") %>
-         <div class = "carousel_style"> <%= carousel_text %> </div>
-      <%end%>
-    <% end %>
-  <% end %>
   <%= clearleft %>
   <% unless params[:lookup_card].present?%>
   <%= link_to "Look up another Birthdate  ", params[:prompt].present?? "/guidances/prompt" : "/guidances/lookup_cards", :id => 'new_lookup_link', :class => 'lunar_navigation', method: :get%>
@@ -27,19 +12,19 @@
     <div  class="delivery_zone" id = "delivery_first" >
       <div class="panel" onclick="addheight()">
         <div class="front flip_card">
-          <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
+          <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %>
          </div>
         <div class="back" id = "daily_card">
           <%=render "guidances/daily_card"%>
         </div>
-      </div> 
+      </div>
     </div>
     <div class="delivery_zone" id = "delivery_second">
       <div class="panel" onclick="addheight2()">
         <div class="front flip_card" >
-            <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
-        </div> 
-        <div class="back" id="card52">          
+            <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %>
+        </div>
+        <div class="back" id="card52">
           <%=render "guidances/card52"%>
         </div>
       </div>
@@ -47,28 +32,28 @@
      <div class="delivery_zone" id = "delivery_third">
         <div class="panel" onclick="addheight3()">
           <div class="front flip_card" id = "btn_zone">
-              <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %> 
+              <%= image_tag (asset_path 'blueorangeround-lowrez.png'), :class => 'source_cards_card_design' %>
           </div>
           <div class="back" id= "card_year">
             <%=render "guidances/year_card"%>
           </div>
         </div>
-      </div> 
-  </div> 
+      </div>
+  </div>
 </body>
 <style>
 </style>
 <script>
   function addheight() {
-    document.getElementById("delivery_first").classList.add('add_height');  
-  }     
+    document.getElementById("delivery_first").classList.add('add_height');
+  }
   function addheight2() {
     document.getElementById("delivery_second").classList.add('add_height');
-  }       
+  }
   function addheight3() {
     document.getElementById("delivery_third").classList.add('add_height');
-  }       
+  }
 </script>
-    
+
 
 
