@@ -44,11 +44,14 @@
 .prompt_zone{
   width: 50%;
   padding-top: 40px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 #guidance_zone{
   display: flex;
+  justify-content: center;
+  justify-content: space-evenly
 }
 
 .body {
@@ -127,17 +130,17 @@ h2{
   box-shadow: 0px 0px 10px 3px white;
 }
 
-.pane_guidance{
+
+.pane_guidance {
   display: inline-block;
-  border: 1px solid black;
-  border-radius: 50px;
-  padding: 20px 20px;
-  margin: 10px 20px 20px -1px;
-  // padding-left: 10px;
-  width: 270px;
+  width: 320px;
   height: 1070px;
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 50px;
   background-color: rgba(255, 255, 255, 0.93);
-  }
+}
+
 
 .prompt_heading {
   color: antiquewhite;
@@ -177,17 +180,18 @@ h2{
     flex-direction: column;
     align-items: center;
   }
+  .delivery_zone{
+    width: 25% !important;
+  }
 
   .guidance_show_media{
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    align-items: center;
-    }
+    text-align: center;
+  }
 
     .add_height {
       height: 1170px;
-      padding-right: 170px;
-
     }
     .pane_guidance{
       width: 265px;
@@ -198,6 +202,10 @@ h2{
       font-size: 30px;
       margin: 10px 2% 6px 2%;
     }
+    .lookup_link {
+      text-align: center;
+    }
+
 
 }
 
@@ -208,19 +216,19 @@ h2{
     align-items: center;
 
   }
-
+  .delivery_zone{
+    width: 25% !important;
+  }
   .guidance_show_media{
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
   }
   .widget_heading{
     margin: 15px 3% 10px 3%
   }
   .add_height {
     height: 1170px;
-    padding-right: 170px;
-
   }
   .pane_guidance{
     width: 265px;
@@ -231,6 +239,9 @@ h2{
   .prompt_heading{
     margin: 10px 2% 6px 2%;
     font-size: 30px;
+  }
+  .lookup_link {
+    text-align: center;
   }
 
 }
