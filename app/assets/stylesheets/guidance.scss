@@ -189,9 +189,12 @@ h2{
     flex-direction: column;
     text-align: center;
   }
-
+  
     .add_height {
       height: 1170px;
+      .panel{
+        padding-right: 18px;
+      }
     }
     .pane_guidance{
       width: 305px;
@@ -229,6 +232,9 @@ h2{
   }
   .add_height {
     height: 1170px;
+    .panel{
+      padding-right: 18px;
+    }
   }
   .pane_guidance{
     width: 305px;
