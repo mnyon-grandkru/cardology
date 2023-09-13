@@ -237,7 +237,7 @@ h2{
   }
   .panel{
     display: flex;
-    max-width: 330px;
+    max-width: 320px;
     margin: auto;
     width: 100% !important;
   
@@ -261,7 +261,7 @@ h2{
   }
   .panel{
     display: flex;
-    max-width: 330px;
+    max-width: 320px;
     margin: auto;
     width: 100% !important;
   }
@@ -323,20 +323,20 @@ h2{
     width: 100%; /* Full width on small screens */
   }
 }
-@media only screen and (max-width: 320px){
-  .add_height{
-    height: 1170px;
-  .back{
-    left: -8px;
-  }
-  }}
-  @media only screen and (min-width: 320px) and (max-width: 375px){
-    .add_height{
-      height: 1170px;
-    .back{
-      left: -6px;
-    }
-    }}
+// @media only screen and (max-width: 320px){
+//   .add_height{
+//     height: 1170px;
+//   .back{
+//     left: -8px;
+//   }
+//   }}
+//   @media only screen and (min-width: 320px) and (max-width: 375px){
+//     .add_height{
+//       height: 1170px;
+//     .back{
+//       left: -6px;
+//     }
+//     }}
 
 
 
