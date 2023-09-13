@@ -50,10 +50,14 @@
 
 #guidance_zone{
   display: flex;
-  justify-content: center;
   justify-content: space-evenly
 }
 
+#guidance_zone_show {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly
+}
 .body {
   background-image: asset-url('StarField.jpg');
   background-size: cover;
@@ -174,83 +178,7 @@ h2{
   align-items: center;
   }
 
-@media only screen and (min-device-width: 300px) and (max-device-width: 767px){
-  .guidance_prompt_media{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .delivery_zone{
-    width: 25% !important;
-  }
 
-  .guidance_show_media{
-    display: flex !important;
-    flex-direction: column;
-    text-align: center;
-  }
-  
-    .add_height {
-      height: 1170px;
-      .panel{
-        padding-right: 30px;
-      }
-    }
-    .pane_guidance{
-      width: 305px;
-      background-color: rgba(255, 255, 255, .93);
-      color: black
-    }
-    .prompt_heading{
-      font-size: 30px;
-      margin: 10px 2% 6px 2%;
-    }
-    .lookup_link {
-      text-align: center;
-    }
-
-
-}
-
-@media only screen and (min-width: 250px) and (max-width: 767px){
-  .guidance_prompt_media{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-  }
-  .delivery_zone{
-    width: 25% !important;
-  }
-  .guidance_show_media{
-    display: flex !important;
-    flex-direction: column;
-    text-align: center;
-  }
-  .widget_heading{
-    margin: 15px 3% 10px 3%
-  }
-  .add_height {
-    height: 1170px;
-    .panel{
-      padding-right: 30px;
-    }
-  }
-  .pane_guidance{
-    width: 305px;
-    background-color: rgba(255, 255, 255, .93);
-    color: black
-
-  }
-  .prompt_heading{
-    margin: 10px 2% 6px 2%;
-    font-size: 30px;
-  }
-  .lookup_link {
-    text-align: center;
-  }
-
-}
 .button_daily_card{
 
   display: flex;
@@ -281,6 +209,145 @@ h2{
   background-color: #fff;
   color: #335276;
   border: 2px solid #335276;
+}
+@media only screen and (min-device-width: 300px) and (max-device-width: 767px) {//for staging
+  #guidance_zone {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .prompt_zone {
+    margin: 10px auto;
+  }
+
+  .add_height {
+    height: 1170px;
+  }
+  .pane_guidance{
+    width: 300px;
+    background-color: rgba(255, 255, 255, .93);
+    color: black
+  }
+  .prompt_heading{
+    font-size: 30px;
+    margin: 10px 2% 6px 2%;
+  }
+  .lookup_link {
+    text-align: center;
+  }
+  .panel{
+    display: flex;
+    max-width: 330px;
+    margin: auto;
+    padding-left: 7.5em;
+  }
+  #guidance_zone_show {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+  }
+
+  .delivery_zone {
+    width: 100%; 
+  }
+
+}
+@media only screen and (min-width: 250px) and (max-width: 767px){//for prod
+  #guidance_zone {
+    flex-direction: column;
+    align-items: center; 
+  }
+  .panel{
+    display: flex;
+    max-width: 250px;
+    margin: auto;
+  }
+  .prompt_zone {
+    margin: 10px auto; 
+  }
+  
+  .add_height {
+    height: 1170px;
+  }
+  .pane_guidance{
+    width: 300px;
+    background-color: rgba(255, 255, 255, .93);
+    color: black
+  }
+  .prompt_heading{
+    font-size: 30px;
+    margin: 10px 2% 6px 2%;
+  }
+  .lookup_link {
+    text-align: center;
+  }
+  #guidance_zone_show {
+    display: flex;
+    flex-direction: column; /* Stack elements in a single column */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+
+  .delivery_zone {
+    width: 100%; /* Full width on small screens */
+  }
+  #guidance_zone {
+    flex-direction: column; /* Stack elements in a single column */
+    align-items: center; /* Center align the elements */
+  }
+
+  .prompt_zone {
+    margin: 10px auto; /* Center the images horizontally */
+  }
+
+  .add_height {
+    height: 1170px;
+  }
+  .pane_guidance{
+    width: 250px;
+    background-color: rgba(255, 255, 255, .93);
+    color: black
+  }
+  .prompt_heading{
+    font-size: 30px;
+    margin: 10px 2% 6px 2%;
+  }
+  .lookup_link {
+    text-align: center;
+  }
+  #guidance_zone_show {
+    display: flex;
+    flex-direction: column; /* Stack elements in a single column */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+
+  .delivery_zone {
+    width: 100%; /* Full width on small screens */
+  }
+}
+
+
+
+@media only screen and (min-width: 320px) and (max-width: 375px){
+  .panel{
+    display: flex;
+    max-width: 250px;
+    margin: auto;
+    padding-left: 7.1em;
+  }
+
+}
+
+@media only screen and (min-width: 375px) and (max-width: 425px){
+
+  .panel{
+    display: flex;
+    max-width: 250px;
+    margin: auto;
+    padding-left: 6em;
+  }
 }
 
 
