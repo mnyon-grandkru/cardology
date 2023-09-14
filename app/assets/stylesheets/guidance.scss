@@ -264,9 +264,6 @@ h2{
     max-width: 320px;
     margin: auto;
     width: 100%;
-    .back{
-      left: -18px;
-    }
   }
 
   .prompt_zone {
@@ -328,9 +325,31 @@ h2{
 
   .delivery_zone {
     width: 100%;
+    position: relative;
+    left: -5%;
   }
 }
 
 
 
+@media only screen and  (max-width: 380px){
+  .delivery_zone {
+    width: 100%;
+    position: relative;
+    left: -3.5%;
+  }
+  .pane_guidance{
+    max-width: 90%;
+  }
+}
 
+@media only screen and  (max-width: 320px){
+  .delivery_zone {
+    width: 100%;
+    position: relative;
+    left: 0;
+  }
+  .pane_guidance{
+    max-width: 86%;
+  }
+}
