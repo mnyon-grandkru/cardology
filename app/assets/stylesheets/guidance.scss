@@ -145,7 +145,12 @@ h2{
   background-color: rgba(255, 255, 255, 0.93);
 }
 
-
+#widget_title_gui {
+  font-size: 2em;
+  text-align: center;
+  color: bisque;
+  text-shadow: 0px 5px 4px #448;
+}
 .prompt_heading {
   color: antiquewhite;
   border: 2px solid black;
@@ -156,7 +161,7 @@ h2{
   text-align: center;
 
   #prompt_title {
-    font-size: 2em;
+    font-size:2em;
     text-align: center;
     color: bisque;
     text-shadow: 0px 5px 4px #448;
@@ -224,7 +229,7 @@ h2{
     height: 1170px;
   }
   .pane_guidance{
-    max-width: 100%;
+    max-width: 320px;
     background-color: rgba(255, 255, 255, .93);
     color: black;
   }
@@ -241,12 +246,6 @@ h2{
     margin: auto;
     width: 100% !important;
 
-  }
-  #guidance_zone_show {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 
   .delivery_zone {
@@ -279,12 +278,7 @@ h2{
   .lookup_link {
     text-align: center;
   }
-  #guidance_zone_show {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+
 
   .delivery_zone {
     width: 100%;
@@ -316,6 +310,9 @@ h2{
   .widget_heading{
     margin: 15px 3% 10px 3%
   }
+   #widget_title_gui{
+    font-size: 1.8em;
+  }
   #guidance_zone_show {
     display: flex;
     flex-direction: column;
@@ -332,22 +329,25 @@ h2{
 
 
 
-@media only screen and  (max-width: 380px){
+@media only screen and  (max-width: 420px){
   .delivery_zone {
     width: 100%;
     position: relative;
-    left: -3.5%;
+    left: -2.5%;
   }
   .pane_guidance{
-    max-width: 90%;
+    max-width: 100%;
   }
 }
 
 @media only screen and  (max-width: 320px){
+  #widget_title_gui{
+    font-size: 1.5em;
+  }
   .delivery_zone {
     width: 100%;
     position: relative;
-    left: 0;
+    left: 0%;
   }
   .pane_guidance{
     max-width: 86%;
