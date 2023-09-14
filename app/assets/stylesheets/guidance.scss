@@ -224,7 +224,7 @@ h2{
     height: 1170px;
   }
   .pane_guidance{
-    width: 275px;
+    max-width: 100%;
     background-color: rgba(255, 255, 255, .93);
     color: black;
   }
@@ -240,33 +240,37 @@ h2{
     max-width: 320px;
     margin: auto;
     width: 100% !important;
-  
+
   }
   #guidance_zone_show {
     display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .delivery_zone {
-    width: 100%; 
+    width: 100%;
   }
 
 }
 @media only screen and (min-width: 250px) and (max-width: 767px){//for prod
   #guidance_zone {
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
   }
   .panel{
     display: flex;
     max-width: 320px;
     margin: auto;
-    width: 100% !important;
+    width: 100%;
+    .back{
+      left: -18px;
+    }
   }
+
   .prompt_zone {
-    margin: 10px auto; 
+    margin: 10px auto;
   }
   .add_height {
     height: 1170px;
@@ -280,31 +284,30 @@ h2{
   }
   #guidance_zone_show {
     display: flex;
-    flex-direction: column; /* Stack elements in a single column */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .delivery_zone {
-    width: 100%; /* Full width on small screens */
+    width: 100%;
   }
   #guidance_zone {
-    flex-direction: column; /* Stack elements in a single column */
-    align-items: center; /* Center align the elements */
+    flex-direction: column;
+    align-items: center;
   }
 
   .prompt_zone {
-    margin: 10px auto; /* Center the images horizontally */
+    margin: 10px auto;
   }
 
   .add_height {
     height: 1170px;
   }
   .pane_guidance{
-    width: 275px;
+    max-width: 100%;
     background-color: rgba(255, 255, 255, .93);
     color: black;
-    
   }
   .prompt_heading{
     font-size: 30px;
@@ -313,22 +316,18 @@ h2{
   .lookup_link {
     text-align: center;
   }
+  .widget_heading{
+    margin: 15px 3% 10px 3%
+  }
   #guidance_zone_show {
     display: flex;
-    flex-direction: column; /* Stack elements in a single column */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .delivery_zone {
-    width: 100%; /* Full width on small screens */
-  }
-}
-@media only screen and (max-width: 320px){
-  .add_height{
-  .panel{
-    margin: -7px !important;
-  }
+    width: 100%;
   }
 }
 
