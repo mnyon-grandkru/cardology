@@ -216,36 +216,46 @@ h2{
 }
 
 @media only screen and (min-width: 250px) and (max-width: 767px) {
-
-
-#guidance_zone{
-  flex-direction:column;
-}
-.delivery_zone{
-  width: 100%;
-  text-align: center;
-}
-
-.panel{
-  margin-left: 0;
-  width: 100%;
-}
-.panel .back, .panel .front{
-  width: 100%;
-}
-.pane_guidance{
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -box-sizing: border-box;
-  max-width: 320px;
-  width: 100%;
-}
-.add_height {
-      height: 1170px;
-    }
-    .prompt_zone{
-      max-width: 320px;
-    text-align: center;
+  #guidance_zone{
+    flex-direction:column;
+  }
+  .delivery_zone{
     width: 100%;
-    }
+    text-align: center;
+  }
+
+  .panel{
+    margin-left: 0;
+    width: 100%;
+  }
+  .panel .back, .panel .front{
+    width: 100%;
+  }
+  .pane_guidance{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -box-sizing: border-box;
+    max-width: 360px;
+    width: 100%;
+  }
+  .add_height {
+        height: 1170px;
+      }
+  .prompt_zone{
+    max-width: 320px;
+  text-align: center;
+  width: 100%;
+  }
+  .widget_heading{
+    margin: 10px 0;
+  }
+  #widget_title_gui{
+    font-size: 1.6em;
+  }
+  .guidance_prompt_media{
+    align-items: center;
+  }
+  .lookup_link{
+    text-align: center;
+  }
 }
