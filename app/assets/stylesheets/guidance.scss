@@ -214,141 +214,38 @@ h2{
   color: #335276;
   border: 2px solid #335276;
 }
-@media only screen and (min-device-width: 300px) and (max-device-width: 767px) {//for staging
-  #guidance_zone {
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .prompt_zone {
-    margin: 10px auto;
-  }
+@media only screen and (min-width: 250px) and (max-width: 767px) {
 
-  .add_height {
-    height: 1170px;
-  }
-  .pane_guidance{
-    max-width: 320px;
-    background-color: rgba(255, 255, 255, .93);
-    color: black;
-  }
-  .prompt_heading{
-    font-size: 30px;
-    margin: 10px 2% 6px 2%;
-  }
-  .lookup_link {
-    text-align: center;
-  }
-  .panel{
-    display: flex;
-    max-width: 320px;
-    margin: auto;
-    width: 100% !important;
 
-  }
-
-  .delivery_zone {
-    width: 100%;
-  }
-
+#guidance_zone{
+  flex-direction:column;
 }
-@media only screen and (min-width: 250px) and (max-width: 767px){//for prod
-  #guidance_zone {
-    flex-direction: column;
-    align-items: center;
-  }
-  .panel{
-    display: flex;
-    max-width: 320px;
-    margin: auto;
-    width: 100%;
-  }
-
-  .prompt_zone {
-    margin: 10px auto;
-  }
-  .add_height {
-    height: 1170px;
-  }
-  .prompt_heading{
-    font-size: 30px;
-    margin: 10px 2% 6px 2%;
-  }
-  .lookup_link {
-    text-align: center;
-  }
-
-
-  .delivery_zone {
-    width: 100%;
-  }
-  #guidance_zone {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .prompt_zone {
-    margin: 10px auto;
-  }
-
-  .add_height {
-    height: 1170px;
-  }
-  .pane_guidance{
-    max-width: 100%;
-    background-color: rgba(255, 255, 255, .93);
-    color: black;
-  }
-  .prompt_heading{
-    font-size: 30px;
-    margin: 10px 2% 6px 2%;
-  }
-  .lookup_link {
-    text-align: center;
-  }
-  .widget_heading{
-    margin: 15px 3% 10px 3%
-  }
-   #widget_title_gui{
-    font-size: 1.8em;
-  }
-  #guidance_zone_show {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .delivery_zone {
-    width: 100%;
-    position: relative;
-    left: -5%;
-  }
+.delivery_zone{
+  width: 100%;
+  text-align: center;
 }
 
-
-
-@media only screen and  (max-width: 420px){
-  .delivery_zone {
-    width: 100%;
-    position: relative;
-    left: -2.5%;
-  }
-  .pane_guidance{
-    max-width: 100%;
-  }
+.panel{
+  margin-left: 0;
+  width: 100%;
 }
-
-@media only screen and  (max-width: 320px){
-  #widget_title_gui{
-    font-size: 1.5em;
-  }
-  .delivery_zone {
+.panel .back, .panel .front{
+  width: 100%;
+}
+.pane_guidance{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -box-sizing: border-box;
+  max-width: 320px;
+  width: 100%;
+}
+.add_height {
+      height: 1170px;
+    }
+    .prompt_zone{
+      max-width: 320px;
+    text-align: center;
     width: 100%;
-    position: relative;
-    left: 0%;
-  }
-  .pane_guidance{
-    max-width: 86%;
-  }
+    }
 }
