@@ -2,7 +2,7 @@
   <%= clearleft %>
   <% unless params[:lookup_card].present?%>
     <div class="lookup_link">
-      <%= link_to "Look up another Birthdate", params[:prompt].present? ? "/guidances/prompt" : "/guidances/lookup_cards", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
+      <%= link_to "Do Another Lookup", params[:prompt].present? ? "/guidances/prompt" : "/guidances/lookup_cards", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
     </div>  <% end %>
   <%= clearboth %>
   <div class="widget_heading">
