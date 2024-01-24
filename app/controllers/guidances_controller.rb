@@ -17,9 +17,6 @@ class GuidancesController < ApplicationController
       payment_method_nonce: params[:nonce],
       :billing => {
         :company => @source},
-      custom_fields: {
-        website_source: @source
-      },
       options: {
         submit_for_settlement: true
       }
