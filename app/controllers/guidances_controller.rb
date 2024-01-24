@@ -18,7 +18,7 @@ class GuidancesController < ApplicationController
       :billing => {
         :company => @source},
       custom_fields: {
-        source_website: @source
+        website_source: @source
       },
       options: {
         submit_for_settlement: true
