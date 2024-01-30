@@ -14,12 +14,7 @@ module GuidancesHelper
 		end
 	end
 
-	def filter_text(carousel_text)
-		if carousel_text.length > 700
-			carousel_text.lines[0..3].join
-		else
-			carousel_text
-		end
-	end
-
 end
+
+
+
