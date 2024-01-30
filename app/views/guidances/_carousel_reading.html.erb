@@ -1,6 +1,7 @@
 <% yearly_interpretation = @card.interpretations.where(reading: @header ||"yearly").last&.explanation%>
+<% crousel_text = filter_text(yearly_interpretation)%>
 <div class="wrapper">
   <div class="owl-carousel owl-theme image-slider" id="Testcarousel">
-   <%= simple_format(yearly_interpretation) %>
+   <%= simple_format(crousel_text) %>
   </div>
 </div>
