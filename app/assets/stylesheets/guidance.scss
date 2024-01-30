@@ -144,6 +144,18 @@ h2{
   background-color: rgba(255, 255, 255, 0.93);
 }
 
+@media (max-width: 767px) {
+    .pane_guidance {
+        height: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .pane_guidance {
+        height: 1070px;
+    }
+}
+
 #widget_title_gui {
   font-size: 2em;
   text-align: center;
