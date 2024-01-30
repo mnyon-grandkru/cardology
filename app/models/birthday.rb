@@ -112,16 +112,20 @@ class Birthday < ApplicationRecord
     card_for_the_year_on_date Date.current + 1.year
   end
   
-  def card_for_the_year_on_date date
+  def card_for_the_year_on_date date, main_card = birth_card
     return Card.joker if birth_card == Card.joker
     long_range_spread_index = age_on_date(date) / 7
     planetary_position = (age_on_date(date) % 7) + 1
     spread = Spread.find_by(:age => long_range_spread_index)
-    position_of_birth_card = spread.position_of birth_card
-    position = position_of_birth_card.position - planetary_position
+    position_of_main_card = spread.position_of main_card
+    position = position_of_main_card.position - planetary_position
     position = 52 + position if position < 0
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
+  end
+  
+  def ruling_card_for_the_year_on_date date
+    card_for_the_year_on_date date, personality_card
   end
   
   def card_for_this_planet
@@ -200,16 +204,20 @@ class Birthday < ApplicationRecord
     planet_on_date Date.current + 52.days
   end
   
-  def card_for_the_planetary_period_on_date date
+  def card_for_the_planetary_period_on_date date, main_card = birth_card
     return Card.joker if birth_card == Card.joker
     spread = Spread.find_by(:age => age_on_date(date))
     planetary_position = planetary_period_on_date date
     return Card.joker if planetary_position > 7
-    position_of_birth_card = spread.position_of birth_card
-    position = position_of_birth_card.position - planetary_position
+    position_of_main_card = spread.position_of main_card
+    position = position_of_main_card.position - planetary_position
     position = 52 + position if position < 0
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
+  end
+  
+  def ruling_card_for_the_planetary_period_on_date date
+    card_for_the_planetary_period_on_date date, personality_card
   end
   
   def personality_card
@@ -415,7 +423,7 @@ class Birthday < ApplicationRecord
     end.join(".\n")
   end
   
-  memoize :birth_card
+  memoize :birth_card, :personality_card
 end
 
 class Symbol
