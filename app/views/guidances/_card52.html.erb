@@ -20,7 +20,7 @@
         <%= image_tag @card.image,style: "width: 150px; border-radius: 5.5px;" %>
       </p>
   </div>
-   <%@header = 'yearly'%>
+   <%@header = 'planetary'%>
    <%= render "guidances/carousel_reading" %>
   <% unless params[:lookup_card].present?%>
     <% if  params[:planet] == "last" %>
@@ -44,8 +44,8 @@
     <% end %>
   <%else%>
     <div class = "button_daily_card">
-      <h3 style= "text-align: center;">Want To Keep Reading More Cards?</h3>
-      <%= link_to "Subscribe For Unlimited Lookups", "https://www.thesourcecards.com/purchase/176926-Three-Card-Lookup", target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+      <h3 style= "text-align: center;">Want to know which card is coming next?</h3>
+      <%= link_to "Subscribe To See Your Next Card", "https://www.thesourcecards.com/purchase/176926-Three-Card-Lookup", target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
       <%= render partial: "copyright_text" %>
     </div>
   <%end%>
