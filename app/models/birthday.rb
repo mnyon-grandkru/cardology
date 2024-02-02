@@ -77,24 +77,24 @@ class Birthday < ApplicationRecord
     (days_since_birth_on_date(date) % 7) + 1
   end
   
-  def card_for_today
-    card_for_date Date.current
+  def card_for_today main_card = birth_card
+    card_for_date Date.current, main_card
   end
   
-  def card_for_tomorrow
-    card_for_date Date.tomorrow
+  def card_for_tomorrow main_card = birth_card
+    card_for_date Date.tomorrow main_card
   end
   
-  def card_for_yesterday
-    card_for_date Date.yesterday
+  def card_for_yesterday main_card = birth_card
+    card_for_date Date.yesterday main_card
   end
   
-  def card_for_date date
+  def card_for_date date, main_card = birth_card
     return Card.joker if birth_card == Card.joker
     spread_ordinal = weeks_since_birth_on_date(date) % 90
     spread = Spread.find_by(:age => spread_ordinal)
-    position_of_birth_card = spread.position_of birth_card
-    position = position_of_birth_card.position - position_in_week_on_date(date)
+    position_of_main_card = spread.position_of main_card
+    position = position_of_main_card.position - position_in_week_on_date(date)
     position = 52 + position if position < 0
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
@@ -218,6 +218,10 @@ class Birthday < ApplicationRecord
   
   def ruling_card_for_the_planetary_period_on_date date
     card_for_the_planetary_period_on_date date, personality_card
+  end
+  
+  def ruling_card_for_the_date date
+    card_for_date date, personality_card
   end
   
   def personality_card
