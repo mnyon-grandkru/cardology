@@ -6,6 +6,7 @@ class GuidancesController < ApplicationController
   end
 
   def lookup_cards
+    @source = params[:source]
     redirect_to guidances_initialize_payment_path if ENV['transaction_token'].blank?
     @date = rand((50.years.ago)..20.years.ago)
   end
@@ -24,7 +25,7 @@ class GuidancesController < ApplicationController
     if result.success?
       flash[:success] = "Payment Successful. Check your fortune!"
       ENV['transaction_token'] = SecureRandom.hex(16)
-      redirect_to guidances_lookup_cards_path
+      redirect_to guidances_lookup_cards_path(source: @source)
     else
       flash[:error] = "Payment failed. Please try again."
       redirect_to guidances_initialize_payment_path
