@@ -61,7 +61,8 @@
 
   function set_iframe_height(){
     if(window.innerWidth <= 768) {
-      document.getElementById("personalReading").height = '3900px';
+      console.log(document.getElementById("personalReading"))
+      document.getElementById("personalReading").style.height = '3900px'
     }
   }
 </script>
