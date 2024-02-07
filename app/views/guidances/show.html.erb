@@ -47,12 +47,22 @@
 <script>
   function addheight() {
     document.getElementById("delivery_first").classList.add('add_height');
+    set_iframe_height();
+
   }
   function addheight2() {
     document.getElementById("delivery_second").classList.add('add_height');
+    set_iframe_height();
   }
   function addheight3() {
     document.getElementById("delivery_third").classList.add('add_height');
+    set_iframe_height();
+  }
+
+  function set_iframe_height(){
+    if(window.innerWidth <= 768) {
+      document.getElementById("personalReading").style.height = '3900px';
+    }
   }
 </script>
 
