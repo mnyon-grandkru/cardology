@@ -22,3 +22,9 @@
   margin-top: 30px;
   width: 224px;
 }
+@media only screen and (max-width: 242px) {
+  #new_birthday input[type="submit"] {
+    margin-top: 30px;
+    width: 165px;
+  }
+}

@@ -184,9 +184,19 @@ h2{
     text-shadow: 0px 3px 4px #448;
     }
 }
-
+@media only screen and (min-width: 767px) and (max-width: 941px) {
+  .prompt_heading {
+    width: 151px;
+  }
+}
 .source_cards_card_design {
   width: 250px;
+}
+@media only screen and (max-width: 250px) {
+  .source_cards_card_design {
+    width: 190px;
+    margin-bottom: 10px;
+  }
 }
 .wrapper{
   width: 100%;
@@ -250,6 +260,7 @@ h2{
     max-width: 360px;
     width: 100%;
   }
+  
   .add_height {
         height: 1170px;
       }
@@ -273,5 +284,25 @@ h2{
   }
   #new_birthday{
     margin-top: 10%;
+  }
+}
+@media only screen and (max-width: 255px) {
+  .delivery_zone{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 300px;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .pane_guidance {
+    width: 205px;
+    height: 1190px;
+  }
+}
+@media only screen and (min-width:1024px) {
+  .pane_guidance {
+    width: 270px;
+    height: 1100px;
+    max-height: 1170px;
   }
 }
