@@ -95,6 +95,12 @@ h2{
 .owl-item{
   text-align: justify;
 }
+// text-size
+@media only screen and (min-width: 130px) and (max-width: 313px) {
+  .owl-item {
+    font-size: small;
+  }
+}
 
 .wrapper .owl-nav{
   color: rgba(13, 2, 117, 0.993);
@@ -128,7 +134,12 @@ h2{
   align-items: center;
   padding-left: 0px;
 }
-
+// #sdfsfsds
+@media only screen and (min-width: 130px) and (max-width: 255px) {
+  .constant {
+    font-size: small;
+  }
+}
 .highlight {
   box-shadow: 0px 0px 10px 3px white;
 }
@@ -184,20 +195,28 @@ h2{
     text-shadow: 0px 3px 4px #448;
     }
 }
-@media only screen and (min-width: 767px) and (max-width: 941px) {
+@media only screen and (min-width: 767px) and (max-width: 1000px) {
   .prompt_heading {
     width: 151px;
+    text-size-adjust: 100px;
+  }
+}
+@media only screen and (min-width: 100px) and (max-width: 313px) {
+  .prompt_heading {
+    width: 100px;
+    font-size: small;
   }
 }
 .source_cards_card_design {
   width: 250px;
 }
-@media only screen and (max-width: 250px) {
+@media only screen and (min-width: 100px) and (max-width: 313px) {
   .source_cards_card_design {
-    width: 190px;
+    width: 140px;
     margin-bottom: 10px;
   }
 }
+
 .wrapper{
   width: 100%;
   display: flex;
@@ -286,23 +305,34 @@ h2{
     margin-top: 10%;
   }
 }
-@media only screen and (max-width: 255px) {
+
+@media only screen and (min-width: 100px) and (max-width: 313px) {
   .delivery_zone{
     width: 100%;
     text-align: center;
-    margin-bottom: 300px;
+    margin-bottom: 500px;
   }
 }
+
 @media only screen and (min-width: 767px) {
   .pane_guidance {
     width: 205px;
-    height: 1190px;
+    height: 100%;
   }
 }
 @media only screen and (min-width:1024px) {
   .pane_guidance {
     width: 270px;
-    height: 1100px;
-    max-height: 1170px;
+    height: 100%;
+  }
+}
+.pad{
+  width: 150px; 
+  border-radius: 5.5px;
+}
+@media only screen and (min-width: 100px) and (max-width: 313px) {
+  .pad{
+    width: 80px;
+    margin-bottom: 10px;
   }
 }

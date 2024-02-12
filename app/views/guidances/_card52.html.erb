@@ -16,8 +16,8 @@
       <%= marketing_text('heading','member' ,'planetary', 'subheader') %>  
       <%= @planet %>
       <%="  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
-      <p class= "pad">
-        <%= image_tag @card.image,style: "width: 150px; border-radius: 5.5px;" %>
+      <p style="text-align: center;">
+        <%= image_tag @card.image,class: "pad" %>
       </p>
   </div>
    <%@header = 'planetary'%>
