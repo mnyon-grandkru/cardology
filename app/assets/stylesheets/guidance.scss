@@ -201,22 +201,28 @@ h2{
     text-size-adjust: 100px;
   }
 }
-@media only screen and (min-width: 100px) and (max-width: 313px) {
+@media only screen and (min-width: 100px) and (max-width: 240px) {
   .prompt_heading {
-    width: 100px;
-    font-size: small;
+    width: 120px;
+    font-size: medium;
+    text-align: center;
   }
 }
 .source_cards_card_design {
   width: 250px;
 }
-@media only screen and (min-width: 100px) and (max-width: 313px) {
+@media only screen and (min-width: 200px) and (max-width: 255px) {
   .source_cards_card_design {
-    width: 140px;
+    width: 200px;
     margin-bottom: 10px;
   }
 }
-
+@media only screen and (min-width: 100px) and (max-width: 200px) {
+  .source_cards_card_design {
+    width: 170px;
+    margin-bottom: 10px;
+  }
+}
 .wrapper{
   width: 100%;
   display: flex;

@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       get 'ids'
     end
   end
-  root :to => 'birthdays#login_page'
+  root :to => 'guidances#initialize_payment'
   resources :birthdays do
     member do
       get :replace_card
