@@ -39,10 +39,11 @@
 .delivery_zone{
   padding-top: 40px;
   width: 50%;
+  margin-bottom: 40px;
 }
 
 .prompt_zone{
-  width: 50%;
+  width: 26%;
   padding-top: 40px;
   text-align: center;
   height: 100%;
@@ -135,7 +136,6 @@ h2{
   align-items: center;
   padding-left: 0px;
 }
-// #sdfsfsds
 @media only screen and (min-width: 130px) and (max-width: 255px) {
   .constant {
     font-size: small;
@@ -319,7 +319,7 @@ h2{
   .delivery_zone{
     width: 100%;
     text-align: center;
-    margin-bottom: 500px;
+    margin-bottom: 10px;
   }
 }
 
@@ -331,7 +331,7 @@ h2{
 }
 @media only screen and (min-width:1024px) {
   .pane_guidance {
-    width: 270px;
+    width: 300px;
     height: 100%;
   }
 }
