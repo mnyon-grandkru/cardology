@@ -336,7 +336,7 @@ h2{
   }
 }
 .pad{
-  width: 150px; 
+  width: 150px;
   border-radius: 5.5px;
 }
 @media only screen and (min-width: 100px) and (max-width: 313px) {
@@ -344,4 +344,19 @@ h2{
     width: 80px;
     margin-bottom: 10px;
   }
+}
+.tech-support-link {
+  color: #333; 
+  text-decoration: none;
+}
+
+.tech-support-link:hover {
+  color: green;
+}
+
+.copyright-txt{
+  text-align: center;
+  font-size: 18px;
+  color: grey;
+  margin-top: 0px
 }
