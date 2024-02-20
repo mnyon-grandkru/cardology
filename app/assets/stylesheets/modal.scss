@@ -58,7 +58,11 @@
   padding: 5px 10px;
   border-radius: 4px;
 }
-
+@media only screen and (min-width: 100px) and (max-width: 313px) {
+  .close-button {
+    font-size: small;
+  }
+}
 .close-button:hover {
   color: #666;
   border-color: #666;
@@ -73,8 +77,19 @@
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    margin-left:37%;
   }
-  
+  @media only screen and (max-width: 785px) {
+    .payment-button {
+        font-size: small;
+        margin-left: calc(33% + (5% * (785px - 238px) / (785px - 221px)));
+    }
+  }
+  @media screen and (min-width: 72px) and (max-width: 256px) {
+    .payment-button {
+      margin-left: 10px;
+    }
+  }
   .payment-button:hover {
     background-color: #38bdfa;
   }
