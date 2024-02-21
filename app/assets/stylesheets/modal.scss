@@ -58,36 +58,46 @@
   padding: 5px 10px;
   border-radius: 4px;
 }
-@media only screen and (min-width: 100px) and (max-width: 313px) {
-  .close-button {
-    font-size: small;
-  }
-}
 .close-button:hover {
   color: #666;
   border-color: #666;
 }
+
 .payment-button {
     background-color: #49c5ff;
     border: none;
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    margin-left:37%;
+    margin-left:27%;
+    padding-right: 35px;
+    padding-left: 35px;
+    justify-content: center;
+    align-items: center;
   }
-  @media only screen and (max-width: 785px) {
+  @media screen and (min-width: 768px) and (max-width: 950px) {
     .payment-button {
-        font-size: small;
-        margin-left: calc(33% + (5% * (785px - 238px) / (785px - 221px)));
+      margin-left: 12px;
+      padding-right: 30px;
+      padding-left: 30px;
     }
   }
-  @media screen and (min-width: 72px) and (max-width: 256px) {
+  @media screen and (min-width: 280px) and (max-width: 356px) {
     .payment-button {
       margin-left: 10px;
+      padding-right: 25px;
+      padding-left: 25px;
+    }
+  }
+  @media screen and (min-width: 200px) and (max-width: 280px) {
+    .payment-button {
+      margin-left: 8px;
+      padding-right: 20px;
+      padding-left: 20px;
     }
   }
   .payment-button:hover {
