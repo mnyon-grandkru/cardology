@@ -1,6 +1,5 @@
 class SubscriptionService
     def self.cancel_past_due_subscriptions
-        debugger
       Braintree::Subscription.search do |search|
         search.status.is Braintree::Subscription::Status::PastDue
       end.each do |subscription|
