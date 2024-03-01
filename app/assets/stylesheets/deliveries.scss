@@ -21,6 +21,27 @@
   }
 }
 
+.widget_heading_2 {
+  border: 2px solid black;
+  border-radius: 11px;
+  background-color: black;
+  opacity: 0.8;
+  margin: 10px 30% 11px 30%;
+  margin-top: 1px;
+  #widget_title_2 {
+    font-size: 2em;
+    text-align: center;
+    color: bisque;
+    text-shadow: 0px 5px 4px #448;
+    margin-top: -4px;
+  }
+  
+  #widget_instructions_2 {
+    text-align: center;
+    color: bisque;
+    text-shadow: 0px 3px 4px #448;
+  }
+}
 #birthday_selection_tool {
   padding: 18px;
   
