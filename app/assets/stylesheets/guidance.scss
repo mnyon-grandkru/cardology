@@ -214,6 +214,11 @@ h2{
 .source_cards_card_design {
   width: 250px;
 }
+@media only screen and (max-width: 767px) {
+  .source_cards_card_design {
+    width: 200px;
+  }
+}
 @media only screen and (min-width: 200px) and (max-width: 255px) {
   .source_cards_card_design {
     width: 200px;
