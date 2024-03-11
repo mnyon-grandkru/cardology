@@ -245,7 +245,6 @@ border: 2px solid black;
 border-radius: 11px;
 background-color: black;
 opacity: 0.8;
-  margin: 14px 3% 14px 4%;
   
   #widget_title_3 {
     text-align: center;
@@ -272,18 +271,22 @@ opacity: 0.8;
 @media only screen and (max-width: 767px) {
 
   #widget_title_3 {
-    font-size: 39px;
+    font-size: 36px;
   }
   #widget_instructions_3 {
-    font-size: 25px;
+    font-size: 23px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1900px) {
+  .widget_heading_3 {
+    margin: 14px 24% 14px 24%;
+
   #widget_title_3 {
     font-size: 35px;
   }
   #widget_instructions_3 {
     font-size: 22px;
   }
+}
 }
