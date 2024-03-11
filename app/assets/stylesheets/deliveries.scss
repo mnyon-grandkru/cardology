@@ -32,10 +32,10 @@
 @media only screen and (max-width: 767px) {
 
   #widget_title {
-    font-size: 28px;
+    font-size: 35px;
   }
   #widget_instructions {
-    font-size: 19px;
+    font-size: 25px;
   }
 }
 
@@ -98,6 +98,12 @@
   border-color: white;
 }
 
+}
+@media screen and (min-width: 320px) and (max-width: 768px){
+  #birthday_selection_tool {
+    padding: 18px;
+    margin-left: -4px;
+  }
 }
 #access_card_delivery_zone {
   display: flex;
