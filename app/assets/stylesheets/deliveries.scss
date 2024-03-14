@@ -106,11 +106,15 @@
     margin-left: -4px;
   }
 }
+@media only screen and (min-width: 768px) and (max-width: 1900px) {
+  #access_card_delivery_zone{
+    margin-left: 47px;
+  }
+}
 #access_card_delivery_zone {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  margin-left: 47px;
   .panel {
     display: block;
   }
