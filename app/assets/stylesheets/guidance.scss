@@ -66,9 +66,13 @@
 
 #guidance_zone{
   display: flex;
-  justify-content: space-evenly
+  justify-content: space-evenly;
 }
-
+// @media only screen and (min-width: 768px) and (max-width: 1900px) {
+//   #guidance_zone{
+//     margin-left: 74px
+//     }
+// }
 #guidance_zone_show {
   display: flex;
   justify-content: center;
@@ -228,6 +232,8 @@ h2{
 }
 .source_cards_card_design {
   width: 250px;
+  border-radius: 26px;
+  margin-top: 16px;
 }
 @media only screen and (max-width: 767px) {
   .source_cards_card_design {
