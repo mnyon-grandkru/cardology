@@ -106,8 +106,8 @@
     margin-left: -4px;
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 1900px) {
-  #access_card_delivery_zone{
+@media screen and (min-width: 1024px) and (max-width: 1920px) and (min-height: 768px) and (max-height: 1080px) {
+ #access_card_delivery_zone{
     margin-left: 78.5px;
   }
 }
