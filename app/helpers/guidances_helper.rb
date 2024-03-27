@@ -16,9 +16,9 @@ module GuidancesHelper
 
 	def subscribe_link
 		if params[:source] == "cardsoflife"
-			"https://www.thesourcecards.com/purchase/176926-Three-Card-Reading?ref=51028-The-Cards-of-Life"
+			"https://www.thesourcecards.com/page/411520-cards-of-life/?ref=51028-The-Cards-of-Life"
 		else
-			"https://www.thesourcecards.com/purchase/176926-Three-Card-Lookup"
+			"https://www.thesourcecards.com/page/447616-abundant-three-card-reading"
 		end
 	end
 end
