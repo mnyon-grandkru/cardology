@@ -1,6 +1,6 @@
 class GuidancesController < ApplicationController
-  skip_before_action :verify_authenticity_token, :if => lambda { ['lifeelevated.life', 'thesourcecards.com', 'herokuapp.com' , 'blueprint.thesourcecards.com', 'thecardsoflife.com'].include? request.domain }
-
+  # skip_before_action :verify_authenticity_token, :if => lambda { ['lifeelevated.life', 'thesourcecards.com', 'herokuapp.com' , 'blueprint.thesourcecards.com', 'thecardsoflife.com'].include? request.domain }
+  skip_before_action :verify_authenticity_token
   def prompt
     @date = rand((50.years.ago)..20.years.ago)
   end
@@ -14,7 +14,7 @@ class GuidancesController < ApplicationController
   def payment
     @source = params[:source_website]  || "please enter source in query params"
     result = Braintree::Transaction.sale(
-      amount: "3.00",
+      amount: "7.00",
       payment_method_nonce: params[:nonce],
       :billing => {
         :company => @source},
