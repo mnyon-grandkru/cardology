@@ -43,7 +43,9 @@
   <%else%>
     <div class = "button_daily_card">
       <h3 style= "text-align: center;">Want guidance every single day?</h3>
-      <%= link_to "Subscribe For Daily Guidance", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+      <%= link_to "Subscribe Below", "#",  class: "lunar_navigation", style: "font-size: 18px; pointer-events: none;" %>
+      <h3 style= "text-align: center;">Subscribe To Read More Cards</h3>
+      <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
        <%= render partial: "copyright_text" %>
     </div>
   <%end%>
