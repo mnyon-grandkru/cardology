@@ -21,7 +21,11 @@ module GuidancesHelper
 			"https://www.thesourcecards.com/page/447616-abundant-three-card-reading"
 		end
 	end
+	def learn_subscribe
+		return "https://www.thesourcecards.com/page/411520-cards-of-life/?ref=51028-The-Cards-of-Life"
+	end
+	def subscribe_read_cards
+       return "https://www.thesourcecards.com/page/447616-abundant-three-card-reading"
+	end
+
 end
-
-
-

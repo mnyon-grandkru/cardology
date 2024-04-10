@@ -387,3 +387,15 @@ h2{
   color: grey;
   margin-bottom: -6px
 }
+@media (max-width: 991px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+/* Hide the mobile-tablet-only class on desktop */
+@media (min-width: 992px) {
+  .mobile-tablet-only {
+    display: none;
+  }
+}
