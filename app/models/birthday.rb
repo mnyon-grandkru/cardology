@@ -82,7 +82,7 @@ class Birthday < ApplicationRecord
   end
   
   def card_for_tomorrow main_card = birth_card
-    card_for_date Date.tomorrow main_card
+    card_for_date Date.tomorrow, main_card
   end
   
   def card_for_yesterday main_card = birth_card
