@@ -1,6 +1,7 @@
 <% if params[:year] == nil%>
-  <%@card = @birthday.card_for_this_year%>
-  <%@date = DateTime.now%>
+  <% @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card %>
+  <% @card = @birthday.card_for_this_year @main_card %>
+  <% @date = DateTime.now %>
 <%end%>
 <div class="prompt_heading">
  <b>Yearly Theme Card</b>
@@ -20,20 +21,20 @@
   <% unless params[:lookup_card].present?%>
     <%if  params[:year] == "last"%>
       <div class = "button_daily_card">
-        <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current'),:remote => true ,:class => 'lunar_navigation'%>
-        <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next'),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
         <%= render partial: "copyright_text" %>
       </div>
       <%elsif params[:year] == "next"%>
       <div class = "button_daily_card">
-      <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current'),:remote => true ,:class => 'lunar_navigation'%>
-        <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last'),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
         <%= render partial: "copyright_text" %>
       </div>
       <%else%>
         <div class = "button_daily_card">
-        <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last'),:remote => true ,:class => 'lunar_navigation'%>
-        <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next'),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
         <%= render partial: "copyright_text" %>
         </div>
       <%end%>

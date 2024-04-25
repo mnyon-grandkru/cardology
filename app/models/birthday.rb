@@ -86,7 +86,7 @@ class Birthday < ApplicationRecord
   end
   
   def card_for_yesterday main_card = birth_card
-    card_for_date Date.yesterday main_card
+    card_for_date Date.yesterday, main_card
   end
   
   def card_for_date date, main_card = birth_card
@@ -100,16 +100,16 @@ class Birthday < ApplicationRecord
     place.card
   end
   
-  def card_for_this_year
-    card_for_the_year_on_date Date.current
+  def card_for_this_year main_card = birth_card
+    card_for_the_year_on_date Date.current, main_card
   end
   
-  def card_for_last_year
-    card_for_the_year_on_date Date.current - 1.year
+  def card_for_last_year main_card = birth_card
+    card_for_the_year_on_date Date.current - 1.year, main_card
   end
   
-  def card_for_next_year
-    card_for_the_year_on_date Date.current + 1.year
+  def card_for_next_year main_card = birth_card
+    card_for_the_year_on_date Date.current + 1.year, main_card
   end
   
   def card_for_the_year_on_date date, main_card = birth_card
@@ -128,16 +128,16 @@ class Birthday < ApplicationRecord
     card_for_the_year_on_date date, personality_card
   end
   
-  def card_for_this_planet
-    card_for_the_planetary_period_on_date Date.current
+  def card_for_this_planet main_card = birth_card
+    card_for_the_planetary_period_on_date Date.current, main_card
   end
   
-  def card_for_last_planet
-    card_for_the_planetary_period_on_date Date.current - 52.days
+  def card_for_last_planet main_card = birth_card
+    card_for_the_planetary_period_on_date Date.current - 52.days, main_card
   end
   
-  def card_for_next_planet
-    card_for_the_planetary_period_on_date Date.current + 52.days
+  def card_for_next_planet main_card = birth_card
+    card_for_the_planetary_period_on_date Date.current + 52.days, main_card
   end
   
   def days_until_next_planet
