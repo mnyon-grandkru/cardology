@@ -7,7 +7,8 @@
     <% if !@birthday.astrological_sign.is_a?(Cusp) %>
       <%= link_to 'Three Card Personality Reading', guidances_personality_path(:birthday_id => @birthday.id), class: 'lunar_navigation' unless local_assigns[:personality] %>
     <% else %>
-      Cusp handing should go here.
+      <%= link_to @birthday.astrological_sign.leader.capitalize, guidances_personality_path(:birthday_id => @birthday.id, :zodiac => @birthday.astrological_sign.leader), :class => 'lunar_navigation' %>
+      <%= link_to @birthday.astrological_sign.follower.capitalize, guidances_personality_path(:birthday_id => @birthday.id, :zodiac => @birthday.astrological_sign.follower), :class => 'lunar_navigation' %>
     <% end %>
   <% end %>
   <%= clearboth %>

@@ -48,6 +48,7 @@ class GuidancesController < ApplicationController
   def personality
     @@birthdate = params[:birthday_id]
     @birthday = Birthday.find @@birthdate
+    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
     render :template => 'guidances/show', :locals => {personality: true}
   end
 
