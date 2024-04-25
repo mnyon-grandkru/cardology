@@ -5,10 +5,10 @@
   border-radius: 11px;
   background-color: black;
   opacity: 0.8;
-  margin: 10px 33% 10px 33%;
-  
+  margin: 14px 30% 14px 30%;
+  padding-top: 7px;
+  padding-bottom: 7px;
   #widget_title {
-    font-size: 2em;
     text-align: center;
     color: bisque;
     text-shadow: 0px 5px 4px #448;
@@ -18,24 +18,103 @@
     text-align: center;
     color: bisque;
     text-shadow: 0px 3px 4px #448;
+    // font-size: 18px;
+  }
+}
+#widget_instructions br {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  #widget_instructions br {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px) {
+
+  #widget_title {
+    font-size: 28px;
+  }
+  #widget_instructions {
+    font-size: 25px;
   }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1900px) {
+  #widget_title {
+    font-size: 35px;
+  }
+  #widget_instructions {
+    font-size: 22px;
+  }
+}
+
+.widget_heading_2 {
+  border: 2px solid black;
+  border-radius: 11px;
+  background-color: black;
+  opacity: 0.8;
+  margin: 10px 30% 11px 30%;
+  margin-top: 1px;
+  margin-bottom: 30px;
+  #widget_title_2 {
+    font-size: 52px;
+    text-align: center;
+    color: bisque;
+    text-shadow: 0px 5px 4px #448;
+    margin-top: -4px;
+  }
+  
+  #widget_instructions_2 {
+    text-align: center;
+    color: bisque;
+    text-shadow: 0px 3px 4px #448;
+  }
+}
+
+@media only screen and (max-width: 767px){
+.widget_heading_2 {
+    margin: 10px 0;
+    font-size: 20px;
+    margin-bottom: 22px;
+}
+#widget_instructions_2 {
+  text-align: center;
+  color: bisque;
+  text-shadow: 0px 3px 4px #448;
+  font-size: 20px;
+}
+}
 #birthday_selection_tool {
   padding: 18px;
-  
-  #new_birthday input[type="submit"] {
-    margin-top: 19px;
-    width: 146px;
-    font-size: 1em;
-  }
+  // margin-left: -40px;
+
+#new_birthday input[type="submit"] {
+  margin-top: 12px;
+  width: 146px;
+  font-size: 1em;
+  background-color: #0e45c4;
+  color: white;
+  border-radius: 20px;
+  border-color: white;
 }
 
+}
+@media screen and (min-width: 320px) and (max-width: 768px){
+  #birthday_selection_tool {
+    padding: 18px;
+    margin-left: -4px;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1920px) and (min-height: 768px) and (max-height: 1080px) {
+ #access_card_delivery_zone{
+    margin-left: 78.5px;
+  }
+}
 #access_card_delivery_zone {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  
   .panel {
     display: block;
   }
@@ -43,10 +122,9 @@
   .delivery_zone {
     display: inline-block;
     text-align: center;
-    
     img {
       width: 240px;
-      border-radius: 11px;
+      border-radius: 24px;
     }
     
     .title_line {
@@ -62,7 +140,7 @@
       color: bisque;
       background-color: black;
       opacity: 0.8;
-      margin-top: -6px;
+      margin-top: -8px;
       margin-left: 14px;
     }
     
@@ -100,7 +178,7 @@
     align-items: center; 
   }
   #access_card_delivery_zone .delivery_zone .title_line{
-    margin: 0 auto;
+    margin: -8px auto;
   }
 }
 .lower_navigation {
@@ -156,4 +234,65 @@
       float: right;
     }
   }
+}
+.buy-button {
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 2%
+}
+@media screen and (min-width: 320px) and (max-width: 768px){
+  .buy-button {
+    text-align: center;
+    margin-top: 9%
+  }
+}
+.widget_heading_3 {
+border: 2px solid black;
+border-radius: 11px;
+background-color: black;
+opacity: 0.8;
+  
+  #widget_title_3 {
+    text-align: center;
+    color: bisque;
+    text-shadow: 0px 5px 4px #448;
+  }
+  
+  #widget_instructions_3 {
+    text-align: center;
+    color: bisque;
+    text-shadow: 0px 3px 4px #448;
+    // font-size: 18px;
+  }
+}
+#widget_instructions_3 br {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  #widget_instructions_3 br {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px) {
+
+  #widget_title_3 {
+    font-size: 36px;
+  }
+  #widget_instructions_3 {
+    font-size: 23px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1900px) {
+  .widget_heading_3 {
+    margin: 14px 24% 14px 24%;
+
+  #widget_title_3 {
+    font-size: 35px;
+  }
+  #widget_instructions_3 {
+    font-size: 22px;
+  }
+}
 }

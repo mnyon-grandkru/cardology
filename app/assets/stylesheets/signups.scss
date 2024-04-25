@@ -21,10 +21,14 @@ a.lunar_navigation {
     }
   }
 }
+@media only screen and (min-width: 130px) and (max-width: 313px) {
+  a.lunar_navigation {
+    font-size: 10px;
+  }
+}
 
 form#new_birthday {
   text-align: center;
-  
   #look_up_cta {
     font-size: 1.5em;
     padding-bottom: 12px;
@@ -34,7 +38,9 @@ form#new_birthday {
     -webkit-appearance: none;
     height: 40px;
     font-size: 18px;
-    padding: 5px
+    padding: 5px;
+    color: #0e45c4;
+
   }
 }
 

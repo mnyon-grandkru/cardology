@@ -19,6 +19,18 @@
 }
 
 #new_birthday input[type="submit"] {
-  margin-top: 30px;
-  width: 224px;
+  margin-top: 20px;
+  width: 200px;
+  background-color: #0e45c4;
+  color: white;
+  border-radius: 20px;
+  border-color: white;
+  height: 29px;
+  font-size: large;
+}
+@media only screen and (max-width: 242px) {
+  #new_birthday input[type="submit"] {
+    margin-top: 30px;
+    width: 165px;
+  }
 }
