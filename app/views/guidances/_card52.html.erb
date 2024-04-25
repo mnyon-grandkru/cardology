@@ -37,20 +37,20 @@
   <% unless params[:lookup_card].present?%>
     <% if  params[:planet] == "last" %>
       <div class = "button_daily_card">
-        <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation' %>
-        <%= link_to "See Next 52-Day Card", guidances_card52_path( :planet => 'next', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Next 52-Day Card", guidances_card52_path( :planet => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
         <%= render partial: "copyright_text" %>
       </div>
     <% elsif params[:planet] == "next" %>
       <div class = "button_daily_card">
-        <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation' %>
-        <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
         <%= render partial: "copyright_text" %>
       </div>
     <% else %>
       <div class = "button_daily_card">
-        <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation' %>
-        <%= link_to "  See Next 52-Day Card  ", guidances_card52_path( :planet => 'next', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "  See Next 52-Day Card  ", guidances_card52_path( :planet => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
         <%= render partial: "copyright_text" %>
       </div>
     <% end %>

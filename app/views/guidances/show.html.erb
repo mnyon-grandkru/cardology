@@ -7,8 +7,8 @@
     <% if !@birthday.astrological_sign.is_a?(Cusp) %>
       <%= link_to 'Three Card Personality Reading', guidances_personality_path(:birthday_id => @birthday.id), class: 'lunar_navigation' unless local_assigns[:personality] %>
     <% else %>
-      <%= link_to @birthday.astrological_sign.leader.capitalize, guidances_personality_path(:birthday_id => @birthday.id, :zodiac => @birthday.astrological_sign.leader), :class => 'lunar_navigation' %>
-      <%= link_to @birthday.astrological_sign.follower.capitalize, guidances_personality_path(:birthday_id => @birthday.id, :zodiac => @birthday.astrological_sign.follower), :class => 'lunar_navigation' %>
+      <%= link_to @birthday.astrological_sign.leader.capitalize, guidances_personality_path(:birthday_id => @birthday.id, :zodiac => @birthday.astrological_sign.leader), :class => 'lunar_navigation' unless local_assigns[:zodiac] %>
+      <%= link_to @birthday.astrological_sign.follower.capitalize, guidances_personality_path(:birthday_id => @birthday.id, :zodiac => @birthday.astrological_sign.follower), :class => 'lunar_navigation' unless local_assigns[:zodiac] %>
     <% end %>
   <% end %>
   <%= clearboth %>
@@ -24,7 +24,7 @@
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
         <div class="back" id = "daily_card">
-          <%= render "guidances/daily_card", :params => {:personality => local_assigns[:personality]} %>
+          <%= render "guidances/daily_card", :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="back" id="card52">
-          <%= render "guidances/card52", :params => {:personality => local_assigns[:personality]} %>
+          <%= render "guidances/card52", :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
         <div class="back" id= "card_year">
-          <%= render "guidances/year_card", :params => {:personality => local_assigns[:personality]} %>
+          <%= render "guidances/year_card", :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
         </div>
       </div>
     </div>

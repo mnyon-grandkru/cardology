@@ -24,20 +24,20 @@
   <% unless params[:lookup_card].present?%>
     <%if  params[:day] == "yesterday"%>
       <div class = "button_daily_card">
-        <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
-        <%= link_to "Tomorrow's Card", guidances_daily_card_path( :day => 'tomorrow', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "Tomorrow's Card", guidances_daily_card_path( :day => 'tomorrow', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
         <%= render partial: "copyright_text" %>
       </div>
     <%elsif params[:day] == "tomorrow"%>
       <div class = "button_daily_card">
-        <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
-        <%= link_to "Yesterday's Card", guidances_daily_card_path( :day => 'yesterday', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "Today's Card", guidances_daily_card_path( :day => 'today', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "Yesterday's Card", guidances_daily_card_path( :day => 'yesterday', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
         <%= render partial: "copyright_text" %>
       </div>
     <%else%>
       <div class = "button_daily_card">
-        <%= link_to "Yesterday's Card", guidances_daily_card_path( :day => 'yesterday', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
-        <%= link_to "Tomorrow's Card", guidances_daily_card_path( :day => 'tomorrow', :personality => params[:personality]),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "Yesterday's Card", guidances_daily_card_path( :day => 'yesterday', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+        <%= link_to "Tomorrow's Card", guidances_daily_card_path( :day => 'tomorrow', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
         <%= render partial: "copyright_text" %>
       </div>
     <%end%>

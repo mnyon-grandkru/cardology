@@ -49,11 +49,12 @@ class GuidancesController < ApplicationController
     @@birthdate = params[:birthday_id]
     @birthday = Birthday.find @@birthdate
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
-    render :template => 'guidances/show', :locals => {personality: true}
+    render :template => 'guidances/show', :locals => {personality: true, zodiac: params[:zodiac]}
   end
 
   def daily_card
     @birthday = Birthday.find(@@birthdate)
+    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
     @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
 
     if params[:day] == 'yesterday'
@@ -73,6 +74,7 @@ class GuidancesController < ApplicationController
   end
   def card52
     @birthday = Birthday.find(@@birthdate)
+    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
     @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
     
     if params[:planet] == 'current'
@@ -93,6 +95,7 @@ class GuidancesController < ApplicationController
 
   def year_card
     @birthday = Birthday.find(@@birthdate)
+    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
     @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
     
     if params[:year] == 'current'
