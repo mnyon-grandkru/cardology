@@ -42,7 +42,8 @@ class GuidancesController < ApplicationController
 
   def initialize_payment
     if cookies['transaction_time'].present?
-      redirect_to guidances_lookup_cards_path(source: 'cookie')
+      purchase_time = DateTime.parse cookies['transaction_time']
+      redirect_to guidances_lookup_cards_path(source: 'cookie') if (DateTime.now - purchase_time) < 1
     end
     @source_website = params[:source] || "please enter source in query params"
     @client_token = Braintree::ClientToken.generate
