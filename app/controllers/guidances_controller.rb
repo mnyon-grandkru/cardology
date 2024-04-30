@@ -38,6 +38,7 @@ class GuidancesController < ApplicationController
   end
 
   def show
+    @show = params[:show]
     redirect_back(fallback_location: "#{params[:prompt].present?? "/guidances/prompt" : "/guidances/lookup_cards"}") and return if params['birthday'].blank?
     @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
     @@birthdate = @birthday.id
