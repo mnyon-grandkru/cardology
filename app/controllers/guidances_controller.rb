@@ -7,7 +7,8 @@ class GuidancesController < ApplicationController
 
   def lookup_cards
     @source = params[:source]
-    redirect_to guidances_initialize_payment_path if ENV['transaction_token'].blank?
+    Rails.logger.info "Cookies for transaction: #{cookies['transaction_token']} #{cookies['transaction_time']}"
+    redirect_to guidances_initialize_payment_path if ENV['transaction_token'].blank? && cookies['transaction_token'].blank?
     @date = rand((50.years.ago)..20.years.ago)
   end
 
@@ -24,7 +25,8 @@ class GuidancesController < ApplicationController
     )
     if result.success?
       flash[:success] = "Payment Successful. Check your fortune!"
-      ENV['transaction_token'] = SecureRandom.hex(16)
+      cookies['transaction_token'] = ENV['transaction_token'] = SecureRandom.hex(16)
+      cookies['transaction_time'] = DateTime.now.to_s
       redirect_to guidances_lookup_cards_path(source: @source)
     else
       flash[:error] = "Payment failed. Please try again."
@@ -39,7 +41,7 @@ class GuidancesController < ApplicationController
 
   def show
     @show = params[:show]
-    redirect_back(fallback_location: "#{params[:prompt].present?? "/guidances/prompt" : "/guidances/lookup_cards"}") and return if params['birthday'].blank?
+    redirect_back(fallback_location: "#{params[:prompt].present? ? "/guidances/prompt" : "/guidances/lookup_cards"}") and return if params['birthday'].blank?
     @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
     @@birthdate = @birthday.id
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
