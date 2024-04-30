@@ -33,6 +33,12 @@ class GuidancesController < ApplicationController
       redirect_to guidances_initialize_payment_path
     end
   end
+  
+  def staging_payment
+    cookies['transaction_token'] = ENV['transaction_token'] = SecureRandom.hex(16)
+    cookies['transaction_time'] = DateTime.now.to_s
+    redirect_to guidances_lookup_cards_path(source: 'staging')
+  end
 
   def initialize_payment
     @source_website = params[:source] || "please enter source in query params"

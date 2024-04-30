@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   get '/guidances/card52' => 'guidances#card52'
   get '/guidances/year_card' => 'guidances#year_card'
   post '/guidances/payment' => 'guidances#payment'
+  get '/guidances/staging_payment' => 'guidances#staging_payment'
   get '/guidances/initialize_payment' => 'guidances#initialize_payment'
   get '/guidances/lookup_cards' => 'guidances#lookup_cards'
   get '/login_page' => "birthdays#login_page"
