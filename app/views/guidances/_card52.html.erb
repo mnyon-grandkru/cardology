@@ -61,12 +61,12 @@
     </div>
   <%end%>
 </div>
-  <% if @show.present?%>
-<div class="prompt_heading desktop-only" style="margin-top: 10px;">
-  <b><%= link_to "Subscribe To Read More Cards", learn_subscribe, target: :_blank, style: "text-align: center; font-size: 18px; text-decoration: none; color: white;" %></b>
-</div> 
-<div class="button_daily_card desktop-only">
-    <%= link_to "Learn More And Subscribe", subscribe_read_cards, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
-</div>
+<% if @show.present?%>
+  <div class="prompt_heading desktop-only" style="margin-top: 10px;">
+    <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
+  </div> 
+  <div class="button_daily_card desktop-only">
+      <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+  </div>
 <%end %>
 <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>
