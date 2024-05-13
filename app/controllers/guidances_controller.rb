@@ -38,8 +38,12 @@ class GuidancesController < ApplicationController
   end
 
   def show
-    redirect_back(fallback_location: "#{params[:prompt].present?? "/guidances/prompt" : "/guidances/lookup_cards"}") and return if params['birthday'].blank?
-    @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
+    redirect_back(fallback_location: "#{params[:prompt].present?? "/guidances/prompt" : "/guidances/lookup_cards"}") and return if params['birthday'].blank? && params['birthday_id'].blank?
+    if params['birthday_id']
+      @birthday = Birthday.find params[:birthday_id]
+    else
+      @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
+    end
     @@birthdate = @birthday.id
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
     ENV.delete('transaction_token')
