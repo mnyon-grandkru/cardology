@@ -1,5 +1,6 @@
 <% if params[:planet] == nil %>
-  <% @card = @birthday.card_for_this_planet %>
+  <% @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card %>
+  <% @card = @birthday.card_for_this_planet @main_card %>
   <% @planet = @birthday.current_planet %>
   <% @date = @birthday.date_of_next_planet %>
 <% end %>
@@ -36,20 +37,20 @@
   <% unless params[:lookup_card].present?%>
     <% if  params[:planet] == "last" %>
       <div class = "button_daily_card">
-        <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current'),:remote => true ,:class => 'lunar_navigation' %>
-        <%= link_to "See Next 52-Day Card", guidances_card52_path( :planet => 'next'),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Next 52-Day Card", guidances_card52_path( :planet => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
         <%= render partial: "copyright_text" %>
       </div>
     <% elsif params[:planet] == "next" %>
       <div class = "button_daily_card">
-        <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current'),:remote => true ,:class => 'lunar_navigation' %>
-        <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last'),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
         <%= render partial: "copyright_text" %>
       </div>
     <% else %>
       <div class = "button_daily_card">
-        <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last'),:remote => true ,:class => 'lunar_navigation' %>
-        <%= link_to "  See Next 52-Day Card  ", guidances_card52_path( :planet => 'next'),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "See Previous 52-Day Card", guidances_card52_path( :planet => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
+        <%= link_to "  See Next 52-Day Card  ", guidances_card52_path( :planet => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
         <%= render partial: "copyright_text" %>
       </div>
     <% end %>
