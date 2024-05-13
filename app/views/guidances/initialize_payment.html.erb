@@ -6,7 +6,11 @@
     <%= render partial: "guidances/payment_modal", locals: { client_token: @client_token,source_website: @source_website } %>
 
     <div class="buy-button" >
-      <button onclick="document.getElementById('myModal').style.display='block'" class="claim-button" id="claim-button">Claim Your Cards</button>
+      <% if Rails.env.staging? %>
+        <button class="claim-button" id="claim-button"><%= link_to 'Claim Your Cards', guidances_staging_payment_path %></button>
+      <% else %>
+        <button onclick="document.getElementById('myModal').style.display='block'" class="claim-button" id="claim-button">Claim Your Cards</button>
+      <% end %>
     </div>
 
     <div  id="guidance_zone" class= "guidance_prompt_media" onclick="myFunction()">

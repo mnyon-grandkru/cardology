@@ -23,8 +23,8 @@
     <section id="widget_title_gui"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
     <section id="widget_instructions">Click on each Source Card to flip it over!</section>
   </div>
-  <div id = "guidance_zone" class= "guidance_show_media">
-    <div  class="delivery_zone" id = "delivery_first" >
+  <div id="guidance_zone" class="guidance_show_media">
+    <div class="delivery_zone" id="delivery_first">
       <div class="panel" onclick="addheight()">
         <div class="front flip_card">
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
@@ -38,18 +38,19 @@
       <div class="panel" onclick="addheight2()">
         <div class="front flip_card" >
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
-          <div class="prompt_heading desktop-only" style="margin-top: 10px;">
-            <b><%= link_to "Subscribe To Read More Cards", learn_subscribe, target: :_blank, style: "text-align: center; font-size: 18px; text-decoration: none; color: white;" %></b>
-          </div> 
-          <div class="button_daily_card desktop-only">
-            <%= link_to "Learn More And Subscribe", subscribe_read_cards, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
-          </div>
+            <% if @show.present? %>
+            <div class="prompt_heading desktop-only" style="margin-top: 10px;">
+              <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
+            </div>
+            <div class="button_daily_card desktop-only">
+              <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+            </div>
+          <% end %>
         </div>
         <div class="back" id="card52">
-          <%= render "guidances/card52", :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
+          <%= render "guidances/card52", show: @show, :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac] %>
         </div>
       </div>
-
     </div>
     <div class="delivery_zone" id = "delivery_third">
       <div class="panel" onclick="addheight3()">
@@ -61,14 +62,15 @@
         </div>
       </div>
     </div>
-    <div class="prompt_heading mobile-tablet-only" style="margin-top: 10px;">
-      <b><%= link_to "Subscribe To Read More Cards", learn_subscribe, target: :_blank, style: "text-align: center; font-size: 18px; text-decoration: none; color: white;" %></b>
-    </div> 
-    <div class="button_daily_card mobile-tablet-only">
-      <%= link_to "Learn More And Subscribe", subscribe_read_cards, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
-    </div>
+    <% if @show.present?%>
+      <div class="prompt_heading mobile-tablet-only" style="margin-top: 10px;">
+        <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
+      </div>
+      <div class="button_daily_card mobile-tablet-only">
+        <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+      </div>
+    <% end %>
   </div>
-
 </body>
 <style>
 </style>
