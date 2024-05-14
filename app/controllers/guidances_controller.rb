@@ -5,6 +5,7 @@ class GuidancesController < ApplicationController
   
   def prompt
     @date = rand((50.years.ago)..20.years.ago)
+    cookies.delete 'transaction_time'
   end
 
   def lookup_cards
