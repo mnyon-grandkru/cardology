@@ -67,11 +67,29 @@ module ReadingsHelper
     end
   end
   
-  def quick_zodiac_picker birthday
-    
+  def right_now_zodiac_picker_for birthday
+    content_tag(:div, :id => 'zodiac_center_holder') do
+      content_tag(:div, :id => 'right_now_zodiac') do
+        source_cards_marketing_text('card_reading', 'personality_card', 'cusp').html_safe +
+        link_to(personality_for_zodiac_birthday_path(birthday, :zodiac_sign => birthday.zodiac_for_birthday.leader, :source_cards => true), :remote => true, :class => 'zodiac_selection') do
+          birthday.zodiac_sign = birthday.zodiac_for_birthday.leader
+          @leader_card = birthday.personality_card
+          image_tag(@leader_card.image, :class => 'sign_icon') +
+          image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.leader}.png"), :class => 'sign_icon') +
+          birthday.zodiac_for_birthday.leader.capitalize
+        end +
+        link_to(personality_for_zodiac_birthday_path(birthday, :zodiac_sign => birthday.zodiac_for_birthday.follower, :source_cards => true), :remote => true, :class => 'zodiac_selection') do
+          birthday.zodiac_sign = birthday.zodiac_for_birthday.follower
+          @follower_card = birthday.personality_card(true)
+          image_tag(@follower_card.image, :class => 'sign_icon') +
+          image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.follower}.png"), :class => 'sign_icon') +
+          birthday.zodiac_for_birthday.follower.capitalize
+        end
+      end
+    end
   end
+  
   def card_reading_pane_gui card, reading, title, subtitle
-    
     div_for @birthday, "#{reading}_card_for", :class => "card_reading_pane_gui pane", style: "width: 235px;" do
       content_tag(:header, title) +
       content_tag(:header, subtitle, :class => 'subtitle') +
@@ -89,8 +107,6 @@ module ReadingsHelper
           mark_up interpretation_of(card, reading)
         end
       end 
-      
     end
-  
-end
+  end
 end

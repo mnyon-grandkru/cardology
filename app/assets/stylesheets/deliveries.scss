@@ -202,7 +202,7 @@
   }
 }
 
-#zodiac {
+#zodiac, #right_now_zodiac {
   color: bisque;
   border: 2px solid black;
   border-radius: 22px;
@@ -235,6 +235,16 @@
     }
   }
 }
+
+#zodiac_center_holder {
+  display: flex;
+  align-items: center;
+}
+
+#right_now_zodiac {
+  
+}
+
 .buy-button {
   text-align: center;
   margin-top: 4%;
