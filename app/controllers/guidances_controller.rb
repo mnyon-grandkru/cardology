@@ -1,7 +1,7 @@
 class GuidancesController < ApplicationController
   # skip_before_action :verify_authenticity_token, :if => lambda { ['lifeelevated.life', 'thesourcecards.com', 'herokuapp.com' , 'blueprint.thesourcecards.com', 'thecardsoflife.com'].include? request.domain }
   skip_before_action :verify_authenticity_token
-  before_action :purchaser, :only => [:show, :personality]
+  before_action :purchaser, :only => [:show, :personality, :lookup_cards]
   
   def prompt
     @date = rand((50.years.ago)..20.years.ago)
