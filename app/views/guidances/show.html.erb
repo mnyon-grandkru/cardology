@@ -29,7 +29,7 @@
         <div class="front flip_card">
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
-        <div class="back" id = "daily_card">
+        <div class="back" id="daily_card">
           <%= render "guidances/daily_card", :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
         </div>
       </div>
@@ -72,8 +72,7 @@
     <% end %>
   </div>
 </body>
-<style>
-</style>
+
 <script>
   function addheight() {
     document.getElementById("delivery_first").classList.add('add_height');
