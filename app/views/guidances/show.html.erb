@@ -5,7 +5,7 @@
       <%= link_to "Do Another Lookup", params[:prompt].present? ? "/guidances/prompt" : "/guidances/lookup_cards", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
     </div>
   <% end %>
-  <div class="personality_lookup_link">
+  <div id="personality_lookup_link">
     <% if !@birthday.astrological_sign.is_a?(Cusp) %>
       <% if local_assigns[:personality] %>
         <%= link_to 'Right Now Reading', guidances_show_path(:birthday_id => @birthday.id), class: 'lunar_navigation' %>
@@ -72,6 +72,17 @@
     <% end %>
   </div>
 </body>
+
+<% if @purchase %>
+<style>
+  .temporal_navigation {
+    display: none;
+  }
+  #personality_lookup_link {
+    display: none;
+  }
+</style>
+<% end %>
 
 <script>
   function addheight() {

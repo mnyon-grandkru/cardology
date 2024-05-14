@@ -1,6 +1,8 @@
 class GuidancesController < ApplicationController
   # skip_before_action :verify_authenticity_token, :if => lambda { ['lifeelevated.life', 'thesourcecards.com', 'herokuapp.com' , 'blueprint.thesourcecards.com', 'thecardsoflife.com'].include? request.domain }
   skip_before_action :verify_authenticity_token
+  before_action :purchaser, :only => [:show, :personality]
+  
   def prompt
     @date = rand((50.years.ago)..20.years.ago)
   end
@@ -86,8 +88,8 @@ class GuidancesController < ApplicationController
       @header = 'daily'
       @date = Date.current
     end
-
   end
+  
   def card52
     @birthday = Birthday.find(@@birthdate)
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
@@ -106,7 +108,6 @@ class GuidancesController < ApplicationController
       @planet = @birthday.next_planet
       @date = @birthday.date_of_next_planet  + 52.days
     end
-
   end
 
   def year_card
@@ -121,7 +122,9 @@ class GuidancesController < ApplicationController
     elsif params[:year] == 'next'
       @card = @birthday.card_for_next_year @main_card
     end
-
   end
-
+  
+  def purchaser
+    @purchase = cookies['transaction_time'].present? && (DateTime.now - DateTime.parse(cookies['transaction_time'])) < 1
+  end
 end
