@@ -7,12 +7,7 @@
   <%= form_for Birthday.new(:date => @date), :url => guidances_show_path(lookup_card: true, source: @source, show: true) do |birthday_form| %>
     <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br><br>
     <span class="reading_type_picker">
-      <%= radio_button :birthday, :reading_type, :birth_card, :checked => true %>
-      <%= label_tag 'birthday[reading_type]', 'Birth Card', :for => :birthday_reading_type_birth_card %>
-    </span>
-    <span class="reading_type_picker">
-      <%= radio_button :birthday, :reading_type, :personality_card %>
-      <%= label_tag 'birthday[reading_type]', 'Personality Card', :for => :birthday_reading_type_personality_card %>
+      <%= select_tag :reading_type, options_for_select(['Birth Card', 'Personality Card']) %>
     </span>
     <div onclick="startWobble()">
       <%= birthday_form.submit marketing_text('new_players', 'button1') %>
