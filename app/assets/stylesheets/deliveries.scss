@@ -241,8 +241,18 @@
   justify-content: center;
 }
 
-#right_now_zodiac {
-  
+div#right_now_zodiac {
+  a.zodiac_selection {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    
+    img.card_icon {
+      width: 35px;
+      margin-top: -5px;
+      opacity: 1;
+    }
+  }
 }
 
 .buy-button {

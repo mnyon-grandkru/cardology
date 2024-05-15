@@ -70,20 +70,20 @@ module ReadingsHelper
   def right_now_zodiac_picker_for birthday
     content_tag(:div, :id => 'zodiac_center_holder') do
       content_tag(:div, :id => 'right_now_zodiac') do
-        source_cards_marketing_text('card_reading', 'personality_card', 'cusp').html_safe +
+        source_cards_marketing_text('right_now', 'personality_card', 'cusp').html_safe +
         link_to(guidances_personality_path(:birthday_id => birthday.id, :zodiac => birthday.astrological_sign.leader), :class => 'zodiac_selection') do
           birthday.zodiac_sign = birthday.zodiac_for_birthday.leader
           @leader_card = birthday.personality_card
-          image_tag(@leader_card.image, :class => 'sign_icon') +
-          image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.leader}.png"), :class => 'sign_icon') +
-          birthday.zodiac_for_birthday.leader.capitalize
+          content_tag(:div, image_tag(@leader_card.image, :class => 'card_icon')) +
+          content_tag(:div, image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.leader}.png"), :class => 'sign_icon')) +
+          content_tag(:div, birthday.zodiac_for_birthday.leader.capitalize)
         end +
         link_to(guidances_personality_path(:birthday_id => birthday.id, :zodiac => birthday.zodiac_for_birthday.follower), :class => 'zodiac_selection') do
           birthday.zodiac_sign = birthday.zodiac_for_birthday.follower
           @follower_card = birthday.personality_card(true)
-          image_tag(@follower_card.image, :class => 'sign_icon') +
-          image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.follower}.png"), :class => 'sign_icon') +
-          birthday.zodiac_for_birthday.follower.capitalize
+          content_tag(:div, birthday.zodiac_for_birthday.follower.capitalize) +
+          content_tag(:div, image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.follower}.png"), :class => 'sign_icon')) +
+          content_tag(:div, image_tag(@follower_card.image, :class => 'card_icon'))
         end
       end
     end
