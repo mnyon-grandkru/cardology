@@ -4,7 +4,7 @@
     <section id="widget_instructions"><%= source_cards_marketing_text 'new_players', 'instructions' %></section>
   </div>
 
-  <%= form_for Birthday.new(:date => @date), :remote => true, :url => guidances_show_path(prompt: true) do |birthday_form| %>
+  <%= form_for Birthday.new(:date => @date), :url => guidances_show_path(prompt: true) do |birthday_form| %>
     <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br><br>
     <span class="reading_type_picker">
       <%= select_tag :reading_type, options_for_select(['Birth Card', 'Personality Card']) %>

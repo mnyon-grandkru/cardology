@@ -63,7 +63,8 @@ class GuidancesController < ApplicationController
       if @birthday.astrological_sign.is_cusp?
         render :template => 'guidances/pick_zodiac.js'
       else
-        render :template => 'guidances/show', :locals => {personality: true, zodiac: params[:zodiac]}
+        render :js => "window.location = '/guidances/personality?birthday_id=#{@birthday.id}'"
+        # render :template => 'guidances/show', :locals => {personality: true, zodiac: params[:zodiac]}
       end
     end
   end
