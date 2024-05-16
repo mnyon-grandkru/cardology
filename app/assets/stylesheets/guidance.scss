@@ -344,6 +344,8 @@ h2{
   #reading_picker_arrow {
     position: absolute;
     margin-left: -40px;
+    margin-top: 3px;
+    pointer-events: none;
   }
 }
 
