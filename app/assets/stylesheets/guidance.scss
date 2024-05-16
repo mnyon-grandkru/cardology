@@ -337,10 +337,13 @@ h2{
 }
 
 #new_birthday {
+  #reading_type {
+    width: 200px;
+  }
+  
   #reading_picker_arrow {
     position: absolute;
     margin-left: -40px;
-//    margin-top: 10px;
   }
 }
 
