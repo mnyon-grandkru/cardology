@@ -337,8 +337,10 @@ h2{
 }
 
 #new_birthday {
-  #reading_type {
-    -webkit-appearance: listbox;
+  #reading_picker_arrow {
+    position: absolute;
+    margin-left: -40px;
+//    margin-top: 10px;
   }
 }
 
