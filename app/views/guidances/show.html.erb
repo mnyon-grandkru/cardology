@@ -2,26 +2,25 @@
   <%= clearleft %>
   <% unless params[:lookup_card].present? %>
     <div class="lookup_link">
-      <%= link_to "Do Another Lookup", params[:prompt].present? ? "/guidances/prompt" : "/guidances/lookup_cards", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
+      <%= link_to "Do Another Lookup", @purchase.blank? ? "/guidances/prompt" : "/guidances/lookup_cards", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
     </div>
   <% end %>
-  <div class="personality_lookup_link">
-    <% if !@birthday.astrological_sign.is_a?(Cusp) %>
-      <% if local_assigns[:personality] %>
-        <%= link_to 'Right Now Reading', guidances_show_path(:birthday_id => @birthday.id), class: 'lunar_navigation' %>
-      <% else %>
-        <%= link_to 'Personality Reading', guidances_personality_path(:birthday_id => @birthday.id), class: 'lunar_navigation' %>
-      <% end %>
+  <div id="personality_lookup_link">
+    <% if local_assigns[:personality] %>
+      <%= link_to 'Right Now Reading', guidances_show_path(:birthday_id => @birthday.id, :zodiac => local_assigns[:zodiac]), class: 'lunar_navigation' %>
     <% else %>
-      <div id="cusp_prompt">Select your zodiac to access your <br> Right Now Reading for your Personality Card.</div><%#= clearboth %>
-      <%= link_to @birthday.astrological_sign.leader.capitalize, guidances_personality_path(:birthday_id => @birthday.id, :zodiac => @birthday.astrological_sign.leader), :class => 'lunar_navigation cusp_pick' unless local_assigns[:zodiac] %>
-      <%= link_to @birthday.astrological_sign.follower.capitalize, guidances_personality_path(:birthday_id => @birthday.id, :zodiac => @birthday.astrological_sign.follower), :class => 'lunar_navigation cusp_pick' unless local_assigns[:zodiac] %>
+      <%= link_to 'Personality Reading', guidances_personality_path(:birthday_id => @birthday.id, :zodiac => params[:zodiac]), class: 'lunar_navigation' %>
     <% end %>
   </div>
   
   <div class="widget_heading">
-    <section id="widget_title_gui"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
-    <section id="widget_instructions">Click on each Source Card to flip it over!</section>
+    <% if @purchase %>
+      <section id="widget_title_gui"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
+      <section id="widget_instructions">Click on each Source Card to flip it over!</section>
+    <% else %>
+      <section id="widget_title_gui"><%= source_cards_marketing_text 'subscriber', 'right_now', 'title' %></section>
+      <section id="widget_instructions"><%= source_cards_marketing_text 'subscriber', 'right_now', 'technique' %></section>
+    <% end %>
   </div>
   <div id="guidance_zone" class="guidance_show_media">
     <div class="delivery_zone" id="delivery_first">
@@ -29,7 +28,7 @@
         <div class="front flip_card">
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
-        <div class="back" id = "daily_card">
+        <div class="back" id="daily_card">
           <%= render "guidances/daily_card", :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
         </div>
       </div>
@@ -48,7 +47,7 @@
           <% end %>
         </div>
         <div class="back" id="card52">
-          <%= render "guidances/card52", show: @show, :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac] %>
+          <%= render "guidances/card52", show: @show, :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
         </div>
       </div>
     </div>
@@ -62,7 +61,7 @@
         </div>
       </div>
     </div>
-    <% if @show.present?%>
+    <% if @show.present? %>
       <div class="prompt_heading mobile-tablet-only" style="margin-top: 10px;">
         <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
       </div>
@@ -72,8 +71,18 @@
     <% end %>
   </div>
 </body>
+
 <style>
+  <% if @purchase %>
+    .temporal_navigation {
+      display: none;
+    }
+  <% end %>
+  #personality_lookup_link {
+    display: none;
+  }
 </style>
+
 <script>
   function addheight() {
     document.getElementById("delivery_first").classList.add('add_height');

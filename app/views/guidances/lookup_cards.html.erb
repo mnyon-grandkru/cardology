@@ -1,35 +1,44 @@
 <body class = "body">
-    <div class="widget_heading">
-      <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
-      <section id="widget_instructions">Enter Your Birthdate. Then Click Go.</section>
-    </div>
+  <div class="widget_heading">
+    <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
+    <section id="widget_instructions">Enter Your Birthdate. Then Click Go.</section>
+  </div>
 
-  <%= form_for Birthday.new(:date => @date), :url => guidances_show_path(lookup_card: true, source: @source,show: true) do |birthday_form| %>
-    <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br>
-    <div onclick="myFunction()">
-    <%= birthday_form.submit marketing_text('new_players', 'button1') %>
+  <%= form_for Birthday.new(:date => @date), :url => guidances_show_path(lookup_card: true, source: @source, show: true) do |birthday_form| %>
+    <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br><br>
+    <div id="reading_type_picker">
+      <%= select_tag :reading_type, options_for_select(['Birth Card', 'Personality Card']) %>
+    </div>
+    <div onclick="startWobble()">
+      <%= birthday_form.submit marketing_text('new_players', 'button1') %>
     </div>
   <% end %>
-  <div  id="guidance_zone" class= "guidance_prompt_media" >
+  <div id="guidance_zone" class= "guidance_prompt_media" >
     <div class="prompt_zone" >
-          <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+      <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
     </div>
     <div class="prompt_zone" >
-          <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+      <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
     </div>
     <div class="prompt_zone" >
-          <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+      <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
     </div>
   </div>
-</div>
 </body>
+<% if @purchase %>
+  <style>
+    #reading_type_picker {
+      display: none;
+    }
+  </style>
+<% end %>
 <style>
-  #guidance_prompt_media{
+  #guidance_prompt_media {
     justify-content: center;
   }
 </style>
 <script>
-    function myFunction() {
+    function startWobble() {
     document.getElementById("guidance_zone").classList.add('wobble');
   }
 </script>

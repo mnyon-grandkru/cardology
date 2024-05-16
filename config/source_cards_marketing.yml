@@ -7,6 +7,15 @@ new_players:
   button: "Enter"
   invitation: "Click on each card to read the game of your life!"
 
+subscriber:
+  instructions:
+    heading: "Choose Your Birthday"
+    middle: "Select Your Card"
+    submission: "Then Click Enter"
+  right_now:
+    title: "Right Now Reading"
+    technique: "Click on each Source Card to flip it over!"
+
 card_reading:
   birth_card:
     identification: "Your Birth Card is the"
@@ -20,6 +29,10 @@ card_reading:
   birthday_card:
     identification: "For the birthday of"
     instructions: "To learn more about the patterns of your birthday and to get inspiration for your life, click above on your Birthday Card."
+
+right_now:
+  personality_card:
+    cusp: "Your birthday is on an astrological cusp. If you know your sign or Personality Card, click it below."
 
 navigation:
   another_lookup: "Look Up Another Birthday"

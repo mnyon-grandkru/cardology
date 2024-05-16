@@ -6,6 +6,18 @@ $(document).on 'turbolinks:load', ->
     $('#first_card_panel').toggleClass 'flip'
     $.scrollTo($('#first_card_panel'), 1000)
     event.preventDefault()
+    
+  $('#new_birthday').on 'submit', (event) ->
+    if($('#reading_type').val() == 'Personality Card')
+      event.preventDefault()
+      formData = $(this).serialize()
+      $.ajax
+        url: '/guidances/show?prompt=true'
+        method: 'POST'
+        data: formData
+        success: (response) ->
+          eval(response)
+        
 
 window.resizeReading = ->
   $('.panel').each (i, p) ->

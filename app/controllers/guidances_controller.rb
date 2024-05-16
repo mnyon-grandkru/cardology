@@ -1,14 +1,17 @@
 class GuidancesController < ApplicationController
   # skip_before_action :verify_authenticity_token, :if => lambda { ['lifeelevated.life', 'thesourcecards.com', 'herokuapp.com' , 'blueprint.thesourcecards.com', 'thecardsoflife.com'].include? request.domain }
   skip_before_action :verify_authenticity_token
+  before_action :purchaser, :only => [:show, :personality, :lookup_cards]
+  
   def prompt
     @date = rand((50.years.ago)..20.years.ago)
+    cookies.delete 'transaction_time'
   end
 
   def lookup_cards
     @source = params[:source]
     Rails.logger.info "Cookies for transaction: #{cookies['transaction_token']} #{cookies['transaction_time']}"
-    redirect_to guidances_initialize_payment_path if ENV['transaction_token'].blank? && cookies['transaction_token'].blank?
+    redirect_to guidances_initialize_payment_path unless purchaser
     @date = rand((50.years.ago)..20.years.ago)
   end
 
@@ -41,10 +44,7 @@ class GuidancesController < ApplicationController
   end
 
   def initialize_payment
-    if cookies['transaction_time'].present?
-      purchase_time = DateTime.parse cookies['transaction_time']
-      redirect_to guidances_lookup_cards_path(source: 'cookie') if (DateTime.now - purchase_time) < 1
-    end
+    redirect_to guidances_lookup_cards_path(source: 'cookie') if purchaser
     @source_website = params[:source] || "please enter source in query params"
     @client_token = Braintree::ClientToken.generate
   end
@@ -58,7 +58,15 @@ class GuidancesController < ApplicationController
     end
     @@birthdate = @birthday.id
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
-    ENV.delete('transaction_token')
+    if params[:reading_type] == 'Personality Card'
+      @birthday.zodiac_sign = params[:zodiac] if params[:zodiac]
+      if @birthday.astrological_sign.is_cusp?
+        render :template => 'guidances/pick_zodiac.js'
+      else
+        render :js => "window.location = '/guidances/personality?birthday_id=#{@birthday.id}'"
+        # render :template => 'guidances/show', :locals => {personality: true, zodiac: params[:zodiac]}
+      end
+    end
   end
   
   def personality
@@ -86,8 +94,8 @@ class GuidancesController < ApplicationController
       @header = 'daily'
       @date = Date.current
     end
-
   end
+  
   def card52
     @birthday = Birthday.find(@@birthdate)
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
@@ -106,7 +114,6 @@ class GuidancesController < ApplicationController
       @planet = @birthday.next_planet
       @date = @birthday.date_of_next_planet  + 52.days
     end
-
   end
 
   def year_card
@@ -121,7 +128,9 @@ class GuidancesController < ApplicationController
     elsif params[:year] == 'next'
       @card = @birthday.card_for_next_year @main_card
     end
-
   end
-
+  
+  def purchaser
+    @purchase = cookies['transaction_time'].present? && (DateTime.now - DateTime.parse(cookies['transaction_time'])) < 1
+  end
 end
