@@ -1,8 +1,14 @@
 <body class = "body">
   <div class="widget_heading">
-    <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></section>
-    <section id="widget_instructions"><%= source_cards_marketing_text 'new_players', 'instructions' %></section>
+    <section id="widget_title"><%= source_cards_marketing_text 'subscriber', 'instructions', 'heading' %></section>
+    <section id="widget_instructions"><%= source_cards_marketing_text 'subscriber', 'instructions', 'middle' %></section>
+    <section id="widget_instructions"><%= source_cards_marketing_text 'subscriber', 'instructions', 'submission' %></section>
   </div>
+  subscribers:
+    instructions:
+      heading: "Choose Your Birthday"
+      middle: "Select Your Card"
+      submission: "Then Click Enter"
 
   <%= form_for Birthday.new(:date => @date), :url => guidances_show_path(prompt: true) do |birthday_form| %>
     <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br><br>

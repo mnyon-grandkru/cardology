@@ -14,8 +14,13 @@
   </div>
   
   <div class="widget_heading">
-    <section id="widget_title_gui"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
-    <section id="widget_instructions">Click on each Source Card to flip it over!</section>
+    <% if @purchase %>
+      <section id="widget_title_gui"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
+      <section id="widget_instructions">Click on each Source Card to flip it over!</section>
+    <% else %>
+      <section id="widget_title_gui"><%= source_cards_marketing_text 'subscriber', 'right_now', 'title' %></section>
+      <section id="widget_instructions"><%= source_cards_marketing_text 'subscriber', 'right_now', 'technique' %></section>
+    <% end %>
   </div>
   <div id="guidance_zone" class="guidance_show_media">
     <div class="delivery_zone" id="delivery_first">
