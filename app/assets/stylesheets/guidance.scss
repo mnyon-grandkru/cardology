@@ -336,6 +336,12 @@ h2{
   }
 }
 
+#new_birthday {
+  #reading_type {
+    -webkit-appearance: listbox;
+  }
+}
+
 #personality_lookup_link {
   float: right;
   margin-top: 30px;
