@@ -11,7 +11,7 @@ class GuidancesController < ApplicationController
   def lookup_cards
     @source = params[:source]
     Rails.logger.info "Cookies for transaction: #{cookies['transaction_token']} #{cookies['transaction_time']}"
-    redirect_to guidances_initialize_payment_path unless purchaser
+    # redirect_to guidances_initialize_payment_path unless purchaser
     @date = rand((50.years.ago)..20.years.ago)
   end
 
