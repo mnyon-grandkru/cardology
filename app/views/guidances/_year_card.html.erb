@@ -18,7 +18,7 @@
   </div>
   <% @header = 'yearly' %>
   <%= render "guidances/carousel_reading" %>
-  <% unless params[:lookup_card].present? %>
+  <% unless @purchase %>
     <% if params[:year] == "last" %>
       <div class = "button_daily_card temporal_navigation">
         <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>

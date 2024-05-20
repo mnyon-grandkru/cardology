@@ -34,8 +34,8 @@
   </div>
   <% @header = 'planetary' %>
   <%= render "guidances/carousel_reading" %>
-  <% unless params[:lookup_card].present?%>
-    <% if  params[:planet] == "last" %>
+  <% unless @purchase %>
+    <% if params[:planet] == "last" %>
       <div class = "button_daily_card temporal_navigation">
         <%= link_to "See Current 52-Day Card", guidances_card52_path( :planet => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
         <%= link_to "See Next 52-Day Card", guidances_card52_path( :planet => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
@@ -62,12 +62,12 @@
     </div>
   <% end %>
 </div>
-<% if @show.present? %>
+<% if @purchase %>
   <div class="prompt_heading desktop-only" style="margin-top: 10px;">
     <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
   </div> 
   <div class="button_daily_card desktop-only">
-      <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+    <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
   </div>
 <% end %>
 <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>

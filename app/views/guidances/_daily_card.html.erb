@@ -20,7 +20,7 @@
   <% @header = 'daily' %>
   <%= render "guidances/carousel_reading" %>
 
-  <% unless params[:lookup_card].present? %>
+  <% unless @purchase %>
     <% if  params[:day] == "yesterday" %>
       <div class = "button_daily_card  temporal_navigation">
         <%= link_to "Today's Card", guidances_daily_card_path(:day => 'today', :personality => params[:personality], :zodiac => params[:zodiac]), :remote => true ,:class => 'lunar_navigation ' %>
