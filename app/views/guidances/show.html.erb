@@ -1,10 +1,8 @@
 <body class="body">
   <%= clearleft %>
-  <% unless params[:lookup_card].present? %>
-    <div class="lookup_link">
-      <%= link_to "Do Another Lookup", @purchase.blank? ? "/guidances/prompt" : "/guidances/lookup_cards", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
-    </div>
-  <% end %>
+  <div class="lookup_link">
+    <%= link_to "Do Another Lookup", "/guidances/prompt", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
+  </div>
   <div id="personality_lookup_link">
     <% if local_assigns[:personality] %>
       <%= link_to 'Right Now Reading', guidances_show_path(:birthday_id => @birthday.id, :zodiac => local_assigns[:zodiac]), class: 'lunar_navigation' %>
