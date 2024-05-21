@@ -1,0 +1,49 @@
+<% if params[:planet] == nil %>
+  <% @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card %>
+  <% @card = @birthday.card_for_this_planet @main_card %>
+  <% @planet = @birthday.current_planet %>
+  <% @date = @birthday.date_of_next_planet %>
+<% end %>
+
+<div class="prompt_heading">
+  <b>52-Day Card</b>
+</div>
+<div class="pane_guidance">
+  <div class="constant">
+    <div style="text-align: center;">
+      <b style="font-size: x-large;"><%= @card.name %></b>
+    </div>
+    <% if @card.name == 'Joker' %>
+      <% if Date.current.leap? %>
+        <% if @birthday.day == Date.current.day + 1 %>
+          <%= marketing_text('heading', 'member', 'planetary', 'second_joker') %>
+        <% else %>
+          <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+        <% end %>
+      <% else %>
+        <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+      <% end %>
+    <% else %>
+      <%= marketing_text('heading', 'member', 'planetary', 'subheader') %>
+      <%= @planet %>
+      <%= "  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
+    <% end %>
+    <p style="text-align: center;">
+      <%= image_tag @card.image, class: "pad" %>
+    </p>
+  </div>
+  <% @header = 'planetary' %>
+  <%= render "guidances/carousel_reading" %>
+  <div class = "button_daily_card">
+    <h3 style= "text-align: center;">Want to know which card is coming next?</h3>
+    <%= link_to "Subscribe Below", "#",  class: "lunar_navigation", style: "font-size: 18px; pointer-events: none;" %>
+    <%= render partial: "copyright_text" %>
+  </div>
+</div>
+<div class="prompt_heading desktop-only" style="margin-top: 10px;">
+  <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
+</div> 
+<div class="button_daily_card desktop-only">
+  <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+</div>
+<%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>

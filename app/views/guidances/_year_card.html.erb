@@ -4,12 +4,12 @@
   <% @date = DateTime.now %>
 <% end %>
 <div class="prompt_heading">
- <b>Yearly Theme Card</b>
+  <b>Yearly Theme Card</b>
 </div>
 <div class="pane_guidance">
   <div class="constant">
     <div style="text-align: center;">
-      <b style="font-size: x-large;"><%=@card.name%></b>
+      <b style="font-size: x-large;"><%= @card.name %></b>
     </div>
     <%= marketing_text('heading','member' ,'yearly', 'subheader') %> 
     <p style="text-align: center;">
@@ -18,30 +18,22 @@
   </div>
   <% @header = 'yearly' %>
   <%= render "guidances/carousel_reading" %>
-  <% unless @purchase %>
-    <% if params[:year] == "last" %>
-      <div class = "button_daily_card temporal_navigation">
-        <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
-        <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
-        <%= render partial: "copyright_text" %>
-      </div>
-    <% elsif params[:year] == "next" %>
-      <div class = "button_daily_card temporal_navigation">
-        <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
-        <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
-        <%= render partial: "copyright_text" %>
-      </div>
-    <% else %>
-      <div class = "button_daily_card temporal_navigation">
-        <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
-        <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
-        <%= render partial: "copyright_text" %>
-      </div>
-    <% end %>
+  <% if params[:year] == "last" %>
+    <div class="button_daily_card temporal_navigation">
+      <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= render partial: "copyright_text" %>
+    </div>
+  <% elsif params[:year] == "next" %>
+    <div class="button_daily_card temporal_navigation">
+      <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= render partial: "copyright_text" %>
+    </div>
   <% else %>
-    <div class = "button_daily_card">
-      <h3 style= "text-align: center;">Want to see what’s in the cards for you next year?</h3>
-      <%= link_to "Subscribe Below", "#",  class: "lunar_navigation", style: "font-size: 18px; pointer-events: none;" %>
+    <div class="button_daily_card temporal_navigation">
+      <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
       <%= render partial: "copyright_text" %>
     </div>
   <% end %>

@@ -3,16 +3,38 @@ class GuidancesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :purchaser
   
+  ## Subscriber Interface
+  
   def prompt
     @date = rand((50.years.ago)..20.years.ago)
-    cookies.delete 'transaction_time'
   end
+  
+  def show
+    redirect_back(fallback_location: "#{params[:prompt].present?? "/guidances/prompt" : "/guidances/lookup_cards"}") and return if params['birthday'].blank? && params['birthday_id'].blank?
+    if params['birthday_id']
+      @birthday = Birthday.find params[:birthday_id]
+    else
+      @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
+    end
+    @@birthdate = @birthday.id
+    @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
+    if params[:reading_type] == 'Personality Card'
+      @birthday.zodiac_sign = params[:zodiac] if params[:zodiac]
+      if @birthday.astrological_sign.is_cusp?
+        render :template => 'guidances/pick_zodiac.js'
+      else
+        render :js => "window.location = '/guidances/personality?birthday_id=#{@birthday.id}'"
+        # render :template => 'guidances/show', :locals => {personality: true, zodiac: params[:zodiac]}
+      end
+    end
+  end
+  
+  ## Purchaser Interface
 
-  def lookup_cards
-    @source = params[:source]
-    Rails.logger.info "Cookies for transaction: #{cookies['transaction_token']} #{cookies['transaction_time']}"
-    # redirect_to guidances_initialize_payment_path unless purchaser
-    @date = rand((50.years.ago)..20.years.ago)
+  def initialize_payment
+    redirect_to guidances_lookup_cards_path(source: 'cookie') if purchaser
+    @source_website = params[:source] || "please enter source in query params"
+    @client_token = Braintree::ClientToken.generate
   end
 
   def payment
@@ -37,38 +59,25 @@ class GuidancesController < ApplicationController
     end
   end
   
+  def lookup_cards
+    @source = params[:source]
+    Rails.logger.info "Cookies for transaction: #{cookies['transaction_token']} #{cookies['transaction_time']}"
+    # redirect_to guidances_initialize_payment_path unless purchaser
+    @date = rand((50.years.ago)..20.years.ago)
+  end
+  
+  def flip_cards
+    @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
+    @@birthdate = @birthday.id
+    @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
+  end
+  
   def staging_payment
     cookies['transaction_token'] = ENV['transaction_token'] = SecureRandom.hex(16)
     cookies['transaction_time'] = DateTime.now.to_s
     redirect_to guidances_lookup_cards_path(source: 'staging')
   end
 
-  def initialize_payment
-    redirect_to guidances_lookup_cards_path(source: 'cookie') if purchaser
-    @source_website = params[:source] || "please enter source in query params"
-    @client_token = Braintree::ClientToken.generate
-  end
-
-  def show
-    redirect_back(fallback_location: "#{params[:prompt].present?? "/guidances/prompt" : "/guidances/lookup_cards"}") and return if params['birthday'].blank? && params['birthday_id'].blank?
-    if params['birthday_id']
-      @birthday = Birthday.find params[:birthday_id]
-    else
-      @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
-    end
-    @@birthdate = @birthday.id
-    @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
-    if params[:reading_type] == 'Personality Card'
-      @birthday.zodiac_sign = params[:zodiac] if params[:zodiac]
-      if @birthday.astrological_sign.is_cusp?
-        render :template => 'guidances/pick_zodiac.js'
-      else
-        render :js => "window.location = '/guidances/personality?birthday_id=#{@birthday.id}'"
-        # render :template => 'guidances/show', :locals => {personality: true, zodiac: params[:zodiac]}
-      end
-    end
-  end
-  
   def personality
     @@birthdate = params[:birthday_id]
     @birthday = Birthday.find @@birthdate
