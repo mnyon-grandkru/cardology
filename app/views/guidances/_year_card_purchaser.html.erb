@@ -1,0 +1,27 @@
+<% if params[:year] == nil %>
+  <% @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card %>
+  <% @card = @birthday.card_for_this_year @main_card %>
+  <% @date = DateTime.now %>
+<% end %>
+<div class="prompt_heading">
+  <b>Yearly Theme Card</b>
+</div>
+<div class="pane_guidance">
+  <div class="constant">
+    <div style="text-align: center;">
+      <b style="font-size: x-large;"><%= @card.name %></b>
+    </div>
+    <%= marketing_text('heading', 'member' ,'yearly', 'subheader') %> 
+    <p style="text-align: center;">
+      <%= image_tag @card.image, class:"pad" %>
+    </p>
+  </div>
+  <% @header = 'yearly' %>
+  <%= render "guidances/carousel_reading" %>
+  <div class = "button_daily_card">
+    <h3 style= "text-align: center;">Want to see what’s in the cards for you next year?</h3>
+    <%= link_to "Subscribe Below", "#", class: "lunar_navigation", style: "font-size: 18px; pointer-events: none;" %>
+    <%= render partial: "copyright_text" %>
+  </div>
+  <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>
+</div>

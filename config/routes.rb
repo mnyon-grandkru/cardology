@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   get '/guidances/prompt' => 'guidances#prompt'
   get '/guidances/show' => 'guidances#show'
   post '/guidances/show' => 'guidances#show'
+  post '/guidances/flip_cards' => 'guidances#flip_cards'
   get '/guidances/personality' => 'guidances#personality'
   get '/guidances/daily_card' => 'guidances#daily_card'
   get '/guidances/card52' => 'guidances#card52'

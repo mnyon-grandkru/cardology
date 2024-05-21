@@ -1,10 +1,8 @@
-<body class = "body">
+<body class="body">
   <%= clearleft %>
-  <% unless params[:lookup_card].present? %>
-    <div class="lookup_link">
-      <%= link_to "Do Another Lookup", @purchase.blank? ? "/guidances/prompt" : "/guidances/lookup_cards", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
-    </div>
-  <% end %>
+  <div class="lookup_link">
+    <%= link_to "Do Another Lookup", "/guidances/prompt", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
+  </div>
   <div id="personality_lookup_link">
     <% if local_assigns[:personality] %>
       <%= link_to 'Right Now Reading', guidances_show_path(:birthday_id => @birthday.id, :zodiac => local_assigns[:zodiac]), class: 'lunar_navigation' %>
@@ -14,13 +12,8 @@
   </div>
   
   <div class="widget_heading">
-    <% if @purchase %>
-      <section id="widget_title_gui"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
-      <section id="widget_instructions">Click on each Source Card to flip it over!</section>
-    <% else %>
-      <section id="widget_title_gui"><%= source_cards_marketing_text 'subscriber', 'right_now', 'title' %></section>
-      <section id="widget_instructions"><%= source_cards_marketing_text 'subscriber', 'right_now', 'technique' %></section>
-    <% end %>
+    <section id="widget_title_gui"><%= source_cards_marketing_text 'subscriber', 'right_now', 'title' %></section>
+    <section id="widget_instructions"><%= source_cards_marketing_text 'subscriber', 'right_now', 'technique' %></section>
   </div>
   <div id="guidance_zone" class="guidance_show_media">
     <div class="delivery_zone" id="delivery_first">
@@ -33,7 +26,7 @@
         </div>
       </div>
     </div>
-    <div class="delivery_zone" id = "delivery_second">
+    <div class="delivery_zone" id="delivery_second">
       <div class="panel" onclick="addheight2()">
         <div class="front flip_card" >
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
@@ -51,7 +44,7 @@
         </div>
       </div>
     </div>
-    <div class="delivery_zone" id = "delivery_third">
+    <div class="delivery_zone" id="delivery_third">
       <div class="panel" onclick="addheight3()">
         <div class="front flip_card" id = "btn_zone">
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
@@ -61,23 +54,10 @@
         </div>
       </div>
     </div>
-    <% if @show.present? %>
-      <div class="prompt_heading mobile-tablet-only" style="margin-top: 10px;">
-        <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
-      </div>
-      <div class="button_daily_card mobile-tablet-only">
-        <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
-      </div>
-    <% end %>
   </div>
 </body>
 
 <style>
-  <% if @purchase %>
-    .temporal_navigation {
-      display: none;
-    }
-  <% end %>
   #personality_lookup_link {
     display: none;
   }
