@@ -66,6 +66,8 @@ Rails.application.routes.draw do
   get '/guidances/staging_payment' => 'guidances#staging_payment'
   get '/guidances/initialize_payment' => 'guidances#initialize_payment'
   get '/guidances/lookup_cards' => 'guidances#lookup_cards'
+  get '/guidances/choose_date' => 'guidances#choose_date'
+  post '/guidances/receive_reading' => 'guidances#receive_reading'
   get '/login_page' => "birthdays#login_page"
 
 
