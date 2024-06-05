@@ -67,6 +67,7 @@
 //     margin-bottom: 40px;
 //   }
 // }
+
 @media only screen and (min-width: 600px) and (max-width: 768px) {
   .delivery_zone{
     padding-top: 40px;
@@ -74,6 +75,7 @@
     margin-bottom: 40px;
   }
 }
+
 .prompt_zone{
   width: 26%;
   padding-top: 40px;
@@ -90,11 +92,13 @@
 //     margin-left: 74px
 //     }
 // }
+
 #guidance_zone_show {
   display: flex;
   justify-content: center;
   justify-content: space-evenly
 }
+
 .body {
   background-image: asset-url('StarField.jpg');
   background-size: cover;
@@ -133,6 +137,7 @@ h2{
 .owl-item{
   text-align: justify;
 }
+
 // text-size
 @media only screen and (min-width: 130px) and (max-width: 313px) {
   .owl-item {
@@ -165,18 +170,22 @@ h2{
 .owl-nav, button.owl.owl-next,button.owl.prev{
  font-size: 30px;
 }
+
 .carousel_size{
   font-size: 40px;
 }
+
 .constant{
   align-items: center;
   padding-left: 0px;
 }
+
 @media only screen and (min-width: 130px) and (max-width: 255px) {
   .constant {
     font-size: small;
   }
 }
+
 .highlight {
   box-shadow: 0px 0px 10px 3px white;
 }
@@ -192,15 +201,15 @@ h2{
 }
 
 @media (max-width: 767px) {
-    .pane_guidance {
-        height: auto;
-    }
+  .pane_guidance {
+    height: auto;
+  }
 }
 
 @media (min-width: 768px) {
-    .pane_guidance {
-        height: 1070px;
-    }
+  .pane_guidance {
+    height: 1070px;
+  }
 }
 
 #widget_title_gui {
@@ -209,6 +218,7 @@ h2{
   color: bisque;
   text-shadow: 0px 5px 4px #448;
 }
+
 .prompt_heading {
   color: antiquewhite;
   border: 2px solid black;
@@ -232,12 +242,18 @@ h2{
     text-shadow: 0px 3px 4px #448;
     }
 }
+
 @media only screen and (min-width: 767px) and (max-width: 1000px) {
   .prompt_heading {
     width: 151px;
     text-size-adjust: 100px;
   }
+  
+  .flipback {
+    right: 100px;
+  }
 }
+
 @media only screen and (min-width: 100px) and (max-width: 240px) {
   .prompt_heading {
     width: 120px;
@@ -245,33 +261,38 @@ h2{
     text-align: center;
   }
 }
+
 .source_cards_card_design {
   width: 250px;
   border-radius: 26px;
   margin-top: 16px;
 }
+
 @media only screen and (max-width: 767px) {
   .source_cards_card_design {
     width: 200px;
   }
 }
+
 @media only screen and (min-width: 200px) and (max-width: 255px) {
   .source_cards_card_design {
     width: 200px;
     margin-bottom: 10px;
   }
 }
+
 @media only screen and (min-width: 100px) and (max-width: 200px) {
   .source_cards_card_design {
     width: 170px;
     margin-bottom: 10px;
   }
 }
+
 .wrapper{
   width: 100%;
   display: flex;
   align-items: center;
-  }
+}
 
 .button_daily_card{
   display: flex;
@@ -307,6 +328,7 @@ h2{
   #guidance_zone{
     flex-direction:column;
   }
+  
   .delivery_zone{
     width: 100%;
     text-align: center;
@@ -320,9 +342,11 @@ h2{
     margin-left: 0;
     width: 100%;
   }
+  
   .panel .back, .panel .front{
     width: 100%;
   }
+  
   .pane_guidance{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -335,24 +359,30 @@ h2{
   .add_height {
     height: 1170px;
   }
+  
   .prompt_zone{
     max-width: 320px;
     text-align: center;
     width: 100%;
   }
+  
   .widget_heading{
     margin: 14px 2% 14px 2%;
   }
+  
   #widget_title_gui{
     font-size: 1.6em;
   }
+  
   .guidance_prompt_media{
     align-items: center;
   }
+  
   .lookup_link{
     text-align: center;
     margin-bottom: 10%;
   }
+  
   #new_birthday{
     margin-top: 1px;
   }
@@ -402,22 +432,26 @@ h2{
     height: 100%;
   }
 }
+
 @media only screen and (min-width:1024px) {
   .pane_guidance {
     width: 300px;
     height: 100%;
   }
 }
-.pad{
+
+.pad {
   width: 150px;
   border-radius: 5.5px;
 }
+
 @media only screen and (min-width: 100px) and (max-width: 313px) {
   .pad{
     width: 80px;
     margin-bottom: 10px;
   }
 }
+
 .tech-support-link {
   color: #333; 
   text-decoration: none;
@@ -433,6 +467,7 @@ h2{
   color: grey;
   margin-bottom: -6px
 }
+
 @media (max-width: 991px) {
   .desktop-only {
     display: none;
