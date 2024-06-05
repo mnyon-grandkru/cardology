@@ -45,15 +45,20 @@
 }
 
 .flipback {
-  position: relative;
-  left: 291px;
-  top: 50px;
+  position: absolute;
+  right: 20px;
+  top: 48px;
   text-decoration: none;
   color: black;
+  font-size: 1.4em;
+  filter: drop-shadow(2px 2px 1px #aaa);
 }
 
 .flipback:after {
   content: "\21BA";
+  background-color: white;
+  padding: 0px 8px;
+  border-radius: 5px;
 }
 // @media only screen and (min-width: 768px) and (max-width: 1900px) {
 //   .delivery_zone{
@@ -308,7 +313,7 @@ h2{
   }
   
   .flipback {
-    left: 155px;
+    top: 14px;
   }
 
   .panel{
@@ -324,6 +329,7 @@ h2{
     -box-sizing: border-box;
     max-width: 360px;
     width: 100%;
+    position: relative;
   }
   
   .add_height {

@@ -74,7 +74,8 @@ img.image_gallery {
 
 .panel .back {
   float: none;
-  position: absolute;
+  position: relative;
+  width: 330px;
   top: 0;
   left: 0;
   z-index: 800;
