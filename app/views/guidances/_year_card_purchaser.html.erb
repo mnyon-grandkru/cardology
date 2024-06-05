@@ -7,6 +7,7 @@
   <b>Yearly Theme Card</b>
 </div>
 <div class="pane_guidance">
+  <%= link_to "", '#', onclick: "flipCardBack(event)", data: {turbolinks: false}, class: 'flipback' %>
   <div class="constant">
     <div style="text-align: center;">
       <b style="font-size: x-large;"><%= @card.name %></b>
