@@ -75,7 +75,6 @@ img.image_gallery {
 .panel .back {
   float: none;
   position: relative;
-  width: 330px;
   top: 0;
   left: 0;
   z-index: 800;
@@ -92,6 +91,10 @@ img.image_gallery {
   /* -- transition is the magic sauce for animation -- */
   -webkit-transition: all .8s ease-in-out;
           transition: all .8s ease-in-out;
+}
+
+#guidance_zone .panel .back {
+  width: 330px;
 }
 
 .panel.flip .back {
