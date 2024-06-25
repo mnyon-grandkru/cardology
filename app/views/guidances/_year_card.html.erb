@@ -21,20 +21,20 @@
   <%= render "guidances/carousel_reading" %>
   <% if params[:year] == "last" %>
     <div class="button_daily_card temporal_navigation">
-      <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "See This Year's Card", guidances_year_card_path(:birthday_id => @birthday.id, :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "See Next Year's Card", guidances_year_card_path(:birthday_id => @birthday.id, :year => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
       <%= render partial: "copyright_text" %>
     </div>
   <% elsif params[:year] == "next" %>
     <div class="button_daily_card temporal_navigation">
-      <%= link_to "See This Year's Card", guidances_year_card_path( :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "See This Year's Card", guidances_year_card_path(:birthday_id => @birthday.id, :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "See Last Year's Card", guidances_year_card_path(:birthday_id => @birthday.id, :year => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
       <%= render partial: "copyright_text" %>
     </div>
   <% else %>
     <div class="button_daily_card temporal_navigation">
-      <%= link_to "See Last Year's Card", guidances_year_card_path( :year => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
-      <%= link_to "See Next Year's Card", guidances_year_card_path( :year => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "See Last Year's Card", guidances_year_card_path(:birthday_id => @birthday.id, :year => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to "See Next Year's Card", guidances_year_card_path(:birthday_id => @birthday.id, :year => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
       <%= render partial: "copyright_text" %>
     </div>
   <% end %>

@@ -16,7 +16,7 @@ class GuidancesController < ApplicationController
     else
       @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
     end
-    @@birthdate = @birthday.id
+
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
     if params[:reading_type] == 'Personality Card'
       @birthday.zodiac_sign = params[:zodiac] if params[:zodiac]
@@ -80,7 +80,6 @@ class GuidancesController < ApplicationController
   
   def flip_cards
     @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
-    @@birthdate = @birthday.id
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
   end
   
@@ -91,14 +90,13 @@ class GuidancesController < ApplicationController
   end
 
   def personality
-    @@birthdate = params[:birthday_id]
-    @birthday = Birthday.find @@birthdate
+    @birthday = Birthday.find params[:birthday_id]
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
     render :template => 'guidances/show', :locals => {personality: true, zodiac: params[:zodiac]}
   end
 
   def daily_card
-    @birthday = Birthday.find(@@birthdate)
+    @birthday = Birthday.find params[:birthday_id]
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
     @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
 
@@ -118,7 +116,7 @@ class GuidancesController < ApplicationController
   end
   
   def card52
-    @birthday = Birthday.find(@@birthdate)
+    @birthday = Birthday.find params[:birthday_id]
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
     @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
     
@@ -138,7 +136,7 @@ class GuidancesController < ApplicationController
   end
 
   def year_card
-    @birthday = Birthday.find(@@birthdate)
+    @birthday = Birthday.find params[:birthday_id]
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
     @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
     
