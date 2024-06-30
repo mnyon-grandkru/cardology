@@ -13,10 +13,14 @@
       <b style="font-size: x-large;"><%= @card.name %></b><br>
       <b>For <%= @date.strftime("%b %e %Y") %></b>
     </div>
-    <%= marketing_text('heading', 'member', @header || 'daily', 'subheader') %>  
-    <p style="text-align: center;" >
-      <%= image_tag @card.image, class: "pad" %>
-    </p>
+    <div class="reading_context">
+      <span>
+        <%= image_tag @card.image, class: "reminder" %>
+      </span>
+      <span>
+        <%= marketing_text('heading', 'member', @header || 'daily', 'subheader') %>
+      </span>
+    </div>
   </div>
   <% @header = 'daily' %>
   <%= render "guidances/carousel_reading" %>

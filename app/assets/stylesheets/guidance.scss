@@ -200,6 +200,14 @@ h2{
   background-color: rgba(255, 255, 255, 0.93);
 }
 
+.reading_context {
+  img.reminder {
+    float: left;
+    height: 100px;
+    margin-right: 5px;
+  }
+}
+
 @media (max-width: 767px) {
   .pane_guidance {
     height: auto;

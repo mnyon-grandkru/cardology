@@ -14,24 +14,28 @@
     <div style="text-align: center;">
       <b style="font-size: x-large;"><%= @card.name %></b>
     </div>
-    <% if @card.name == 'Joker' %>
-      <% if Date.current.leap? %>
-        <% if @birthday.day == Date.current.day + 1 %>
-          <%= marketing_text('heading', 'member', 'planetary', 'second_joker') %>
+    <div class="reading_context">
+      <span>
+        <%= image_tag @card.image, class: "reminder" %>
+      </span>
+      <span>
+        <% if @card.name == 'Joker' %>
+          <% if Date.current.leap? %>
+            <% if @birthday.day == Date.current.day + 1 %>
+              <%= marketing_text('heading', 'member', 'planetary', 'second_joker') %>
+            <% else %>
+              <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+            <% end %>
+          <% else %>
+            <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+          <% end %>
         <% else %>
-          <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+          <%= marketing_text('heading', 'member', 'planetary', 'subheader') %>
+          <%= @planet %>
+          <%= "  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
         <% end %>
-      <% else %>
-        <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
-      <% end %>
-    <% else %>
-      <%= marketing_text('heading', 'member', 'planetary', 'subheader') %>
-      <%= @planet %>
-      <%= "  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
-    <% end %>
-    <p style="text-align: center;">
-      <%= image_tag @card.image, class: "pad" %>
-    </p>
+      </span>
+    </div>
   </div>
   <% @header = 'planetary' %>
   <%= render "guidances/carousel_reading" %>
