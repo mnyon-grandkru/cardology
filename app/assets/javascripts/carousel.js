@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
+  var carousel = $('.owl-carousel');
+    carousel.owlCarousel({
         loop:true,
         margin:0,
         responsiveClass:true,
@@ -21,5 +22,14 @@ $(document).ready(function(){
                 items:1
                 }
         }
-    })
+    });
+    
+    carousel.on('changed.owl.carousel', function(event) {
+      var element = event.target;
+      var item = event.item.index;
+      if (item == 5) {
+        $(element).closest('.pane_guidance').find('.reading_context img').show(800);
+      }
+    });
+    
   });
