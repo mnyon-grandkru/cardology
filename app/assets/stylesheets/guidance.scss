@@ -107,6 +107,7 @@
 .pad{
   padding-top: 7px;
   text-align: center;
+  margin: auto;
 }
 
 h2{
@@ -366,7 +367,7 @@ h2{
   }
   
   .add_height {
-    height: 920px;
+    height: 800px;
   }
   
   .prompt_zone{
@@ -449,8 +450,8 @@ h2{
   }
 }
 
-.pad {
-  width: 150px;
+.owl-carousel .owl-item img.pad {
+  width: 210px;
   border-radius: 5.5px;
 }
 
