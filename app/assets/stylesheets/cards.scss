@@ -93,6 +93,11 @@ img.image_gallery {
           transition: all .8s ease-in-out;
 }
 
+.owl-carousel .owl-item {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 #guidance_zone .panel .back {
   width: 330px;
 }
