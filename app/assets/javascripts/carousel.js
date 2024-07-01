@@ -24,10 +24,11 @@ $(document).ready(function(){
         }
     });
     
-    carousel.on('changed.owl.carousel', function(event) {
+    carousel.on('translated.owl.carousel', function(event) {
       var element = event.target;
-      var item = event.item.index;
-      if (item == 5) {
+      if ($(element).find('.owl-item.active img').length) {
+        $(element).closest('.pane_guidance').find('.reading_context img').hide(800);
+      } else {
         $(element).closest('.pane_guidance').find('.reading_context img').show(800);
       }
     });
