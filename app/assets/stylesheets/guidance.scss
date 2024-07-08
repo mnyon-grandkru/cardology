@@ -307,7 +307,8 @@ h2{
 
 .button_daily_card{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   padding-top: 7px;
   a.lunar_navigation{

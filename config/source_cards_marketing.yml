@@ -36,3 +36,17 @@ right_now:
 
 navigation:
   another_lookup: "Look Up Another Birthday"
+
+temporal_navigation:
+  daily:
+    forward: "Tomorrow"
+    backward: "Yesterday"
+    return: "Today"
+  planetary:
+    forward: "Next"
+    backward: "Previous"
+    return: "Current"
+  yearly:
+    forward: "Next Year"
+    backward: "Last Year"
+    return: "This Year"
