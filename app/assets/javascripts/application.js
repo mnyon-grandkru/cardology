@@ -20,3 +20,8 @@
 //= require moment
 //= require_tree .
 //= require jquery
+
+// addHeight functionality added here. Used on all pages
+function addHeight(ordinal) {
+    document.getElementById(`delivery_${ordinal}`).classList.add('add_height');
+}

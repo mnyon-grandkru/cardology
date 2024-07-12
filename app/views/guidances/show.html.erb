@@ -18,7 +18,7 @@
   <div id="guidance_zone" class="guidance_show_media">
     <div class="delivery_zone" id="delivery_first">
       <div class="panel">
-        <div class="front flip_card">
+        <div class="front flip_card" onclick="addHeight('first')">
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
         <div class="back" id="daily_card">
@@ -28,7 +28,7 @@
     </div>
     <div class="delivery_zone">
       <div class="panel">
-        <div class="front flip_card">
+        <div class="front flip_card" onclick="addHeight('second')">
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
             <% if @show.present? %>
             <div class="prompt_heading desktop-only" style="margin-top: 10px;">
@@ -46,7 +46,7 @@
     </div>
     <div class="delivery_zone">
       <div class="panel">
-        <div class="front flip_card" id="btn_zone">
+        <div class="front flip_card" id="btn_zone" onclick="addHeight('third')">
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
         <div class="back" id= "card_year">
