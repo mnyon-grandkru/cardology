@@ -23,10 +23,10 @@
   </div>
   <% @header = 'yearly' %>
   <%= render "guidances/carousel_reading" %>
+  <h3 style= "text-align: center;">Want to see what’s in the cards for you next year?</h3>
   <div class = "button_daily_card">
-    <h3 style= "text-align: center;">Want to see what’s in the cards for you next year?</h3>
     <%= link_to "Subscribe Below", "#", class: "lunar_navigation", style: "font-size: 18px; pointer-events: none;" %>
-    <%= render partial: "copyright_text" %>
   </div>
+  <%= render partial: "copyright_text" %>
   <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>
 </div>
