@@ -5,8 +5,6 @@ development:
   <<: *default
   # database: cardology_production_copy
   database: cardology_development
-  username: postgres
-  password: password
 
 test:
   <<: *default
