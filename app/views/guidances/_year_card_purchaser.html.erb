@@ -23,7 +23,7 @@
   </div>
   <% @header = 'yearly' %>
   <%= render "guidances/carousel_reading" %>
-  <h3 class="call_to_subscription">Want to see what’s in the cards for you next year?</h3>
+  <h3 class="call_to_subscription"><%= source_cards_marketing_text 'call_to_subscription', 'yearly' %></h3>
   <div class = "button_daily_card">
     <%= link_to "Subscribe Below", "#", class: "lunar_navigation", style: "font-size: 18px; pointer-events: none;" %>
   </div>
