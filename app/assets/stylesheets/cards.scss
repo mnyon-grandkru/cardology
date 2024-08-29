@@ -62,14 +62,14 @@ img.image_gallery {
 .panel.flip .front {
   z-index: 900;
 
-  -webkit-transform: rotateY(179deg);
-          transform: rotateY(179deg);
+  -webkit-transform: translate3d(0, 0, -1px) rotateY(179deg);
+          transform: translate3d(0, 0, -1px) rotateY(179deg);
 }
 .panel.skip .front {
   z-index: 900;
 
-  -webkit-transform: rotateY(-179deg);
-          transform: rotateY(-179deg);
+  -webkit-transform: translate3d(0, 0, -1px) rotateY(-179deg);
+          transform: translate3d(0, 0, -1px) rotateY(-179deg);
 }
 
 .panel .back {
@@ -79,8 +79,8 @@ img.image_gallery {
   left: 0;
   z-index: 800;
 
-  -webkit-transform: rotateY(-179deg);
-          transform: rotateY(-179deg);
+  -webkit-transform: translate3d(0, 0, -1px) rotateY(-179deg);
+          transform: translate3d(0, 0, -1px) rotateY(-179deg);
 
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -93,9 +93,10 @@ img.image_gallery {
           transition: all .8s ease-in-out;
 }
 
-.owl-carousel .owl-item {
+.owl-carousel .owl-item img {
   -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  backface-visibility: hidden !important;
+  will-change: transform;
 }
 
 #guidance_zone .panel .back {
@@ -106,8 +107,18 @@ img.image_gallery {
   z-index: 1000;
   height: auto;
 
-  -webkit-transform: rotateX(0) rotateY(0);
-          transform: rotateX(0) rotateY(0);
+  -webkit-transform: translate3d(0, 0, 0) rotateY(0);
+          transform: translate3d(0, 0, 0) rotateY(0);
+}
+
+.panel .back img.reveal {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.panel.flip .back img.reveal {
+  opacity: 1;
+  transition-delay: 0.8s; // Delay the reveal until after the flip animation
 }
 
 .panel .fore {
@@ -117,8 +128,8 @@ img.image_gallery {
   left: 0;
   z-index: 800;
 
-  -webkit-transform: rotateY(179deg);
-          transform: rotateY(179deg);
+  -webkit-transform: translate3d(0, 0, -1px) rotateY(179deg);
+          transform: translate3d(0, 0, -1px) rotateY(179deg);
 
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -135,8 +146,8 @@ img.image_gallery {
   z-index: 1000;
   height: auto;
 
-  -webkit-transform: rotateX(0) rotateY(0);
-          transform: rotateX(0) rotateY(0);
+  -webkit-transform: translate3d(0, 0, 0) rotateY(0);
+          transform: translate3d(0, 0, 0) rotateY(0);
 }
 
 .pane_guidance{
