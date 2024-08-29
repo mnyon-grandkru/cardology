@@ -9,7 +9,7 @@
   </div>
   <div id="birthday_selection_tool">
     <%= form_for Birthday.new :date => @date do |birthday_form| %>
-      <%= birthday_form.date_select :date, :order => [:month, :day] %><br>
+      <%= birthday_form.date_select :date, start_year: 2000 %><%# this is a leap year %><br>
       <%= birthday_form.submit source_cards_marketing_text('new_players', 'button') %>
       <%= hidden_field_tag :source_cards, true %>
       <%= hidden_field_tag :spread_direction, params[:spread_direction] %>
