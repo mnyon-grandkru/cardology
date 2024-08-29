@@ -12,17 +12,21 @@
     <div style="text-align: center;">
       <b style="font-size: x-large;"><%= @card.name %></b>
     </div>
-    <%= marketing_text('heading', 'member' ,'yearly', 'subheader') %> 
-    <p style="text-align: center;">
-      <%= image_tag @card.image, class:"pad" %>
-    </p>
+    <div class="reading_context">
+      <span>
+        <%= image_tag @card.image, class: "reminder" %>
+      </span>
+      <span>
+        <%= marketing_text('heading', 'member', 'yearly', 'subheader') %>
+      </span>
+    </div>
   </div>
   <% @header = 'yearly' %>
   <%= render "guidances/carousel_reading" %>
+  <h3 class="call_to_subscription"><%= source_cards_marketing_text 'call_to_subscription', 'yearly' %></h3>
   <div class = "button_daily_card">
-    <h3 style= "text-align: center;">Want to see what’s in the cards for you next year?</h3>
     <%= link_to "Subscribe Below", "#", class: "lunar_navigation", style: "font-size: 18px; pointer-events: none;" %>
-    <%= render partial: "copyright_text" %>
   </div>
+  <%= render partial: "copyright_text" %>
   <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>
 </div>

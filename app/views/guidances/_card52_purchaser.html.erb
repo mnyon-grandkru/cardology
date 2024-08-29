@@ -14,32 +14,36 @@
     <div style="text-align: center;">
       <b style="font-size: x-large;"><%= @card.name %></b>
     </div>
-    <% if @card.name == 'Joker' %>
-      <% if Date.current.leap? %>
-        <% if @birthday.day == Date.current.day + 1 %>
-          <%= marketing_text('heading', 'member', 'planetary', 'second_joker') %>
+    <div class="reading_context">
+      <span>
+        <%= image_tag @card.image, class: "reminder" %>
+      </span>
+      <span>
+        <% if @card.name == 'Joker' %>
+          <% if Date.current.leap? %>
+            <% if @birthday.day == Date.current.day + 1 %>
+              <%= marketing_text('heading', 'member', 'planetary', 'second_joker') %>
+            <% else %>
+              <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+            <% end %>
+          <% else %>
+            <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+          <% end %>
         <% else %>
-          <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+          <%= marketing_text('heading', 'member', 'planetary', 'subheader') %>
+          <%= @planet %>
+          <%= "  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
         <% end %>
-      <% else %>
-        <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
-      <% end %>
-    <% else %>
-      <%= marketing_text('heading', 'member', 'planetary', 'subheader') %>
-      <%= @planet %>
-      <%= "  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
-    <% end %>
-    <p style="text-align: center;">
-      <%= image_tag @card.image, class: "pad" %>
-    </p>
+      </span>
+    </div>
   </div>
   <% @header = 'planetary' %>
   <%= render "guidances/carousel_reading" %>
-  <div class = "button_daily_card">
-    <h3 style= "text-align: center;">Want to know which card is coming next?</h3>
+  <h3 class="call_to_subscription"><%= source_cards_marketing_text 'call_to_subscription', 'planetary' %></h3>
+  <div class="button_daily_card">
     <%= link_to "Subscribe Below", "#",  class: "lunar_navigation", style: "font-size: 18px; pointer-events: none;" %>
-    <%= render partial: "copyright_text" %>
   </div>
+  <%= render partial: "copyright_text" %>
 </div>
 <div class="prompt_heading desktop-only" style="margin-top: 10px;">
   <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>

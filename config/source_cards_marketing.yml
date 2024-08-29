@@ -36,3 +36,22 @@ right_now:
 
 navigation:
   another_lookup: "Look Up Another Birthday"
+
+temporal_navigation:
+  daily:
+    forward: "Tomorrow"
+    backward: "Yesterday"
+    return: "Today"
+  planetary:
+    forward: "Next"
+    backward: "Previous"
+    return: "Current"
+  yearly:
+    forward: "Next Year"
+    backward: "Last Year"
+    return: "This Year"
+
+call_to_subscription:
+  daily: "Want guidance every single day?"
+  planetary: "Want to know which card is coming next?"
+  yearly: "Want to see what’s in the cards for you next year?"

@@ -14,45 +14,49 @@
     <div style="text-align: center;">
       <b style="font-size: x-large;"><%= @card.name %></b>
     </div>
-    <% if @card.name == 'Joker' %>
-      <% if Date.current.leap? %>
-        <% if @birthday.day == Date.current.day + 1 %>
-          <%= marketing_text('heading', 'member', 'planetary', 'second_joker') %>
+    <div class="reading_context">
+      <span>
+        <%= image_tag @card.image, class: "reminder" %>
+      </span>
+      <span>
+        <% if @card.name == 'Joker' %>
+          <% if Date.current.leap? %>
+            <% if @birthday.day == Date.current.day + 1 %>
+              <%= marketing_text('heading', 'member', 'planetary', 'second_joker') %>
+            <% else %>
+              <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+            <% end %>
+          <% else %>
+            <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+          <% end %>
         <% else %>
-          <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
+          <%= marketing_text('heading', 'member', 'planetary', 'subheader') %>
+          <%= @planet %>
+          <%= "  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
         <% end %>
-      <% else %>
-        <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
-      <% end %>
-    <% else %>
-      <%= marketing_text('heading', 'member', 'planetary', 'subheader') %>
-      <%= @planet %>
-      <%= "  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
-    <% end %>
-    <p style="text-align: center;">
-      <%= image_tag @card.image, class: "pad" %>
-    </p>
+      </span>
+    </div>
   </div>
   <% @header = 'planetary' %>
   <%= render "guidances/carousel_reading" %>
   <% if params[:planet] == "last" %>
     <div class = "button_daily_card temporal_navigation">
-      <%= link_to "See Current 52-Day Card", guidances_card52_path(:birthday_id => @birthday.id, :planet => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
-      <%= link_to "See Next 52-Day Card", guidances_card52_path(:birthday_id => @birthday.id, :planet => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
-      <%= render partial: "copyright_text" %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'planetary', 'return'), guidances_card52_path(:birthday_id => @birthday.id, :planet => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'planetary', 'forward'), guidances_card52_path(:birthday_id => @birthday.id, :planet => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
     </div>
+    <%= render partial: "copyright_text" %>
   <% elsif params[:planet] == "next" %>
     <div class = "button_daily_card temporal_navigation">
-      <%= link_to "See Current 52-Day Card", guidances_card52_path(:birthday_id => @birthday.id, :planet => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
-      <%= link_to "See Previous 52-Day Card", guidances_card52_path(:birthday_id => @birthday.id, :planet => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
-      <%= render partial: "copyright_text" %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'planetary', 'backward'), guidances_card52_path(:birthday_id => @birthday.id, :planet => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'planetary', 'return'), guidances_card52_path(:birthday_id => @birthday.id, :planet => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
     </div>
+    <%= render partial: "copyright_text" %>
   <% else %>
     <div class = "button_daily_card temporal_navigation">
-      <%= link_to "See Previous 52-Day Card", guidances_card52_path(:birthday_id => @birthday.id, :planet => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
-      <%= link_to "  See Next 52-Day Card  ", guidances_card52_path(:birthday_id => @birthday.id, :planet => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
-      <%= render partial: "copyright_text" %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'planetary', 'backward'), guidances_card52_path(:birthday_id => @birthday.id, :planet => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'planetary', 'forward'), guidances_card52_path(:birthday_id => @birthday.id, :planet => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation' %>
     </div>
+    <%= render partial: "copyright_text" %>
   <% end %>
 </div>
 <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>
