@@ -37,7 +37,7 @@ class Birthday < ApplicationRecord
   def age_on_date date
     actual_age = actual_age_on_date date
     if actual_age > 89
-      90 - actual_age
+      actual_age - 90
     elsif actual_age < 0
       90 + actual_age
     else
