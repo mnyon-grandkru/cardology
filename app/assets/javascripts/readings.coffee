@@ -4,7 +4,7 @@ $(document).on 'turbolinks:load', ->
   
   $('#upgrade_button').on 'click', (event) ->
     $('#first_card_panel').toggleClass 'flip'
-    $.scrollTo($('#first_card_panel'), 1000)
+    # $.scrollTo($('#first_card_panel'), 1000)
     event.preventDefault()
     
   $('#new_birthday').on 'submit', (event) ->
@@ -34,12 +34,12 @@ window.resizeReading = ->
 window.attachFlippers = ->
   $('.card_reading_pane, .delivery_zone').off('click').on 'click', '.flip_card', (event) ->
     $(this).closest('.panel').toggleClass 'flip'
-    $.scrollTo($(this).closest('.panel'), 1000)
+    # $.scrollTo($(this).closest('.panel'), 1000)
     event.preventDefault()
   
   $('.card_reading_pane, .delivery_zone').on 'click', '.skip_card', (event) ->
     $(this).closest('.panel').toggleClass 'skip'
-    $.scrollTo($(this).closest('.panel'), 1000)
+    # $.scrollTo($(this).closest('.panel'), 1000)
     event.preventDefault()
 
 window.cinderellaFlip = ->
