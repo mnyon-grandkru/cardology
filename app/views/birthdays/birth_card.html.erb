@@ -11,7 +11,7 @@
         <%= div_for @birth_card, :name_of do %>
           <%= @birth_card.name %>
         <% end %>
-        <%= image_tag @birth_card.image, :class => 'card_face_image' %>
+        <%= image_tag @birth_card.image_url, :class => 'card_face_image' %>
       <% end %>
       <%= div_for @birth_card, :explication_of do %>
         <%= mark_up @birth_card_explanation %>
