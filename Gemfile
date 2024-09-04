@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.7.5'
+ruby '3.1.4'
 
 gem 'rails', '6.1.7.8'
 gem 'pg'
@@ -32,8 +32,8 @@ gem 'awesome_print'
 gem 'braintree'
 gem 'js-routes', '1.4.3'
 gem 'momentjs-rails'
-gem 'get_response'
-gem 'get_response_api', :github => 'mikeymicrophone/get_response_api'
+# gem 'get_response'
+# gem 'get_response_api'#, :github => 'mikeymicrophone/get_response_api'
 
 group :development, :test do
   gem 'byebug', platform: :mri
