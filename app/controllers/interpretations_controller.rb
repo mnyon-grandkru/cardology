@@ -34,7 +34,7 @@ class InterpretationsController < ApplicationController
   
   def update
     @interpretation = Interpretation.find params[:id]
-    @interpretation.update_attributes interpretation_params
+    @interpretation.update interpretation_params
     redirect_to :action => :index
   end
   

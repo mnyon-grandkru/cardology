@@ -95,7 +95,7 @@ class Member < ApplicationRecord
     subscriptions.each do |subscription_id|
       subscription = Braintree::Subscription.find subscription_id
       @days_past_due = subscription.days_past_due
-      update_attributes :subscription_status => subscription.status.parameterize.underscore
+      update :subscription_status => subscription.status.parameterize.underscore
     end
   end
   
@@ -108,7 +108,7 @@ class Member < ApplicationRecord
     subscriptions.each do |subscription_id|
       @cancellation_result = Braintree::Subscription.cancel subscription_id
     end
-    update_attributes :subscription_status => 'canceled', :subscriptions => [] if @cancellation_result.success?
+    update :subscription_status => 'canceled', :subscriptions => [] if @cancellation_result.success?
     remove_from_players_club_campaign
   end
   
