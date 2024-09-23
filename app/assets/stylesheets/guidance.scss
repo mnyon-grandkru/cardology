@@ -199,6 +199,10 @@ h2{
   border: 2px solid black;
   border-radius: 50px;
   background-color: rgba(255, 255, 255, 0.93);
+  
+  .owl-carousel .owl-nav {
+    margin-top: -25px;
+  }
 }
 
 .reading_context {
