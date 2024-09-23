@@ -11,7 +11,6 @@
   <div class="constant">
     <div style="text-align: center;">
       <b style="font-size: x-large;"><%= @card.name %></b><br>
-      <b>For <%= @date.strftime("%b %e %Y") %></b>
     </div>
     <div class="reading_context">
       <span>
@@ -19,6 +18,7 @@
       </span>
       <span>
         <%= marketing_text('heading', 'member', @header || 'daily', 'subheader') %>
+        <em><%= @date.strftime("%B %e, %Y") %></em>
       </span>
     </div>
   </div>
