@@ -356,6 +356,8 @@ h2{
   .panel{
     margin-left: 0;
     width: 100%;
+    display: flex;
+    justify-content: center
   }
   
   .panel .back, .panel .front{
