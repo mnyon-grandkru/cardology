@@ -360,6 +360,11 @@ h2{
     justify-content: center
   }
   
+  .panel .front {
+    display: flex;
+    justify-content: center;
+  }
+  
   .panel .back, .panel .front{
     width: 100%;
   }
