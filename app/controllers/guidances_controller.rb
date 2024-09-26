@@ -134,6 +134,10 @@ class GuidancesController < ApplicationController
       @date = @birthday.date_of_next_planet  + 52.days
     end
   end
+  
+  def planet
+
+  end
 
   def year_card
     @birthday = Birthday.find params[:birthday_id]

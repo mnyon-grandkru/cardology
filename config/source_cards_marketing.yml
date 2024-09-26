@@ -55,3 +55,27 @@ call_to_subscription:
   daily: "Want guidance every single day?"
   planetary: "Want to know which card is coming next?"
   yearly: "Want to see what’s in the cards for you next year?"
+
+planet:
+  description:
+    Mercury:
+      symbol: "Mercury symbolizes mental energy."
+      action: "Your Mercury Card clarifies what’s on your mind now and your right mindset for your year."
+    Venus:
+      symbol: "Venus symbolizes feminine energy."
+      action: "Your Venus Card reveals your inner pathway to loving acceptance of yourself and others."
+    Mars:
+      symbol: "Mars symbolizes masculine energy."
+      action: "Your Mars Card is your energetic toolkit to construct your world and achieve your goals."
+    Jupiter:
+      symbol: "Jupiter symbolizes expansion."
+      action: "Your Jupiter Card shows you how to grow beyond your current limits into more abundance."
+    Saturn:
+      symbol: "Saturn symbolizes cosmic alignment."
+      action: "Your Saturn Card shows you how to synchronize your wellbeing and balance your life."
+    Uranus:
+      symbol: "Uranus symbolizes a spiritual adjustment."
+      action: "Your Uranus Card is the grounding rod that, surprise, unlocks a higher state of being."
+    Neptune:
+      symbol: "Neptune symbolizes powerful dreams."
+      action: "Your Neptune Card reveals your “castle in the sky” and how to make that dream come true."

@@ -17,6 +17,13 @@ module GuidancesHelper
   def flipback
     link_to "", '#', onclick: "flipCardBack(event)", data: {turbolinks: false}, class: 'flipback'
   end
+  
+  def planet_description_display description
+    content_tag(:div, :class => 'planet_description') do
+      link_to('X', '#', :onclick => "$('.planet_description').remove(); return false", :class => 'planet_description_dismiss') +
+      description.html_safe
+    end
+  end
 
   def subscribe_link
     if params[:source] == "cardsoflife"

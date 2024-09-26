@@ -189,7 +189,7 @@ class Birthday < ApplicationRecord
   end
   
   def planet_on_date date
-    planet_indices.invert[planetary_period_on_date date].to_s.capitalize + '.'
+    planet_indices.invert[planetary_period_on_date date].to_s.capitalize
   end
   
   def current_planet

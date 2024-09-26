@@ -68,6 +68,7 @@ Rails.application.routes.draw do
   get '/guidances/lookup_cards' => 'guidances#lookup_cards'
   get '/guidances/choose_date' => 'guidances#choose_date'
   post '/guidances/receive_reading' => 'guidances#receive_reading'
+  get '/guidances/planet/:planet' => 'guidances#planet', :as => 'planet_guidance'
   get '/login_page' => "birthdays#login_page"
 
 
