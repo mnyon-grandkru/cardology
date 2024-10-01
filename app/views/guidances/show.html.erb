@@ -1,0 +1,76 @@
+<body class="body">
+  <%= clearleft %>
+  <div class="lookup_link">
+    <%= link_to "Do Another Lookup", "/guidances/prompt", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
+  </div>
+  <div id="personality_lookup_link">
+    <% if local_assigns[:personality] %>
+      <%= link_to 'Right Now Reading', guidances_show_path(:birthday_id => @birthday.id, :zodiac => local_assigns[:zodiac]), class: 'lunar_navigation' %>
+    <% else %>
+      <%= link_to 'Personality Reading', guidances_personality_path(:birthday_id => @birthday.id, :zodiac => params[:zodiac]), class: 'lunar_navigation' %>
+    <% end %>
+  </div>
+  
+  <div class="widget_heading">
+    <section id="widget_title_gui"><%= source_cards_marketing_text 'subscriber', 'right_now', 'title' %></section>
+    <section id="widget_instructions"><%= source_cards_marketing_text 'subscriber', 'right_now', 'technique' %></section>
+  </div>
+  <div id="guidance_zone" class="guidance_show_media">
+    <div class="delivery_zone" id="delivery_first">
+      <div class="panel">
+        <div class="front flip_card" onclick="addheight()">
+          <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+        </div>
+        <div class="back" id="daily_card">
+          <%= render "guidances/daily_card", :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
+        </div>
+      </div>
+    </div>
+    <div class="delivery_zone" id="delivery_second">
+      <div class="panel">
+        <div class="front flip_card" onclick="addheight2()">
+          <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+            <% if @show.present? %>
+            <div class="prompt_heading desktop-only" style="margin-top: 10px;">
+              <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
+            </div>
+            <div class="button_daily_card desktop-only">
+              <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="back" id="card52">
+          <%= render "guidances/card52", show: @show, :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
+        </div>
+      </div>
+    </div>
+    <div class="delivery_zone" id="delivery_third">
+      <div class="panel">
+        <div class="front flip_card" id="btn_zone" onclick="addheight3()">
+          <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+        </div>
+        <div class="back" id= "card_year">
+          <%= render "guidances/year_card", :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<style>
+  #personality_lookup_link {
+    display: none;
+  }
+</style>
+
+<script>
+  function addheight() {
+    document.getElementById("delivery_first").classList.add('add_height');
+  }
+  function addheight2() {
+    document.getElementById("delivery_second").classList.add('add_height');
+  }
+  function addheight3() {
+    document.getElementById("delivery_third").classList.add('add_height');
+  }
+</script>

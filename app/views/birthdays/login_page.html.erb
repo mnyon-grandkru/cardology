@@ -1,0 +1,36 @@
+<%= clearleft %>
+<%= link_to 'My Reading', root_path, :id => 'my_reading_link', :class => 'lunar_navigation' if current_member %>
+<div id="container">
+  <div id="landing">
+    <div id="new_players" class="landing_table submission pane">
+      <%= content_tag :header, marketing_text('new_players', 'header'), :id => 'new_players_header' unless current_member %>
+      <%= content_tag :header, content_tag(:b, mark_up(@goal)), :class => 'call_to_action' %>
+      <%= content_tag :header, @instructions, :class => 'call_to_action' %>
+      <%= form_for Birthday.new :date => @date do |birthday_form| %>
+        <%= birthday_form.date_select :date, :start_year => 1900, :end_year => Time.now.year + 1, :order => [:month, :day, :year] %><br>
+        <%= birthday_form.submit marketing_text('new_players', 'button') %>
+      <% end %> 
+    </div>
+
+    <% unless current_member %>
+      <div class="submission">
+        <div id="new_players" class="pane">
+          <%= content_tag :header, params[:message] || marketing_text('returning_players', 'header') %>
+          <%= content_tag :header, marketing_text('returning_players', 'subheader'), :class => 'call_to_action' %>
+         <%= form_for Member.new(:email => @email), :url => member_session_path do |signin_form| %>
+            <%= signin_form.text_field :email, :placeholder => marketing_text('returning_players', 'email_name'), :class => 'spacious' %><br>
+            <%#= signin_form.label :email, 'This is the email you entered<br>when you joined the Players Club.'.html_safe %>
+            <%= signin_form.password_field :password, :placeholder => marketing_text('returning_players', 'password_name'), :class => 'spacious' %><br>
+            <%= signin_form.label :password, (@password_explanation || content_tag(:em, marketing_text('returning_players', 'instructions'))), :id => 'password_description' %><br>
+            <%= signin_form.check_box :remember_me %>
+            <%= signin_form.label :remember_me, marketing_text('returning_players', 'remember_name') %>
+            <div class="actions">
+              <%= submit_tag marketing_text('returning_players', 'button'), :id => 'login_submit_button' %>
+            </div>
+            <%= hidden_field_tag :time_zone %>
+          <% end %> 
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -11,7 +11,7 @@ module ReadingsHelper
             div_for(card, :name_of) do
               card.name
             end +
-            image_tag(card.image, :class => 'card_face_image') +
+            image_tag(card.image_url, :class => 'card_face_image') +
             div_for(Card.last, :opportunities_on) do
               if [:yearly, :planetary].include? reading
                 "#{marketing_text 'coaching', 'question'} #{link_to(marketing_text('coaching', 'answer'), ENV['COACHING_PURCHASE_LINK'], :target => '_blank')}".html_safe
@@ -40,7 +40,7 @@ module ReadingsHelper
         div_for(card, :name_of) do
           card.name
         end +
-        image_tag(card.image, :class => 'card_face_image') +
+        image_tag(card.image_url, :class => 'card_face_image') +
         div_for(Card.last, :opportunities_on) do
           "#{marketing_text 'book', 'question'} #{link_to(marketing_text('book', 'answer'), ENV['BOOK_PURCHASE_LINK'], :target => '_blank')}".html_safe
         end
@@ -67,7 +67,46 @@ module ReadingsHelper
     end
   end
   
-  def quick_zodiac_picker birthday
-    
+  def right_now_zodiac_picker_for birthday
+    content_tag(:div, :id => 'zodiac_center_holder') do
+      content_tag(:div, :id => 'right_now_zodiac') do
+        source_cards_marketing_text('right_now', 'personality_card', 'cusp').html_safe +
+        link_to(guidances_personality_path(:birthday_id => birthday.id, :zodiac => birthday.astrological_sign.leader), :class => 'zodiac_selection') do
+          birthday.zodiac_sign = birthday.zodiac_for_birthday.leader
+          @leader_card = birthday.personality_card
+          content_tag(:div, image_tag(@leader_card.image_url, :class => 'card_icon')) +
+          content_tag(:div, image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.leader}.png"), :class => 'sign_icon')) +
+          content_tag(:div, birthday.zodiac_for_birthday.leader.capitalize)
+        end +
+        link_to(guidances_personality_path(:birthday_id => birthday.id, :zodiac => birthday.zodiac_for_birthday.follower), :class => 'zodiac_selection') do
+          birthday.zodiac_sign = birthday.zodiac_for_birthday.follower
+          @follower_card = birthday.personality_card(true)
+          content_tag(:div, birthday.zodiac_for_birthday.follower.capitalize) +
+          content_tag(:div, image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.follower}.png"), :class => 'sign_icon')) +
+          content_tag(:div, image_tag(@follower_card.image_url, :class => 'card_icon'))
+        end
+      end
+    end
+  end
+  
+  def card_reading_pane_gui card, reading, title, subtitle
+    div_for @birthday, "#{reading}_card_for", :class => "card_reading_pane_gui pane", style: "width: 235px;" do
+      content_tag(:header, title) +
+      content_tag(:header, subtitle, :class => 'subtitle') +
+      if card
+        div_for(card, :identification_of) do
+          div_for(card, :name_of) do
+            card.name
+          end +
+          image_tag(card.image_url, :class => 'card_face_image_gui', style:"width:85px") +
+          div_for(Card.last, :opportunities_on) do
+           
+          end
+        end +
+        div_for(card, :explication_of) do
+          mark_up interpretation_of(card, reading)
+        end
+      end 
+    end
   end
 end

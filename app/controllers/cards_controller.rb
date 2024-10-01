@@ -11,7 +11,7 @@ class CardsController < ApplicationController
   
   def update
     @card = Card.find params[:id]
-    @card.update_attributes card_params
+    @card.update card_params
     redirect_to :action => :index
   end
   

@@ -73,15 +73,17 @@ coaching:
 new_players:
   header: "Birth Card Lookup"
   subheader: |
-    Visit us at The Source Cards website to look up your Cards for free. 
+   Visit us at The Source Cards website to look up your Cards for free.
   instructions: 
   button: "Click Here"
+  button1: "Go"
+  button2: "Enter"
 returning_players:
   header: "Look Up Your Current Personal Cards"
   subheader: "The Players Clubs Has Moved To The Source Cards"
   instructions: "A temporary password was emailed to you."
   password_hint: "The temporary password is 'ENV['INITIAL_PASSWORD']'"
-  button: "Get Back In The Game"
+  button: "Get In The Game"
   email_name: "Profile Email"
   password_name: "Password"
   remember_name: "Check This Box To Stay Logged In"
@@ -143,9 +145,11 @@ heading:
       header: "Your 52-Day Card"
       header_next: "Coming 52-Day Card"
       subheader: "This card represents a specific energy pattern in play for this 52-day cycle, "
+      joker: "Today is your Joker Day. It is not part of your ordinary 52-Day Planetary Cycles. It’s a special day."
+      second_joker: "Today is your 2nd Joker Day. It’s a rare event that only happens once every four years."
     daily:
       header: "Today's Card"
-      subheader: "This card will be with you until midnight."
+      subheader: "This card represents your personal energy pattern in play until midnight tonight."
     tomorrow:
       header: "Tomorrow's Card"
       subheader: "This card will join you at midnight."

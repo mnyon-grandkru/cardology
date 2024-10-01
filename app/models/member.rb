@@ -21,38 +21,48 @@ class Member < ApplicationRecord
   
   paginates_per 52
   
-  def add_to_players_club_campaign
-    client = GetResponse::Api.new
-    traits = {
-      :name => name,
-      :email => email,
-      :campaign => {:campaignId => ENV['GETRESPONSE_PLAYERS_CLUB_ID']},
-      :customFieldValues => [{:customFieldId => ENV['GETRESPONSE_BIRTHDATE_ID'], :value => [birthday.birthdate_string]}]
-    }
-    client.contacts.create traits
+  def celestials_transitions
+    quartets = []
+    celestials.each do |celestial|
+      celestial.birthday.triples_for_year.each do |date, planet, card|
+        quartets << [date, planet, card, celestial]
+      end
+    end
+    quartets
   end
   
-  def remove_from_players_club_campaign
-    get_response_api.remove_contact players_club_email_membership
-  end
+  # def add_to_players_club_campaign
+  #   client = GetResponse::Api.new
+  #   traits = {
+  #     :name => name,
+  #     :email => email,
+  #     :campaign => {:campaignId => ENV['GETRESPONSE_PLAYERS_CLUB_ID']},
+  #     :customFieldValues => [{:customFieldId => ENV['GETRESPONSE_BIRTHDATE_ID'], :value => [birthday.birthdate_string]}]
+  #   }
+  #   client.contacts.create traits
+  # end
   
-  def players_club_email_membership
-    get_response_api.contacts(:email_address => email, :campaign_id => ENV['GETRESPONSE_PLAYERS_CLUB_ID']).first['contactId']
-  end
+  # def remove_from_players_club_campaign
+  #   get_response_api.remove_contact players_club_email_membership
+  # end
+  #
+  # def players_club_email_membership
+  #   get_response_api.contacts(:email_address => email, :campaign_id => ENV['GETRESPONSE_PLAYERS_CLUB_ID']).first['contactId']
+  # end
   
-  def mail_campaigns
-    client = GetResponse::Api.new
-    lists = client.search_contacts.retrieve(:email => email)
-    lists.body.map { |result| result['name'] }
-  end
+  # def mail_campaigns
+  #   client = GetResponse::Api.new
+  #   lists = client.search_contacts.retrieve(:email => email)
+  #   lists.body.map { |result| result['name'] }
+  # end
   
-  def get_response_api
-    @client ||= GetResponseApi::Client.new ENV['GETRESPONSE_API_TOKEN']
-  end
+  # def get_response_api
+  #   @client ||= GetResponseApi::Client.new ENV['GETRESPONSE_API_TOKEN']
+  # end
   
-  def email_lists
-    get_response_api.contacts(:email_address => email).map { |contact| contact['campaign']['name'] rescue nil }.compact
-  end
+  # def email_lists
+  #   get_response_api.contacts(:email_address => email).map { |contact| contact['campaign']['name'] rescue nil }.compact
+  # end
   
   def add_to_players_club_salon
     MemberMailer.with(:member => self).salon.deliver
@@ -62,9 +72,9 @@ class Member < ApplicationRecord
     ['active', 'past_due'].include? subscription_status
   end
   
-  def on_mailing_list?
-    campaigns.include? ENV['GETRESPONSE_CAMPAIGN_NAME']
-  end
+  # def on_mailing_list?
+  #   campaigns.include? ENV['GETRESPONSE_CAMPAIGN_NAME']
+  # end
   
   # def active_for_authentication?
   #   subscribed? || on_mailing_list? || (created_at > 2.days.ago)
@@ -85,7 +95,7 @@ class Member < ApplicationRecord
     subscriptions.each do |subscription_id|
       subscription = Braintree::Subscription.find subscription_id
       @days_past_due = subscription.days_past_due
-      update_attributes :subscription_status => subscription.status.parameterize.underscore
+      update :subscription_status => subscription.status.parameterize.underscore
     end
   end
   
@@ -98,8 +108,8 @@ class Member < ApplicationRecord
     subscriptions.each do |subscription_id|
       @cancellation_result = Braintree::Subscription.cancel subscription_id
     end
-    update_attributes :subscription_status => 'canceled', :subscriptions => [] if @cancellation_result.success?
-    remove_from_players_club_campaign
+    update :subscription_status => 'canceled', :subscriptions => [] if @cancellation_result.success?
+    # remove_from_players_club_campaign
   end
   
   def account_age

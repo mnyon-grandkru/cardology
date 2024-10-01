@@ -1,9 +1,20 @@
 new_players:
-  header: "Source Card Lookup"
+  header: "Choose Your Birthday"
+  header1: "Right Now Reading"
+  header2: " Source Card Reading"
   instructions: |
-    Select Your Birth Date. Then Click Enter.
+    Then Click Enter
   button: "Enter"
-  invitation: "Click on each card to read the game of your life."
+  invitation: "Click on each card to read the game of your life!"
+
+subscriber:
+  instructions:
+    heading: "Choose Your Birthday"
+    middle: "Select Your Card"
+    submission: "Then Click Enter"
+  right_now:
+    title: "Right Now Reading"
+    technique: "Click on each Source Card to flip it over!"
 
 card_reading:
   birth_card:
@@ -19,5 +30,28 @@ card_reading:
     identification: "For the birthday of"
     instructions: "To learn more about the patterns of your birthday and to get inspiration for your life, click above on your Birthday Card."
 
+right_now:
+  personality_card:
+    cusp: "Your birthday is on an astrological cusp. If you know your sign or Personality Card, click it below."
+
 navigation:
   another_lookup: "Look Up Another Birthday"
+
+temporal_navigation:
+  daily:
+    forward: "Tomorrow"
+    backward: "Yesterday"
+    return: "Today"
+  planetary:
+    forward: "Next"
+    backward: "Previous"
+    return: "Current"
+  yearly:
+    forward: "Next Year"
+    backward: "Last Year"
+    return: "This Year"
+
+call_to_subscription:
+  daily: "Want guidance every single day?"
+  planetary: "Want to know which card is coming next?"
+  yearly: "Want to see what’s in the cards for you next year?"

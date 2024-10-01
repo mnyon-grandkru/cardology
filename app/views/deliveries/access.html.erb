@@ -1,18 +1,18 @@
-<div class="widget_heading">
-  <section id="widget_title"><%= source_cards_marketing_text 'new_players', 'header' %></section>
-  <section id="widget_instructions"><%= source_cards_marketing_text 'new_players', 'invitation' %></section>
+<div class="widget_heading_3">
+  <section id="widget_title_3"><%= source_cards_marketing_text 'new_players', 'header2' %></section>
+  <section id="widget_instructions_3">Click on each card to read <br>the game of your life!</section> 
 </div>
 
 <% if params[:spread_direction] == 'vertical' %>
   <style>
     #access_card_delivery_zone {
       flex-direction: column;
-      width: 143px;
+      width: 100%;
       align-items: center;
     }
     
     .widget_heading {
-      margin: 10px 13% 10px 13%
+      /* margin: 10px 13% 10px 13% */
     }
     
     .lower_navigation a {
@@ -25,12 +25,12 @@
   <div id="birth_card_delivery_zone" class="delivery_zone">
     <div class="panel">
       <div class="front flip_card">
-        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+        <%= image_tag (asset_path 'Blue-Low-Rez.jpg'), :class => 'source_cards_card_design' %>
       </div>
     
       <div class="back">
         <%= link_to source_card_url(@birth_card), :class => 'nodeco', :target => :blank do %>
-          <%= image_tag @birth_card.image %>
+          <%= image_tag @birth_card.image_url %>
           <div id="birth_card_title_line" class="title_line">
             <%= source_cards_marketing_text 'card_reading', 'birth_card', 'identification' %> <br>
             <%= @birth_card.name %>.<br>
@@ -45,7 +45,7 @@
   <div id="personality_card_delivery_zone" class="delivery_zone">
     <div class="panel">
       <div class="front flip_card">
-        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+        <%= image_tag (asset_path 'Blue-Low-Rez.jpg'), :class => 'source_cards_card_design' %>
       </div>
     
       <div class="back">
@@ -64,7 +64,7 @@
   <div id="birthday_card_delivery_zone" class="delivery_zone">
     <div class="panel">
       <div class="front flip_card">
-        <%= image_tag (asset_path 'blue-round-sourcecards-lowrez.png'), :class => 'source_cards_card_design' %>
+        <%= image_tag (asset_path 'Blue-Low-Rez.jpg'), :class => 'source_cards_card_design' %>
       </div>
     
       <div class="back">

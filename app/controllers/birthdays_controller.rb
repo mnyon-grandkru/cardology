@@ -84,6 +84,21 @@ class BirthdaysController < ApplicationController
     else
       @goal = view_context.marketing_text('new_players', 'subheader')
       @instructions = view_context.marketing_text('new_players', 'instructions')
+      if cookies[:new_registration] == 'true'
+        @password_explanation = view_context.marketing_text('returning_players', 'password_hint')
+        cookies[:new_registration] = false
+      end
+    end
+  end
+
+  def login_page
+    @date = rand((50.years.ago)..20.years.ago)
+    if current_member
+      @goal = view_context.marketing_text('new_teammates', 'subheader')
+      @instructions = view_context.marketing_text('new_teammates', 'instructions')
+    else
+      @goal = view_context.marketing_text('new_players', 'subheader')
+      @instructions = view_context.marketing_text('new_players', 'instructions')
       
       if cookies[:new_registration] == 'true'
         @password_explanation = view_context.marketing_text('returning_players', 'password_hint')
@@ -91,7 +106,7 @@ class BirthdaysController < ApplicationController
       end
     end
   end
-  
+
   def mine
     redirect_to current_member.birthday
   end

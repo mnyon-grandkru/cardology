@@ -23,7 +23,7 @@ class SubscriptionsController < ApplicationController
       if subscription_creation.success?
         @member.subscription_status = 'active'
         @member.subscriptions << subscription_creation.subscription.id
-        @member.add_to_players_club_campaign
+        # @member.add_to_players_club_campaign
         @message = "#{view_context.marketing_text('subscription', 'transaction', 'succeeded')}"
       else
         @message = view_context.marketing_text('subscription', 'transaction', 'failed')
@@ -75,7 +75,7 @@ class SubscriptionsController < ApplicationController
           Rails.logger.info "The subscription was updated."
           Braintree::Subscription.retry_charge(subscription_id)
           @member.update_attribute :subscription_status, 'active'
-          @member.add_to_players_club_campaign
+          # @member.add_to_players_club_campaign
           @message = view_context.marketing_text('subscription', 'update', 'succeeded')
         end
       end

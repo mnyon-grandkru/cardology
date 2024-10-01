@@ -1,0 +1,33 @@
+<% if params[:day] == nil %>
+  <% @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card %>
+  <% @card = @birthday.card_for_today @main_card %>
+  <% @date = Date.current %>
+<% end %>
+<div class="prompt_heading">
+  <b>Personal Daily Card</b>
+</div>
+<div class="pane_guidance">
+  <%= flipback %>
+  <div class="constant">
+    <div style="text-align: center;">
+      <b style="font-size: x-large;"><%= @card.name %></b><br>
+    </div>
+    <div class="reading_context">
+      <span>
+        <%= image_tag @card.image_url, class: "reminder" %>
+      </span>
+      <span>
+        <%= marketing_text('heading', 'member', @header || 'daily', 'subheader') %>
+        <em><%= @date.strftime("%B %e, %Y") %></em>
+      </span>
+    </div>
+  </div>
+  <% @header = 'daily' %>
+  <%= render "guidances/carousel_reading" %>
+  <h3 class="call_to_subscription"><%= source_cards_marketing_text 'call_to_subscription', 'daily' %></h3>
+  <div class="button_daily_card">
+    <%= link_to "Subscribe Below", "#", class: "lunar_navigation", style: "font-size: 18px; pointer-events: none;" %>
+  </div>
+  <%= render partial: "copyright_text" %>
+</div> 
+<%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>

@@ -1,0 +1,55 @@
+<body class = "body">
+  <div class="widget_heading">
+    <section id="widget_title">Flip Over These Three Cards <br> For Only $7</section>
+  </div>
+
+  <%= render partial: "guidances/payment_modal", locals: { client_token: @client_token,source_website: @source_website } %>
+
+  <div class="buy-button" >
+    <% if Rails.env.staging? || Rails.env.development? %>
+      <button class="claim-button" id="claim-button"><%= link_to 'Claim Your Cards', guidances_staging_payment_path %></button>
+    <% else %>
+      <button onclick="document.getElementById('myModal').style.display='block'" class="claim-button" id="claim-button">Claim Your Cards</button>
+    <% end %>
+  </div>
+
+  <div id="guidance_zone" class= "guidance_prompt_media" onclick="startTimedWobble()">
+    <div class="prompt_zone" >
+      <div class="prompt_heading"><b>Personal Daily Card </b></div>
+      <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+    </div>
+    <div class="prompt_zone" >
+      <div class="prompt_heading"><b>Current 52-Day Card</b></div>
+      <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %> 
+    </div>
+    <div class="prompt_zone" >
+      <div class="prompt_heading"><b>Yearly Theme Card</b></div>
+      <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+    </div>
+  </div>
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var modal = document.getElementById('myModal');
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  });
+  var button = document.getElementById("claim-button");
+  function startTimedWobble() {
+    document.getElementById("guidance_zone").classList.add('wobble');
+    button.classList.add("highlight");
+    setTimeout(function() {
+      document.getElementById("guidance_zone").classList.remove("wobble");
+      button.classList.remove("highlight");
+    }, 2000);
+  } 
+</script>
+<style>
+  #guidance_prompt_media{
+    justify-content: center;   
+  }
+</style>

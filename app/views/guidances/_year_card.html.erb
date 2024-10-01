@@ -1,0 +1,46 @@
+<% if params[:year] == nil %>
+  <% @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card %>
+  <% @card = @birthday.card_for_this_year @main_card %>
+  <% @date = DateTime.now %>
+<% end %>
+<div class="prompt_heading">
+  <b>Yearly Theme Card</b>
+</div>
+<div class="pane_guidance">
+  <%= flipback %>
+  <div class="constant">
+    <div style="text-align: center;">
+      <b style="font-size: x-large;"><%= @card.name %></b>
+    </div>
+    <div class="reading_context">
+      <span>
+        <%= image_tag @card.image_url, class: "reminder" %>
+      </span>
+      <span>
+        <%= marketing_text('heading', 'member', 'yearly', 'subheader') %>
+      </span>
+    </div>
+  </div>
+  <% @header = 'yearly' %>
+  <%= render "guidances/carousel_reading" %>
+  <% if params[:year] == "last" %>
+    <div class="button_daily_card temporal_navigation">
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'yearly', 'return'), guidances_year_card_path(:birthday_id => @birthday.id, :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'yearly', 'forward'), guidances_year_card_path(:birthday_id => @birthday.id, :year => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+    </div>
+    <%= render partial: "copyright_text" %>
+  <% elsif params[:year] == "next" %>
+    <div class="button_daily_card temporal_navigation">
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'yearly', 'backward'), guidances_year_card_path(:birthday_id => @birthday.id, :year => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'yearly', 'return'), guidances_year_card_path(:birthday_id => @birthday.id, :year => 'current', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+    </div>
+    <%= render partial: "copyright_text" %>
+  <% else %>
+    <div class="button_daily_card temporal_navigation">
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'yearly', 'backward'), guidances_year_card_path(:birthday_id => @birthday.id, :year => 'last', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'yearly', 'forward'), guidances_year_card_path(:birthday_id => @birthday.id, :year => 'next', :personality => params[:personality], :zodiac => params[:zodiac]),:remote => true ,:class => 'lunar_navigation'%>
+    </div>
+    <%= render partial: "copyright_text" %>
+  <% end %>
+  <%= javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload' %>
+</div>

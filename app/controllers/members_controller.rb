@@ -19,7 +19,7 @@ class MembersController < ApplicationController
   
   def update
     @member = Member.find params[:id]
-    @member.update_attributes member_params
+    @member.update member_params
     respond_to do |format|
       format.html { redirect_to(birthday_path(@member.birthday, :member_id => @member.id)) }
       format.js do
