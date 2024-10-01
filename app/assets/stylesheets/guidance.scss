@@ -36,12 +36,17 @@
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+.lookup_link {
+  margin-left: 5vw;
+}
+
 .delivery_zone{
   padding-top: 40px;
   width: 50%;
   margin-bottom: 40px;
   margin-right: 10px;
-
+  display: flex;
+  justify-content: center;
 }
 
 .flipback {
@@ -199,6 +204,10 @@ h2{
   border: 2px solid black;
   border-radius: 50px;
   background-color: rgba(255, 255, 255, 0.93);
+  
+  .owl-carousel .owl-nav {
+    margin-top: -25px;
+  }
 }
 
 .reading_context {
@@ -343,16 +352,27 @@ h2{
   
   .delivery_zone{
     width: 100%;
-    text-align: center;
   }
   
   .flipback {
     top: 14px;
   }
+  
+  #guidance_zone .panel .back {
+    width: 88vw;
+  }
 
   .panel{
     margin-left: 0;
     width: 100%;
+    display: flex;
+    justify-content: center
+  }
+  
+  .panel .front {
+    display: flex;
+    justify-content: center;
+    left: 0;
   }
   
   .panel .back, .panel .front{
@@ -363,13 +383,13 @@ h2{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -box-sizing: border-box;
-    max-width: 360px;
+    max-width: 460px;
     width: 100%;
     position: relative;
   }
   
   .add_height {
-    height: 800px;
+    height: 660px;
   }
   
   .prompt_zone{
@@ -393,6 +413,7 @@ h2{
   .lookup_link{
     text-align: center;
     margin-bottom: 10%;
+    margin-left: 0;
   }
   
   #new_birthday{
@@ -453,8 +474,8 @@ h2{
 }
 
 .owl-carousel .owl-item img.pad {
-  width: 210px;
-  border-radius: 5.5px;
+  width: 200px;
+  border-radius: 8.5px;
 }
 
 @media only screen and (min-width: 100px) and (max-width: 313px) {
@@ -477,7 +498,8 @@ h2{
   text-align: center;
   font-size: 16px;
   color: grey;
-  margin-bottom: -6px
+  margin-bottom: -6px;
+  margin-top: -13px;
 }
 
 @media (max-width: 991px) {
