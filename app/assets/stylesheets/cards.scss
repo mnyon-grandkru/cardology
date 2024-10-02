@@ -29,8 +29,7 @@ img.image_gallery {
   vertical-align: top;
   margin-left: 8px;
 //  width: 48%;
-  -webkit-perspective: 600px;
-          perspective: 600px;
+  perspective: 600px;
 }
 
 .delivery_zone {
@@ -46,30 +45,18 @@ img.image_gallery {
   left: 10%;
   z-index: 900;
 
-  -webkit-transform: rotateX(0) rotateY(0);
-          transform: rotateX(0) rotateY(0);
-
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-
-  /* -- transition is the magic sauce for animation -- */
-  -webkit-transition: all .8s ease-in-out;
-          transition: all .8s ease-in-out;
+  transform: rotateX(0) rotateY(0);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: all .8s ease-in-out;
 }
 .panel.flip .front {
   z-index: 900;
-
-  -webkit-transform: translate3d(0, 0, -1px) rotateY(179deg);
-          transform: translate3d(0, 0, -1px) rotateY(179deg);
+  transform: translate3d(0, 0, -1px) rotateY(179deg);
 }
 .panel.skip .front {
   z-index: 900;
-
-  -webkit-transform: translate3d(0, 0, -1px) rotateY(-179deg);
-          transform: translate3d(0, 0, -1px) rotateY(-179deg);
+  transform: translate3d(0, 0, -1px) rotateY(-179deg);
 }
 
 .panel .back {
@@ -79,22 +66,13 @@ img.image_gallery {
   left: 0;
   z-index: 800;
 
-  -webkit-transform: translate3d(0, 0, -1px) rotateY(-179deg);
-          transform: translate3d(0, 0, -1px) rotateY(-179deg);
-
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-
-  /* -- transition is the magic sauce for animation -- */
-  -webkit-transition: all .8s ease-in-out;
-          transition: all .8s ease-in-out;
+  transform: translate3d(0, 0, -1px) rotateY(-179deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: all .8s ease-in-out;
 }
 
 .owl-carousel .owl-item img {
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden !important;
   will-change: transform;
 }
@@ -107,8 +85,7 @@ img.image_gallery {
   z-index: 1000;
   height: auto;
 
-  -webkit-transform: translate3d(0, 0, 0) rotateY(0);
-          transform: translate3d(0, 0, 0) rotateY(0);
+  transform: translate3d(0, 0, 0) rotateY(0);
 }
 
 .panel .back img.reveal {
@@ -128,35 +105,27 @@ img.image_gallery {
   left: 0;
   z-index: 800;
 
-  -webkit-transform: translate3d(0, 0, -1px) rotateY(179deg);
-          transform: translate3d(0, 0, -1px) rotateY(179deg);
-
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-
-  /* -- transition is the magic sauce for animation -- */
-  -webkit-transition: all .8s ease-in-out;
-          transition: all .8s ease-in-out;
+  transform: translate3d(0, 0, -1px) rotateY(179deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: all .8s ease-in-out;
 }
 
 .panel.skip .fore {
   z-index: 1000;
   height: auto;
 
-  -webkit-transform: translate3d(0, 0, 0) rotateY(0);
-          transform: translate3d(0, 0, 0) rotateY(0);
+  transform: translate3d(0, 0, 0) rotateY(0);
 }
 
-.pane_guidance{
-  display: none !important;
+.pane_guidance {
+//  display: none !important;
 }
-.panel.flip{
-  .back{
-    .pane_guidance{
+
+.panel.flip {
+  .back {
+    .pane_guidance {
       display: inline-block !important;
      }
-   }
+  }
 }
