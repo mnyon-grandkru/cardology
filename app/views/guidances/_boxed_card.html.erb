@@ -21,14 +21,14 @@
   <%= render "guidances/carousel_reading" %>
   <div class="button_daily_card temporal_navigation">
     <% if params[:day] == "yesterday" %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'return'), '#', :onclick => "rotateBackward(); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'forward'), '#', :onclick => "rotateForward(); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'return'), '#', :onclick => "rotateBackward(90); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'forward'), '#', :onclick => "rotateForward(180); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
     <% elsif params[:day] == "tomorrow" %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'backward'), '#', :onclick => "rotateBackward(); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'return'), '#', :onclick => "rotateForward(); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'backward'), '#', :onclick => "rotateBackward(180); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'return'), '#', :onclick => "rotateForward(90); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
     <% else %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'backward'), '#', :onclick => "rotateBackward(); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'forward'), '#', :onclick => "rotateForward(); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'backward'), '#', :onclick => "rotateBackward(90); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
+      <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'forward'), '#', :onclick => "rotateForward(90); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
     <% end %>
   </div>
   <%= render partial: "copyright_text" %>
