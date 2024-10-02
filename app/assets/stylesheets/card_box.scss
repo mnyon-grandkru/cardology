@@ -30,22 +30,18 @@
 
 .alpha {
   transform: rotateY(0deg) translateZ(165px);
-  background-color: rgba(255, 0, 0, 0.7);
 }
 
 .beta {
   transform: rotateY(90deg) translateZ(165px);
-  background-color: rgba(0, 255, 0, 0.7);
 }
 
 .gamma {
   transform: rotateY(180deg) translateZ(165px);
-  background-color: rgba(0, 0, 255, 0.7);
 }
 
 .delta {
   transform: rotateY(-90deg) translateZ(165px);
-  background-color: rgba(255, 255, 0, 0.7);
 }
 
 
