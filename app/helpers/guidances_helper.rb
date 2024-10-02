@@ -14,8 +14,9 @@ module GuidancesHelper
     end
   end
   
-  def flipback
-    link_to "", '#', onclick: "flipCardBack(event)", data: {turbolinks: false}, class: 'flipback'
+  def flipback box = nil
+    func = box ? "flipBoxBack(event)" : "flipCardBack(event)"
+    link_to "", '#', onclick: func, data: {turbolinks: false}, class: 'flipback'
   end
   
   def planet_description_display description

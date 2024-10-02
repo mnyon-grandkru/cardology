@@ -35,22 +35,22 @@ $(document).on('turbolinks:load', function() {
     return ((angle + 180) % 360) - 180;
   }
   
-  function rotateForward(byDegrees) {
+  function rotatePast(byDegrees) {
     let currentPosition = currentRotation();
     desiredPosition = normalizeAngle(currentPosition - byDegrees);
     console.log(`Desired: ${desiredPosition} degrees`);
     panel.style.transform = `translateZ(-165px) rotateY(${desiredPosition}deg)`;
   }
   
-  function rotateBackward(byDegrees) {
+  function rotateFuture(byDegrees) {
     let currentPosition = currentRotation();
     desiredPosition = normalizeAngle(currentPosition + byDegrees);
     console.log(`Desired: ${desiredPosition} degrees`);
     panel.style.transform = `translateZ(-165px) rotateY(${desiredPosition}deg)`;
   }
   
-  window.rotateForward = rotateForward;
-  window.rotateBackward = rotateBackward;
+  window.rotatePast = rotatePast;
+  window.rotateFuture = rotateFuture;
 
   // setInterval(rotateBox, 10000); // Rotate every 3 seconds
 });
