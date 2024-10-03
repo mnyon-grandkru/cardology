@@ -199,7 +199,7 @@ h2{
 .pane_guidance {
   display: inline-block;
   width: 320px;
-  height: 1070px;
+//  height: 1070px;
   padding: 15px;
   border: 2px solid black;
   border-radius: 50px;
@@ -225,12 +225,12 @@ h2{
     height: auto;
   }
 }
-
-@media (min-width: 768px) {
-  .pane_guidance {
-    height: 1070px;
-  }
-}
+//
+//@media (min-width: 768px) {
+//  .pane_guidance {
+//    height: 1070px;
+//  }
+//}
 
 #widget_title_gui {
   font-size: 2em;
@@ -459,12 +459,12 @@ h2{
   }
 }
 
-@media only screen and (min-width: 767px) {
-  .pane_guidance {
-    width: 205px;
-    height: 100%;
-  }
-}
+//@media only screen and (min-width: 767px) {
+//  .pane_guidance {
+//    width: 205px;
+//    height: 100%;
+//  }
+//}
 
 @media only screen and (min-width:1024px) {
   .pane_guidance {
