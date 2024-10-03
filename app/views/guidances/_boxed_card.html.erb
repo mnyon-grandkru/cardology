@@ -9,17 +9,6 @@
     </div>
   </div>
   <%= carousel_reading @card, @reading %>
-  <div class="button_daily_card temporal_navigation">
-    <% if params[:day] == "yesterday" %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', @reading, 'return'), '#', :onclick => "rotateFuture(90); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', @reading, 'forward'), '#', :onclick => "rotateFuture(360); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
-    <% elsif params[:day] == "tomorrow" %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', @reading, 'backward'), '#', :onclick => "rotatePast(360); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', @reading, 'return'), '#', :onclick => "rotatePast(90); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
-    <% else %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', @reading, 'backward'), '#', :onclick => "rotateFuture(90); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
-      <%= link_to source_cards_marketing_text('temporal_navigation', @reading, 'forward'), '#', :onclick => "rotatePast(90); return false;", :class => 'lunar_navigation', :data => {:turbolinks => false} %>
-    <% end %>
-  </div>
-  <%= render partial: "copyright_text" %>
+  <%= temporal_navigation_buttons @reading, @position %>
+  <%= copyright_text %>
 </div>

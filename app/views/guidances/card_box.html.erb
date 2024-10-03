@@ -14,7 +14,8 @@
           <div class="beta surface">
             <% @header = 'yesterday'
                @card = @birthday.card_for_yesterday @main_card
-               @date = DateTime.yesterday %>
+               @date = DateTime.yesterday
+               @position = :back %>
             <%= render "guidances/boxed_card", :params => {:day => 'yesterday', :personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
             <%#= image_tag @card.image_url, class: "reminder" %>
           </div>
@@ -22,7 +23,8 @@
           <div class="gamma surface">
             <% @card = @birthday.card_for_today @main_card
                @header = 'daily'
-               @date = Date.current %>
+              @date = Date.current
+              @position = :here %>
             <%= render "guidances/boxed_card", :params => {:personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
             <%#= image_tag @card.image_url, class: "reminder" %>
           </div>
@@ -30,7 +32,8 @@
           <div class="delta surface">
             <% @card = @birthday.card_for_tomorrow @main_card
                @header = 'tomorrow'
-               @date = DateTime.tomorrow %>
+               @date = DateTime.tomorrow
+               @position = :forward %>
             <%= render "guidances/boxed_card", :params => {:day => 'tomorrow', :personality => local_assigns[:personality], :zodiac => local_assigns[:zodiac]} %>
             <%#= image_tag @card.image_url, class: "reminder" %>
           </div>

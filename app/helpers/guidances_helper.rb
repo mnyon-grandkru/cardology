@@ -39,6 +39,31 @@ module GuidancesHelper
     end
   end
 
+  def temporal_navigation_buttons(reading, position)
+    content_tag(:div, :class => 'button_daily_card temporal_navigation') do
+      if position == :back
+        temporal_navigation_button(reading, 'return', 'rotateFuture(90)') +
+        temporal_navigation_button(reading, 'forward', 'rotateFuture(360)')
+      elsif position == :forward
+        temporal_navigation_button(reading, 'backward', 'rotatePast(360)') +
+        temporal_navigation_button(reading, 'return', 'rotatePast(90)')
+      else
+        temporal_navigation_button(reading, 'backward', 'rotateFuture(90)') +
+        temporal_navigation_button(reading, 'forward', 'rotatePast(90)')
+      end
+    end
+  end
+
+  def temporal_navigation_button(reading, direction, rotation)
+    link_to source_cards_marketing_text('temporal_navigation', reading, direction), '#', :onclick => "#{rotation}; return false;", :class => 'lunar_navigation', :data => {:turbolinks => false}
+  end
+
+  def copyright_text
+    content_tag(:p, :class => 'copyright-txt') do
+      "Copyright &copy; Alexander Dunlop"
+    end
+  end
+
   def split_carousel_text(carousel_text)
     return [carousel_text] unless carousel_text.length > 620
     midpoint = carousel_text.length / 2
