@@ -12,27 +12,15 @@
           </div>
 
           <div class="beta surface">
-            <% @reading = 'yesterday'
-               @card = @birthday.card_for_yesterday @main_card
-               @date = DateTime.yesterday
-               @position = :back %>
-               <%= card_box_pane @card, 'daily', @date, @position %>
+            <%= card_box_pane @birthday.card_for_yesterday(@main_card), 'daily', DateTime.yesterday, :back %>
           </div>
 
           <div class="gamma surface">
-            <% @card = @birthday.card_for_today @main_card
-               @header = 'daily'
-              @date = Date.current
-              @position = :here %>
-              <%= card_box_pane @card, 'daily', @date, @position %>
+            <%= card_box_pane @birthday.card_for_today(@main_card), 'daily', Date.current, :here %>
           </div>
 
           <div class="delta surface">
-            <% @card = @birthday.card_for_tomorrow @main_card
-               @header = 'tomorrow'
-               @date = DateTime.tomorrow
-               @position = :forward %>
-              <%= card_box_pane @card, 'daily', @date, @position %>
+            <%= card_box_pane @birthday.card_for_tomorrow(@main_card), 'daily', DateTime.tomorrow, :forward %>
           </div>
         </div>
       </div>
