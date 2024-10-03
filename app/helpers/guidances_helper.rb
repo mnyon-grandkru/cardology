@@ -1,4 +1,25 @@
 module GuidancesHelper
+  def card_box_pane(card, reading, date, position)
+    reading_heading('Personal Daily Card') +
+    content_tag(:div, :class => 'pane_guidance') do
+      flipback('box') +
+      pane_heading(card, reading, date) +
+      carousel_reading(card, reading) +
+      temporal_navigation_buttons(reading, position) +
+      copyright_text
+    end
+  end
+
+  def pane_heading(card, reading, date)
+    content_tag(:div, :class => 'constant') do
+      card_name_heading(card) +
+      content_tag(:div, :class => 'reading_context') do
+        card_image(card) +
+        reading_subheader(reading, date)
+      end
+    end
+  end
+
   def reading_heading(reading)
     content_tag(:div, :class => 'prompt_heading') do
       content_tag(:b, reading.to_s.titleize)
@@ -60,7 +81,7 @@ module GuidancesHelper
 
   def copyright_text
     content_tag(:p, :class => 'copyright-txt') do
-      "Copyright &copy; Alexander Dunlop"
+      "Copyright &copy; Alexander Dunlop".html_safe
     end
   end
 
