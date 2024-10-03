@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
 
   function rotateBox() {
     rotation += 90;
-    panel.style.transform = `translateZ(-165px) rotateY(${rotation}deg)`;
+    panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${rotation}deg)`;
   }
   
   function currentRotation() {
@@ -37,16 +37,16 @@ $(document).on('turbolinks:load', function() {
   
   function rotatePast(byDegrees) {
     let currentPosition = currentRotation();
-    desiredPosition = normalizeAngle(currentPosition - byDegrees);
+    let desiredPosition = normalizeAngle(currentPosition - byDegrees);
     console.log(`Desired: ${desiredPosition} degrees`);
-    panel.style.transform = `translateZ(-165px) rotateY(${desiredPosition}deg)`;
+    panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
   }
   
   function rotateFuture(byDegrees) {
     let currentPosition = currentRotation();
-    desiredPosition = normalizeAngle(currentPosition + byDegrees);
+    let desiredPosition = normalizeAngle(currentPosition + byDegrees);
     console.log(`Desired: ${desiredPosition} degrees`);
-    panel.style.transform = `translateZ(-165px) rotateY(${desiredPosition}deg)`;
+    panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
   }
   
   window.rotatePast = rotatePast;
