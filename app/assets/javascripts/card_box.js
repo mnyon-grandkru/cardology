@@ -1,19 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  const panel = document.querySelector('.surface-wrapper');
-  let rotation = 0;
-
-  // $('.surface').on('click', function(event) {
-  //   rotation += 90;
-  //   panel.style.transform = `rotateY(${rotation}deg)`;
-  // });
-
-  function rotateBox() {
-    rotation += 90;
-    panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${rotation}deg)`;
-  }
-  
-  function currentRotation() {
-    // use panelvar
+  function currentRotation(panel) {
     const computedStyle = window.getComputedStyle(panel);
     const transformMatrix = computedStyle.transform;
     let degrees;
@@ -36,14 +22,16 @@ $(document).on('turbolinks:load', function() {
   }
   
   function rotatePast(byDegrees) {
-    let currentPosition = currentRotation();
+    let panel = event.target.closest('.surface-wrapper');
+    let currentPosition = currentRotation(panel);
     let desiredPosition = normalizeAngle(currentPosition - byDegrees);
     console.log(`Desired: ${desiredPosition} degrees`);
     panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
   }
   
   function rotateFuture(byDegrees) {
-    let currentPosition = currentRotation();
+    let panel = event.target.closest('.surface-wrapper');
+    let currentPosition = currentRotation(panel);
     let desiredPosition = normalizeAngle(currentPosition + byDegrees);
     console.log(`Desired: ${desiredPosition} degrees`);
     panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
@@ -51,8 +39,4 @@ $(document).on('turbolinks:load', function() {
   
   window.rotatePast = rotatePast;
   window.rotateFuture = rotateFuture;
-
-  // setInterval(rotateBox, 10000); // Rotate every 3 seconds
 });
-
-// Remove the duplicate DOMContentLoaded event listener
