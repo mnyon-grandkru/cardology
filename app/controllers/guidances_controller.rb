@@ -34,6 +34,7 @@ class GuidancesController < ApplicationController
   def card_box
     @birthday = Birthday.find 1
     @main_card = @birthday.birth_card
+    @reading = 'daily'
   end
   
   ## Simplero-bound purchaser interface

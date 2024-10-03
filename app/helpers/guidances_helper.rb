@@ -1,4 +1,44 @@
 module GuidancesHelper
+  def reading_heading(reading)
+    content_tag(:div, :class => 'prompt_heading') do
+      content_tag(:b, reading.to_s.titleize)
+    end
+  end
+
+  def card_name_heading(card)
+    content_tag(:div, :class => 'card_name') do
+      content_tag(:b, card.name)
+    end
+  end
+
+  def card_image(card)
+    content_tag(:span) do
+      image_tag card.image_url, class: "reminder"
+    end
+  end
+  
+  def reading_subheader(reading, date)
+    content_tag(:span) do
+      marketing_text('heading', 'member', reading, 'subheader').html_safe +
+      content_tag(:em, date.strftime(" %B %e, %Y"))
+    end
+  end
+
+  def carousel_reading(card, reading)
+    content_tag(:div, :class => "wrapper") do
+      content_tag(:div, :class => "owl-carousel owl-theme image-slider", :id => "Testcarousel") do
+        card_image_paragraph(card) +
+        simple_format(card.interpretations.where(reading: reading).last&.explanation)
+      end
+    end
+  end
+
+  def card_image_paragraph(card)
+    content_tag(:p, :class => 'card_image_paragraph') do
+      image_tag card.image_url, class: "pad reveal"
+    end
+  end
+
   def split_carousel_text(carousel_text)
     return [carousel_text] unless carousel_text.length > 620
     midpoint = carousel_text.length / 2
