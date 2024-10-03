@@ -264,13 +264,14 @@ h2{
 }
 
 @media only screen and (min-width: 767px) and (max-width: 1000px) {
-  .prompt_heading {
-    width: 151px;
-    text-size-adjust: 100px;
-  }
-  
+//  .prompt_heading {
+//    width: 151px;
+//    text-size-adjust: 100px;
+//  }
+//
   .flipback {
-    right: 100px;
+    top: 29px;
+//    right: 100px;
   }
 }
 
