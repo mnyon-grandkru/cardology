@@ -1,4 +1,8 @@
 <body class="body">
+<%= clearleft %>
+  <div class="lookup_link">
+    <%= link_to "Do Another Lookup", "/guidances/prompt", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
+  </div>
   <div class="widget_heading">
     <section id="widget_title_gui"><%= source_cards_marketing_text 'subscriber', 'right_now', 'title' %></section>
     <section id="widget_instructions"><%= source_cards_marketing_text 'subscriber', 'right_now', 'technique' %></section>
