@@ -55,10 +55,8 @@ module GuidancesHelper
       else
         'joker'
       end
-    elsif reading == 'daily'
-      [position.to_s, 'subheader']
     else
-      'subheader'
+      [position.to_s, 'subheader']
     end
   end
   

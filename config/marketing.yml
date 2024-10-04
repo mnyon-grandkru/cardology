@@ -136,15 +136,26 @@ heading:
       header: "Personality Card"
       subheader: 
     yearly:
-      header_last: "Last Yearly Card"
-      header: "Your Yearly Card"
-      header_next: "Coming Yearly Card"
-      subheader: "This card represents the main theme of your year."
+      here:
+        header: "Your Yearly Card"
+        subheader: "This card represents the main theme of this year."  
+      forward:
+        header: "Coming Yearly Card"
+        subheader: "This card represents the main theme of next year."
+      back:
+        header: "Last Yearly Card"
+        subheader: "This card represents the main theme of last year."      
     planetary:
-      header_last: "Previous 52-Day Card"
-      header: "Your 52-Day Card"
-      header_next: "Coming 52-Day Card"
-      subheader: "This card represents a specific energy pattern in play for this 52-day cycle, "
+      here:
+        header: "Your 52-Day Card"
+        subheader: "This card represents a specific energy pattern in play for this 52-day cycle, "
+      forward:
+        header: "Coming 52-Day Card"
+        subheader: "This card represents a specific energy pattern in play for the upcoming 52-day cycle, "
+      back:
+        header: "Previous 52-Day Card"
+        subheader: "This card represents a specific energy pattern in play for the recent 52-day cycle, "
+      
       joker: "Today is your Joker Day. It is not part of your ordinary 52-Day Planetary Cycles. It’s a special day."
       second_joker: "Today is your 2nd Joker Day. It’s a rare event that only happens once every four years."
     daily:
