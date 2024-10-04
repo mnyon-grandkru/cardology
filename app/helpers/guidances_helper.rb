@@ -1,5 +1,5 @@
 module GuidancesHelper
-  def card_box_pane(card, reading, date, position, planet = nil)
+  def card_box_pane(birthday,card, reading, date, position, planet = nil)
     if reading == 'planetary'
       reading_heading('52-Day Card')
     elsif reading == 'yearly'
@@ -9,19 +9,19 @@ module GuidancesHelper
     end +
     content_tag(:div, :class => 'pane_guidance') do
       flipback('box') +
-      pane_heading(card, reading, date, position, planet) +
+      pane_heading(birthday, card, reading, date, position, planet) +
       carousel_reading(card, reading) +
       temporal_navigation_buttons(reading, position) +
       copyright_text
     end
   end
 
-  def pane_heading(card, reading, date, position, planet = nil)
+  def pane_heading(birthday, card, reading, date, position, planet = nil)
     content_tag(:div, :class => 'constant') do
       card_name_heading(card) +
       content_tag(:div, :class => 'reading_context') do
         card_image(card) +
-        reading_subheader(reading, date, position, planet)
+        reading_subheader(birthday, card, reading, date, position, planet)
       end
     end
   end
@@ -43,10 +43,26 @@ module GuidancesHelper
       image_tag card.image_url, class: "reminder"
     end
   end
+
+  def joker_text_handler(card, reading, birthday)
+    if reading == 'planetary' && card.name == 'Joker'
+      if Date.current.leap?
+        if birthday.day == Date.current.day + 1
+          'second_joker'
+        else
+          'joker'
+        end
+      else
+        'joker'
+      end
+    else
+      'subheader'
+    end
+  end
   
-  def reading_subheader(reading, date, position, planet = nil)
+  def reading_subheader(birthday, card, reading, date, position, planet = nil)
     content_tag(:span) do
-      marketing_text('heading', 'member', reading, 'subheader').html_safe +
+      marketing_text('heading', 'member', reading, joker_text_handler(card, reading, birthday)).html_safe + +
       if reading == 'planetary'
         planetary_link(planet, position) +
         content_tag(:em, planet_cycle_end_date(date))
