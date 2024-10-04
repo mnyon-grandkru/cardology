@@ -305,9 +305,9 @@ h2{
   border: 2px solid #335276;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1050px) {
   #guidance_zone{
-    flex-direction:column;
+    flex-direction: column;
   }
   
   .delivery_zone{
@@ -411,12 +411,12 @@ h2{
   margin-bottom: 16px;
 }
 
-@media only screen and (min-width:1024px) {
-  .pane_guidance {
-    width: 300px;
-    height: 100%;
-  }
-}
+// @media only screen and (min-width:1024px) {
+//   .pane_guidance {
+//     width: 300px;
+//     height: 100%;
+//   }
+// }
 
 .planet_description {
   position: absolute;
