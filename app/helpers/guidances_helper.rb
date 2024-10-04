@@ -61,12 +61,16 @@ module GuidancesHelper
         planetary_link(planet, position) +
         content_tag(:em, planet_cycle_end_date(date))
       elsif reading == 'yearly'
-        tag(:br) +
-        content_tag(:em, date.strftime(" %B %e, %Y") + ' - ' + (date + 1.year - 1.day).strftime(" %B %e, %Y"), :class => 'birthday_dates')
+        tag(:br) + 
+        content_tag(:em, birthday_range(date), :class => 'birthday_dates')
       else
         content_tag(:em, date.strftime(" %B %e, %Y"))
       end
     end
+  end
+
+  def birthday_range(birthday)
+    birthday.strftime(" %B %e, %Y") + ' - ' + (birthday + 1.year - 1.day).strftime(" %B %e, %Y")
   end
 
   def planetary_link(planet, position)

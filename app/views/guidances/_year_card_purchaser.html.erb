@@ -17,7 +17,8 @@
         <%= image_tag @card.image_url, class: "reminder" %>
       </span>
       <span>
-        <%= marketing_text('heading', 'member', 'yearly', 'subheader') %>
+        <%= marketing_text('heading', 'member', 'yearly', 'here', 'subheader') %>
+        <em><%= birthday_range(@birthday.last_birthday) %>
       </span>
     </div>
   </div>

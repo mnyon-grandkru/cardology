@@ -30,7 +30,7 @@
             <%= marketing_text('heading', 'member', 'planetary', 'joker') %>
           <% end %>
         <% else %>
-          <%= marketing_text('heading', 'member', 'planetary', 'subheader') %>
+          <%= marketing_text('heading', 'member', 'planetary', 'here', 'subheader') %>
           <%= link_to @planet, planet_guidance_path(@planet), :remote => :true %>.
           <%= "  This cycle ends on #{@date.strftime("%-m/%-d.")}" %>
         <% end %>
