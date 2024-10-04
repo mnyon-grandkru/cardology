@@ -1,21 +1,21 @@
 module GuidancesHelper
-  def card_box_pane(card, reading, date, position)
+  def card_box_pane(card, reading, date, position, planet = nil)
     reading_heading('Personal Daily Card') +
     content_tag(:div, :class => 'pane_guidance') do
       flipback('box') +
-      pane_heading(card, reading, date) +
+      pane_heading(card, reading, date, planet) +
       carousel_reading(card, reading) +
       temporal_navigation_buttons(reading, position) +
       copyright_text
     end
   end
 
-  def pane_heading(card, reading, date)
+  def pane_heading(card, reading, date, planet = nil)
     content_tag(:div, :class => 'constant') do
       card_name_heading(card) +
       content_tag(:div, :class => 'reading_context') do
         card_image(card) +
-        reading_subheader(reading, date)
+        reading_subheader(reading, date, planet)
       end
     end
   end
@@ -38,13 +38,26 @@ module GuidancesHelper
     end
   end
   
-  def reading_subheader(reading, date)
+  def reading_subheader(reading, date, planet = nil)
     content_tag(:span) do
       marketing_text('heading', 'member', reading, 'subheader').html_safe +
-      content_tag(:em, date.strftime(" %B %e, %Y"))
+      if reading == 'planetary'
+        planetary_link(planet) +
+        content_tag(:em, planet_cycle_end_date(date))
+      else
+        content_tag(:em, date.strftime(" %B %e, %Y"))
+      end
     end
   end
 
+  def planetary_link(planet)
+    link_to planet, planet_guidance_path(planet), :remote => true
+  end
+
+  def planet_cycle_end_date(date)
+    "  This cycle ends on #{date.strftime("%-m/%-d.")}"
+  end
+  
   def carousel_reading(card, reading)
     content_tag(:div, :class => "wrapper") do
       content_tag(:div, :class => "owl-carousel owl-theme image-slider", :id => "Testcarousel") do
