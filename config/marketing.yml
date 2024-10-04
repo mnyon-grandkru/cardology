@@ -139,7 +139,7 @@ heading:
       header_last: "Last Yearly Card"
       header: "Your Yearly Card"
       header_next: "Coming Yearly Card"
-      subheader: "This card represents the main theme of your year. Your year starts from your last birthday until your next birthday."
+      subheader: "This card represents the main theme of your year."
     planetary:
       header_last: "Previous 52-Day Card"
       header: "Your 52-Day Card"

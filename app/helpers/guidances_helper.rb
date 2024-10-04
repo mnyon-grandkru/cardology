@@ -52,7 +52,7 @@ module GuidancesHelper
         content_tag(:em, planet_cycle_end_date(date))
       elsif reading == 'yearly'
         tag(:br) +
-        content_tag(:em, date.strftime(" %B %e, %Y") + ' - ' + (date + 1.year - 1.day).strftime(" %B %e, %Y"))
+        content_tag(:em, date.strftime(" %B %e, %Y") + ' - ' + (date + 1.year - 1.day).strftime(" %B %e, %Y"), :class => 'birthday_dates')
       else
         content_tag(:em, date.strftime(" %B %e, %Y"))
       end
@@ -64,7 +64,7 @@ module GuidancesHelper
   end
 
   def planet_cycle_end_date(date)
-    "  This cycle ends on #{date.strftime("%-m/%-d.")}"
+    ".  This cycle ends on #{date.strftime("%-m/%-d.")}"
   end
   
   def carousel_reading(card, reading)
