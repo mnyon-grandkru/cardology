@@ -144,7 +144,7 @@ class GuidancesController < ApplicationController
   end
   
   def planet
-
+    @face = {'here' => '.gamma', 'back' => '.beta', 'forward' => '.delta'}[params[:position]]
   end
 
   def year_card

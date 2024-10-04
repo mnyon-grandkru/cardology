@@ -1,2 +1,2 @@
 var pane = $('<%=j planet_description_display(source_cards_marketing_text('planet', 'description', params[:planet], 'symbol') + '<br><br>' + source_cards_marketing_text('planet', 'description', params[:planet], 'action')) %>').hide().fadeIn('slow');
-$('#delivery_second .wrapper').prepend(pane);
+$('#delivery_second <%=j @face %> .wrapper').prepend(pane);

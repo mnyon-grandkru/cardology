@@ -1,21 +1,25 @@
 module GuidancesHelper
   def card_box_pane(card, reading, date, position, planet = nil)
-    reading_heading('Personal Daily Card') +
+    if reading == 'planetary'
+      reading_heading('52-Day Card')
+    else
+      reading_heading('Personal Daily Card')
+    end +
     content_tag(:div, :class => 'pane_guidance') do
       flipback('box') +
-      pane_heading(card, reading, date, planet) +
+      pane_heading(card, reading, date, position, planet) +
       carousel_reading(card, reading) +
       temporal_navigation_buttons(reading, position) +
       copyright_text
     end
   end
 
-  def pane_heading(card, reading, date, planet = nil)
+  def pane_heading(card, reading, date, position, planet = nil)
     content_tag(:div, :class => 'constant') do
       card_name_heading(card) +
       content_tag(:div, :class => 'reading_context') do
         card_image(card) +
-        reading_subheader(reading, date, planet)
+        reading_subheader(reading, date, position, planet)
       end
     end
   end
@@ -38,11 +42,11 @@ module GuidancesHelper
     end
   end
   
-  def reading_subheader(reading, date, planet = nil)
+  def reading_subheader(reading, date, position, planet = nil)
     content_tag(:span) do
       marketing_text('heading', 'member', reading, 'subheader').html_safe +
       if reading == 'planetary'
-        planetary_link(planet) +
+        planetary_link(planet, position) +
         content_tag(:em, planet_cycle_end_date(date))
       else
         content_tag(:em, date.strftime(" %B %e, %Y"))
@@ -50,8 +54,8 @@ module GuidancesHelper
     end
   end
 
-  def planetary_link(planet)
-    link_to planet, planet_guidance_path(planet), :remote => true
+  def planetary_link(planet, position)
+    link_to planet, planet_guidance_path(planet, position), :remote => true
   end
 
   def planet_cycle_end_date(date)
