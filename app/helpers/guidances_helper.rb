@@ -44,7 +44,7 @@ module GuidancesHelper
     end
   end
 
-  def joker_text_handler(card, reading, birthday)
+  def reading_text_handler(card, reading, birthday, position)
     if reading == 'planetary' && card.name == 'Joker'
       if Date.current.leap?
         if birthday.day == Date.current.day + 1
@@ -55,6 +55,8 @@ module GuidancesHelper
       else
         'joker'
       end
+    elsif reading == 'daily'
+      [position.to_s, 'subheader']
     else
       'subheader'
     end
@@ -62,7 +64,7 @@ module GuidancesHelper
   
   def reading_subheader(birthday, card, reading, date, position, planet = nil)
     content_tag(:span) do
-      marketing_text('heading', 'member', reading, joker_text_handler(card, reading, birthday)).html_safe + +
+      marketing_text('heading', 'member', reading, *reading_text_handler(card, reading, birthday, position)).html_safe + +
       if reading == 'planetary'
         planetary_link(planet, position) +
         content_tag(:em, planet_cycle_end_date(date))
