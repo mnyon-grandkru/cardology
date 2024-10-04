@@ -59,6 +59,10 @@
   filter: drop-shadow(2px 2px 1px #aaa);
 }
 
+.back .flipback {
+  top: 49px;
+}
+
 .flipback:after {
   content: "\21BA";
   background-color: white;
