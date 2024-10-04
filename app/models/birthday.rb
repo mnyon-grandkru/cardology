@@ -166,6 +166,10 @@ class Birthday < ApplicationRecord
   def next_birthday
     last_birthday + 1.year
   end
+
+  def previous_birthday
+    last_birthday - 1.year
+  end
   
   def dates_of_planetary_shifts birthday_for_year
     [birthday_for_year,

@@ -2,6 +2,8 @@ module GuidancesHelper
   def card_box_pane(card, reading, date, position, planet = nil)
     if reading == 'planetary'
       reading_heading('52-Day Card')
+    elsif reading == 'yearly'
+      reading_heading('Yearly Theme Card')
     else
       reading_heading('Personal Daily Card')
     end +
@@ -48,6 +50,9 @@ module GuidancesHelper
       if reading == 'planetary'
         planetary_link(planet, position) +
         content_tag(:em, planet_cycle_end_date(date))
+      elsif reading == 'yearly'
+        tag(:br) +
+        content_tag(:em, date.strftime(" %B %e, %Y") + ' - ' + (date + 1.year - 1.day).strftime(" %B %e, %Y"))
       else
         content_tag(:em, date.strftime(" %B %e, %Y"))
       end

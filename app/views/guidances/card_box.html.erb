@@ -47,5 +47,27 @@
         </div>
       </div>
     </div>
+
+    <div class="delivery_zone" id="delivery_third">
+      <div class="boxpanel">
+        <div class="surface-wrapper">
+          <div class="alpha surface">
+            <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;" %>
+          </div>
+
+          <div class="beta surface">
+            <%= card_box_pane @birthday.card_for_last_year(@main_card), 'yearly', @birthday.previous_birthday, :back %>
+          </div>
+
+          <div class="gamma surface">
+            <%= card_box_pane @birthday.card_for_this_year(@main_card), 'yearly', @birthday.last_birthday, :here %>
+          </div>
+
+          <div class="delta surface">
+            <%= card_box_pane @birthday.card_for_next_year(@main_card), 'yearly', @birthday.next_birthday, :forward %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
