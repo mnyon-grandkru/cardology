@@ -1,12 +1,6 @@
 module GuidancesHelper
   def card_box_pane(birthday,card, reading, date, position, planet = nil)
-    if reading == 'planetary'
-      reading_heading('52-Day Card')
-    elsif reading == 'yearly'
-      reading_heading('Yearly Theme Card')
-    else
-      reading_heading('Personal Daily Card')
-    end +
+    reading_heading(reading, position) +
     content_tag(:div, :class => 'pane_guidance') do
       flipback('box') +
       pane_heading(birthday, card, reading, date, position, planet) +
@@ -26,9 +20,9 @@ module GuidancesHelper
     end
   end
 
-  def reading_heading(reading)
+  def reading_heading(reading, position)
     content_tag(:div, :class => 'prompt_heading') do
-      content_tag(:b, reading.to_s.titleize)
+      content_tag(:b, marketing_text('heading', 'member', reading, position.to_s, 'header'))
     end
   end
 
