@@ -40,6 +40,7 @@ module GuidancesHelper
 
   def reading_text_handler(card, reading, birthday, position)
     if reading == 'planetary' && card.name == 'Joker'
+      @joker = true
       if Date.current.leap?
         if birthday.day == Date.current.day + 1
           'second_joker'
@@ -58,8 +59,8 @@ module GuidancesHelper
     content_tag(:span) do
       marketing_text('heading', 'member', reading, *reading_text_handler(card, reading, birthday, position)).html_safe + +
       if reading == 'planetary'
-        planetary_link(planet, position) +
-        content_tag(:em, planet_cycle_end_date(date))
+        @joker ? "" : (planetary_link(planet, position) +
+        content_tag(:em, planet_cycle_end_date(date)))
       elsif reading == 'yearly'
         tag(:br) + 
         content_tag(:em, birthday_range(date), :class => 'birthday_dates')
