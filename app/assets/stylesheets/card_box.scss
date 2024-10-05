@@ -1,6 +1,15 @@
-:root {
-  --card-box-width: 330px;
-  --half-card-box-width: calc(var(--card-box-width) / 2);
+@media (min-width: 1050px) {
+  :root {
+    --card-box-width: 330px;
+    --half-card-box-width: calc(var(--card-box-width) / 2);
+  }  
+}
+
+@media(max-width: 1049px) {
+  :root {
+    --card-box-width: 88vw;
+    --half-card-box-width: calc(var(--card-box-width) / 2);
+  }  
 }
 
 .boxpanel {
