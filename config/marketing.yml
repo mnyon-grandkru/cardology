@@ -138,13 +138,13 @@ heading:
     yearly:
       here:
         header: "Your Yearly Card"
-        subheader: "This card represents the main theme of this year."  
+        subheader: "This card represents the main theme of this year, from:"  
       forward:
         header: "Coming Yearly Card"
-        subheader: "This card represents the main theme of next year."
+        subheader: "This card represents the main theme of next year, from:"
       back:
         header: "Last Yearly Card"
-        subheader: "This card represents the main theme of last year."      
+        subheader: "This card represents the main theme of last year, from:" 
     planetary:
       here:
         header: "Your 52-Day Card"
@@ -161,16 +161,16 @@ heading:
     daily:
       here:
         header: "Today's Card"
-        subheader: "This card represents your personal energy pattern in play until midnight tonight."
+        subheader: "This card represents your personal energy pattern in play until midnight tonight:"
       forward:
         header: "Tomorrow's Card"
-        subheader: "This card will join you at midnight."
+        subheader: "This card will join you at midnight:"
       back:
         header: "Yesterday's Card"
-        subheader: "This card was with you yesterday."
+        subheader: "This card was with you yesterday:"
     cinderella:
       header: "Today's Card"
-      subheader: "This card has been with you since midnight."
+      subheader: "This card has been with you since midnight:"
   acquaintance:
     birth:
       header: "Their Birth Card"
