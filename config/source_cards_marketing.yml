@@ -14,7 +14,7 @@ subscriber:
     submission: "Then Click Enter"
   right_now:
     title: "Right Now Reading"
-    technique: "Click on each Source Card to flip it over!"
+    technique: "Click on each Card to flip it over!"
 
 card_reading:
   birth_card:
@@ -43,9 +43,9 @@ temporal_navigation:
     backward: "Yesterday"
     return: "Today"
   planetary:
-    forward: "Next"
-    backward: "Previous"
-    return: "Current"
+    forward: "Next 52"
+    backward: "Previous 52"
+    return: "Current 52"
   yearly:
     forward: "Next Year"
     backward: "Last Year"
