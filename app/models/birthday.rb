@@ -141,7 +141,12 @@ class Birthday < ApplicationRecord
   end
   
   def days_until_next_planet
-    52 - (days_since_birthday_on_date(Date.current) % 52)
+    days_since_bday = days_since_birthday
+    if days_since_bday >= (52 * 7)
+      next_birthday - Date.current
+    else
+      52 - (days_since_birthday % 52)
+    end
   end
   
   def date_of_next_planet
