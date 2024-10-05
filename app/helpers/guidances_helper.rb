@@ -51,6 +51,7 @@ module GuidancesHelper
         'joker'
       end
     else
+      @joker = false
       [position.to_s, 'subheader']
     end
   end
