@@ -245,7 +245,15 @@ class Birthday < ApplicationRecord
   end
 
   def conclusion_of_previous
-    previous_planet_sym == :neptune ? conclusions_of_planets(previous_birthday)[previous_planet_sym] : conclusions_of_planets[previous_planet_sym]
+    if previous_planet_sym == :neptune
+      if current_planet_sym == :pluto
+        conclusions_of_planets[previous_planet_sym]
+      else
+        conclusions_of_planets(previous_birthday)[previous_planet_sym]
+      end
+    else
+      conclusions_of_planets[previous_planet_sym]
+    end
   end
 
   def conclusion_of_upcoming
