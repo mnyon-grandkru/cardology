@@ -213,7 +213,7 @@ class Birthday < ApplicationRecord
   end
   
   def planet_on_date date
-    planet_on_date_sym.to_s.capitalize
+    planet_on_date_sym(date).to_s.capitalize
   end
 
   def planet_on_date_sym date
@@ -226,14 +226,30 @@ class Birthday < ApplicationRecord
 
   def previous_planet_sym
     current = current_planet_sym
-    position = planets_for_52.index current
+    position = current == :pluto ? 7 : planets_for_52.index(current)
     planets_for_52[position - 1]
+  end
+
+  def previous_planet_name
+    previous_planet_sym.to_s.capitalize
   end
 
   def upcoming_planet_sym
     current = current_planet_sym
-    position = planets_for_52.index current
+    position = current == :pluto ? -1 : planets_for_52.index(current)
     planets_for_52[(position + 1) % planets_for_52.length] # need to wrap around from last to Mercury
+  end
+
+  def upcoming_planet_name
+    upcoming_planet_sym.to_s.capitalize
+  end
+
+  def conclusion_of_previous
+    previous_planet_sym == :neptune ? conclusions_of_planets(previous_birthday)[previous_planet_sym] : conclusions_of_planets[previous_planet_sym]
+  end
+
+  def conclusion_of_upcoming
+    upcoming_planet_sym == :mercury ? conclusions_of_planets(next_birthday)[upcoming_planet_sym] : conclusions_of_planets[upcoming_planet_sym]
   end
 
   def current_planet
