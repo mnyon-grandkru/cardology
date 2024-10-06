@@ -177,14 +177,29 @@ class Birthday < ApplicationRecord
   end
   
   def dates_of_planetary_shifts birthday_for_year
-    [birthday_for_year,
-    birthday_for_year + 52.days,
-    birthday_for_year + (52*2).days,
-    birthday_for_year + (52*3).days,
-    birthday_for_year + (52*4).days,
-    birthday_for_year + (52*5).days,
-    birthday_for_year + (52*6).days
-  ]
+    [
+      birthday_for_year,
+      birthday_for_year + 52.days,
+      birthday_for_year + (52*2).days,
+      birthday_for_year + (52*3).days,
+      birthday_for_year + (52*4).days,
+      birthday_for_year + (52*5).days,
+      birthday_for_year + (52*6).days,
+      birthday_for_year + (52*7).days
+    ]
+  end
+
+  def conclusions_of_planets bday = last_birthday
+    conclusions = {}
+    dates = dates_of_planetary_shifts bday
+    planets.each_with_index do |planet, index|
+      conclusions[planet] = dates[index + 1]
+    end
+    conclusions
+  end
+
+  def planets
+    planet_indices.keys
   end
   
   def transition_message date
@@ -198,9 +213,29 @@ class Birthday < ApplicationRecord
   end
   
   def planet_on_date date
-    planet_indices.invert[planetary_period_on_date date].to_s.capitalize
+    planet_on_date_sym.to_s.capitalize
+  end
+
+  def planet_on_date_sym date
+    planet_indices.invert[planetary_period_on_date date]
   end
   
+  def current_planet_sym
+    planet_on_date_sym Date.current
+  end
+
+  def previous_planet_sym
+    current = current_planet_sym
+    position = planets_for_52.index current
+    planets_for_52[position - 1]
+  end
+
+  def upcoming_planet_sym
+    current = current_planet_sym
+    position = planets_for_52.index current
+    planets_for_52[(position + 1) % planets_for_52.length] # need to wrap around from last to Mercury
+  end
+
   def current_planet
     planet_on_date Date.current
   end
@@ -407,6 +442,10 @@ class Birthday < ApplicationRecord
       :sun => 0,
       :moon => -1
     }
+  end
+
+  def planets_for_52
+    [:mercury, :venus, :mars, :jupiter, :saturn, :uranus, :neptune]
   end
   
   def number_for_planet planet
