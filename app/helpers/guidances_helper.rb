@@ -41,15 +41,15 @@ module GuidancesHelper
   def reading_text_handler(card, reading, birthday, position)
     if reading == 'planetary' && card.name == 'Joker'
       @joker = true
-      if Date.current.leap?
-        if birthday.day == Date.current.day + 1
-          'second_joker'
-        else
-          'joker'
-        end
-      else
-        'joker'
-      end
+      # if Date.current.leap?
+      #   if birthday.day == Date.current.day + 1
+      #     'second_joker'
+      #   else
+      #     'joker'
+      #   end
+      # else
+      'joker'
+      # end
     else
       @joker = false
       [position.to_s, 'subheader']

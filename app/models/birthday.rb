@@ -139,6 +139,14 @@ class Birthday < ApplicationRecord
   def card_for_next_planet main_card = birth_card
     card_for_the_planetary_period_on_date Date.current + 52.days, main_card
   end
+
+  def card_for_previous_planet main_card = birth_card
+    card_for_planet previous_planet_sym, main_card
+  end
+
+  def card_for_upcoming_planet main_card = birth_card
+    card_for_planet upcoming_planet_sym, main_card
+  end
   
   def days_until_next_planet
     days_since_bday = days_since_birthday
@@ -270,6 +278,17 @@ class Birthday < ApplicationRecord
   
   def next_planet
     planet_on_date Date.current + 52.days
+  end
+
+  def card_for_planet planet, main_card = birth_card, date = Date.current
+    planetary_position = number_for_planet planet
+    return Card.joker if planetary_position > 7 || main_card == Card.joker
+    spread = Spread.find_by(:age => age_on_date(date))
+    position_of_main_card = spread.position_of main_card
+    position = position_of_main_card.position - planetary_position
+    position = 52 + position if position < 0
+    place = Place.find_by :spread_id => spread.id, :position => position
+    place.card
   end
   
   def card_for_the_planetary_period_on_date date, main_card = birth_card

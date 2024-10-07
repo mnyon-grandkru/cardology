@@ -38,7 +38,7 @@
           </div>
 
           <div class="beta surface">
-            <%= card_box_pane @birthday, @birthday.card_for_last_planet(@main_card), 'planetary', @birthday.conclusion_of_previous, :back, @birthday.previous_planet_name %>
+            <%= card_box_pane @birthday, @birthday.card_for_previous_planet(@main_card), 'planetary', @birthday.conclusion_of_previous, :back, @birthday.previous_planet_name %>
           </div>
 
           <div class="gamma surface">
@@ -46,7 +46,7 @@
           </div>
 
           <div class="delta surface">
-            <%= card_box_pane @birthday, @birthday.card_for_next_planet(@main_card), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name %>
+            <%= card_box_pane @birthday, @birthday.card_for_upcoming_planet(@main_card), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name %>
           </div>
         </div>
       </div>
