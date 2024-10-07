@@ -139,9 +139,22 @@ class Birthday < ApplicationRecord
   def card_for_next_planet main_card = birth_card
     card_for_the_planetary_period_on_date Date.current + 52.days, main_card
   end
+
+  def card_for_previous_planet main_card = birth_card
+    card_for_planet previous_planet_sym, main_card
+  end
+
+  def card_for_upcoming_planet main_card = birth_card
+    card_for_planet upcoming_planet_sym, main_card
+  end
   
   def days_until_next_planet
-    52 - (days_since_birthday_on_date(Date.current) % 52)
+    days_since_bday = days_since_birthday
+    if days_since_bday >= (52 * 7)
+      next_birthday - Date.current
+    else
+      52 - (days_since_birthday % 52)
+    end
   end
   
   def date_of_next_planet
@@ -166,16 +179,35 @@ class Birthday < ApplicationRecord
   def next_birthday
     last_birthday + 1.year
   end
+
+  def previous_birthday
+    last_birthday - 1.year
+  end
   
   def dates_of_planetary_shifts birthday_for_year
-    [birthday_for_year,
-    birthday_for_year + 52.days,
-    birthday_for_year + (52*2).days,
-    birthday_for_year + (52*3).days,
-    birthday_for_year + (52*4).days,
-    birthday_for_year + (52*5).days,
-    birthday_for_year + (52*6).days
-  ]
+    [
+      birthday_for_year,
+      birthday_for_year + 52.days,
+      birthday_for_year + (52*2).days,
+      birthday_for_year + (52*3).days,
+      birthday_for_year + (52*4).days,
+      birthday_for_year + (52*5).days,
+      birthday_for_year + (52*6).days,
+      birthday_for_year + (52*7).days
+    ]
+  end
+
+  def conclusions_of_planets bday = last_birthday
+    conclusions = {}
+    dates = dates_of_planetary_shifts bday
+    planets.each_with_index do |planet, index|
+      conclusions[planet] = dates[index + 1]
+    end
+    conclusions
+  end
+
+  def planets
+    planet_indices.keys
   end
   
   def transition_message date
@@ -189,9 +221,53 @@ class Birthday < ApplicationRecord
   end
   
   def planet_on_date date
-    planet_indices.invert[planetary_period_on_date date].to_s.capitalize + '.'
+    planet_on_date_sym(date).to_s.capitalize
+  end
+
+  def planet_on_date_sym date
+    planet_indices.invert[planetary_period_on_date date]
   end
   
+  def current_planet_sym
+    planet_on_date_sym Date.current
+  end
+
+  def previous_planet_sym
+    current = current_planet_sym
+    position = current == :pluto ? 7 : planets_for_52.index(current)
+    planets_for_52[position - 1]
+  end
+
+  def previous_planet_name
+    previous_planet_sym.to_s.capitalize
+  end
+
+  def upcoming_planet_sym
+    current = current_planet_sym
+    position = current == :pluto ? -1 : planets_for_52.index(current)
+    planets_for_52[(position + 1) % planets_for_52.length] # need to wrap around from last to Mercury
+  end
+
+  def upcoming_planet_name
+    upcoming_planet_sym.to_s.capitalize
+  end
+
+  def conclusion_of_previous
+    if previous_planet_sym == :neptune
+      if current_planet_sym == :pluto
+        conclusions_of_planets[previous_planet_sym]
+      else
+        conclusions_of_planets(previous_birthday)[previous_planet_sym]
+      end
+    else
+      conclusions_of_planets[previous_planet_sym]
+    end
+  end
+
+  def conclusion_of_upcoming
+    upcoming_planet_sym == :mercury ? conclusions_of_planets(next_birthday)[upcoming_planet_sym] : conclusions_of_planets[upcoming_planet_sym]
+  end
+
   def current_planet
     planet_on_date Date.current
   end
@@ -202,6 +278,17 @@ class Birthday < ApplicationRecord
   
   def next_planet
     planet_on_date Date.current + 52.days
+  end
+
+  def card_for_planet planet, main_card = birth_card, date = Date.current
+    planetary_position = number_for_planet planet
+    return Card.joker if planetary_position > 7 || main_card == Card.joker
+    spread = Spread.find_by(:age => age_on_date(date))
+    position_of_main_card = spread.position_of main_card
+    position = position_of_main_card.position - planetary_position
+    position = 52 + position if position < 0
+    place = Place.find_by :spread_id => spread.id, :position => position
+    place.card
   end
   
   def card_for_the_planetary_period_on_date date, main_card = birth_card
@@ -398,6 +485,10 @@ class Birthday < ApplicationRecord
       :sun => 0,
       :moon => -1
     }
+  end
+
+  def planets_for_52
+    [:mercury, :venus, :mars, :jupiter, :saturn, :uranus, :neptune]
   end
   
   def number_for_planet planet

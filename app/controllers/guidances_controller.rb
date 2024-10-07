@@ -26,7 +26,18 @@ class GuidancesController < ApplicationController
         render :js => "window.location = '/guidances/personality?birthday_id=#{@birthday.id}'"
         # render :template => 'guidances/show', :locals => {personality: true, zodiac: params[:zodiac]}
       end
+    else
+      @main_card = @birthday.birth_card
+      render :template => 'guidances/card_box'
     end
+  end
+  
+  ## Card-Box Interface
+  
+  def card_box
+    @birthday = Birthday.find 1
+    @main_card = @birthday.birth_card
+    @reading = 'daily'
   end
   
   ## Simplero-bound purchaser interface
@@ -92,7 +103,8 @@ class GuidancesController < ApplicationController
   def personality
     @birthday = Birthday.find params[:birthday_id]
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
-    render :template => 'guidances/show', :locals => {personality: true, zodiac: params[:zodiac]}
+    @main_card = @birthday.personality_card
+    render :template => 'guidances/card_box', :locals => {personality: true, zodiac: params[:zodiac]}
   end
 
   def daily_card
@@ -133,6 +145,10 @@ class GuidancesController < ApplicationController
       @planet = @birthday.next_planet
       @date = @birthday.date_of_next_planet  + 52.days
     end
+  end
+  
+  def planet
+    @face = {'here' => '.gamma', 'back' => '.beta', 'forward' => '.delta'}[params[:position]]
   end
 
   def year_card

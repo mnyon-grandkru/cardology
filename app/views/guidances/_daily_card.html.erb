@@ -24,7 +24,7 @@
   </div>
   <% @header = 'daily' %>
   <%= render "guidances/carousel_reading" %>
-  <% if  params[:day] == "yesterday" %>
+  <% if params[:day] == "yesterday" %>
     <div class = "button_daily_card  temporal_navigation">
       <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'return'), guidances_daily_card_path(:birthday_id => @birthday.id, :day => 'today', :personality => params[:personality], :zodiac => params[:zodiac]), :remote => true ,:class => 'lunar_navigation ' %>
       <%= link_to source_cards_marketing_text('temporal_navigation', 'daily', 'forward'), guidances_daily_card_path(:birthday_id => @birthday.id, :day => 'tomorrow', :personality => params[:personality], :zodiac => params[:zodiac]), :remote => true ,:class => 'lunar_navigation' %>

@@ -52,11 +52,15 @@
 .flipback {
   position: absolute;
   right: 20px;
-  top: 48px;
+  top: 29px;
   text-decoration: none;
   color: black;
   font-size: 1.4em;
   filter: drop-shadow(2px 2px 1px #aaa);
+}
+
+.back .flipback {
+  top: 49px;
 }
 
 .flipback:after {
@@ -144,13 +148,6 @@ h2{
   text-align: justify;
 }
 
-// text-size
-@media only screen and (min-width: 130px) and (max-width: 313px) {
-  .owl-item {
-    font-size: small;
-  }
-}
-
 .wrapper .owl-nav{
   color: rgba(13, 2, 117, 0.993);
 }
@@ -184,11 +181,13 @@ h2{
 .constant{
   align-items: center;
   padding-left: 0px;
-}
 
-@media only screen and (min-width: 130px) and (max-width: 255px) {
-  .constant {
-    font-size: small;
+  div.card_name {
+    text-align: center;
+
+    b {
+      font-size: x-large;
+    }
   }
 }
 
@@ -198,8 +197,8 @@ h2{
 
 .pane_guidance {
   display: inline-block;
-  width: 320px;
-  height: 1070px;
+  width: 300px;
+//  height: 1070px;
   padding: 15px;
   border: 2px solid black;
   border-radius: 50px;
@@ -218,17 +217,15 @@ h2{
     display: none;
     border-radius: 3px;
   }
+
+  .birthday_dates {
+    text-align: center;
+  }
 }
 
 @media (max-width: 767px) {
   .pane_guidance {
     height: auto;
-  }
-}
-
-@media (min-width: 768px) {
-  .pane_guidance {
-    height: 1070px;
   }
 }
 
@@ -263,25 +260,6 @@ h2{
     }
 }
 
-@media only screen and (min-width: 767px) and (max-width: 1000px) {
-  .prompt_heading {
-    width: 151px;
-    text-size-adjust: 100px;
-  }
-  
-  .flipback {
-    right: 100px;
-  }
-}
-
-@media only screen and (min-width: 100px) and (max-width: 240px) {
-  .prompt_heading {
-    width: 120px;
-    font-size: medium;
-    text-align: center;
-  }
-}
-
 .source_cards_card_design {
   width: 250px;
   border-radius: 26px;
@@ -291,20 +269,6 @@ h2{
 @media only screen and (max-width: 767px) {
   .source_cards_card_design {
     width: 200px;
-  }
-}
-
-@media only screen and (min-width: 200px) and (max-width: 255px) {
-  .source_cards_card_design {
-    width: 200px;
-    margin-bottom: 10px;
-  }
-}
-
-@media only screen and (min-width: 100px) and (max-width: 200px) {
-  .source_cards_card_design {
-    width: 170px;
-    margin-bottom: 10px;
   }
 }
 
@@ -345,20 +309,20 @@ h2{
   border: 2px solid #335276;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1050px) {
   #guidance_zone{
-    flex-direction:column;
+    flex-direction: column;
   }
   
   .delivery_zone{
     width: 100%;
   }
   
-  .flipback {
+  .back .flipback, .boxpanel .flipback {
     top: 14px;
   }
   
-  #guidance_zone .panel .back {
+  #guidance_zone .panel .back, #guidance_zone .boxpanel .surface {
     width: 88vw;
   }
 
@@ -451,38 +415,38 @@ h2{
   margin-bottom: 16px;
 }
 
-@media only screen and (min-width: 100px) and (max-width: 313px) {
-  .delivery_zone{
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
+// @media only screen and (min-width:1024px) {
+//   .pane_guidance {
+//     width: 300px;
+//     height: 100%;
+//   }
+// }
+
+.planet_description {
+  position: absolute;
+  z-index: 1000;
+  background: white;
+  opacity: 0.95;
+  width: 79%;
+  border-radius: 20px;
+  font-size: 1.11em;
+  padding: 20px;
+  
+  .planet_description_dismiss {
+    float: right;
+    text-decoration: none;
+    color: black;
+    font-size: 0.5em;
   }
 }
 
-@media only screen and (min-width: 767px) {
-  .pane_guidance {
-    width: 205px;
-    height: 100%;
-  }
-}
-
-@media only screen and (min-width:1024px) {
-  .pane_guidance {
-    width: 300px;
-    height: 100%;
-  }
+.card_image_paragraph {
+  text-align: center;
 }
 
 .owl-carousel .owl-item img.pad {
   width: 200px;
   border-radius: 8.5px;
-}
-
-@media only screen and (min-width: 100px) and (max-width: 313px) {
-  .pad{
-    width: 80px;
-    margin-bottom: 10px;
-  }
 }
 
 .tech-support-link {

@@ -1,0 +1,8 @@
+<%= reading_heading 'Personal Daily Card' %>
+<div class="pane_guidance">
+  <%= flipback 'box' %>
+  <%= pane_heading @card, @reading, @date %>
+  <%= carousel_reading @card, @reading %>
+  <%= temporal_navigation_buttons @reading, @position %>
+  <%= copyright_text %>
+</div>

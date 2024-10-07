@@ -1,0 +1,77 @@
+<body class="body">
+<%= clearleft %>
+  <div class="lookup_link">
+    <%= link_to "Do Another Lookup", "/guidances/prompt", id: 'new_lookup_link', class: 'lunar_navigation', method: :get %>
+  </div>
+  <div class="widget_heading">
+    <section id="widget_title_gui"><%= source_cards_marketing_text 'subscriber', 'right_now', 'title' %></section>
+    <section id="widget_instructions"><%= source_cards_marketing_text 'subscriber', 'right_now', 'technique' %></section>
+  </div>
+  <div id="guidance_zone" class="guidance_show_media">
+    <div class="delivery_zone" id="delivery_first">
+      <div class="boxpanel">
+        <div class="surface-wrapper">
+          <div class="alpha surface">
+            <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;" %>
+          </div>
+
+          <div class="beta surface">
+            <%= card_box_pane @birthday, @birthday.card_for_yesterday(@main_card), 'daily', DateTime.yesterday, :back %>
+          </div>
+
+          <div class="gamma surface">
+            <%= card_box_pane @birthday, @birthday.card_for_today(@main_card), 'daily', Date.current, :here %>
+          </div>
+
+          <div class="delta surface">
+            <%= card_box_pane @birthday, @birthday.card_for_tomorrow(@main_card), 'daily', DateTime.tomorrow, :forward %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="delivery_zone" id="delivery_second">
+      <div class="boxpanel">
+        <div class="surface-wrapper">
+          <div class="alpha surface">
+            <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;" %>
+          </div>
+
+          <div class="beta surface">
+            <%= card_box_pane @birthday, @birthday.card_for_previous_planet(@main_card), 'planetary', @birthday.conclusion_of_previous, :back, @birthday.previous_planet_name %>
+          </div>
+
+          <div class="gamma surface">
+            <%= card_box_pane @birthday, @birthday.card_for_this_planet(@main_card), 'planetary', @birthday.date_of_next_planet, :here, @birthday.current_planet %>
+          </div>
+
+          <div class="delta surface">
+            <%= card_box_pane @birthday, @birthday.card_for_upcoming_planet(@main_card), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="delivery_zone" id="delivery_third">
+      <div class="boxpanel">
+        <div class="surface-wrapper">
+          <div class="alpha surface">
+            <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;" %>
+          </div>
+
+          <div class="beta surface">
+            <%= card_box_pane @birthday, @birthday.card_for_last_year(@main_card), 'yearly', @birthday.previous_birthday, :back %>
+          </div>
+
+          <div class="gamma surface">
+            <%= card_box_pane @birthday, @birthday.card_for_this_year(@main_card), 'yearly', @birthday.last_birthday, :here %>
+          </div>
+
+          <div class="delta surface">
+            <%= card_box_pane @birthday, @birthday.card_for_next_year(@main_card), 'yearly', @birthday.next_birthday, :forward %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

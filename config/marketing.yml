@@ -136,29 +136,41 @@ heading:
       header: "Personality Card"
       subheader: 
     yearly:
-      header_last: "Last Yearly Card"
-      header: "Your Yearly Card"
-      header_next: "Coming Yearly Card"
-      subheader: "This card represents the main theme of your year. Your year starts from your last birthday until your next birthday."
+      here:
+        header: "Your Yearly Card"
+        subheader: "This card represents the main theme of this year, from:"  
+      forward:
+        header: "Coming Yearly Card"
+        subheader: "This card represents the main theme of next year, from:"
+      back:
+        header: "Last Yearly Card"
+        subheader: "This card represents the main theme of last year, from:" 
     planetary:
-      header_last: "Previous 52-Day Card"
-      header: "Your 52-Day Card"
-      header_next: "Coming 52-Day Card"
-      subheader: "This card represents a specific energy pattern in play for this 52-day cycle, "
+      here:
+        header: "Your 52-Day Card"
+        subheader: "This card represents a specific energy pattern in play for this 52-day cycle, "
+      forward:
+        header: "Coming 52-Day Card"
+        subheader: "This card represents a specific energy pattern in play for the upcoming 52-day cycle, "
+      back:
+        header: "Previous 52-Day Card"
+        subheader: "This card represents a specific energy pattern in play for the recent 52-day cycle, "
+      
       joker: "Today is your Joker Day. It is not part of your ordinary 52-Day Planetary Cycles. It’s a special day."
       second_joker: "Today is your 2nd Joker Day. It’s a rare event that only happens once every four years."
     daily:
-      header: "Today's Card"
-      subheader: "This card represents your personal energy pattern in play until midnight tonight."
-    tomorrow:
-      header: "Tomorrow's Card"
-      subheader: "This card will join you at midnight."
-    yesterday:
-      header: "Yesterday's Card"
-      subheader: "This card was with you yesterday."
+      here:
+        header: "Today's Card"
+        subheader: "This card represents your personal energy pattern in play until midnight tonight:"
+      forward:
+        header: "Tomorrow's Card"
+        subheader: "This card will join you at midnight:"
+      back:
+        header: "Yesterday's Card"
+        subheader: "This card was with you yesterday:"
     cinderella:
       header: "Today's Card"
-      subheader: "This card has been with you since midnight."
+      subheader: "This card has been with you since midnight:"
   acquaintance:
     birth:
       header: "Their Birth Card"
