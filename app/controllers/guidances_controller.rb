@@ -104,7 +104,7 @@ class GuidancesController < ApplicationController
     @birthday = Birthday.find params[:birthday_id]
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
     @main_card = @birthday.personality_card
-    render :template => 'guidances/card_box', :locals => {personality: true, zodiac: params[:zodiac]}
+    render :template => 'guidances/card_box'#, :locals => {personality: true, zodiac: params[:zodiac]}
   end
 
   def daily_card
