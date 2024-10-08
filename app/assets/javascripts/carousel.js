@@ -1,5 +1,5 @@
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   var carousel = $('.owl-carousel');
     carousel.owlCarousel({
         loop:true,
