@@ -8,6 +8,7 @@
     <div class="delivery_zone" id="delivery_first">
       <div class="panel">
         <div class="front flip_card" onclick="addheight()">
+          <%= reading_heading('daily', :here) %>
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
         <div class="back" id="daily_card">
@@ -18,6 +19,7 @@
     <div class="delivery_zone" id="delivery_second">
       <div class="panel">
         <div class="front flip_card" onclick="addheight2()">
+          <%= reading_heading('planetary', :here) %>
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
           <div class="prompt_heading desktop-only" style="margin-top: 10px;">
             <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
@@ -34,6 +36,7 @@
     <div class="delivery_zone" id="delivery_third">
       <div class="panel">
         <div class="front flip_card" id = "btn_zone" onclick="addheight3()">
+          <%= reading_heading('yearly', :here) %>
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
         <div class="back" id= "card_year">
