@@ -12,6 +12,11 @@ purchaser:
   subheader: "Enter Your Birthdate. Then Click Go."
   button: "Go"
   instructions: "Click on each Card to flip it over!"
+  call_to_subscription:
+    daily: "Want clear guidance every single day? Subscribe below!"
+    planetary: "Want to know which Card is coming up next? Subscribe below."
+    yearly: "Want to see what’s in the Cards for you next year? Subscribe below."
+
 subscriber:
   instructions:
     heading: "Choose Your Birthday"

@@ -5,7 +5,7 @@ module GuidancesHelper
       flipback(!purchaser) +
       pane_heading(birthday, card, reading, date, position, planet) +
       carousel_reading(card, reading) +
-      temporal_navigation_buttons(reading, position) +
+      temporal_navigation(reading, position, purchaser) +
       copyright_text
     end
   end
@@ -96,6 +96,11 @@ module GuidancesHelper
     content_tag(:p, :class => 'card_image_paragraph') do
       image_tag card.image_url, class: "pad reveal"
     end
+  end
+
+  def temporal_navigation(reading, position, purchaser = false)
+    return content_tag(:h3, source_cards_marketing_text('purchaser', 'call_to_subscription', reading), :class => 'call_to_subscription') if purchaser
+    temporal_navigation_buttons(reading, position)
   end
 
   def temporal_navigation_buttons(reading, position)

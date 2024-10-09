@@ -11,7 +11,6 @@
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
         <div class="back" id="daily_card">
-          <%#= link_to "", '#', onclick: "flipCardBack(event)", data: {turbolinks: false}, class: 'flipback' %>
           <%= card_box_pane @birthday, @birthday.card_for_today(@main_card), 'daily', Date.current, :here, nil, true %>
         </div>
       </div>
@@ -28,8 +27,7 @@
           </div>
         </div>
         <div class="back" id="card52">
-          <%#= link_to "", '#', onclick: "flipCardBack(event)", data: {turbolinks: false}, class: 'flipback' %>
-          <%= render "guidances/card52_purchaser", show: @show %>
+          <%= card_box_pane @birthday, @birthday.card_for_this_planet(@main_card), 'planetary', @birthday.date_of_next_planet, :here, @birthday.current_planet, true %>
         </div>
       </div>
     </div>
@@ -39,8 +37,7 @@
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
         <div class="back" id= "card_year">
-          <%#= link_to "", '#', onclick: "flipCardBack(event)", data: {turbolinks: false}, class: 'flipback' %>
-          <%= render "guidances/year_card_purchaser" %>
+          <%= card_box_pane @birthday, @birthday.card_for_this_year(@main_card), 'yearly', @birthday.last_birthday, :here, nil, true %>
         </div>
       </div>
     </div>
