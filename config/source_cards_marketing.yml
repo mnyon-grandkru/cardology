@@ -7,6 +7,11 @@ new_players:
   button: "Enter"
   invitation: "Click on each card to read the game of your life!"
 
+purchaser:
+  header: "Right Now Reading"
+  subheader: "Enter Your Birthdate. Then Click Go."
+  button: "Go"
+  instructions: "Click on each Card to flip it over!"
 subscriber:
   instructions:
     heading: "Choose Your Birthday"

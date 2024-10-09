@@ -50,6 +50,7 @@ class GuidancesController < ApplicationController
   def receive_reading
     @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
+    @main_card = @birthday.birth_card
   end
   
   ## Purchaser Interface

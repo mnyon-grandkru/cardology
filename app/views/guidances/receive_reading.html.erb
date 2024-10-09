@@ -1,8 +1,8 @@
 <body class="body">
   <%= clearleft %>
   <div class="widget_heading">
-    <section id="widget_title_gui"><%= source_cards_marketing_text 'new_players', 'header1' %></section>
-    <section id="widget_instructions">Click on each Source Card to flip it over!</section>
+    <section id="widget_title_gui"><%= source_cards_marketing_text 'purchaser', 'header' %></section>
+    <section id="widget_instructions"><%= source_cards_marketing_text 'purchaser', 'instructions' %></section>
   </div>
   <div id="guidance_zone" class="guidance_show_media">
     <div class="delivery_zone" id="delivery_first">
@@ -12,7 +12,7 @@
         </div>
         <div class="back" id="daily_card">
           <%#= link_to "", '#', onclick: "flipCardBack(event)", data: {turbolinks: false}, class: 'flipback' %>
-          <%= render "guidances/daily_card_purchaser" %>
+          <%= card_box_pane @birthday, @birthday.card_for_today(@main_card), 'daily', Date.current, :here, nil, true %>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 module GuidancesHelper
-  def card_box_pane(birthday,card, reading, date, position, planet = nil)
+  def card_box_pane(birthday, card, reading, date, position, planet = nil, purchaser = false)
     reading_heading(reading, position) +
     content_tag(:div, :class => 'pane_guidance') do
-      flipback('box') +
+      flipback(!purchaser) +
       pane_heading(birthday, card, reading, date, position, planet) +
       carousel_reading(card, reading) +
       temporal_navigation_buttons(reading, position) +
@@ -138,7 +138,7 @@ module GuidancesHelper
     end
   end
   
-  def flipback box = nil
+  def flipback box = false
     func = box ? "flipBoxBack(event)" : "flipCardBack(event)"
     link_to "", '#', onclick: func, data: {turbolinks: false}, class: 'flipback'
   end
