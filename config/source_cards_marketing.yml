@@ -16,7 +16,9 @@ purchaser:
     daily: "Want clear guidance every single day? Subscribe below!"
     planetary: "Want to know which Card is coming up next? Subscribe below."
     yearly: "Want to see what’s in the Cards for you next year? Subscribe below."
-
+  prompt: "Subscribe To Read More Cards"
+  link: "Learn More And Subscribe"
+  
 subscriber:
   instructions:
     heading: "Choose Your Birthday"

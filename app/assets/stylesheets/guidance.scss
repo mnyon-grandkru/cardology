@@ -472,6 +472,17 @@ h2{
   }
 }
 
+.mobile-tablet-only.prompt_heading {
+  margin-top: 10px;
+
+  span {
+    text-align: center; 
+    font-size: 18px; 
+    text-decoration: none; 
+    color: white;
+  }
+}
+
 /* Hide the mobile-tablet-only class on desktop */
 @media (min-width: 992px) {
   .mobile-tablet-only {

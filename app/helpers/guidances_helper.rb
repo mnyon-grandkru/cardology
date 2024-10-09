@@ -3,19 +3,19 @@ module GuidancesHelper
     reading_heading(reading, position) +
     content_tag(:div, :class => 'pane_guidance') do
       flipback(!purchaser) +
-      pane_heading(birthday, card, reading, date, position, planet) +
+      pane_heading(birthday, card, reading, date, position, planet, purchaser) +
       carousel_reading(card, reading) +
       temporal_navigation(reading, position, purchaser) +
       copyright_text
     end
   end
 
-  def pane_heading(birthday, card, reading, date, position, planet = nil)
+  def pane_heading(birthday, card, reading, date, position, planet = nil, purchaser = false)
     content_tag(:div, :class => 'constant') do
       card_name_heading(card) +
       content_tag(:div, :class => 'reading_context') do
         card_image(card) +
-        reading_subheader(birthday, card, reading, date, position, planet)
+        reading_subheader(birthday, card, reading, date, position, planet, purchaser)
       end
     end
   end
@@ -56,11 +56,11 @@ module GuidancesHelper
     end
   end
   
-  def reading_subheader(birthday, card, reading, date, position, planet = nil)
+  def reading_subheader(birthday, card, reading, date, position, planet = nil, purchaser = false)
     content_tag(:span) do
       marketing_text('heading', 'member', reading, *reading_text_handler(card, reading, birthday, position)).html_safe + +
       if reading == 'planetary'
-        @joker ? "" : (planetary_link(planet, position) +
+        @joker ? "" : (planetary_link(planet, purchaser ? nil : position) +
         content_tag(:em, planet_cycle_end_date(date)))
       elsif reading == 'yearly'
         tag(:br) + 
