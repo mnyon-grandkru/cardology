@@ -278,7 +278,7 @@ h2{
   align-items: center;
 }
 
-.button_daily_card{
+.button_daily_card {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -290,7 +290,7 @@ h2{
   }
 }
 
-#new_url_source_card  {
+#new_url_source_card {
   margin-top: 30px;
   width: 224px;
 }
@@ -473,7 +473,7 @@ h2{
   }
 }
 
-.mobile-tablet-only.prompt_heading {
+.mobile-tablet-only.prompt_heading, .desktop-only.prompt_heading {
   margin-top: 10px;
 
   span {
@@ -482,6 +482,10 @@ h2{
     text-decoration: none; 
     color: white;
   }
+}
+
+.mobile-tablet-only.button_daily_card, .desktop-only.button_daily_card {
+  font-size: 18px;
 }
 
 /* Hide the mobile-tablet-only class on desktop */

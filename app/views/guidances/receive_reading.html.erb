@@ -21,21 +21,17 @@
         <div class="front flip_card" onclick="addheight2()">
           <%= reading_heading('planetary', :here) %>
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
-          <div class="prompt_heading desktop-only" style="margin-top: 10px;">
-            <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
-          </div>
-          <div class="button_daily_card desktop-only">
-            <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
-          </div>
+          <%= call_to_subscription %>
         </div>
         <div class="back" id="card52">
           <%= card_box_pane @birthday, @birthday.card_for_this_planet(@main_card), 'planetary', @birthday.date_of_next_planet, :here, @birthday.current_planet, true %>
+          <%= call_to_subscription %>
         </div>
       </div>
     </div>
     <div class="delivery_zone" id="delivery_third">
       <div class="panel">
-        <div class="front flip_card" id = "btn_zone" onclick="addheight3()">
+        <div class="front flip_card" id="btn_zone" onclick="addheight3()">
           <%= reading_heading('yearly', :here) %>
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
@@ -44,11 +40,8 @@
         </div>
       </div>
     </div>
-    <div class="prompt_heading mobile-tablet-only">
-      <b><span><%= source_cards_marketing_text 'purchaser', 'prompt' %></span></b>
-    </div>
     <div class="button_daily_card mobile-tablet-only">
-      <%= link_to source_cards_marketing_text('purchaser', 'link'), subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
+      <%= link_to source_cards_marketing_text('purchaser', 'prompt'), subscribe_link, target: :_blank, class: "lunar_navigation" %>
     </div>
   </div>
 </body>

@@ -128,6 +128,15 @@ module GuidancesHelper
     end
   end
 
+  def call_to_subscription
+    content_tag(:div, :class => 'prompt_heading desktop-only') do
+      content_tag(:b, content_tag(:span, source_cards_marketing_text('purchaser', 'prompt')))
+    end +
+    content_tag(:div, :class => 'button_daily_card desktop-only') do
+      link_to source_cards_marketing_text('purchaser', 'link'), subscribe_link, target: :_blank, class: "lunar_navigation"
+    end
+  end
+
   def split_carousel_text(carousel_text)
     return [carousel_text] unless carousel_text.length > 620
     midpoint = carousel_text.length / 2
