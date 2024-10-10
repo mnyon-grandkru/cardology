@@ -45,8 +45,6 @@
   width: 50%;
   margin-bottom: 40px;
   margin-right: 10px;
-  display: flex;
-  justify-content: center;
 }
 
 .flipback {
@@ -85,22 +83,6 @@
   height: 100%;
 }
 
-#guidance_zone{
-  display: flex;
-  justify-content: space-evenly;
-}
-
-#guidance_zone_show {
-  display: flex;
-  justify-content: center;
-  justify-content: space-evenly
-}
-
-.body {
-  background-image: asset-url('StarField.jpg');
-  background-size: cover;
-}
-
 .pad{
   padding-top: 7px;
   text-align: center;
@@ -132,41 +114,41 @@ h2{
   border: 1px solid black;
 }
 
-.owl-item{
+.owl-item {
   text-align: justify;
 }
 
-.wrapper .owl-nav{
+.wrapper .owl-nav {
   color: rgba(13, 2, 117, 0.993);
 }
 
-.wrapper .owl-prev, .wrapper .owl-next{
+.wrapper .owl-prev, .wrapper .owl-next {
   top: 10%;
   border-radius: 100%;
   font-weight: bold;
 }
 
-.wrapper .owl-prev{
+.wrapper .owl-prev {
   top: 25px;
 }
 
-.wrapper .owl-next{
+.wrapper .owl-next {
   top: 25px;
 }
 
-.carousel_style{
+.carousel_style {
   padding-left: 0px;
 }
 
-.owl-nav, button.owl.owl-next,button.owl.prev{
+.owl-nav, button.owl.owl-next,button.owl.prev {
   font-size: 30px;
 }
 
-.carousel_size{
+.carousel_size {
   font-size: 40px;
 }
 
-.constant{
+.constant {
   align-items: center;
   padding-left: 0px;
 
@@ -244,7 +226,7 @@ h2{
     text-align: center;
     color: bisque;
     text-shadow: 0px 3px 4px #448;
-    }
+  }
 }
 
 .source_cards_card_design {
@@ -253,13 +235,7 @@ h2{
   margin-top: 16px;
 }
 
-@media only screen and (max-width: 767px) {
-  .source_cards_card_design {
-    width: 200px;
-  }
-}
-
-.wrapper{
+.wrapper {
   width: 100%;
   display: flex;
   align-items: center;
@@ -271,7 +247,8 @@ h2{
   justify-content: space-evenly;
   align-items: center;
   padding-top: 7px;
-  a.lunar_navigation{
+
+  a.lunar_navigation {
     margin-bottom: 16px;
     padding: 5px 14px;
   }
@@ -289,7 +266,7 @@ h2{
   transition: all 0.3s;
 }
 
-.new_source_card:hover{
+.new_source_card:hover {
   cursor: pointer;
   background-color: #fff;
   color: #335276;

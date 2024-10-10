@@ -24,3 +24,28 @@ form#new_birthday {
     pointer-events: none;
   }
 }
+
+#birthday_selection_tool {
+  padding: 18px;
+
+  #new_birthday input[type="submit"] {
+    margin-top: 12px;
+    width: 146px;
+    font-size: 1em;
+    background-color: #0e45c4;
+    color: white;
+    border-radius: 20px;
+    border-color: white;
+  }
+  
+  #birthday_date_1i {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px){
+  #birthday_selection_tool {
+    padding: 18px;
+    margin-left: -4px;
+  }
+}

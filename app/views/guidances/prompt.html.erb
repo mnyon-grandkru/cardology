@@ -15,7 +15,7 @@
       <%= birthday_form.submit marketing_text('new_players', 'button2') %>
     </div>
   <% end %>
-  <div id="guidance_zone" class= "guidance_prompt_media">
+  <div id="guidance_zone" class="guidance_prompt_media">
     <div class="prompt_zone">
       <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
     </div>
@@ -27,11 +27,7 @@
     </div>
   </div>
 </body>
-<style>
-  #guidance_prompt_media{
-    justify-content: center;
-  }
-</style>
+
 <script>
   function startWobble() {
     document.getElementById("guidance_zone").classList.add('wobble');
