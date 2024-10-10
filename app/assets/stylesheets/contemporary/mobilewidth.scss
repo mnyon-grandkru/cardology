@@ -1,9 +1,9 @@
 @media only screen and (max-width: 1050px) {
-  #guidance_zone{
+  #guidance_zone {
     flex-direction: column;
   }
   
-  .delivery_zone{
+  .delivery_zone {
     width: 100%;
   }
   
@@ -15,7 +15,7 @@
     width: 88vw;
   }
 
-  .panel{
+  .panel {
     margin-left: 0;
     width: 100%;
     display: flex;
@@ -29,11 +29,11 @@
     left: 0;
   }
   
-  .panel .back, .panel .front{
+  .panel .back, .panel .front {
     width: 100%;
   }
   
-  .pane_guidance{
+  .pane_guidance {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -box-sizing: border-box;
@@ -46,31 +46,31 @@
     height: 750px;
   }
   
-  .prompt_zone{
+  .prompt_zone {
     max-width: 320px;
     text-align: center;
     width: 100%;
   }
   
-  .widget_heading{
+  .widget_heading {
     margin: 14px 2% 14px 2%;
   }
   
-  #widget_title_gui{
+  #widget_title_gui {
     font-size: 1.6em;
   }
   
-  .guidance_prompt_media{
+  .guidance_prompt_media {
     align-items: center;
   }
   
-  .lookup_link{
+  .lookup_link {
     text-align: center;
     margin-bottom: 10%;
     margin-left: 0;
   }
   
-  #new_birthday{
+  #new_birthday {
     margin-top: 1px;
   }
 }

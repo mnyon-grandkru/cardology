@@ -130,7 +130,7 @@ module GuidancesHelper
 
   def call_to_subscription
     content_tag(:div, :class => 'button_daily_card desktop-only') do
-      link_to source_cards_marketing_text('purchaser', 'link'), subscribe_link, target: :_blank, class: "lunar_navigation"
+      link_to source_cards_marketing_text('purchaser', 'link'), subscribe_link, target: :_blank, class: "lunar_navigation subscribe"
     end
   end
 
