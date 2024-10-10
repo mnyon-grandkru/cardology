@@ -12,4 +12,15 @@ form#new_birthday {
     padding: 5px;
     color: #0e45c4;
   }
+
+  #reading_type {
+    width: 200px;
+  }
+  
+  #reading_picker_arrow {
+    position: absolute;
+    margin-left: -40px;
+    margin-top: 3px;
+    pointer-events: none;
+  }
 }

@@ -69,13 +69,6 @@
   padding: 0px 8px;
   border-radius: 5px;
 }
-// @media only screen and (min-width: 768px) and (max-width: 1900px) {
-//   .delivery_zone{
-//     padding-top: 40px;
-//     width: 28%;
-//     margin-bottom: 40px;
-//   }
-// }
 
 @media only screen and (min-width: 600px) and (max-width: 768px) {
   .delivery_zone{
@@ -96,11 +89,6 @@
   display: flex;
   justify-content: space-evenly;
 }
-// @media only screen and (min-width: 768px) and (max-width: 1900px) {
-//   #guidance_zone{
-//     margin-left: 74px
-//     }
-// }
 
 #guidance_zone_show {
   display: flex;
@@ -163,15 +151,15 @@ h2{
 }
 
 .wrapper .owl-next{
- top: 25px;
-  }
+  top: 25px;
+}
 
 .carousel_style{
- padding-left: 0px;
+  padding-left: 0px;
 }
 
 .owl-nav, button.owl.owl-next,button.owl.prev{
- font-size: 30px;
+  font-size: 30px;
 }
 
 .carousel_size{
@@ -244,7 +232,6 @@ h2{
   opacity: 0.8;
   margin: -20px 14% 6px 13%;
   text-align: center;
-  // margin-bottom: 1px;
 
   #prompt_title {
     font-size:2em;
@@ -302,101 +289,11 @@ h2{
   transition: all 0.3s;
 }
 
-.new_source_card :hover{
+.new_source_card:hover{
   cursor: pointer;
   background-color: #fff;
   color: #335276;
   border: 2px solid #335276;
-}
-
-@media only screen and (max-width: 1050px) {
-  #guidance_zone{
-    flex-direction: column;
-  }
-  
-  .delivery_zone{
-    width: 100%;
-  }
-  
-  .back .flipback, .boxpanel .flipback {
-    top: 14px;
-  }
-  
-  #guidance_zone .panel .back, #guidance_zone .boxpanel .surface {
-    width: 88vw;
-  }
-
-  .panel{
-    margin-left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center
-  }
-  
-  .panel .front {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    left: 0;
-  }
-  
-  .panel .back, .panel .front{
-    width: 100%;
-  }
-  
-  .pane_guidance{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -box-sizing: border-box;
-    max-width: 460px;
-    width: 100%;
-    position: relative;
-  }
-  
-  .add_height {
-    height: 750px;
-  }
-  
-  .prompt_zone{
-    max-width: 320px;
-    text-align: center;
-    width: 100%;
-  }
-  
-  .widget_heading{
-    margin: 14px 2% 14px 2%;
-  }
-  
-  #widget_title_gui{
-    font-size: 1.6em;
-  }
-  
-  .guidance_prompt_media{
-    align-items: center;
-  }
-  
-  .lookup_link{
-    text-align: center;
-    margin-bottom: 10%;
-    margin-left: 0;
-  }
-  
-  #new_birthday{
-    margin-top: 1px;
-  }
-}
-
-#new_birthday {
-  #reading_type {
-    width: 200px;
-  }
-  
-  #reading_picker_arrow {
-    position: absolute;
-    margin-left: -40px;
-    margin-top: 3px;
-    pointer-events: none;
-  }
 }
 
 #personality_lookup_link {
@@ -415,13 +312,6 @@ h2{
   font-size: 0.8em;
   margin-bottom: 16px;
 }
-
-// @media only screen and (min-width:1024px) {
-//   .pane_guidance {
-//     width: 300px;
-//     height: 100%;
-//   }
-// }
 
 .planet_description {
   position: absolute;
@@ -457,46 +347,4 @@ h2{
 
 .tech-support-link:hover {
   color: green;
-}
-
-.copyright-txt{
-  text-align: center;
-  font-size: 16px;
-  color: grey;
-  margin-bottom: -6px;
-  margin-top: -13px;
-}
-
-@media (max-width: 991px) {
-  .desktop-only {
-    display: none;
-  }
-}
-
-.mobile-tablet-only.prompt_heading, .desktop-only.prompt_heading {
-  margin-top: 10px;
-
-  span {
-    text-align: center; 
-    font-size: 18px; 
-    text-decoration: none; 
-    color: white;
-  }
-}
-
-.mobile-tablet-only.button_daily_card, .desktop-only.button_daily_card {
-  font-size: 18px;
-}
-
-/* Hide the mobile-tablet-only class on desktop */
-@media (min-width: 992px) {
-  .mobile-tablet-only {
-    display: none;
-  }
-}
-
-.call_to_subscription {
-  text-align: center;
-  margin: 1px;
-  margin-bottom: 8px;
 }
