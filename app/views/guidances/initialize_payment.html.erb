@@ -6,7 +6,7 @@
   <%= render partial: "guidances/payment_modal", locals: { client_token: @client_token,source_website: @source_website } %>
 
   <div class="buy-button" >
-    <% if Rails.env.staging? || Rails.env.development? %>
+    <% if false && Rails.env.development? %>
       <button class="claim-button" id="claim-button"><%= link_to 'Claim Your Cards', guidances_staging_payment_path %></button>
     <% else %>
       <button onclick="document.getElementById('myModal').style.display='block'" class="claim-button" id="claim-button">Claim Your Cards</button>
