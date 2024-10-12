@@ -8,36 +8,35 @@
     <div class="delivery_zone" id="delivery_first">
       <div class="panel">
         <div class="front flip_card" onclick="addheight()">
+          <%= reading_heading('daily', :here) %>
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
         <div class="back" id="daily_card">
-          <%= render "guidances/daily_card_purchaser" %>
+          <%= card_box_pane @birthday, @birthday.card_for_today(@main_card), 'daily', Date.current, :here, nil, true %>
         </div>
       </div>
     </div>
     <div class="delivery_zone" id="delivery_second">
       <div class="panel">
         <div class="front flip_card" onclick="addheight2()">
+          <%= reading_heading('planetary', :here) %>
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
-          <div class="prompt_heading desktop-only" style="margin-top: 10px;">
-            <b><span style="text-align: center; font-size: 18px; text-decoration: none; color: white;">Subscribe To Read More Cards</span></b>
-          </div>
-          <div class="button_daily_card desktop-only">
-            <%= link_to "Learn More And Subscribe", subscribe_link, target: :_blank, class: "lunar_navigation", style: "font-size: 18px;" %>
-          </div>
+          <%= call_to_subscription %>
         </div>
         <div class="back" id="card52">
-          <%= render "guidances/card52_purchaser", show: @show %>
+          <%= card_box_pane @birthday, @birthday.card_for_this_planet(@main_card), 'planetary', @birthday.date_of_next_planet, :here, @birthday.current_planet, true %>
+          <%= call_to_subscription %>
         </div>
       </div>
     </div>
     <div class="delivery_zone" id="delivery_third">
       <div class="panel">
         <div class="front flip_card" id="btn_zone" onclick="addheight3()">
+          <%= reading_heading('yearly', :here) %>
           <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
         </div>
         <div class="back" id= "card_year">
-          <%= render "guidances/year_card_purchaser" %>
+          <%= card_box_pane @birthday, @birthday.card_for_this_year(@main_card), 'yearly', @birthday.last_birthday, :here, nil, true %>
         </div>
       </div>
     </div>

@@ -92,6 +92,7 @@ class GuidancesController < ApplicationController
   
   def flip_cards
     @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
+    @main_card = @birthday.birth_card
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
   end
   
