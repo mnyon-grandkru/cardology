@@ -1,21 +1,21 @@
 module GuidancesHelper
-  def card_box_pane(birthday,card, reading, date, position, planet = nil)
+  def card_box_pane(birthday, card, reading, date, position, planet = nil, purchaser = false)
     reading_heading(reading, position) +
     content_tag(:div, :class => 'pane_guidance') do
-      flipback('box') +
-      pane_heading(birthday, card, reading, date, position, planet) +
+      flipback(!purchaser) +
+      pane_heading(birthday, card, reading, date, position, planet, purchaser) +
       carousel_reading(card, reading) +
-      temporal_navigation_buttons(reading, position) +
+      temporal_navigation(reading, position, purchaser) +
       copyright_text
     end
   end
 
-  def pane_heading(birthday, card, reading, date, position, planet = nil)
+  def pane_heading(birthday, card, reading, date, position, planet = nil, purchaser = false)
     content_tag(:div, :class => 'constant') do
       card_name_heading(card) +
       content_tag(:div, :class => 'reading_context') do
         card_image(card) +
-        reading_subheader(birthday, card, reading, date, position, planet)
+        reading_subheader(birthday, card, reading, date, position, planet, purchaser)
       end
     end
   end
@@ -56,11 +56,11 @@ module GuidancesHelper
     end
   end
   
-  def reading_subheader(birthday, card, reading, date, position, planet = nil)
+  def reading_subheader(birthday, card, reading, date, position, planet = nil, purchaser = false)
     content_tag(:span) do
       marketing_text('heading', 'member', reading, *reading_text_handler(card, reading, birthday, position)).html_safe + +
       if reading == 'planetary'
-        @joker ? "" : (planetary_link(planet, position) +
+        @joker ? "" : (planetary_link(planet, purchaser ? nil : position) +
         content_tag(:em, planet_cycle_end_date(date)))
       elsif reading == 'yearly'
         tag(:br) + 
@@ -98,6 +98,11 @@ module GuidancesHelper
     end
   end
 
+  def temporal_navigation(reading, position, purchaser = false)
+    return content_tag(:h3, source_cards_marketing_text('purchaser', 'call_to_subscription', reading), :class => 'call_to_subscription') if purchaser
+    temporal_navigation_buttons(reading, position)
+  end
+
   def temporal_navigation_buttons(reading, position)
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
       if position == :back
@@ -123,6 +128,12 @@ module GuidancesHelper
     end
   end
 
+  def call_to_subscription
+    content_tag(:div, :class => 'button_daily_card desktop-only') do
+      link_to source_cards_marketing_text('purchaser', 'link'), subscribe_link, target: :_blank, class: "lunar_navigation subscribe"
+    end
+  end
+
   def split_carousel_text(carousel_text)
     return [carousel_text] unless carousel_text.length > 620
     midpoint = carousel_text.length / 2
@@ -138,7 +149,7 @@ module GuidancesHelper
     end
   end
   
-  def flipback box = nil
+  def flipback box = false
     func = box ? "flipBoxBack(event)" : "flipCardBack(event)"
     link_to "", '#', onclick: func, data: {turbolinks: false}, class: 'flipback'
   end

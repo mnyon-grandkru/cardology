@@ -7,6 +7,18 @@ new_players:
   button: "Enter"
   invitation: "Click on each card to read the game of your life!"
 
+purchaser:
+  header: "Right Now Reading"
+  subheader: "Enter Your Birthdate. Then Click Go."
+  button: "Go"
+  instructions: "Click on each Card to flip it over!"
+  call_to_subscription:
+    daily: "Want clear guidance every single day? Subscribe below!"
+    planetary: "Want to know which Card is coming up next? Subscribe below."
+    yearly: "Want to see what’s in the Cards for you next year? Subscribe below."
+  prompt: "Subscribe To Read More Cards"
+  link: "Learn More And Subscribe"
+  
 subscriber:
   instructions:
     heading: "Choose Your Birthday"

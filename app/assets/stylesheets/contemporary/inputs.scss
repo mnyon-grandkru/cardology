@@ -1,0 +1,51 @@
+form#new_birthday {
+  text-align: center;
+  #look_up_cta {
+    font-size: 1.5em;
+    padding-bottom: 12px;
+  }
+  
+  select {
+    -webkit-appearance: none;
+    height: 40px;
+    font-size: 18px;
+    padding: 5px;
+    color: #0e45c4;
+  }
+
+  #reading_type {
+    width: 200px;
+  }
+  
+  #reading_picker_arrow {
+    position: absolute;
+    margin-left: -40px;
+    margin-top: 3px;
+    pointer-events: none;
+  }
+}
+
+#birthday_selection_tool {
+  padding: 18px;
+
+  #new_birthday input[type="submit"] {
+    margin-top: 12px;
+    width: 146px;
+    font-size: 1em;
+    background-color: #0e45c4;
+    color: white;
+    border-radius: 20px;
+    border-color: white;
+  }
+  
+  #birthday_date_1i {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px){
+  #birthday_selection_tool {
+    padding: 18px;
+    margin-left: -4px;
+  }
+}

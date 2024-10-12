@@ -67,6 +67,7 @@ Rails.application.routes.draw do
   get '/guidances/initialize_payment' => 'guidances#initialize_payment'
   get '/guidances/lookup_cards' => 'guidances#lookup_cards'
   get '/guidances/choose_date' => 'guidances#choose_date'
+  get '/guidances/receive_reading' => 'guidances#choose_date'
   post '/guidances/receive_reading' => 'guidances#receive_reading'
   get '/guidances/planet/:planet(/:position)' => 'guidances#planet', :as => 'planet_guidance'
   get '/guidances/card_box' => 'guidances#card_box'

@@ -5,6 +5,7 @@ initializeBraintree = (dropin) ->
     authorization: braintreeClientToken
     container: dropin
     paypal: flow: 'vault'
+    cards: false
   }, (createErr, instance) ->
     $('.braintree_container').on 'submit', '.subscription_payment', (event) ->
       activated_form = this

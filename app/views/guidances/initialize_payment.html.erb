@@ -6,14 +6,14 @@
   <%= render partial: "guidances/payment_modal", locals: { client_token: @client_token,source_website: @source_website } %>
 
   <div class="buy-button" >
-    <% if Rails.env.staging? || Rails.env.development? %>
+    <% if false && Rails.env.development? %>
       <button class="claim-button" id="claim-button"><%= link_to 'Claim Your Cards', guidances_staging_payment_path %></button>
     <% else %>
       <button onclick="document.getElementById('myModal').style.display='block'" class="claim-button" id="claim-button">Claim Your Cards</button>
     <% end %>
   </div>
 
-  <div id="guidance_zone" class= "guidance_prompt_media" onclick="startTimedWobble()">
+  <div id="guidance_zone" class="guidance_prompt_media" onclick="startTimedWobble()">
     <div class="prompt_zone" >
       <div class="prompt_heading"><b>Personal Daily Card </b></div>
       <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
@@ -48,8 +48,3 @@
     }, 2000);
   } 
 </script>
-<style>
-  #guidance_prompt_media{
-    justify-content: center;   
-  }
-</style>

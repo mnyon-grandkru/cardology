@@ -1,0 +1,82 @@
+@media only screen and (max-width: 1050px) {
+  #guidance_zone {
+    flex-direction: column;
+  }
+  
+  .delivery_zone {
+    width: 100%;
+  }
+  
+  .back .flipback, .boxpanel .flipback {
+    top: 14px;
+  }
+  
+  #guidance_zone .panel .back, #guidance_zone .boxpanel .surface {
+    width: 88vw;
+  }
+
+  .panel {
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center
+  }
+  
+  .panel .front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 0;
+  }
+  
+  .panel .back, .panel .front {
+    width: 100%;
+  }
+  
+  .pane_guidance {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -box-sizing: border-box;
+    max-width: 460px;
+    width: 100%;
+    position: relative;
+  }
+  
+  .add_height {
+    height: 750px;
+  }
+  
+  .prompt_zone {
+    max-width: 320px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .widget_heading {
+    margin: 14px 2% 14px 2%;
+  }
+  
+  #widget_title_gui {
+    font-size: 1.6em;
+  }
+  
+  .guidance_prompt_media {
+    align-items: center;
+  }
+  
+  .lookup_link {
+    text-align: center;
+    margin-bottom: 10%;
+    margin-left: 0;
+  }
+  
+  #new_birthday {
+    margin-top: 1px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .source_cards_card_design {
+    width: 200px;
+  }
+}

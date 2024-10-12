@@ -1,0 +1,41 @@
+.panel .fore {
+  float: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 800;
+
+  transform: translate3d(0, 0, -1px) rotateY(179deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: all .8s ease-in-out;
+}
+
+.panel.skip .fore {
+  z-index: 1000;
+  height: auto;
+
+  transform: translate3d(0, 0, 0) rotateY(0);
+}
+
+.panel.skip .front {
+  z-index: 900;
+  transform: translate3d(0, 0, -1px) rotateY(-179deg);
+}
+
+.pane {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 20px 35px;
+  margin: 10px 20px 20px 20px;
+}
+
+.birthday .pane header.preview_header {
+  font-size: 1.5em;
+  
+  &#personality_preview_header {
+    font-size: 1.3em;
+  }
+}
