@@ -38,12 +38,12 @@
           </div>
 
           <div class="beta surface">
-            
+            <%= card_box_pane @birthday, @birthday.card_for_previous_planet(@main_card), 'planetary', @birthday.conclusion_of_previous, :back, @birthday.previous_planet_name %>
           </div>
 
           <div class="gamma surface">
-            
-          </div> -->
+            <%= card_box_pane @birthday, @birthday.card_for_previous_planet(@main_card), 'planetary', @birthday.conclusion_of_previous, :back, @birthday.previous_planet_name %>
+          </div>
 
           <div class="delta surface">
             <%= card_box_pane @birthday, @birthday.card_for_previous_planet(@main_card), 'planetary', @birthday.conclusion_of_previous, :back, @birthday.previous_planet_name %>
@@ -58,12 +58,12 @@
           </div>
 
           <div class="eta surface">
-            <%#= card_box_pane @birthday, @birthday.card_for_upcoming_planet(@main_card), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name %>
+            <%= card_box_pane @birthday, @birthday.card_for_upcoming_planet(@main_card), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name %>
           </div>
 
           <div class="theta surface">
-            <%#= card_box_pane @birthday, @birthday.card_for_upcoming_planet(@main_card), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name %>
-          </div> -->
+            <%= card_box_pane @birthday, @birthday.card_for_upcoming_planet(@main_card), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name %>
+          </div>
         </div>
         <%= link_to "rotate", "#", :onclick => "rotateOctagon(); return false;" %>
       </div>
