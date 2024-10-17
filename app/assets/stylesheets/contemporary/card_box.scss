@@ -84,46 +84,38 @@
     position: absolute;
     width: 100%;
     height: 670px;
-    // backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .alpha {
     transform: rotateY(0deg) translateZ(calc(var(--card-box-width) * 1.21421));
-    background-color: red;
   }
 
   .beta {
     transform: rotateY(45deg) translateZ(calc(var(--card-box-width) * 1.21421));
-    background-color: green;
   }
 
   .gamma {
     transform: rotateY(90deg) translateZ(calc(var(--card-box-width) * 1.21421));
-    background-color: blue;
   }
 
   .delta {
     transform: rotateY(135deg) translateZ(calc(var(--card-box-width) * 1.21421));
-    background-color: yellow;
   }
 
   .epsilon {
     transform: rotateY(180deg) translateZ(calc(var(--card-box-width) * 1.21421));
-    background-color: orange;
   }
 
   .zeta {
     transform: rotateY(225deg) translateZ(calc(var(--card-box-width) * 1.21421));
-    background-color: purple;
   }
 
   .eta {
     transform: rotateY(270deg) translateZ(calc(var(--card-box-width) * 1.21421));
-    background-color: pink;
   }
 
   .theta {
     transform: rotateY(315deg) translateZ(calc(var(--card-box-width) * 1.21421));
-    background-color: brown;
   }
 }
