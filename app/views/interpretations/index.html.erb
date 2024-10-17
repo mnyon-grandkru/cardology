@@ -1,68 +1,23 @@
-<style>
-  /* Overall container */
-  .interpretation-container {
-    font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  /* Buttons */
-  .interpretation-container a {
-    display: inline-block;
-    margin-bottom: 5px;
-    padding: 8px 12px;
-    background-color: #e8830c;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 4px;
-  }
-
-  /* Sort section */
-  .interpretation-sort {
-    margin-top: 20px;
-  }
-
-  /* Interpretation cards */
-  .card-in-interpretation {
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  /* Explanation section */
-  .explanation-of {
-    margin-bottom: 10px;
-  }
-
-  /* Control section */
-  .control-of {
-    margin-bottom: 20px;
-  }
-
-  .control-of a {
-    margin-right: 10px;
-    color: #ffffff; /* Change the color to white or any desired color */
-  }
-</style>
 <div class="interpretation-container">
   <%= link_to 'New Interpretation', new_interpretation_path %><br>
 
   <div class="interpretation-sort card-in-interpretation">
-    <%= link_to 'Sort by Card', sort_params.except(:by_face).merge(sort: 'card_id') %><br>
-    <%= link_to 'Sort by Face', sort_params.except(:sort).merge(by_face: true) %><br>
-    <%= link_to 'Sort by Reading', sort_params.except(:by_face).merge(sort: 'reading') %>
+    <%= link_to 'Sort by Card', sort_params.except(:by_face).merge(sort: 'card_id'), :class => (params[:sort] == 'card_id' ? 'selected' : nil) %>
+    <%= link_to 'Sort by Face', sort_params.except(:sort).merge(by_face: true), :class => (params[:by_face] == 'true' ? 'selected' : nil) %>
+    <%= link_to 'Sort by Reading', sort_params.except(:by_face).merge(sort: 'reading'), :class => (params[:sort] == 'reading' ? 'selected' : nil) %>
   </div>
 
   <div class="interpretation-sort">
-    <%= link_to "All #{params[:reading]}", sort_params.except(:suit) %><br>
+    <%= link_to "All #{params[:reading]}", sort_params.except(:suit) %>
     <% Suit.actual.each do |suit| %>
-      <%= link_to suit.name, sort_params.merge(suit: suit.name) %><br>
+      <%= link_to suit.name, sort_params.merge(suit: suit.name), :class => (suit.name == params[:suit] ? 'selected' : nil) %>
     <% end %>
   </div>
 
   <div class="interpretation-sort reading_type_of_interpretation">
-    <%= link_to "All #{params[:suit]}", sort_params.except(:reading) %><br>
+    <%= link_to "All #{params[:suit]}", sort_params.except(:reading) %>
     <% Interpretation.readings.each do |name, db_id| %>
-      <%= link_to name.capitalize, sort_params.merge(reading: name) %><br>
+      <%= link_to name.capitalize, sort_params.merge(reading: name), :class => (name == params[:reading] ? 'selected' : nil) %>
     <% end %>
   </div>
 
@@ -71,10 +26,7 @@
   <% @interpretations.each do |interpretation| %>
     <%= div_for interpretation do %>
       <div class="card-in-interpretation">
-        <%= interpretation.card.name %> as
-      </div>
-
-      <div class="reading_type_of_interpretation">
+        <%= interpretation.card.name %> as 
         <%= interpretation.reading %>:
       </div>
 
