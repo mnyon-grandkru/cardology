@@ -2,20 +2,63 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.interpretation_sort {
-  display: inline-block;
-  vertical-align: top;
-  
-  &.card_in_interpretation {
-    width: 10%;
+
+.interpretation-container {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+
+  a {
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 8px 12px;
+    background-color: #e8830c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+
+    &.selected {
+      background-color: #af1c30;
+    }
   }
-  
-  &.reading_type_of_interpretation {
-    width: 10%;
+
+  .interpretation_sort {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+    
+    &.card_in_interpretation {
+      width: 10%;
+    }
+    
+    &.reading_type_of_interpretation {
+      width: 10%;
+    }
+    
+    &.explanation_of_interpretation {
+      width: 30%;
+    }
   }
-  
-  &.explanation_of_interpretation {
-    width: 30%;
+
+  /* Interpretation cards */
+  .card-in-interpretation {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  /* Explanation section */
+  .explanation-of {
+    margin-bottom: 10px;
+  }
+
+  /* Control section */
+  .control-of {
+    margin-bottom: 20px;
+  }
+
+  .control-of a {
+    margin-right: 10px;
+    color: #ffffff; /* Change the color to white or any desired color */
   }
 }
 
