@@ -237,8 +237,8 @@ class Birthday < ApplicationRecord
     planets_for_52[position - 1]
   end
 
-  def previous_planet_name
-    previous_planet_sym.to_s.capitalize
+  def previous_planet_name current = current_planet_sym
+    previous_planet_sym(current).to_s.capitalize
   end
 
   def upcoming_planet_sym current = current_planet_sym
@@ -246,8 +246,8 @@ class Birthday < ApplicationRecord
     planets_for_52[(position + 1) % planets_for_52.length] # need to wrap around from last to Mercury
   end
 
-  def upcoming_planet_name
-    upcoming_planet_sym.to_s.capitalize
+  def upcoming_planet_name current = current_planet_sym
+    upcoming_planet_sym(current).to_s.capitalize
   end
 
   def conclusion_of_previous

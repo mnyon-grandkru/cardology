@@ -38,11 +38,11 @@
           </div>
 
           <div class="beta surface">
-            <%= card_box_pane @birthday, @birthday.card_for_previous_planet(@main_card, @birthday.previous_planet_sym(@birthday.previous_planet_sym(@birthday.previous_planet_sym))), 'planetary', @birthday.conclusion_of_previous, :back, @birthday.previous_planet_name %>
+            <%= card_box_pane @birthday, @birthday.card_for_previous_planet(@main_card, @birthday.previous_planet_sym(@birthday.previous_planet_sym(@birthday.previous_planet_sym))), 'planetary', @birthday.conclusion_of_previous, :back, @birthday.previous_planet_name(@birthday.previous_planet_sym(@birthday.previous_planet_sym)) %>
           </div>
 
           <div class="gamma surface">
-            <%= card_box_pane @birthday, @birthday.card_for_previous_planet(@main_card, @birthday.previous_planet_sym(@birthday.previous_planet_sym)), 'planetary', @birthday.conclusion_of_previous, :back, @birthday.previous_planet_name %>
+            <%= card_box_pane @birthday, @birthday.card_for_previous_planet(@main_card, @birthday.previous_planet_sym(@birthday.previous_planet_sym(@birthday.previous_planet_sym))), 'planetary', @birthday.conclusion_of_previous, :back, @birthday.previous_planet_name(@birthday.previous_planet_sym) %>
           </div>
 
           <div class="delta surface">
@@ -58,11 +58,11 @@
           </div>
 
           <div class="eta surface">
-            <%= card_box_pane @birthday, @birthday.card_for_upcoming_planet(@main_card, @birthday.upcoming_planet_sym(@birthday.upcoming_planet_sym)), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name %>
+            <%= card_box_pane @birthday, @birthday.card_for_upcoming_planet(@main_card, @birthday.upcoming_planet_sym(@birthday.upcoming_planet_sym)), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name(@birthday.upcoming_planet_sym) %>
           </div>
 
           <div class="theta surface">
-            <%= card_box_pane @birthday, @birthday.card_for_upcoming_planet(@main_card, @birthday.upcoming_planet_sym(@birthday.upcoming_planet_sym(@birthday.upcoming_planet_sym))), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name %>
+            <%= card_box_pane @birthday, @birthday.card_for_upcoming_planet(@main_card, @birthday.upcoming_planet_sym(@birthday.upcoming_planet_sym(@birthday.upcoming_planet_sym))), 'planetary', @birthday.conclusion_of_upcoming, :forward, @birthday.upcoming_planet_name(@birthday.upcoming_planet_sym(@birthday.upcoming_planet_sym)) %>
           </div>
         </div>
       </div>
