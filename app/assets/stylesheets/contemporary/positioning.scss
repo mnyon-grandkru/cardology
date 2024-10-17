@@ -12,8 +12,13 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
+
   .panel {
     display: block;
+
+    .front {
+      margin-left: 10%;
+    }
   }
   
   .delivery_zone {
@@ -42,7 +47,6 @@
   float: none;
   position: absolute;
   top: 0;
-  left: 10%;
 }
 
 .panel .back {
