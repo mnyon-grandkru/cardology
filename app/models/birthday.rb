@@ -140,12 +140,12 @@ class Birthday < ApplicationRecord
     card_for_the_planetary_period_on_date Date.current + 52.days, main_card
   end
 
-  def card_for_previous_planet main_card = birth_card
-    card_for_planet previous_planet_sym, main_card
+  def card_for_previous_planet main_card = birth_card, planet = previous_planet_sym
+    card_for_planet planet, main_card
   end
 
-  def card_for_upcoming_planet main_card = birth_card
-    card_for_planet upcoming_planet_sym, main_card
+  def card_for_upcoming_planet main_card = birth_card, planet = upcoming_planet_sym
+    card_for_planet planet, main_card
   end
   
   def days_until_next_planet
@@ -232,8 +232,7 @@ class Birthday < ApplicationRecord
     planet_on_date_sym Date.current
   end
 
-  def previous_planet_sym
-    current = current_planet_sym
+  def previous_planet_sym current = current_planet_sym
     position = current == :pluto ? 7 : planets_for_52.index(current)
     planets_for_52[position - 1]
   end
@@ -242,8 +241,7 @@ class Birthday < ApplicationRecord
     previous_planet_sym.to_s.capitalize
   end
 
-  def upcoming_planet_sym
-    current = current_planet_sym
+  def upcoming_planet_sym current = current_planet_sym
     position = current == :pluto ? -1 : planets_for_52.index(current)
     planets_for_52[(position + 1) % planets_for_52.length] # need to wrap around from last to Mercury
   end
