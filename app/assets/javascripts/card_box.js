@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
       const sine = values[2];
       const radians = Math.atan2(sine, cosine)
       degrees = radians * (180 / Math.PI);
-      console.log(`Y rotation: ${degrees} degrees`);
+      // console.log(`Y rotation: ${degrees} degrees`);
     } else {
       degrees = 0;
       console.log("No Transform");
@@ -25,7 +25,7 @@ $(document).on('turbolinks:load', function() {
     let panel = event.target.closest('.surface-wrapper');
     let currentPosition = currentRotation(panel);
     let desiredPosition = normalizeAngle(currentPosition - byDegrees);
-    console.log(`Desired: ${desiredPosition} degrees`);
+    // console.log(`Desired: ${desiredPosition} degrees`);
     panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
   }
   
@@ -33,10 +33,18 @@ $(document).on('turbolinks:load', function() {
     let panel = event.target.closest('.surface-wrapper');
     let currentPosition = currentRotation(panel);
     let desiredPosition = normalizeAngle(currentPosition + byDegrees);
-    console.log(`Desired: ${desiredPosition} degrees`);
+    // console.log(`Desired: ${desiredPosition} degrees`);
+    panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
+  }
+  
+  function rotateOctagon() {
+    let panel = document.querySelector('.eight_sided_box .surface-wrapper');
+    let currentPosition = currentRotation(panel);
+    let desiredPosition = normalizeAngle(currentPosition + 45);
     panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
   }
   
   window.rotatePast = rotatePast;
   window.rotateFuture = rotateFuture;
+  window.rotateOctagon = rotateOctagon;
 });

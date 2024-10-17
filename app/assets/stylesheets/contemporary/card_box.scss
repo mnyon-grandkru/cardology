@@ -12,46 +12,118 @@
   }  
 }
 
-.boxpanel {
-  width: var(--card-box-width);
-  height: 750px;
-  perspective: 1200px;
-  transform-style: preserve-3d;
-  
-  .source_cards_card_design {
+.four_sided_box {
+  .boxpanel {
     width: var(--card-box-width);
-    border-radius: 29px;
+    height: 750px;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+    
+    .source_cards_card_design {
+      width: var(--card-box-width);
+      border-radius: 29px;
+    }
+  }
+
+  .surface-wrapper {
+    width: var(--card-box-width);
+    height: 750px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(calc(var(--half-card-box-width) * -1)) rotateY(180deg);
+    transition: all 2.1s ease-in-out;
+  }
+
+  .surface {
+    position: absolute;
+    width: 100%;
+    height: 670px;
+    backface-visibility: hidden;
+  }
+
+  .alpha {
+    transform: rotateY(180deg) translateZ(var(--half-card-box-width));
+  }
+
+  .beta {
+    transform: rotateY(-90deg) translateZ(var(--half-card-box-width));
+  }
+
+  .gamma {
+    transform: rotateY(0deg) translateZ(var(--half-card-box-width));
+  }
+
+  .delta {
+    transform: rotateY(90deg) translateZ(var(--half-card-box-width));
   }
 }
 
-.surface-wrapper {
-  width: var(--card-box-width);
-  height: 750px;
-  position: relative;
-  transform-style: preserve-3d;
-  transform: translateZ(calc(var(--half-card-box-width) * -1)) rotateY(180deg);
-  transition: all 2.1s ease-in-out;
-}
+.eight_sided_box {
+  .boxpanel {
+    width: var(--card-box-width);
+    height: 750px;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+    
+    .source_cards_card_design {
+      width: var(--card-box-width);
+      border-radius: 29px;
+    }
+  }
 
-.surface {
-  position: absolute;
-  width: 100%;
-  height: 670px;
-  backface-visibility: hidden;
-}
+  .surface-wrapper {
+    width: var(--card-box-width);
+    height: 750px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(calc(var(--half-card-box-width) * -0.92388)) rotateY(0deg);
+    transition: all 2.1s ease-in-out;
+  }
 
-.alpha {
-  transform: rotateY(180deg) translateZ(var(--half-card-box-width));
-}
+  .surface {
+    position: absolute;
+    width: 100%;
+    height: 670px;
+    // backface-visibility: hidden;
+  }
 
-.beta {
-  transform: rotateY(-90deg) translateZ(var(--half-card-box-width));
-}
+  .alpha {
+    transform: rotateY(0deg) translateZ(calc(var(--half-card-box-width) * 0.92388));
+    background-color: red;
+  }
 
-.gamma {
-  transform: rotateY(0deg) translateZ(var(--half-card-box-width));
-}
+  .beta {
+    transform: rotateY(45deg) translateZ(calc(var(--half-card-box-width) * 0.92388));
+    background-color: green;
+  }
 
-.delta {
-  transform: rotateY(90deg) translateZ(var(--half-card-box-width));
+  .gamma {
+    transform: rotateY(90deg) translateZ(calc(var(--half-card-box-width) * 0.92388));
+    background-color: blue;
+  }
+
+  .delta {
+    transform: rotateY(135deg) translateZ(calc(var(--half-card-box-width) * 0.92388));
+    background-color: yellow;
+  }
+
+  .epsilon {
+    transform: rotateY(180deg) translateZ(calc(var(--half-card-box-width) * 0.92388));
+    background-color: orange;
+  }
+
+  .zeta {
+    transform: rotateY(225deg) translateZ(calc(var(--half-card-box-width) * 0.92388));
+    background-color: purple;
+  }
+
+  .eta {
+    transform: rotateY(270deg) translateZ(calc(var(--half-card-box-width) * 0.92388));
+    background-color: pink;
+  }
+
+  .theta {
+    transform: rotateY(315deg) translateZ(calc(var(--half-card-box-width) * 0.92388));
+    background-color: brown;
+  }
 }
