@@ -250,20 +250,20 @@ class Birthday < ApplicationRecord
     upcoming_planet_sym(current).to_s.capitalize
   end
 
-  def conclusion_of_previous
-    if previous_planet_sym == :neptune
-      if current_planet_sym == :pluto
+  def conclusion_of_previous current = current_planet_sym
+    if previous_planet_sym(current) == :neptune
+      if current_planet_sym(current) == :pluto
         conclusions_of_planets[previous_planet_sym]
       else
-        conclusions_of_planets(previous_birthday)[previous_planet_sym]
+        conclusions_of_planets(previous_birthday)[previous_planet_sym(current)]
       end
     else
-      conclusions_of_planets[previous_planet_sym]
+      conclusions_of_planets[previous_planet_sym(current)]
     end
   end
 
-  def conclusion_of_upcoming
-    upcoming_planet_sym == :mercury ? conclusions_of_planets(next_birthday)[upcoming_planet_sym] : conclusions_of_planets[upcoming_planet_sym]
+  def conclusion_of_upcoming current = current_planet_sym
+    upcoming_planet_sym(current) == :mercury ? conclusions_of_planets(next_birthday)[upcoming_planet_sym(current)] : conclusions_of_planets[upcoming_planet_sym(current)]
   end
 
   def current_planet
