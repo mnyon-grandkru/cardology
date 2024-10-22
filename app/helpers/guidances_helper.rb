@@ -107,11 +107,11 @@ module GuidancesHelper
   def temporal_navigation_buttons(reading, position)
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
       if position == :back
-        temporal_navigation_button(reading, 'return', 'rotateFuture(90)') +
-        temporal_navigation_button(reading, 'forward', 'rotateFuture(360)')
+        temporal_navigation_button(reading, 'return', 'rotatePast(90)') +
+        temporal_navigation_button(reading, 'forward', 'rotateFuture(180)')
       elsif position == :forward
-        temporal_navigation_button(reading, 'backward', 'rotatePast(360)') +
-        temporal_navigation_button(reading, 'return', 'rotatePast(90)')
+        temporal_navigation_button(reading, 'backward', 'rotatePast(180)') +
+        temporal_navigation_button(reading, 'return', 'rotateFuture(90)')
       else
         temporal_navigation_button(reading, 'backward', 'rotateFuture(90)') +
         temporal_navigation_button(reading, 'forward', 'rotatePast(90)')
