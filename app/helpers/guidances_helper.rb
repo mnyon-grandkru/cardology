@@ -121,8 +121,8 @@ module GuidancesHelper
 
   def octagon_navigation
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
-      temporal_navigation_button('planetary', 'backward', 'rotateFuture(45)') +
-      temporal_navigation_button('planetary', 'forward', 'rotatePast(45)')
+      temporal_navigation_button('planetary', 'backward', 'rotateOctagon(45)') +
+      temporal_navigation_button('planetary', 'forward', 'rotateOctagon(-45)')
     end
   end
 

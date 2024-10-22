@@ -37,12 +37,38 @@ $(document).on('turbolinks:load', function() {
     // console.log(`Desired: ${desiredPosition} degrees`);
     panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
   }
+
+  function surfaceForAngle(angle) {
+    // Normalize negative angles to positive (e.g., -45 becomes 315)
+    const normalizedAngle = ((angle % 360) + 360) % 360;
+    
+    const surfacesByAngle = {
+      0: '.alpha',
+      45: '.beta',
+      90: '.gamma',
+      135: '.delta',
+      180: '.epsilon',
+      225: '.zeta',
+      270: '.eta',
+      315: '.theta'
+    };
+    return surfacesByAngle[360 -normalizedAngle];
+  }
   
-  function rotateOctagon() {
-    let panel = document.querySelector('.eight_sided_box .surface-wrapper');
+  function rotateOctagon(byDegrees) {
+    const panel = document.querySelector('.eight_sided_box .surface-wrapper');
     let currentPosition = currentRotation(panel);
-    let desiredPosition = normalizeAngle(currentPosition + 45);
-    panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
+    console.log(`Current: ${currentPosition}`);
+    let desiredPosition = normalizeAngle(currentPosition + byDegrees);
+    
+    let outgoingSurface = panel.querySelector(surfaceForAngle(currentPosition));
+    console.log(`Outgoing: ${surfaceForAngle(currentPosition)}`);
+    let incomingSurface = panel.querySelector(surfaceForAngle(desiredPosition));
+    console.log(`Incoming: ${surfaceForAngle(desiredPosition)}`);
+
+    panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -0.92388)) rotateY(${desiredPosition}deg)`;
+    outgoingSurface.style.transform = `rotateY(${currentPosition}deg) translateZ(var(--octagon-z-index))`;
+    incomingSurface.style.transform = `rotateY(${desiredPosition}deg) translateZ(var(--octagon-z-index-front))`;
   }
   
   window.rotatePast = rotatePast;
