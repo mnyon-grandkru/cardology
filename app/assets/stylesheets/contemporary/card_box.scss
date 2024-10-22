@@ -2,8 +2,8 @@
   :root {
     --card-box-width: 330px;
     --half-card-box-width: calc(var(--card-box-width) / 2);
-    --octagon-z-index: calc(var(--card-box-width));
-    --octagon-z-index-front: calc(var(--card-box-width) * 1.21421);
+    --octagon-z-index: calc(var(--card-box-width) * 0.62388);
+    --octagon-z-index-front: calc(var(--card-box-width) * 0.91421);
   }  
 }
 
@@ -64,7 +64,7 @@
   .boxpanel {
     width: var(--card-box-width);
     height: 750px;
-    perspective: 1200px;
+    perspective: 4200px;
     transform-style: preserve-3d;
     
     .source_cards_card_design {
@@ -107,7 +107,7 @@
   }
 
   .epsilon {
-    transform: rotateY(180deg) translateZ(var(--octagon-z-index));
+    transform: rotateY(180deg) translateZ(var(--octagon-z-index-front));
   }
 
   .zeta {
@@ -128,5 +128,6 @@
     background-color: #fff;
     border-radius: 6px;
     font-weight: bold;
+    display: none;
   }
 }
