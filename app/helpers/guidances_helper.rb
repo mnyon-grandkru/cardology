@@ -100,6 +100,7 @@ module GuidancesHelper
 
   def temporal_navigation(reading, position, purchaser = false)
     return content_tag(:h3, source_cards_marketing_text('purchaser', 'call_to_subscription', reading), :class => 'call_to_subscription') if purchaser
+    return octagon_navigation if reading == 'planetary'
     temporal_navigation_buttons(reading, position)
   end
 
@@ -115,6 +116,13 @@ module GuidancesHelper
         temporal_navigation_button(reading, 'backward', 'rotateFuture(90)') +
         temporal_navigation_button(reading, 'forward', 'rotatePast(90)')
       end
+    end
+  end
+
+  def octagon_navigation
+    content_tag(:div, :class => 'button_daily_card temporal_navigation') do
+      temporal_navigation_button('planetary', 'return', 'rotateFuture(45)') +
+      temporal_navigation_button('planetary', 'forward', 'rotatePast(45)')
     end
   end
 

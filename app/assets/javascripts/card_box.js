@@ -1,13 +1,14 @@
 $(document).on('turbolinks:load', function() {
   function currentRotation(panel) {
-    const computedStyle = window.getComputedStyle(panel);
-    const transformMatrix = computedStyle.transform;
+    let computedStyle = window.getComputedStyle(panel);
+    let transformMatrix = computedStyle.transform;
     let degrees;
     if (transformMatrix !== "none") {
-      const values = transformMatrix.split('(')[1].split(')')[0].split(',');
-      const cosine = values[0];
-      const sine = values[2];
-      const radians = Math.atan2(sine, cosine)
+      let values = transformMatrix.split('(')[1].split(')')[0].split(',');
+      console.log(`Values: ${values}`);
+      let a = parseFloat(values[0]);
+      let b = parseFloat(values[8]);
+      let radians = Math.atan2(b, a);
       degrees = radians * (180 / Math.PI);
       // console.log(`Y rotation: ${degrees} degrees`);
     } else {
@@ -18,7 +19,7 @@ $(document).on('turbolinks:load', function() {
   }
   
   function normalizeAngle(angle) {
-    return ((angle + 180) % 360) - 180;
+    return angle; //((angle + 180) % 360) - 180;
   }
   
   function rotatePast(byDegrees) {
