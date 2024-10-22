@@ -2,7 +2,7 @@ module GuidancesHelper
   def card_box_pane(birthday, card, reading, date, position, planet = nil, purchaser = false)
     reading_heading(reading, position) +
     content_tag(:div, :class => 'pane_guidance') do
-      flipback(!purchaser) +
+      flipback(reading == 'planetary' ? :octagon : !purchaser) +
       pane_heading(birthday, card, reading, date, position, planet, purchaser) +
       carousel_reading(card, reading) +
       temporal_navigation(reading, position, purchaser) +
@@ -121,7 +121,7 @@ module GuidancesHelper
 
   def octagon_navigation
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
-      temporal_navigation_button('planetary', 'return', 'rotateFuture(45)') +
+      temporal_navigation_button('planetary', 'backward', 'rotateFuture(45)') +
       temporal_navigation_button('planetary', 'forward', 'rotatePast(45)')
     end
   end
@@ -158,7 +158,11 @@ module GuidancesHelper
   end
   
   def flipback box = false
-    func = box ? "flipBoxBack(event)" : "flipCardBack(event)"
+    func = case box
+      when :octagon then "flipOctagonBack(event)"
+      when true then "flipBoxBack(event)"
+      else "flipCardBack(event)"
+    end
     link_to "", '#', onclick: func, data: {turbolinks: false}, class: 'flipback'
   end
   
