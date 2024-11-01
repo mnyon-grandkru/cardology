@@ -67,7 +67,7 @@ $(document).on('turbolinks:load', function() {
     console.log(`Incoming: ${surfaceForAngle(desiredPosition)}`);
 
     panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -0.92388)) rotateY(${desiredPosition}deg)`;
-    outgoingSurface.style.transform = `rotateY(${currentPosition}deg) translateZ(var(--octagon-z-index))`;
+    outgoingSurface.style.transform = `rotateY(${360 - currentPosition}deg) translateZ(var(--octagon-z-index))`;
     incomingSurface.style.transform = `rotateY(${360 -desiredPosition}deg) translateZ(var(--octagon-z-index-front))`;
   }
   
