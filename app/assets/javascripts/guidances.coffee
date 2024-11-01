@@ -4,3 +4,6 @@ window.flipCardBack = (event) ->
 
 window.flipBoxBack = (event) ->
   $(event.currentTarget).closest('.surface-wrapper').css('transform', 'translateZ(-165px) rotateY(180deg)')
+
+window.flipOctagonBack = (event) ->
+  $(event.currentTarget).closest('.surface-wrapper').css('transform', 'translateZ(-165px) rotateY(0deg)')

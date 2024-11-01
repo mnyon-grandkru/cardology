@@ -140,12 +140,12 @@ class Birthday < ApplicationRecord
     card_for_the_planetary_period_on_date Date.current + 52.days, main_card
   end
 
-  def card_for_previous_planet main_card = birth_card
-    card_for_planet previous_planet_sym, main_card
+  def card_for_previous_planet main_card = birth_card, planet = previous_planet_sym
+    card_for_planet planet, main_card
   end
 
-  def card_for_upcoming_planet main_card = birth_card
-    card_for_planet upcoming_planet_sym, main_card
+  def card_for_upcoming_planet main_card = birth_card, planet = upcoming_planet_sym
+    card_for_planet planet, main_card
   end
   
   def days_until_next_planet
@@ -232,40 +232,38 @@ class Birthday < ApplicationRecord
     planet_on_date_sym Date.current
   end
 
-  def previous_planet_sym
-    current = current_planet_sym
+  def previous_planet_sym current = current_planet_sym
     position = current == :pluto ? 7 : planets_for_52.index(current)
     planets_for_52[position - 1]
   end
 
-  def previous_planet_name
-    previous_planet_sym.to_s.capitalize
+  def previous_planet_name current = current_planet_sym
+    previous_planet_sym(current).to_s.capitalize
   end
 
-  def upcoming_planet_sym
-    current = current_planet_sym
+  def upcoming_planet_sym current = current_planet_sym
     position = current == :pluto ? -1 : planets_for_52.index(current)
     planets_for_52[(position + 1) % planets_for_52.length] # need to wrap around from last to Mercury
   end
 
-  def upcoming_planet_name
-    upcoming_planet_sym.to_s.capitalize
+  def upcoming_planet_name current = current_planet_sym
+    upcoming_planet_sym(current).to_s.capitalize
   end
 
-  def conclusion_of_previous
-    if previous_planet_sym == :neptune
-      if current_planet_sym == :pluto
+  def conclusion_of_previous current = current_planet_sym
+    if previous_planet_sym(current) == :neptune
+      if current_planet_sym(current) == :pluto
         conclusions_of_planets[previous_planet_sym]
       else
-        conclusions_of_planets(previous_birthday)[previous_planet_sym]
+        conclusions_of_planets(previous_birthday)[previous_planet_sym(current)]
       end
     else
-      conclusions_of_planets[previous_planet_sym]
+      conclusions_of_planets[previous_planet_sym(current)]
     end
   end
 
-  def conclusion_of_upcoming
-    upcoming_planet_sym == :mercury ? conclusions_of_planets(next_birthday)[upcoming_planet_sym] : conclusions_of_planets[upcoming_planet_sym]
+  def conclusion_of_upcoming current = current_planet_sym
+    upcoming_planet_sym(current) == :mercury ? conclusions_of_planets(next_birthday)[upcoming_planet_sym(current)] : conclusions_of_planets[upcoming_planet_sym(current)]
   end
 
   def current_planet

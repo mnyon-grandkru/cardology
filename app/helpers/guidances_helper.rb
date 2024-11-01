@@ -100,21 +100,29 @@ module GuidancesHelper
 
   def temporal_navigation(reading, position, purchaser = false)
     return content_tag(:h3, source_cards_marketing_text('purchaser', 'call_to_subscription', reading), :class => 'call_to_subscription') if purchaser
+    # return octagon_navigation if reading == 'planetary'
     temporal_navigation_buttons(reading, position)
   end
 
   def temporal_navigation_buttons(reading, position)
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
       if position == :back
-        temporal_navigation_button(reading, 'return', 'rotateFuture(90)') +
-        temporal_navigation_button(reading, 'forward', 'rotateFuture(360)')
+        temporal_navigation_button(reading, 'return', 'rotatePast(90)') +
+        temporal_navigation_button(reading, 'forward', 'rotateFuture(180)')
       elsif position == :forward
-        temporal_navigation_button(reading, 'backward', 'rotatePast(360)') +
-        temporal_navigation_button(reading, 'return', 'rotatePast(90)')
+        temporal_navigation_button(reading, 'backward', 'rotatePast(180)') +
+        temporal_navigation_button(reading, 'return', 'rotateFuture(90)')
       else
         temporal_navigation_button(reading, 'backward', 'rotateFuture(90)') +
         temporal_navigation_button(reading, 'forward', 'rotatePast(90)')
       end
+    end
+  end
+
+  def octagon_navigation
+    content_tag(:div, :class => 'button_daily_card temporal_navigation') do
+      temporal_navigation_button('planetary', 'backward', 'rotateOctagon(45)') +
+      temporal_navigation_button('planetary', 'forward', 'rotateOctagon(-45)')
     end
   end
 
@@ -150,7 +158,11 @@ module GuidancesHelper
   end
   
   def flipback box = false
-    func = box ? "flipBoxBack(event)" : "flipCardBack(event)"
+    func = case box
+      when :octagon then "flipOctagonBack(event)"
+      when true then "flipBoxBack(event)"
+      else "flipCardBack(event)"
+    end
     link_to "", '#', onclick: func, data: {turbolinks: false}, class: 'flipback'
   end
   
