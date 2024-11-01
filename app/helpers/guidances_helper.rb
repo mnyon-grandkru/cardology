@@ -2,7 +2,7 @@ module GuidancesHelper
   def card_box_pane(birthday, card, reading, date, position, planet = nil, purchaser = false)
     reading_heading(reading, position) +
     content_tag(:div, :class => 'pane_guidance') do
-      flipback(reading == 'planetary' ? :octagon : !purchaser) +
+      flipback(!purchaser) +
       pane_heading(birthday, card, reading, date, position, planet, purchaser) +
       carousel_reading(card, reading) +
       temporal_navigation(reading, position, purchaser) +
@@ -100,7 +100,7 @@ module GuidancesHelper
 
   def temporal_navigation(reading, position, purchaser = false)
     return content_tag(:h3, source_cards_marketing_text('purchaser', 'call_to_subscription', reading), :class => 'call_to_subscription') if purchaser
-    return octagon_navigation if reading == 'planetary'
+    # return octagon_navigation if reading == 'planetary'
     temporal_navigation_buttons(reading, position)
   end
 
