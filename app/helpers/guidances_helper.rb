@@ -80,7 +80,8 @@ module GuidancesHelper
   end
 
   def planet_cycle_end_date(date)
-    ".  This cycle ends on #{date.strftime("%-m/%-d.")}"
+    debug_begin = date - 51.days
+    ".  This cycle is #{debug_begin.strftime("%-m/%-d/%y")} - #{date.strftime("%-m/%-d/%y")}."
   end
   
   def carousel_reading(card, reading)
@@ -121,9 +122,9 @@ module GuidancesHelper
 
   def planetary_navigation
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
-      (@sequence < 1 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'backward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @birthday.previous_planet_sym(@planet), :sequence => (0 - @sequence.abs)), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@sequence < 1 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'backward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => (0 - @sequence.abs)), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
       # link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'return'), '#', :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}) +
-      (@sequence > 13 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'forward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @birthday.upcoming_planet_sym(@planet), :sequence => @sequence.abs), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
+      (@sequence > 13 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'forward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => @sequence.abs), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
     end
   end
 
