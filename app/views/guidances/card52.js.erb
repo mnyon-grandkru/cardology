@@ -1,1 +1,1 @@
-$('#card52').html("<%= j render(:partial => '/guidances/card52') %>")
+$('#delivery_second .<%=j @frame %>').html("<%= j card_box_pane(@birthday, @card, 'planetary', @date, :here, @planet) %><%=j carousel_reloader %>")

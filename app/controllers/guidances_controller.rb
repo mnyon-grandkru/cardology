@@ -17,6 +17,9 @@ class GuidancesController < ApplicationController
       @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
     end
 
+    @planet = @birthday.current_planet_sym
+    @sequence = 7
+
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
     if params[:reading_type] == 'Personality Card'
       @birthday.zodiac_sign = params[:zodiac] if params[:zodiac]
@@ -30,6 +33,37 @@ class GuidancesController < ApplicationController
       @main_card = @birthday.birth_card
       render :template => 'guidances/card_box'
     end
+  end
+
+  def personality
+    @birthday = Birthday.find params[:birthday_id]
+    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
+    @main_card = @birthday.personality_card
+    render :template => 'guidances/card_box'#, :locals => {personality: true, zodiac: params[:zodiac]}
+  end
+
+  def planet_card
+    @birthday = Birthday.find params[:birthday_id]
+    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
+    @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
+    # have to determine which direction we're going
+    # could use sequence -- 13 for forward, -13 for backward
+    # need to know which pane to fill - might be able to handle via front end
+    if params[:sequence].to_i > 0
+      @card = @birthday.card_for_upcoming_planet @main_card, params[:planet].to_sym
+      @date = @birthday.conclusion_of_upcoming params[:planet].to_sym
+      @sequence = params[:sequence].to_i + 1
+      Rails.logger.info "sequence: #{@sequence}"
+      @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
+      @frame = frame_for @sequence
+    else
+      @card = @birthday.card_for_previous_planet @main_card, params[:planet].to_sym
+      @date = @birthday.conclusion_of_previous params[:planet].to_sym
+      @sequence = params[:sequence].to_i - 1
+      @planet = @birthday.previous_planet_sym params[:planet].to_sym
+      @frame = frame_for @sequence
+    end
+    render :template => 'guidances/card52', :format => :js
   end
   
   ## Card-Box Interface
@@ -108,13 +142,6 @@ class GuidancesController < ApplicationController
     redirect_to guidances_lookup_cards_path(source: 'staging')
   end
 
-  def personality
-    @birthday = Birthday.find params[:birthday_id]
-    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
-    @main_card = @birthday.personality_card
-    render :template => 'guidances/card_box'#, :locals => {personality: true, zodiac: params[:zodiac]}
-  end
-
   def daily_card
     @birthday = Birthday.find params[:birthday_id]
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
@@ -175,5 +202,9 @@ class GuidancesController < ApplicationController
   
   def purchaser
     @purchase = cookies['transaction_time'].present? && (DateTime.now - DateTime.parse(cookies['transaction_time'])) < 1
+  end
+
+  def frame_for sequence
+    ['delta','alpha', 'beta', 'gamma'][sequence.abs % 4]
   end
 end

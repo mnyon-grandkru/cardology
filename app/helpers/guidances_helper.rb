@@ -100,7 +100,7 @@ module GuidancesHelper
 
   def temporal_navigation(reading, position, purchaser = false)
     return content_tag(:h3, source_cards_marketing_text('purchaser', 'call_to_subscription', reading), :class => 'call_to_subscription') if purchaser
-    # return octagon_navigation if reading == 'planetary'
+    return planetary_navigation if reading == 'planetary'
     temporal_navigation_buttons(reading, position)
   end
 
@@ -116,6 +116,14 @@ module GuidancesHelper
         temporal_navigation_button(reading, 'backward', 'rotateFuture(90)') +
         temporal_navigation_button(reading, 'forward', 'rotatePast(90)')
       end
+    end
+  end
+
+  def planetary_navigation
+    content_tag(:div, :class => 'button_daily_card temporal_navigation') do
+      link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'backward'), '#', :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}) +
+      link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'return'), '#', :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}) +
+      link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'forward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @birthday.upcoming_planet_sym(@planet), :sequence => @sequence.abs), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})
     end
   end
 
@@ -171,6 +179,10 @@ module GuidancesHelper
       link_to('X', '#', :onclick => "$('.planet_description').remove(); return false", :class => 'planet_description_dismiss') +
       description.html_safe
     end
+  end
+
+  def carousel_reloader
+    javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload'
   end
 
   def subscribe_link
