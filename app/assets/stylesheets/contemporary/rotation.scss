@@ -1,0 +1,48 @@
+.panel {
+  perspective: 600px;
+}
+
+.panel .front {
+  z-index: 900;
+
+  transform: rotateX(0) rotateY(0);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: all .8s ease-in-out;
+}
+
+.panel.flip .front {
+  z-index: 900;
+  transform: translate3d(0, 0, -1px) rotateY(179deg);
+}
+
+.panel .back {
+  z-index: 800;
+
+  transform: translate3d(0, 0, -1px) rotateY(-179deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: all .8s ease-in-out;
+}
+
+.panel.flip .back {
+  z-index: 1000;
+  height: auto;
+
+  transform: translate3d(0, 0, 0) rotateY(0);
+}
+
+.owl-carousel .owl-item img {
+  backface-visibility: hidden !important;
+  will-change: transform;
+}
+
+.panel .back img.reveal {
+  opacity: 0;
+  transition: opacity 1.8s ease-in;
+}
+
+.panel.flip .back img.reveal {
+  opacity: 1;
+  transition-delay: 0.8s; // Delay the reveal until after the flip animation
+}
