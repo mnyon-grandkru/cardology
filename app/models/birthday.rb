@@ -252,8 +252,8 @@ class Birthday < ApplicationRecord
 
   def conclusion_of_previous current = current_planet_sym
     if previous_planet_sym(current) == :neptune
-      if current_planet_sym(current) == :pluto
-        conclusions_of_planets[previous_planet_sym]
+      if current == :pluto
+        conclusions_of_planets[previous_planet_sym(current)]
       else
         conclusions_of_planets(previous_birthday)[previous_planet_sym(current)]
       end

@@ -53,13 +53,12 @@ class GuidancesController < ApplicationController
       @card = @birthday.card_for_upcoming_planet @main_card, params[:planet].to_sym
       @date = @birthday.conclusion_of_upcoming params[:planet].to_sym
       @sequence = params[:sequence].to_i + 1
-      Rails.logger.info "sequence: #{@sequence}"
       @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
       @frame = frame_for @sequence
     else
       @card = @birthday.card_for_previous_planet @main_card, params[:planet].to_sym
       @date = @birthday.conclusion_of_previous params[:planet].to_sym
-      @sequence = params[:sequence].to_i - 1
+      @sequence = params[:sequence].to_i.abs - 1
       @planet = @birthday.previous_planet_sym params[:planet].to_sym
       @frame = frame_for @sequence
     end
