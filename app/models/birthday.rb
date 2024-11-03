@@ -140,12 +140,12 @@ class Birthday < ApplicationRecord
     card_for_the_planetary_period_on_date Date.current + 52.days, main_card
   end
 
-  def card_for_previous_planet main_card = birth_card, planet = previous_planet_sym
-    card_for_planet planet, main_card
+  def card_for_previous_planet main_card = birth_card, planet = previous_planet_sym, year = Date.current
+    card_for_planet planet, main_card, year
   end
 
-  def card_for_upcoming_planet main_card = birth_card, planet = upcoming_planet_sym
-    card_for_planet planet, main_card
+  def card_for_upcoming_planet main_card = birth_card, planet = upcoming_planet_sym, year = Date.current
+    card_for_planet planet, main_card, year
   end
   
   def days_until_next_planet

@@ -52,20 +52,25 @@ class GuidancesController < ApplicationController
     lived_sequence = @days_since_birthday / 52
     sequence = params[:sequence].to_i.abs
     if (7 - lived_sequence) > sequence
+      Rails.logger.info "previous year"
       @year = @birthday.previous_birthday
+    elsif (7 - lived_sequence) < (sequence - 7)
+      Rails.logger.info "next year"
+      @year = @birthday.next_birthday
     else
+      Rails.logger.info "current year"
       @year = @birthday.last_birthday
     end
 
     if params[:sequence].to_i > 0
       @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
-      @card = @birthday.card_for_upcoming_planet @main_card, @planet
+      @card = @birthday.card_for_upcoming_planet @main_card, @planet, @year
       @date = @birthday.conclusion_of_upcoming params[:planet].to_sym, @year
       @sequence = sequence + 1
       @frame = frame_for @sequence
     else
       @planet = @birthday.previous_planet_sym params[:planet].to_sym
-      @card = @birthday.card_for_previous_planet @main_card, @planet
+      @card = @birthday.card_for_previous_planet @main_card, @planet, @year
       @date = @birthday.conclusion_of_previous params[:planet].to_sym, @year
       @sequence = sequence - 1
       
