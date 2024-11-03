@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function() {
     let degrees;
     if (transformMatrix !== "none") {
       let values = transformMatrix.split('(')[1].split(')')[0].split(',');
-      console.log(`Values: ${values}`);
+      // console.log(`Values: ${values}`);
       let a = parseFloat(values[0]);
       let b = parseFloat(values[8]);
       let radians = Math.atan2(b, a);
@@ -19,22 +19,28 @@ $(document).on('turbolinks:load', function() {
   }
   
   function normalizeAngle(angle) {
-    return angle; //((angle + 180) % 360) - 180;
+    return ((angle + 180) % 360) - 180;
   }
-  
+
+  function recordPanelRotation(panel, degrees) {
+    panel.dataset.rotation = parseInt(degrees);
+  }
+
   function rotatePast(byDegrees) {
     let panel = event.target.closest('.surface-wrapper');
-    let currentPosition = currentRotation(panel);
-    let desiredPosition = normalizeAngle(currentPosition - byDegrees);
-    // console.log(`Desired: ${desiredPosition} degrees`);
+    let currentPosition = parseInt(panel.dataset.rotation) || currentRotation(panel);
+    let desiredPosition = currentPosition - byDegrees;
+    recordPanelRotation(panel, desiredPosition);
+    console.log(`Desired: ${desiredPosition} degrees`);
     panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
   }
   
   function rotateFuture(byDegrees) {
     let panel = event.target.closest('.surface-wrapper');
-    let currentPosition = currentRotation(panel);
-    let desiredPosition = normalizeAngle(currentPosition + byDegrees);
-    // console.log(`Desired: ${desiredPosition} degrees`);
+    let currentPosition = parseInt(panel.dataset.rotation) || currentRotation(panel);
+    let desiredPosition = currentPosition + byDegrees;
+    recordPanelRotation(panel, desiredPosition);
+    console.log(`Desired: ${desiredPosition} degrees`);
     panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
   }
 
