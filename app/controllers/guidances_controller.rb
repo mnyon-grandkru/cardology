@@ -61,11 +61,17 @@ class GuidancesController < ApplicationController
     @days_since_birthday = @birthday.days_since_birthday
     lived_sequence = @days_since_birthday / 52
     sequence = params[:sequence].to_i.abs
-    Rails.logger.info "lived sequence: #{lived_sequence}, sequence: #{sequence}"
-    if (7 - lived_sequence) >= sequence
+    if params[:sequence].to_i >= 0
+      @sequence = sequence + 1
+    else
+      @sequence = sequence - 1
+    end
+    Rails.logger.info "lived sequence: #{lived_sequence}, sequence: #{@sequence}"
+    Rails.logger.info "7 - lived_sequence: #{7 - lived_sequence}, sequence - 7: #{@sequence - 7}"
+    if (6 - lived_sequence) >= @sequence
       Rails.logger.info "previous year"
       @year = @birthday.previous_birthday
-    elsif (7 - lived_sequence) < (sequence - 7)
+    elsif (7 - lived_sequence) <= (@sequence - 7)
       Rails.logger.info "next year"
       @year = @birthday.next_birthday
     else
@@ -77,14 +83,11 @@ class GuidancesController < ApplicationController
       @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
       @card = @birthday.card_for_upcoming_planet @main_card, @planet, @year
       @date = @birthday.conclusion_of_upcoming params[:planet].to_sym, @year
-      @sequence = sequence + 1
       @frame = frame_for @sequence
     else
       @planet = @birthday.previous_planet_sym params[:planet].to_sym
       @card = @birthday.card_for_previous_planet @main_card, @planet, @year
       @date = @birthday.conclusion_of_previous params[:planet].to_sym, @year
-      @sequence = sequence - 1
-      
       @frame = frame_for @sequence
     end
     render :template => 'guidances/card52', :format => :js
