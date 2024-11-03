@@ -46,19 +46,27 @@ class GuidancesController < ApplicationController
     @birthday = Birthday.find params[:birthday_id]
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
     @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
-    # have to determine which direction we're going
-    # could use sequence -- 13 for forward, -13 for backward
-    # need to know which pane to fill - might be able to handle via front end
+
+    #days since birthday
+    @days_since_birthday = @birthday.days_since_birthday
+    lived_sequence = @days_since_birthday / 52
+    sequence = params[:sequence].to_i.abs
+    if (7 - lived_sequence) > sequence
+      @year = @birthday.previous_birthday
+    else
+      @year = @birthday.last_birthday
+    end
+
     if params[:sequence].to_i > 0
       @card = @birthday.card_for_upcoming_planet @main_card, params[:planet].to_sym
-      @date = @birthday.conclusion_of_upcoming params[:planet].to_sym
-      @sequence = params[:sequence].to_i + 1
+      @date = @birthday.conclusion_of_upcoming params[:planet].to_sym, @year
+      @sequence = sequence + 1
       @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
       @frame = frame_for @sequence
     else
       @card = @birthday.card_for_previous_planet @main_card, params[:planet].to_sym
-      @date = @birthday.conclusion_of_previous params[:planet].to_sym
-      @sequence = params[:sequence].to_i.abs - 1
+      @date = @birthday.conclusion_of_previous params[:planet].to_sym, @year
+      @sequence = sequence - 1
       @planet = @birthday.previous_planet_sym params[:planet].to_sym
       @frame = frame_for @sequence
     end
