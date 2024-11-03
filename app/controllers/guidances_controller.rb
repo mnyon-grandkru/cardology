@@ -51,7 +51,8 @@ class GuidancesController < ApplicationController
     @days_since_birthday = @birthday.days_since_birthday
     lived_sequence = @days_since_birthday / 52
     sequence = params[:sequence].to_i.abs
-    if (7 - lived_sequence) > sequence
+    Rails.logger.info "lived sequence: #{lived_sequence}, sequence: #{sequence}"
+    if (7 - lived_sequence) >= sequence
       Rails.logger.info "previous year"
       @year = @birthday.previous_birthday
     elsif (7 - lived_sequence) < (sequence - 7)
