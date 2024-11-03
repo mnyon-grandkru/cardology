@@ -58,16 +58,17 @@ class GuidancesController < ApplicationController
     end
 
     if params[:sequence].to_i > 0
-      @card = @birthday.card_for_upcoming_planet @main_card, params[:planet].to_sym
+      @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
+      @card = @birthday.card_for_upcoming_planet @main_card, @planet
       @date = @birthday.conclusion_of_upcoming params[:planet].to_sym, @year
       @sequence = sequence + 1
-      @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
       @frame = frame_for @sequence
     else
-      @card = @birthday.card_for_previous_planet @main_card, params[:planet].to_sym
+      @planet = @birthday.previous_planet_sym params[:planet].to_sym
+      @card = @birthday.card_for_previous_planet @main_card, @planet
       @date = @birthday.conclusion_of_previous params[:planet].to_sym, @year
       @sequence = sequence - 1
-      @planet = @birthday.previous_planet_sym params[:planet].to_sym
+      
       @frame = frame_for @sequence
     end
     render :template => 'guidances/card52', :format => :js
