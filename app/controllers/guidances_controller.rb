@@ -37,15 +37,25 @@ class GuidancesController < ApplicationController
 
   def personality
     @birthday = Birthday.find params[:birthday_id]
-    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
+    @personality = true
+    @zodiac = params[:zodiac]&.to_sym
+    @birthday.zodiac_sign = @zodiac if @zodiac
     @main_card = @birthday.personality_card
+    @planet = @birthday.current_planet_sym
+    @sequence = 7
     render :template => 'guidances/card_box'#, :locals => {personality: true, zodiac: params[:zodiac]}
   end
 
   def planet_card
     @birthday = Birthday.find params[:birthday_id]
-    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
-    @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
+    @personality = params[:personality]
+    @zodiac = params[:zodiac]&.to_sym
+    if @personality
+      @birthday.zodiac_sign = @zodiac if @zodiac
+      @main_card = @birthday.personality_card
+    else
+      @main_card = @birthday.birth_card
+    end
 
     #days since birthday
     @days_since_birthday = @birthday.days_since_birthday
