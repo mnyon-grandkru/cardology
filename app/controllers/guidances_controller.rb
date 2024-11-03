@@ -73,7 +73,7 @@ class GuidancesController < ApplicationController
       @year = @birthday.last_birthday
     end
 
-    if params[:sequence].to_i > 0
+    if params[:sequence].to_i >= 0
       @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
       @card = @birthday.card_for_upcoming_planet @main_card, @planet, @year
       @date = @birthday.conclusion_of_upcoming params[:planet].to_sym, @year
