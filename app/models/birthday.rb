@@ -237,6 +237,14 @@ class Birthday < ApplicationRecord
     planets_for_52[position - 1]
   end
 
+  def conclusion_of_previous current = current_planet_sym, birthday = last_birthday
+    conclusions_of_planets(birthday)[previous_planet_sym(current)]
+  end
+
+  def conclusion_of_upcoming current = current_planet_sym, birthday = last_birthday
+    conclusions_of_planets(birthday)[upcoming_planet_sym(current)]
+  end
+
   def previous_planet_name current = current_planet_sym
     previous_planet_sym(current).to_s.capitalize
   end
@@ -248,22 +256,6 @@ class Birthday < ApplicationRecord
 
   def upcoming_planet_name current = current_planet_sym
     upcoming_planet_sym(current).to_s.capitalize
-  end
-
-  def conclusion_of_previous current = current_planet_sym, birthday = last_birthday
-    if previous_planet_sym(current) == :neptune
-      if current == :pluto
-        conclusions_of_planets(birthday)[previous_planet_sym(current)]
-      else
-        conclusions_of_planets(birthday - 1.year)[previous_planet_sym(current)]
-      end
-    else
-      conclusions_of_planets(birthday)[previous_planet_sym(current)]
-    end
-  end
-
-  def conclusion_of_upcoming current = current_planet_sym, birthday = last_birthday
-    upcoming_planet_sym(current) == :mercury ? conclusions_of_planets(birthday)[upcoming_planet_sym(current)] : conclusions_of_planets(birthday + 1.year)[upcoming_planet_sym(current)]
   end
 
   def current_planet
