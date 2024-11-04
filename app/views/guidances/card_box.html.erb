@@ -12,7 +12,7 @@
       <div class="boxpanel">
         <div class="surface-wrapper">
           <div class="alpha surface">
-            <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;" %>
+            <%= card_back_image %>
           </div>
 
           <div class="beta surface">
@@ -34,7 +34,7 @@
       <div class="boxpanel">
         <div class="surface-wrapper">
           <div class="alpha surface">
-            <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;" %>
+            <%= card_back_image %>
           </div>
 
           <div class="beta surface">
@@ -56,7 +56,7 @@
       <div class="boxpanel">
         <div class="surface-wrapper">
           <div class="alpha surface">
-            <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;" %>
+            <%= card_back_image %>
           </div>
 
           <div class="beta surface">
@@ -75,5 +75,5 @@
     </div>
   </div>
 
-  <%= content_tag :div, '', data: { planet_back_image: image_tag(asset_path('Low-Grey-Blue-RGB.jpg'), class: 'source_cards_card_design', onclick: 'rotatePast(180); return false;') }, id: 'planet_back_config' %>
+  <%= content_tag :div, '', data: { planet_back_image: card_back_image }, id: 'planet_back_config' %>
 </body>
