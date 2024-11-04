@@ -61,7 +61,7 @@ module GuidancesHelper
       marketing_text('heading', 'member', reading, *reading_text_handler(card, reading, birthday, position)).html_safe + +
       if reading == 'planetary'
         @joker ? "" : (planetary_link(planet, purchaser ? nil : @sequence) +
-        content_tag(:em, planet_cycle_end_date(date)))
+        planet_cycle_end_date(date))
       elsif reading == 'yearly'
         tag(:br) + 
         content_tag(:em, birthday_range(date), :class => 'birthday_dates')
@@ -81,7 +81,7 @@ module GuidancesHelper
 
   def planet_cycle_end_date(date)
     debug_begin = date - 51.days
-    ".  This cycle is #{debug_begin.strftime("%-m/%-d/%y")} - #{date.strftime("%-m/%-d/%y")}."
+    ", from #{debug_begin.strftime("%-m/%-d/%y")} - #{date.strftime("%-m/%-d/%y")}."
   end
   
   def carousel_reading(card, reading)
