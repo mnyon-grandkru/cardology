@@ -83,12 +83,10 @@ class GuidancesController < ApplicationController
       @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
       @card = @birthday.card_for_upcoming_planet @main_card, @planet, @year
       @date = @birthday.conclusion_of_upcoming params[:planet].to_sym, @year
-      @frame = frame_for @sequence
     else
       @planet = @birthday.previous_planet_sym params[:planet].to_sym
       @card = @birthday.card_for_previous_planet @main_card, @planet, @year
       @date = @birthday.conclusion_of_previous params[:planet].to_sym, @year
-      @frame = frame_for @sequence
     end
     render :template => 'guidances/card52', :format => :js
   end
@@ -210,7 +208,7 @@ class GuidancesController < ApplicationController
   end
   
   def planet
-    @face = {'here' => '.gamma', 'back' => '.beta', 'forward' => '.delta'}[params[:position]]
+    @sequence = params[:sequence].to_i
   end
 
   def year_card
@@ -229,9 +227,5 @@ class GuidancesController < ApplicationController
   
   def purchaser
     @purchase = cookies['transaction_time'].present? && (DateTime.now - DateTime.parse(cookies['transaction_time'])) < 1
-  end
-
-  def frame_for sequence
-    ['delta','alpha', 'beta', 'gamma'][sequence.abs % 4]
   end
 end

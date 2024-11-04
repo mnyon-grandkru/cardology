@@ -60,7 +60,7 @@ module GuidancesHelper
     content_tag(:span) do
       marketing_text('heading', 'member', reading, *reading_text_handler(card, reading, birthday, position)).html_safe + +
       if reading == 'planetary'
-        @joker ? "" : (planetary_link(planet, purchaser ? nil : position) +
+        @joker ? "" : (planetary_link(planet, purchaser ? nil : @sequence) +
         content_tag(:em, planet_cycle_end_date(date)))
       elsif reading == 'yearly'
         tag(:br) + 
@@ -75,8 +75,8 @@ module GuidancesHelper
     birthday.strftime(" %B %e, %Y") + ' - ' + (birthday + 1.year - 1.day).strftime(" %B %e, %Y")
   end
 
-  def planetary_link(planet, position)
-    link_to planet.capitalize, planet_guidance_path(planet, position), :remote => true
+  def planetary_link(planet, sequence)
+    link_to planet.capitalize, planet_guidance_path(planet, sequence), :remote => true
   end
 
   def planet_cycle_end_date(date)
@@ -181,6 +181,10 @@ module GuidancesHelper
       link_to('X', '#', :onclick => "$('.planet_description').remove(); return false", :class => 'planet_description_dismiss') +
       description.html_safe
     end
+  end
+
+  def frame_for sequence
+    ['delta','alpha', 'beta', 'gamma'][sequence.abs % 4]
   end
 
   def carousel_reloader
