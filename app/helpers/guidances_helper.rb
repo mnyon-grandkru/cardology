@@ -2,7 +2,7 @@ module GuidancesHelper
   def card_box_pane(birthday, card, reading, date, position, planet = nil, purchaser = false)
     reading_heading(reading, position) +
     content_tag(:div, :class => 'pane_guidance') do
-      flipback(!purchaser) +
+      flipback(reading == 'planetary' ? :planet : !purchaser) +
       pane_heading(birthday, card, reading, date, position, planet, purchaser) +
       carousel_reading(card, reading) +
       temporal_navigation(reading, position, purchaser) +
@@ -169,6 +169,7 @@ module GuidancesHelper
   def flipback box = false
     func = case box
       when :octagon then "flipOctagonBack(event)"
+      when :planet then "flipPlanetBack(event)"
       when true then "flipBoxBack(event)"
       else "flipCardBack(event)"
     end
@@ -184,6 +185,10 @@ module GuidancesHelper
 
   def carousel_reloader
     javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload'
+  end
+
+  def card_back_image
+    image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;"
   end
 
   def subscribe_link
