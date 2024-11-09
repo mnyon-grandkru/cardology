@@ -61,7 +61,11 @@ class GuidancesController < ApplicationController
     @days_since_birthday = @birthday.days_since_birthday
     lived_sequence = @days_since_birthday / 52
     sequence = params[:sequence].to_i.abs
-    if params[:sequence].to_i >= 0
+    if sequence == 17
+      sequence = 7
+      @sequence = 7
+      params[:planet] = @birthday.current_planet_sym
+    elsif params[:sequence].to_i >= 0
       @sequence = sequence + 1
     else
       @sequence = sequence - 1
@@ -79,7 +83,11 @@ class GuidancesController < ApplicationController
       @year = @birthday.last_birthday
     end
 
-    if params[:sequence].to_i >= 0
+    if params[:sequence].to_i == 17
+      @planet = @birthday.current_planet_sym
+      @card = @birthday.card_for_this_planet @main_card
+      @date = @birthday.date_of_next_planet
+    elsif params[:sequence].to_i >= 0
       @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
       @card = @birthday.card_for_upcoming_planet @main_card, @planet, @year
       @date = @birthday.conclusion_of_upcoming params[:planet].to_sym, @year
