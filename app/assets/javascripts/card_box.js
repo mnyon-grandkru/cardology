@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function() {
     let currentPosition = parseInt(panel.dataset.rotation) || currentRotation(panel);
     let desiredPosition = currentPosition - byDegrees;
     recordPanelRotation(panel, desiredPosition);
-    console.log(`Desired: ${desiredPosition} degrees`);
+    // console.log(`Desired: ${desiredPosition} degrees`);
     panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
   }
   
@@ -40,8 +40,14 @@ $(document).on('turbolinks:load', function() {
     let currentPosition = parseInt(panel.dataset.rotation) || currentRotation(panel);
     let desiredPosition = currentPosition + byDegrees;
     recordPanelRotation(panel, desiredPosition);
-    console.log(`Desired: ${desiredPosition} degrees`);
+    // console.log(`Desired: ${desiredPosition} degrees`);
     panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${desiredPosition}deg)`;
+  }
+
+  function rotateTo(degrees) {
+    let panel = event.target.closest('.surface-wrapper');
+    recordPanelRotation(panel, degrees);
+    panel.style.transform = `translateZ(calc(var(--half-card-box-width) * -1)) rotateY(${degrees}deg)`;
   }
 
   function surfaceForAngle(angle) {
@@ -79,5 +85,6 @@ $(document).on('turbolinks:load', function() {
   
   window.rotatePast = rotatePast;
   window.rotateFuture = rotateFuture;
+  window.rotateTo = rotateTo;
   window.rotateOctagon = rotateOctagon;
 });

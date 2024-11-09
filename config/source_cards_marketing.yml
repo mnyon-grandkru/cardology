@@ -55,9 +55,9 @@ temporal_navigation:
     backward: "Yesterday"
     return: "Today"
   planetary:
-    forward: "Next 52"
-    backward: "Previous 52"
-    return: "Current 52"
+    forward: "Next"
+    backward: "Previous"
+    return: "Current"
   yearly:
     forward: "Next Year"
     backward: "Last Year"
