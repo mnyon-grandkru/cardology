@@ -123,7 +123,7 @@ module GuidancesHelper
   def planetary_navigation
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
       (@sequence < 1 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'backward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => (0 - @sequence.abs), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
-      (@sequence == 7 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'return'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => 17, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@sequence == 7 ? ''.html_safe : link_to(spade_logo, planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => 17, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
       (@sequence > 13 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'forward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => @sequence.abs, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
     end
   end
@@ -137,6 +137,10 @@ module GuidancesHelper
 
   def temporal_navigation_button(reading, direction, rotation)
     link_to source_cards_marketing_text('temporal_navigation', reading, direction), '#', :onclick => "#{rotation}; return false;", :class => 'lunar_navigation', :data => {:turbolinks => false}
+  end
+
+  def spade_logo
+    image_tag asset_path('spade-only-white.png'), class: 'spade_logo'
   end
 
   def copyright_text
