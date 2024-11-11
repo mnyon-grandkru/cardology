@@ -101,6 +101,7 @@ module GuidancesHelper
 
   def temporal_navigation(reading, position, purchaser = false)
     return content_tag(:h3, source_cards_marketing_text('purchaser', 'call_to_subscription', reading), :class => 'call_to_subscription') if purchaser
+    return daily_navigation if reading == 'daily'
     return planetary_navigation if reading == 'planetary'
     temporal_navigation_buttons(reading, position)
   end
@@ -117,6 +118,14 @@ module GuidancesHelper
         temporal_navigation_button(reading, 'backward', 'rotateFuture(90)') +
         temporal_navigation_button(reading, 'forward', 'rotatePast(90)')
       end
+    end
+  end
+
+  def daily_navigation
+    content_tag(:div, :class => 'button_daily_card temporal_navigation') do
+      (@day_sequence < -6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'daily', 'backward'), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence - 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@day_sequence == 0 ? ''.html_safe : link_to(spade_logo, day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => 0, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@day_sequence > 6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'daily', 'forward'), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence + 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
     end
   end
 
@@ -188,7 +197,11 @@ module GuidancesHelper
   end
 
   def frame_for sequence
-    ['delta','alpha', 'beta', 'gamma'][sequence.abs % 4]
+    ['delta', 'alpha', 'beta', 'gamma'][sequence.abs % 4]
+  end
+
+  def daily_frame_for sequence
+    ['gamma', 'delta', 'alpha', 'beta'][sequence % 4]
   end
 
   def carousel_reloader

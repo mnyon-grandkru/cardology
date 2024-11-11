@@ -1,1 +1,7 @@
-$('#daily_card').html("<%= j render(:partial => '/guidances/daily_card') %>")
+$('#delivery_first .<%=j daily_frame_for @day_sequence %>').html("<%= j card_box_pane(@birthday, @card, 'daily', @date, :here) %>")
+var daily_carousel = $('#delivery_first .<%=j daily_frame_for @day_sequence %> .owl-carousel');
+daily_carousel.owlCarousel(owlOptions);
+    
+daily_carousel.on('translated.owl.carousel', function(event) {
+  cardReferenceToggler(event.target);
+});

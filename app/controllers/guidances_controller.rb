@@ -19,6 +19,7 @@ class GuidancesController < ApplicationController
 
     @planet = @birthday.current_planet_sym
     @sequence = 7
+    @day_sequence = 0
 
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
     if params[:reading_type] == 'Personality Card'
@@ -43,7 +44,25 @@ class GuidancesController < ApplicationController
     @main_card = @birthday.personality_card
     @planet = @birthday.current_planet_sym
     @sequence = 7
+    @day_sequence = 0
     render :template => 'guidances/card_box'#, :locals => {personality: true, zodiac: params[:zodiac]}
+  end
+
+  def day_card
+    @birthday = Birthday.find params[:birthday_id]
+    @personality = params[:personality]
+    @zodiac = params[:zodiac]&.to_sym
+    if @personality
+      @birthday.zodiac_sign = @zodiac if @zodiac
+      @main_card = @birthday.personality_card
+    else
+      @main_card = @birthday.birth_card
+    end
+
+    @day_sequence = params[:day_sequence].to_i
+    @date = Date.current + @day_sequence.days
+    @card = @birthday.card_for_date @date, @main_card
+    render :template => 'guidances/daily_card', :format => :js
   end
 
   def planet_card
