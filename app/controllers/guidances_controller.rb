@@ -20,6 +20,7 @@ class GuidancesController < ApplicationController
     @planet = @birthday.current_planet_sym
     @sequence = 7
     @day_sequence = 0
+    @date = Date.current
 
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
     if params[:reading_type] == 'Personality Card'

@@ -2,7 +2,7 @@ module GuidancesHelper
   def card_box_pane(birthday, card, reading, date, position, planet = nil, purchaser = false)
     reading_heading(reading, position) +
     content_tag(:div, :class => 'pane_guidance') do
-      flipback(reading == 'planetary' ? :planet : !purchaser) +
+      flipback(!purchaser) +
       pane_heading(birthday, card, reading, date, position, planet, purchaser) +
       carousel_reading(card, reading) +
       temporal_navigation(reading, position, purchaser) +
@@ -66,7 +66,7 @@ module GuidancesHelper
         tag(:br) + 
         content_tag(:em, birthday_range(date), :class => 'birthday_dates')
       else
-        content_tag(:em, date.strftime(" %B %e, %Y"))
+        content_tag(:strong, date.strftime(" %A, %B %e, %Y"))
       end
     end
   end
@@ -123,9 +123,9 @@ module GuidancesHelper
 
   def daily_navigation
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
-      (@day_sequence < -6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'daily', 'backward'), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence - 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@day_sequence < -6 ? ''.html_safe : link_to((@date - 1.day).strftime("%A"), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence - 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
       (@day_sequence == 0 ? ''.html_safe : link_to(spade_logo, day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => 0, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
-      (@day_sequence > 6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'daily', 'forward'), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence + 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
+      (@day_sequence > 6 ? ''.html_safe : link_to((@date + 1.day).strftime("%A"), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence + 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
     end
   end
 
@@ -181,9 +181,7 @@ module GuidancesHelper
   
   def flipback box = false
     func = case box
-      when :octagon then "flipOctagonBack(event)"
-      when :planet then "flipPlanetBack(event)"
-      when true then "flipBoxBack(event)"
+      when true then "flipPlanetBack(event)"
       else "flipCardBack(event)"
     end
     link_to "", '#', onclick: func, data: {turbolinks: false}, class: 'flipback'

@@ -7,7 +7,7 @@ window.flipBoxBack = (event) ->
 
 window.flipPlanetBack = (event) ->
   $(event.currentTarget).closest('.surface-wrapper').css('transform', 'translateZ(-165px) rotateY(180deg)')
-  $('#delivery_second .alpha').html($('#planet_back_config').data('planet-back-image'))
+  $(event.currentTarget).closest('.surface-wrapper').find('.alpha').html($('#planet_back_config').data('planet-back-image'))
 
 window.flipOctagonBack = (event) ->
   $(event.currentTarget).closest('.surface-wrapper').css('transform', 'translateZ(-165px) rotateY(0deg)')

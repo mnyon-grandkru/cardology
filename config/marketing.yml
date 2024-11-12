@@ -161,7 +161,7 @@ heading:
     daily:
       here:
         header: "Today's Card"
-        subheader: "This card represents your personal energy pattern in play until midnight tonight:"
+        subheader: "This card represents your personal energy pattern in play until midnight on"
       forward:
         header: "Tomorrow's Card"
         subheader: "This card will join you at midnight:"
