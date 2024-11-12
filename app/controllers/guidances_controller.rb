@@ -46,6 +46,7 @@ class GuidancesController < ApplicationController
     @planet = @birthday.current_planet_sym
     @sequence = 7
     @day_sequence = 0
+    @date = Date.current
     render :template => 'guidances/card_box'#, :locals => {personality: true, zodiac: params[:zodiac]}
   end
 

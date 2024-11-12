@@ -22,7 +22,12 @@ module GuidancesHelper
 
   def reading_heading(reading, position)
     content_tag(:div, :class => 'prompt_heading') do
-      content_tag(:b, marketing_text('heading', 'member', reading, position.to_s, 'header'))
+      if reading == 'daily'
+        date = @date || Date.current
+        content_tag(:b, date.strftime("Card for %A the ") + date.day.ordinalize)
+      else
+        content_tag(:b, marketing_text('heading', 'member', reading, position.to_s, 'header'))
+      end
     end
   end
 
@@ -63,7 +68,7 @@ module GuidancesHelper
         @joker ? "" : (planetary_link(planet, purchaser ? nil : @sequence) +
         planet_cycle_end_date(date))
       elsif reading == 'yearly'
-        tag(:br) + 
+        tag(:br) +
         content_tag(:em, birthday_range(date), :class => 'birthday_dates')
       else
         content_tag(:strong, date.strftime(" %A, %B %e, %Y"))
