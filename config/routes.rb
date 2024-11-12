@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   get '/guidances/personality' => 'guidances#personality'
   get '/guidances/planet_card/:birthday_id/:planet/:sequence(/:personality)(/:zodiac)' => 'guidances#planet_card', :as => 'planet_card_guidance'
   get '/guidances/day_card/:birthday_id(/:day_sequence)(/:personality)(/:zodiac)' => 'guidances#day_card', :as => 'day_card_guidance'
+  get '/guidances/year_card/:birthday_id(/:year_sequence)(/:personality)(/:zodiac)' => 'guidances#year_card', :as => 'year_card_guidance'
   get '/guidances/daily_card' => 'guidances#daily_card'
   get '/guidances/card52' => 'guidances#card52'
   get '/guidances/year_card' => 'guidances#year_card'

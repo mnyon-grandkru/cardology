@@ -20,6 +20,7 @@ class GuidancesController < ApplicationController
     @planet = @birthday.current_planet_sym
     @sequence = 7
     @day_sequence = 0
+    @year_sequence = 0
     @date = Date.current
 
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
@@ -46,6 +47,7 @@ class GuidancesController < ApplicationController
     @planet = @birthday.current_planet_sym
     @sequence = 7
     @day_sequence = 0
+    @year_sequence = 0
     @date = Date.current
     render :template => 'guidances/card_box'#, :locals => {personality: true, zodiac: params[:zodiac]}
   end
@@ -118,6 +120,23 @@ class GuidancesController < ApplicationController
       @date = @birthday.conclusion_of_previous params[:planet].to_sym, @year
     end
     render :template => 'guidances/card52', :format => :js
+  end
+
+  def year_card
+    @birthday = Birthday.find params[:birthday_id]
+    @personality = params[:personality]
+    @zodiac = params[:zodiac]&.to_sym
+    if @personality
+      @birthday.zodiac_sign = @zodiac if @zodiac
+      @main_card = @birthday.personality_card
+    else
+      @main_card = @birthday.birth_card
+    end
+
+    @year_sequence = params[:year_sequence].to_i
+    @date = Date.current + @year_sequence.years
+    @card = @birthday.card_for_the_year_on_date @date, @main_card
+    render :template => 'guidances/year_card', :format => :js
   end
   
   ## Card-Box Interface
@@ -240,19 +259,19 @@ class GuidancesController < ApplicationController
     @sequence = params[:sequence].to_i
   end
 
-  def year_card
-    @birthday = Birthday.find params[:birthday_id]
-    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
-    @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
+  # def year_card
+  #   @birthday = Birthday.find params[:birthday_id]
+  #   @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
+  #   @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
     
-    if params[:year] == 'current'
-      @card = @birthday.card_for_this_year @main_card
-    elsif params[:year] == 'last'
-      @card = @birthday.card_for_last_year @main_card
-    elsif params[:year] == 'next'
-      @card = @birthday.card_for_next_year @main_card
-    end
-  end
+  #   if params[:year] == 'current'
+  #     @card = @birthday.card_for_this_year @main_card
+  #   elsif params[:year] == 'last'
+  #     @card = @birthday.card_for_last_year @main_card
+  #   elsif params[:year] == 'next'
+  #     @card = @birthday.card_for_next_year @main_card
+  #   end
+  # end
   
   def purchaser
     @purchase = cookies['transaction_time'].present? && (DateTime.now - DateTime.parse(cookies['transaction_time'])) < 1

@@ -91,7 +91,7 @@ module GuidancesHelper
   
   def carousel_reading(card, reading)
     content_tag(:div, :class => "wrapper") do
-      content_tag(:div, :class => "owl-carousel owl-theme image-slider", :id => "Testcarousel") do
+      content_tag(:div, :class => "owl-carousel owl-theme image-slider", :id => "Testcarousel") do # TODO change id
         card_image_paragraph(card) +
         simple_format(card.interpretations.where(reading: reading).last&.explanation)
       end
@@ -108,6 +108,7 @@ module GuidancesHelper
     return content_tag(:h3, source_cards_marketing_text('purchaser', 'call_to_subscription', reading), :class => 'call_to_subscription') if purchaser
     return daily_navigation if reading == 'daily'
     return planetary_navigation if reading == 'planetary'
+    return year_navigation if reading == 'yearly'
     temporal_navigation_buttons(reading, position)
   end
 
@@ -139,6 +140,14 @@ module GuidancesHelper
       (@sequence < 1 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'backward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => (0 - @sequence.abs), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
       (@sequence == 7 ? ''.html_safe : link_to(spade_logo, planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => 17, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
       (@sequence > 13 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'forward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => @sequence.abs, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
+    end
+  end
+
+  def year_navigation
+    content_tag(:div, :class => 'button_daily_card temporal_navigation') do
+      (@year_sequence < -6 ? ''.html_safe : link_to((@date - 1.year).strftime("%Y"), year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => (@year_sequence - 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@year_sequence == 0 ? ''.html_safe : link_to(spade_logo, year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => 0, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@year_sequence > 6 ? ''.html_safe : link_to((@date + 1.year).strftime("%Y"), year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => (@year_sequence + 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
     end
   end
 
