@@ -2,6 +2,7 @@ class GuidancesController < ApplicationController
   # skip_before_action :verify_authenticity_token, :if => lambda { ['lifeelevated.life', 'thesourcecards.com', 'herokuapp.com' , 'blueprint.thesourcecards.com', 'thecardsoflife.com'].include? request.domain }
   skip_before_action :verify_authenticity_token
   before_action :purchaser
+  before_action :main_card, only: [:day_card, :planet_card, :year_card]
   
   ## Subscriber Interface
   
@@ -53,16 +54,6 @@ class GuidancesController < ApplicationController
   end
 
   def day_card
-    @birthday = Birthday.find params[:birthday_id]
-    @personality = params[:personality]
-    @zodiac = params[:zodiac]&.to_sym
-    if @personality
-      @birthday.zodiac_sign = @zodiac if @zodiac
-      @main_card = @birthday.personality_card
-    else
-      @main_card = @birthday.birth_card
-    end
-
     @day_sequence = params[:day_sequence].to_i
     @date = Date.current + @day_sequence.days
     @card = @birthday.card_for_date @date, @main_card
@@ -70,17 +61,6 @@ class GuidancesController < ApplicationController
   end
 
   def planet_card
-    @birthday = Birthday.find params[:birthday_id]
-    @personality = params[:personality]
-    @zodiac = params[:zodiac]&.to_sym
-    if @personality
-      @birthday.zodiac_sign = @zodiac if @zodiac
-      @main_card = @birthday.personality_card
-    else
-      @main_card = @birthday.birth_card
-    end
-
-    #days since birthday
     @days_since_birthday = @birthday.days_since_birthday
     lived_sequence = @days_since_birthday / 52
     sequence = params[:sequence].to_i.abs
@@ -93,16 +73,12 @@ class GuidancesController < ApplicationController
     else
       @sequence = sequence - 1
     end
-    Rails.logger.info "lived sequence: #{lived_sequence}, sequence: #{@sequence}"
-    Rails.logger.info "7 - lived_sequence: #{7 - lived_sequence}, sequence - 7: #{@sequence - 7}"
+
     if (6 - lived_sequence) >= @sequence
-      Rails.logger.info "previous year"
       @year = @birthday.previous_birthday
     elsif (7 - lived_sequence) <= (@sequence - 7)
-      Rails.logger.info "next year"
       @year = @birthday.next_birthday
     else
-      Rails.logger.info "current year"
       @year = @birthday.last_birthday
     end
 
@@ -123,16 +99,6 @@ class GuidancesController < ApplicationController
   end
 
   def year_card
-    @birthday = Birthday.find params[:birthday_id]
-    @personality = params[:personality]
-    @zodiac = params[:zodiac]&.to_sym
-    if @personality
-      @birthday.zodiac_sign = @zodiac if @zodiac
-      @main_card = @birthday.personality_card
-    else
-      @main_card = @birthday.birth_card
-    end
-
     @year_sequence = params[:year_sequence].to_i
     @date = @birthday.last_birthday + @year_sequence.years
     @card = @birthday.card_for_the_year_on_date @date, @main_card
@@ -273,6 +239,20 @@ class GuidancesController < ApplicationController
   #   end
   # end
   
+  private
+
+  def main_card
+    @birthday = Birthday.find params[:birthday_id]
+    @personality = params[:personality]
+    @zodiac = params[:zodiac]&.to_sym
+    if @personality
+      @birthday.zodiac_sign = @zodiac if @zodiac
+      @main_card = @birthday.personality_card
+    else
+      @main_card = @birthday.birth_card
+    end
+  end
+
   def purchaser
     @purchase = cookies['transaction_time'].present? && (DateTime.now - DateTime.parse(cookies['transaction_time'])) < 1
   end
