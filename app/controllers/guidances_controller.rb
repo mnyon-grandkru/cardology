@@ -134,7 +134,7 @@ class GuidancesController < ApplicationController
     end
 
     @year_sequence = params[:year_sequence].to_i
-    @date = Date.current + @year_sequence.years
+    @date = @birthday.last_birthday + @year_sequence.years
     @card = @birthday.card_for_the_year_on_date @date, @main_card
     render :template => 'guidances/year_card', :format => :js
   end
