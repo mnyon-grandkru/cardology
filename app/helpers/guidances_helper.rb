@@ -129,9 +129,9 @@ module GuidancesHelper
 
   def daily_navigation
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
-      (@day_sequence < -6 ? ''.html_safe : link_to((@date - 1.day).strftime("%A"), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence - 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@day_sequence < -6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'daily', 'backward'), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence - 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
       (@day_sequence == 0 ? ''.html_safe : link_to(spade_logo, day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => 0, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
-      (@day_sequence > 6 ? ''.html_safe : link_to((@date + 1.day).strftime("%A"), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence + 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
+      (@day_sequence > 6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'daily', 'forward'), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence + 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
     end
   end
 
@@ -145,9 +145,9 @@ module GuidancesHelper
 
   def year_navigation
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
-      (@year_sequence < -6 ? ''.html_safe : link_to((@date - 1.year).strftime("%Y"), year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => (@year_sequence - 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@year_sequence < -6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'yearly', 'backward'), year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => (@year_sequence - 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
       (@year_sequence == 0 ? ''.html_safe : link_to(spade_logo, year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => 0, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
-      (@year_sequence > 6 ? ''.html_safe : link_to((@date + 1.year).strftime("%Y"), year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => (@year_sequence + 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
+      (@year_sequence > 6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'yearly', 'forward'), year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => (@year_sequence + 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
     end
   end
 
