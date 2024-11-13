@@ -95,6 +95,7 @@ class GuidancesController < ApplicationController
       @card = @birthday.card_for_previous_planet @main_card, @planet, @year
       @date = @birthday.conclusion_of_previous params[:planet].to_sym, @year
     end
+    @date = @date - 1.day
     render :template => 'guidances/card52', :format => :js
   end
 
