@@ -1,6 +1,6 @@
 module GuidancesHelper
   def card_box_pane(birthday, card, reading, date, position, planet = nil, purchaser = false)
-    reading_heading(reading, position) +
+    reading_heading(reading, position, purchaser) +
     content_tag(:div, :class => 'pane_guidance') do
       flipback(!purchaser) +
       pane_heading(birthday, card, reading, date, position, planet, purchaser) +
@@ -20,11 +20,10 @@ module GuidancesHelper
     end
   end
 
-  def reading_heading(reading, position)
+  def reading_heading(reading, position, purchaser = false)
     content_tag(:div, :class => 'prompt_heading') do
-      if reading == 'daily'
-        date = @date || Date.current
-        content_tag(:b, date.strftime("Card for %A the ") + date.day.ordinalize)
+      if (reading == 'daily') && !purchaser
+        content_tag(:b, @date.strftime("Card for %A the ") + @date.day.ordinalize)
       else
         content_tag(:b, marketing_text('heading', 'member', reading, position.to_s, 'header'))
       end
