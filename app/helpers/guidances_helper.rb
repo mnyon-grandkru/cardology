@@ -67,7 +67,6 @@ module GuidancesHelper
         @joker ? "" : (planetary_link(planet, purchaser ? nil : @sequence) +
         planet_cycle_end_date(date))
       elsif reading == 'yearly'
-        tag(:br) +
         content_tag(:em, birthday_range(date), :class => 'birthday_dates')
       else
         content_tag(:strong, date.strftime(" %A, %B %e, %Y"))
