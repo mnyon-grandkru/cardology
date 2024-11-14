@@ -194,7 +194,8 @@ class Birthday < ApplicationRecord
       birthday_for_year + (52*4).days,
       birthday_for_year + (52*5).days,
       birthday_for_year + (52*6).days,
-      birthday_for_year + (52*7).days
+      birthday_for_year + (52*7).days,
+      birthday_for_year + ((52*7) + 1).days
     ]
   end
 
@@ -234,7 +235,7 @@ class Birthday < ApplicationRecord
   end
 
   def previous_planet_sym current = current_planet_sym
-    position = current == :pluto ? 7 : planets_for_52.index(current)
+    position = planets_for_52.index(current)
     planets_for_52[position - 1]
   end
 
@@ -251,7 +252,7 @@ class Birthday < ApplicationRecord
   end
 
   def upcoming_planet_sym current = current_planet_sym
-    position = current == :pluto ? -1 : planets_for_52.index(current)
+    position = planets_for_52.index(current)
     planets_for_52[(position + 1) % planets_for_52.length] # need to wrap around from last to Mercury
   end
 
@@ -479,7 +480,7 @@ class Birthday < ApplicationRecord
   end
 
   def planets_for_52
-    [:mercury, :venus, :mars, :jupiter, :saturn, :uranus, :neptune]
+    [:mercury, :venus, :mars, :jupiter, :saturn, :uranus, :neptune, :pluto]
   end
   
   def number_for_planet planet
