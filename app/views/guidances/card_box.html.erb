@@ -44,7 +44,7 @@
           </div>
 
           <div class="gamma surface">
-            <%= card_box_pane @birthday, @birthday.card_for_this_planet(@main_card), 'planetary', @birthday.date_of_next_planet, :here, @birthday.current_planet_sym %>
+            <%= card_box_pane @birthday, @birthday.card_for_this_planet(@main_card), 'planetary', (@birthday.date_of_next_planet - 1.day), :here, @birthday.current_planet_sym %>
           </div>
 
           <div class="delta surface">
