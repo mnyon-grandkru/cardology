@@ -2,6 +2,7 @@ class GuidancesController < ApplicationController
   # skip_before_action :verify_authenticity_token, :if => lambda { ['lifeelevated.life', 'thesourcecards.com', 'herokuapp.com' , 'blueprint.thesourcecards.com', 'thecardsoflife.com'].include? request.domain }
   skip_before_action :verify_authenticity_token
   before_action :purchaser
+  before_action :main_card, only: [:day_card, :planet_card, :year_card]
   
   ## Subscriber Interface
   
@@ -17,6 +18,12 @@ class GuidancesController < ApplicationController
       @birthday = Birthday.find_or_create_by :year => params['birthday']['date(1i)'], :month => params['birthday']['date(2i)'], :day => params['birthday']['date(3i)']
     end
 
+    @planet = @birthday.current_planet_sym
+    @sequence = 7
+    @day_sequence = 0
+    @year_sequence = 0
+    @date = Date.current
+
     @lookup = Lookup.create :birthday => @birthday, :ip_address => request.remote_ip
     if params[:reading_type] == 'Personality Card'
       @birthday.zodiac_sign = params[:zodiac] if params[:zodiac]
@@ -30,6 +37,73 @@ class GuidancesController < ApplicationController
       @main_card = @birthday.birth_card
       render :template => 'guidances/card_box'
     end
+  end
+
+  def personality
+    @birthday = Birthday.find params[:birthday_id]
+    @personality = true
+    @zodiac = params[:zodiac]&.to_sym
+    @birthday.zodiac_sign = @zodiac if @zodiac
+    @main_card = @birthday.personality_card
+    @planet = @birthday.current_planet_sym
+    @sequence = 7
+    @day_sequence = 0
+    @year_sequence = 0
+    @date = Date.current
+    render :template => 'guidances/card_box'#, :locals => {personality: true, zodiac: params[:zodiac]}
+  end
+
+  def day_card
+    @day_sequence = params[:day_sequence].to_i
+    @date = Date.current + @day_sequence.days
+    @card = @birthday.card_for_date @date, @main_card
+    render :template => 'guidances/daily_card', :format => :js
+  end
+
+  def planet_card
+    @days_since_birthday = @birthday.days_since_birthday
+    lived_sequence = @days_since_birthday / 52
+    sequence = params[:sequence].to_i.abs
+    if sequence == 17
+      sequence = 7
+      @sequence = 7
+      params[:planet] = @birthday.current_planet_sym
+    elsif params[:sequence].to_i >= 0
+      @sequence = sequence + 1
+    else
+      @sequence = sequence - 1
+    end
+
+    if (6 - lived_sequence) >= @sequence
+      @year = @birthday.previous_birthday
+    elsif (7 - lived_sequence) <= (@sequence - 7)
+      @year = @birthday.next_birthday
+    else
+      @year = @birthday.last_birthday
+    end
+
+    if params[:sequence].to_i == 17
+      @planet = @birthday.current_planet_sym
+      @card = @birthday.card_for_this_planet @main_card
+      @date = @birthday.date_of_next_planet
+    elsif params[:sequence].to_i >= 0
+      @planet = @birthday.upcoming_planet_sym params[:planet].to_sym
+      @card = @birthday.card_for_upcoming_planet @main_card, @planet, @year
+      @date = @birthday.conclusion_of_upcoming params[:planet].to_sym, @year
+    else
+      @planet = @birthday.previous_planet_sym params[:planet].to_sym
+      @card = @birthday.card_for_previous_planet @main_card, @planet, @year
+      @date = @birthday.conclusion_of_previous params[:planet].to_sym, @year
+    end
+    @date = @date - 1.day
+    render :template => 'guidances/card52', :format => :js
+  end
+
+  def year_card
+    @year_sequence = params[:year_sequence].to_i
+    @date = @birthday.last_birthday + @year_sequence.years
+    @card = @birthday.card_for_the_year_on_date @date, @main_card
+    render :template => 'guidances/year_card', :format => :js
   end
   
   ## Card-Box Interface
@@ -108,13 +182,6 @@ class GuidancesController < ApplicationController
     redirect_to guidances_lookup_cards_path(source: 'staging')
   end
 
-  def personality
-    @birthday = Birthday.find params[:birthday_id]
-    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
-    @main_card = @birthday.personality_card
-    render :template => 'guidances/card_box'#, :locals => {personality: true, zodiac: params[:zodiac]}
-  end
-
   def daily_card
     @birthday = Birthday.find params[:birthday_id]
     @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
@@ -156,23 +223,37 @@ class GuidancesController < ApplicationController
   end
   
   def planet
-    @face = {'here' => '.gamma', 'back' => '.beta', 'forward' => '.delta'}[params[:position]]
+    @sequence = params[:sequence].to_i
   end
 
-  def year_card
-    @birthday = Birthday.find params[:birthday_id]
-    @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
-    @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
+  # def year_card
+  #   @birthday = Birthday.find params[:birthday_id]
+  #   @birthday.zodiac_sign = params[:zodiac].to_sym if params[:zodiac]
+  #   @main_card = params[:personality] ? @birthday.personality_card : @birthday.birth_card
     
-    if params[:year] == 'current'
-      @card = @birthday.card_for_this_year @main_card
-    elsif params[:year] == 'last'
-      @card = @birthday.card_for_last_year @main_card
-    elsif params[:year] == 'next'
-      @card = @birthday.card_for_next_year @main_card
+  #   if params[:year] == 'current'
+  #     @card = @birthday.card_for_this_year @main_card
+  #   elsif params[:year] == 'last'
+  #     @card = @birthday.card_for_last_year @main_card
+  #   elsif params[:year] == 'next'
+  #     @card = @birthday.card_for_next_year @main_card
+  #   end
+  # end
+  
+  private
+
+  def main_card
+    @birthday = Birthday.find params[:birthday_id]
+    @personality = params[:personality]
+    @zodiac = params[:zodiac]&.to_sym
+    if @personality
+      @birthday.zodiac_sign = @zodiac if @zodiac
+      @main_card = @birthday.personality_card
+    else
+      @main_card = @birthday.birth_card
     end
   end
-  
+
   def purchaser
     @purchase = cookies['transaction_time'].present? && (DateTime.now - DateTime.parse(cookies['transaction_time'])) < 1
   end

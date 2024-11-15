@@ -1,1 +1,7 @@
-$('#card52').html("<%= j render(:partial => '/guidances/card52') %>")
+$('#delivery_second .<%=j frame_for @sequence %>').html("<%= j card_box_pane(@birthday, @card, 'planetary', @date, :here, @planet) %>")
+var planetary_carousel = $('#delivery_second .<%=j frame_for @sequence %> .owl-carousel');
+planetary_carousel.owlCarousel(owlOptions);
+    
+planetary_carousel.on('translated.owl.carousel', function(event) {
+  cardReferenceToggler(event.target);
+});

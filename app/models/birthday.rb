@@ -92,6 +92,7 @@ class Birthday < ApplicationRecord
   def card_for_date date, main_card = birth_card
     return Card.joker if birth_card == Card.joker
     spread_ordinal = weeks_since_birth_on_date(date) % 90
+    Rails.logger.info "spread_ordinal: #{spread_ordinal.to_i}"
     spread = Spread.find_by(:age => spread_ordinal)
     position_of_main_card = spread.position_of main_card
     position = position_of_main_card.position - position_in_week_on_date(date)
@@ -140,12 +141,12 @@ class Birthday < ApplicationRecord
     card_for_the_planetary_period_on_date Date.current + 52.days, main_card
   end
 
-  def card_for_previous_planet main_card = birth_card, planet = previous_planet_sym
-    card_for_planet planet, main_card
+  def card_for_previous_planet main_card = birth_card, planet = previous_planet_sym, year = Date.current
+    card_for_planet planet, main_card, year
   end
 
-  def card_for_upcoming_planet main_card = birth_card, planet = upcoming_planet_sym
-    card_for_planet planet, main_card
+  def card_for_upcoming_planet main_card = birth_card, planet = upcoming_planet_sym, year = Date.current
+    card_for_planet planet, main_card, year
   end
   
   def days_until_next_planet
@@ -193,7 +194,8 @@ class Birthday < ApplicationRecord
       birthday_for_year + (52*4).days,
       birthday_for_year + (52*5).days,
       birthday_for_year + (52*6).days,
-      birthday_for_year + (52*7).days
+      birthday_for_year + (52*7).days,
+      birthday_for_year + ((52*7) + 1).days
     ]
   end
 
@@ -233,8 +235,16 @@ class Birthday < ApplicationRecord
   end
 
   def previous_planet_sym current = current_planet_sym
-    position = current == :pluto ? 7 : planets_for_52.index(current)
+    position = planets_for_52.index(current)
     planets_for_52[position - 1]
+  end
+
+  def conclusion_of_previous current = current_planet_sym, birthday = last_birthday
+    conclusions_of_planets(birthday)[previous_planet_sym(current)]
+  end
+
+  def conclusion_of_upcoming current = current_planet_sym, birthday = last_birthday
+    conclusions_of_planets(birthday)[upcoming_planet_sym(current)]
   end
 
   def previous_planet_name current = current_planet_sym
@@ -242,28 +252,12 @@ class Birthday < ApplicationRecord
   end
 
   def upcoming_planet_sym current = current_planet_sym
-    position = current == :pluto ? -1 : planets_for_52.index(current)
+    position = planets_for_52.index(current)
     planets_for_52[(position + 1) % planets_for_52.length] # need to wrap around from last to Mercury
   end
 
   def upcoming_planet_name current = current_planet_sym
     upcoming_planet_sym(current).to_s.capitalize
-  end
-
-  def conclusion_of_previous current = current_planet_sym
-    if previous_planet_sym(current) == :neptune
-      if current == :pluto
-        conclusions_of_planets[previous_planet_sym]
-      else
-        conclusions_of_planets(previous_birthday)[previous_planet_sym(current)]
-      end
-    else
-      conclusions_of_planets[previous_planet_sym(current)]
-    end
-  end
-
-  def conclusion_of_upcoming current = current_planet_sym
-    upcoming_planet_sym(current) == :mercury ? conclusions_of_planets(next_birthday)[upcoming_planet_sym(current)] : conclusions_of_planets[upcoming_planet_sym(current)]
   end
 
   def current_planet
@@ -486,7 +480,7 @@ class Birthday < ApplicationRecord
   end
 
   def planets_for_52
-    [:mercury, :venus, :mars, :jupiter, :saturn, :uranus, :neptune]
+    [:mercury, :venus, :mars, :jupiter, :saturn, :uranus, :neptune, :pluto]
   end
   
   def number_for_planet planet

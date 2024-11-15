@@ -51,16 +51,16 @@ navigation:
 
 temporal_navigation:
   daily:
-    forward: "Tomorrow"
-    backward: "Yesterday"
+    forward: "Next Day"
+    backward: "Previous Day"
     return: "Today"
   planetary:
     forward: "Next 52"
     backward: "Previous 52"
-    return: "Current 52"
+    return: "Current"
   yearly:
     forward: "Next Year"
-    backward: "Last Year"
+    backward: "Previous Year"
     return: "This Year"
 
 call_to_subscription:
@@ -70,24 +70,24 @@ call_to_subscription:
 
 planet:
   description:
-    Mercury:
+    mercury:
       symbol: "Mercury symbolizes mental energy."
       action: "Your Mercury Card reveals what you’re thinking about right now as well as how best to think about it (whatever it is). Your Mercury Card is like a mirror which you can utilize to help you think more clearly about your own thinking. It also validates for you the right mindset to hold this year. Someone born to play this Card may play a verbal role in shaping the contents of your thinking."
-    Venus:
+    venus:
       symbol: "Venus symbolizes feminine energy."
       action: "Your Venus Card reveals your inner pathway to loving acceptance of yourself and others. Your Venus Card validates what you may already be feeling that you need right now and yet also clarifies exactly how to create for yourself the experience of real love. During this time, someone born to play this Card may play a loving role in assisting you to open your heart to authentic love."
-    Mars:
+    mars:
       symbol: "Mars symbolizes masculine energy."
       action: "Your Mars Card shows you how to structure your life during this time to build the best possible foundation for your success. Your Mars Card validates the results you may already know you want to achieve. And yet, it also clarifies the way for you to achieve your goals. During this time, someone born to play this Card may challenge you to accomplish what you know you can accomplish."
-    Jupiter:
+    jupiter:
       symbol: "Jupiter symbolizes expansion."
       action: "Your Jupiter Card shows you how to grow beyond your current limits right now into the experience of more abundance. Your Jupiter Card validates for you your energetic pathway to a more expansive life and yet may also indicate where you still experience sticky points of growth. During this time, someone born to play this Card may play a catalyzing role in the expansion of your abundance."
-    Saturn:
+    saturn:
       symbol: "Saturn symbolizes accountability."
       action: "Your Saturn Card shows you which set of actions you must take right now in order to balance the karmic scales of your life, restore your wellbeing, and take full responsibility for your own life experiences. Saturn teaches you how to rectify what needs rectifying right now. Someone born to play this Card may play a fated role in holding you accountable and helping you optimize your health."
-    Uranus:
+    uranus:
       symbol: "Uranus symbolizes a pivotal adjustment."
       action: "Your Uranus Card shows you where and how Life may throw you a curve-ball right now. Your Uranus Card shows you which aspect of your life is undergoing an important adjustment, so that you can up-level the trajectory of your life. And yet, this pivotal experience may arrive as a surprising flip-flop. Someone born to play this Card may play a meaningful role in pivoting your expectations."
-    Neptune:
+    neptune:
       symbol: "Neptune symbolizes powerful dreams."
       action: "Your Neptune Card reveals your “castle in the sky” and how to make that dream come true. Your Neptune Card validates what you hope to experience right now. And yet, it also exposes the area of your life where you may have personal illusions or delusions of grandeur. Someone born to play this Card may play a vital role in the shattering of your illusions and realization of your dreams."

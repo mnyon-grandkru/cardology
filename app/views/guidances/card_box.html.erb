@@ -12,7 +12,8 @@
       <div class="boxpanel">
         <div class="surface-wrapper">
           <div class="alpha surface">
-            <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;" %>
+          <%= reading_heading('daily', :here, true) %>
+            <%= card_back_image %>
           </div>
 
           <div class="beta surface">
@@ -34,7 +35,8 @@
       <div class="boxpanel">
         <div class="surface-wrapper">
           <div class="alpha surface">
-            <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;" %>
+            <%= reading_heading('planetary', :here, true) %>
+            <%= card_back_image %>
           </div>
 
           <div class="beta surface">
@@ -42,7 +44,7 @@
           </div>
 
           <div class="gamma surface">
-            <%= card_box_pane @birthday, @birthday.card_for_this_planet(@main_card), 'planetary', @birthday.date_of_next_planet, :here, @birthday.current_planet %>
+            <%= card_box_pane @birthday, @birthday.card_for_this_planet(@main_card), 'planetary', (@birthday.date_of_next_planet - 1.day), :here, @birthday.current_planet_sym %>
           </div>
 
           <div class="delta surface">
@@ -56,7 +58,8 @@
       <div class="boxpanel">
         <div class="surface-wrapper">
           <div class="alpha surface">
-            <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;" %>
+            <%= reading_heading('yearly', :here, true) %>
+            <%= card_back_image %>
           </div>
 
           <div class="beta surface">
@@ -74,4 +77,6 @@
       </div>
     </div>
   </div>
+
+  <%= content_tag :div, '', data: { planet_back_image: card_back_image }, id: 'planet_back_config' %>
 </body>

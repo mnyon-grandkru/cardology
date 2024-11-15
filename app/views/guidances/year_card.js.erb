@@ -1,1 +1,7 @@
-$('#card_year').html("<%= j render(:partial => '/guidances/year_card') %>")
+$('#delivery_third .<%=j daily_frame_for @year_sequence %>').html("<%= j card_box_pane(@birthday, @card, 'yearly', @date, :here) %>")
+var year_carousel = $('#delivery_third .<%=j daily_frame_for @year_sequence %> .owl-carousel');
+year_carousel.owlCarousel(owlOptions);
+    
+year_carousel.on('translated.owl.carousel', function(event) {
+  cardReferenceToggler(event.target);
+});

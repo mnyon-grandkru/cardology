@@ -1,6 +1,6 @@
 module GuidancesHelper
   def card_box_pane(birthday, card, reading, date, position, planet = nil, purchaser = false)
-    reading_heading(reading, position) +
+    reading_heading(reading, position, purchaser) +
     content_tag(:div, :class => 'pane_guidance') do
       flipback(!purchaser) +
       pane_heading(birthday, card, reading, date, position, planet, purchaser) +
@@ -20,9 +20,13 @@ module GuidancesHelper
     end
   end
 
-  def reading_heading(reading, position)
+  def reading_heading(reading, position, purchaser = false)
     content_tag(:div, :class => 'prompt_heading') do
-      content_tag(:b, marketing_text('heading', 'member', reading, position.to_s, 'header'))
+      if (reading == 'daily') && !purchaser
+        content_tag(:b, @date.strftime("Card for %A the ") + @date.day.ordinalize)
+      else
+        content_tag(:b, marketing_text('heading', 'member', reading, position.to_s, 'header'))
+      end
     end
   end
 
@@ -60,13 +64,12 @@ module GuidancesHelper
     content_tag(:span) do
       marketing_text('heading', 'member', reading, *reading_text_handler(card, reading, birthday, position)).html_safe + +
       if reading == 'planetary'
-        @joker ? "" : (planetary_link(planet, purchaser ? nil : position) +
-        content_tag(:em, planet_cycle_end_date(date)))
+        @joker ? "" : (planetary_link(planet, purchaser ? nil : @sequence) +
+        planet_cycle_end_date(date))
       elsif reading == 'yearly'
-        tag(:br) + 
         content_tag(:em, birthday_range(date), :class => 'birthday_dates')
       else
-        content_tag(:em, date.strftime(" %B %e, %Y"))
+        content_tag(:strong, date.strftime(" %A, %B %e, %Y"))
       end
     end
   end
@@ -75,17 +78,18 @@ module GuidancesHelper
     birthday.strftime(" %B %e, %Y") + ' - ' + (birthday + 1.year - 1.day).strftime(" %B %e, %Y")
   end
 
-  def planetary_link(planet, position)
-    link_to planet, planet_guidance_path(planet, position), :remote => true
+  def planetary_link(planet, sequence)
+    link_to planet.capitalize, planet_guidance_path(planet, sequence), :remote => true
   end
 
   def planet_cycle_end_date(date)
-    ".  This cycle ends on #{date.strftime("%-m/%-d.")}"
+    debug_begin = date - 51.days
+    ", from #{debug_begin.strftime("%-m/%-d/%y")} - #{date.strftime("%-m/%-d/%y")}."
   end
   
   def carousel_reading(card, reading)
     content_tag(:div, :class => "wrapper") do
-      content_tag(:div, :class => "owl-carousel owl-theme image-slider", :id => "Testcarousel") do
+      content_tag(:div, :class => "owl-carousel owl-theme image-slider", :id => "Testcarousel") do # TODO change id
         card_image_paragraph(card) +
         simple_format(card.interpretations.where(reading: reading).last&.explanation)
       end
@@ -100,7 +104,9 @@ module GuidancesHelper
 
   def temporal_navigation(reading, position, purchaser = false)
     return content_tag(:h3, source_cards_marketing_text('purchaser', 'call_to_subscription', reading), :class => 'call_to_subscription') if purchaser
-    # return octagon_navigation if reading == 'planetary'
+    return daily_navigation if reading == 'daily'
+    return planetary_navigation if reading == 'planetary'
+    return year_navigation if reading == 'yearly'
     temporal_navigation_buttons(reading, position)
   end
 
@@ -119,6 +125,30 @@ module GuidancesHelper
     end
   end
 
+  def daily_navigation
+    content_tag(:div, :class => 'button_daily_card temporal_navigation') do
+      (@day_sequence < -6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'daily', 'backward'), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence - 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@day_sequence == 0 ? ''.html_safe : link_to(spade_logo, day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => 0, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@day_sequence > 6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'daily', 'forward'), day_card_guidance_path(:birthday_id => @birthday.id, :day_sequence => (@day_sequence + 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
+    end
+  end
+
+  def planetary_navigation
+    content_tag(:div, :class => 'button_daily_card temporal_navigation') do
+      (@sequence < 1 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'backward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => (0 - @sequence.abs), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@sequence == 7 ? ''.html_safe : link_to(spade_logo, planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => 17, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@sequence > 13 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'planetary', 'forward'), planet_card_guidance_path(:birthday_id => @birthday.id, :planet => @planet, :sequence => @sequence.abs, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
+    end
+  end
+
+  def year_navigation
+    content_tag(:div, :class => 'button_daily_card temporal_navigation') do
+      (@year_sequence < -6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'yearly', 'backward'), year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => (@year_sequence - 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateFuture(90);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@year_sequence == 0 ? ''.html_safe : link_to(spade_logo, year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => 0, :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotateTo(0);", :class => 'lunar_navigation', :data => {:turbolinks => false})) +
+      (@year_sequence > 6 ? ''.html_safe : link_to(source_cards_marketing_text('temporal_navigation', 'yearly', 'forward'), year_card_guidance_path(:birthday_id => @birthday.id, :year_sequence => (@year_sequence + 1), :personality => @personality, :zodiac => @zodiac), :remote => true, :onclick => "rotatePast(90);", :class => 'lunar_navigation', :data => {:turbolinks => false}))
+    end
+  end
+
   def octagon_navigation
     content_tag(:div, :class => 'button_daily_card temporal_navigation') do
       temporal_navigation_button('planetary', 'backward', 'rotateOctagon(45)') +
@@ -128,6 +158,10 @@ module GuidancesHelper
 
   def temporal_navigation_button(reading, direction, rotation)
     link_to source_cards_marketing_text('temporal_navigation', reading, direction), '#', :onclick => "#{rotation}; return false;", :class => 'lunar_navigation', :data => {:turbolinks => false}
+  end
+
+  def spade_logo
+    image_tag asset_path('source-cards-spade-white.png'), class: 'spade_logo'
   end
 
   def copyright_text
@@ -159,8 +193,7 @@ module GuidancesHelper
   
   def flipback box = false
     func = case box
-      when :octagon then "flipOctagonBack(event)"
-      when true then "flipBoxBack(event)"
+      when true then "flipPlanetBack(event)"
       else "flipCardBack(event)"
     end
     link_to "", '#', onclick: func, data: {turbolinks: false}, class: 'flipback'
@@ -171,6 +204,22 @@ module GuidancesHelper
       link_to('X', '#', :onclick => "$('.planet_description').remove(); return false", :class => 'planet_description_dismiss') +
       description.html_safe
     end
+  end
+
+  def frame_for sequence
+    ['delta', 'alpha', 'beta', 'gamma'][sequence.abs % 4]
+  end
+
+  def daily_frame_for sequence
+    ['gamma', 'delta', 'alpha', 'beta'][sequence % 4]
+  end
+
+  def carousel_reloader
+    javascript_include_tag 'carousel', 'data-turbolinks-track': 'reload'
+  end
+
+  def card_back_image
+    image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;"
   end
 
   def subscribe_link
