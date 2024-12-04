@@ -29,7 +29,7 @@ namespace :load do
   task :seven_year_interpretations => :environment do
     yearly = Interpretation.where :reading => :yearly
     yearly.each do |interpretation|
-      Interpretation.create :card_id => interpretation.card_id, :explanation => interpretation.explanation, :reading => :seven_year
+      Interpretation.create :card_id => interpretation.card_id, :explanation => interpretation.explanation, :reading => :seven_year unless Interpretation.where(:card_id => interpretation.card_id, :reading => :seven_year).exists?
     end
   end
 
@@ -37,7 +37,7 @@ namespace :load do
   task :thirteen_year_interpretations => :environment do
     yearly = Interpretation.where :reading => :yearly
     yearly.each do |interpretation|
-      Interpretation.create :card_id => interpretation.card_id, :explanation => interpretation.explanation, :reading => :thirteen_year
+      Interpretation.create :card_id => interpretation.card_id, :explanation => interpretation.explanation, :reading => :thirteen_year unless Interpretation.where(:card_id => interpretation.card_id, :reading => :thirteen_year).exists?
     end
   end
 end
