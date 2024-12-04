@@ -26,22 +26,6 @@
   display: none;
 }
 
-@media screen and (max-width: 600px) {
-  #widget_instructions br {
-    display: block;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  #widget_title {
-    font-size: 28px;
-  }
-
-  #widget_instructions {
-    font-size: 25px;
-  }
-}
-
 @media only screen and (min-width: 768px) and (max-width: 1900px) {
   #widget_title {
     font-size: 35px;
@@ -52,7 +36,7 @@
   }
 }
 
-.widget_heading_2 {
+.welcome {
   border: 2px solid black;
   border-radius: 11px;
   background-color: black;
@@ -61,7 +45,7 @@
   margin-top: 1px;
   margin-bottom: 30px;
   
-  #widget_title_2 {
+  #welcome_title {
     font-size: 52px;
     text-align: center;
     color: bisque;
@@ -69,25 +53,10 @@
     margin-top: -4px;
   }
   
-  #widget_instructions_2 {
+  #welcome_instructions {
     text-align: center;
     color: bisque;
     text-shadow: 0px 3px 4px #448;
-  }
-}
-
-@media only screen and (max-width: 767px){
-  .widget_heading_2 {
-      margin: 10px 0;
-      font-size: 20px;
-      margin-bottom: 22px;
-  }
-
-  #widget_instructions_2 {
-    text-align: center;
-    color: bisque;
-    text-shadow: 0px 3px 4px #448;
-    font-size: 20px;
   }
 }
 
@@ -216,22 +185,6 @@ div#right_now_zodiac {
 
 #birth_card_lookup_instructions br {
   display: none;
-}
-
-@media screen and (max-width: 600px) {
-  #birth_card_lookup_instructions br {
-    display: block;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  #birth_card_lookup_title {
-    font-size: 36px;
-  }
-
-  #birth_card_lookup_instructions {
-    font-size: 23px;
-  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1900px) {
