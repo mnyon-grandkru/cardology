@@ -15,3 +15,18 @@ img.image_gallery {
 .spade_logo {
   width: 33px;
 }
+
+
+// Braintree interface - not in use 2024
+.buy-button {
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 2%;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .buy-button {
+    text-align: center;
+    margin-top: 9%;
+  }
+}
