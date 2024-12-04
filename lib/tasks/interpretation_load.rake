@@ -24,4 +24,20 @@ namespace :load do
       local_interpretation = Interpretation.find_or_create_by :card_id => interpretation_data['card_id'], :explanation => interpretation_data['explanation'], :reading => interpretation_data['reading']
     end
   end
+
+  desc "Populate seven year interpretations"
+  task :seven_year_interpretations => :environment do
+    yearly = Interpretation.where :reading => :yearly
+    yearly.each do |interpretation|
+      Interpretation.create :card_id => interpretation.card_id, :explanation => interpretation.explanation, :reading => :seven_year
+    end
+  end
+
+  desc "Populate thirteen year interpretations"
+  task :thirteen_year_interpretations => :environment do
+    yearly = Interpretation.where :reading => :yearly
+    yearly.each do |interpretation|
+      Interpretation.create :card_id => interpretation.card_id, :explanation => interpretation.explanation, :reading => :thirteen_year
+    end
+  end
 end
