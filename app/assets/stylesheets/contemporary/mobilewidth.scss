@@ -79,15 +79,7 @@
   .source_cards_card_design {
     width: 200px;
   }
-}
 
-@media screen and (max-width: 600px) {
-  #widget_instructions br {
-    display: block;
-  }
-}
-
-@media only screen and (max-width: 767px) {
   #widget_title {
     font-size: 28px;
   }
@@ -95,15 +87,7 @@
   #widget_instructions {
     font-size: 25px;
   }
-}
 
-@media screen and (max-width: 600px) {
-  #birth_card_lookup_instructions br {
-    display: block;
-  }
-}
-
-@media only screen and (max-width: 767px) {
   #birth_card_lookup_title {
     font-size: 36px;
   }
@@ -111,9 +95,7 @@
   #birth_card_lookup_instructions {
     font-size: 23px;
   }
-}
 
-@media only screen and (max-width: 767px) {
   .welcome {
     margin: 10px 0;
     font-size: 20px;
@@ -121,9 +103,16 @@
   }
 
   #welcome_instructions {
-    text-align: center;
-    color: bisque;
-    text-shadow: 0px 3px 4px #448;
     font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #widget_instructions br {
+    display: block;
+  }
+
+  #birth_card_lookup_instructions br {
+    display: block;
   }
 }
