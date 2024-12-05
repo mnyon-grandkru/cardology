@@ -132,7 +132,7 @@ class Birthday < ApplicationRecord
   end
 
   def year_cards
-    (0..40).map do |i|
+    (0..60).map do |i|
       card_for_the_year_on_date birthdate + i.years
     end
   end
@@ -308,7 +308,7 @@ class Birthday < ApplicationRecord
   end
 
   def planetary_cards
-    (0..40).map do |year|
+    (0..60).map do |year|
       (0..6).map do |planet|
         card_for_the_planetary_period_on_date birthdate + year.years + (planet * 52).days
       end
