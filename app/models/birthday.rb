@@ -509,6 +509,43 @@ class Birthday < ApplicationRecord
       "Move to #{card.name} in #{planet} on #{date.strftime("%B %-d")}"
     end.join(".\n")
   end
+
+  def seven_year_cards
+    life_spread = Spread.life_spread
+    birth_card_position = life_spread.position_of(birth_card).position
+    (1..13).map do |i|
+      position = (birth_card_position - i) % 52
+      life_spread.places.find_by(:position => position).card
+    end
+  end
+
+  def thirteen_year_cards
+
+  end
+
+  def current_seven_year_period
+
+  end
+
+  def current_thirteen_year_period
+
+  end
+
+  def seven_year_period_for_date date
+
+  end
+
+  def thirteen_year_period_for_date date
+
+  end
+
+  def seven_year_periods
+
+  end
+
+  def thirteen_year_periods
+
+  end
   
   memoize :birth_card, :personality_card
 end

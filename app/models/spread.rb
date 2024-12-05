@@ -10,6 +10,10 @@ class Spread < ApplicationRecord
     (age + 1).times { deck = quadrate deck }
     return deck
   end
+
+  def self.life_spread
+    Spread.find_by :age => 0
+  end
   
   def quadrate deck
     hearts_pile = []
