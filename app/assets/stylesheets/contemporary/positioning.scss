@@ -3,6 +3,24 @@
   background-size: cover;
 }
 
+.wheel {
+  // display: flex;
+  // justify-content: center;
+
+  .wheel-rim {
+    display: flex;
+    justify-content: center;
+
+    .wheel-rim-card {
+      padding: 10px;
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+}
+
 .delivery_zone {
   display: flex;
   justify-content: center;

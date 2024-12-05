@@ -540,7 +540,7 @@ class Birthday < ApplicationRecord
   end
 
   def thirteen_year_cards
-
+    seven_year_cards
   end
 
   def current_seven_year_period

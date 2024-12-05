@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   resources :suits
   resources :members, :only => :index
   
+  resources :wheels, :only => :show
+  
   get '/calendars/mine' => 'calendars#mine'
   get '/calendars/ours' => 'calendars#ours'
   
