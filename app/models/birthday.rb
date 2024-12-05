@@ -300,6 +300,14 @@ class Birthday < ApplicationRecord
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
   end
+
+  def planetary_cards
+    (0..40).map do |year|
+      (0..6).map do |planet|
+        card_for_the_planetary_period_on_date birthdate + year.years + (planet * 52).days
+      end
+    end.flatten
+  end
   
   def ruling_card_for_the_planetary_period_on_date date
     card_for_the_planetary_period_on_date date, personality_card
