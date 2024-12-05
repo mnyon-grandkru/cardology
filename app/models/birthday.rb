@@ -100,6 +100,12 @@ class Birthday < ApplicationRecord
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
   end
+
+  def daily_cards_for_year_and_month year, month
+    (1..31).map do |day|
+      card_for_date Date.new(year, month, day), birth_card
+    end
+  end
   
   def card_for_this_year main_card = birth_card
     card_for_the_year_on_date Date.current, main_card
