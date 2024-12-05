@@ -124,6 +124,12 @@ class Birthday < ApplicationRecord
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
   end
+
+  def year_cards
+    (0..40).map do |i|
+      card_for_the_year_on_date birthdate + i.years
+    end
+  end
   
   def ruling_card_for_the_year_on_date date
     card_for_the_year_on_date date, personality_card
