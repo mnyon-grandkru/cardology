@@ -11,11 +11,11 @@ module Cardology
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
-    # config.action_dispatch.default_headers["X-Content-Security-Policy"] = "FRAME-ANCESTORS https://*.lifeelevated.life";
-    # config.action_dispatch.default_headers["Content-Security-Policy"] = "FRAME-ANCESTORS https://*.lifeelevated.life";
-    # config.action_dispatch.default_headers["X-Frame-Options"] = "FRAME-ANCESTORS https://www.lifeelevated.life/";
-    # config.action_dispatch.default_headers["Access-Control-Allow-Origin"] = "*";
-    config.action_dispatch.default_headers.clear
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w(assets tasks))
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
