@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '3.1.4'
 
-gem 'rails', '6.1.7.8'
+gem 'rails', '7.0.8.7'
 gem 'pg'
 gem 'puma'#, '~> 3.0'
 gem 'sass-rails'#, '~> 5.0'
@@ -10,6 +10,7 @@ gem 'coffee-rails'#, '~> 4.2'
 gem 'jquery-rails', '4.3.1'
 gem 'turbolinks'#, '~> 5'
 gem 'jbuilder'#, '~> 2.5'
+# gem 'sprockets-rails'
 gem "bootsnap", require: false
 # gem 'redis', '~> 3.0'
 
@@ -25,7 +26,7 @@ gem 'cancancan'
 gem 'kaminari'
 gem "simple_calendar", "~> 2.4"
 gem 'memoist'
-gem 'attr_default'
+# gem 'attr_default'
 gem 'rollbar'
 gem 'oj'
 gem 'awesome_print'

@@ -4,9 +4,9 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   enum :zodiac_sign => [:aries, :taurus, :gemini, :cancer, :leo, :virgo, :libra, :scorpio, :sagittarius, :capricorn, :aquarius, :pisces]
   enum :subscription_status => [:active, :past_due, :canceled, :upgraded]
-  attr_default :subscriptions, []
+  # attr_default :subscriptions, []
   serialize :subscriptions
-  attr_default :campaigns, []
+  # attr_default :campaigns, []
   serialize :campaigns
   attr_accessor :days_past_due
 
