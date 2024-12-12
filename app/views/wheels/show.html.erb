@@ -1,7 +1,9 @@
-<%= content_tag :div, :class => "wheel" do %>
-  <%= wheel_rim @thirteen_year_cards, :thirteen_year %>
-  <%= wheel_rim @seven_year_cards, :seven_year %>
-  <%= wheel_rim @year_cards, :year %>
-  <%= wheel_rim @planetary_cards, :planetary %>
-  <%= wheel_rim @daily_cards, :daily %>
+<%= content_tag :div, class: "wheel" do %>
+  <% rim_types = [:thirteen_year, :seven_year, :year, :planetary, :daily] %>
+  
+  <% rim_types.each do |rim_type| %>
+    <div class="wheel-rim-container">
+      <%= wheel_rim(instance_variable_get("@#{rim_type}_cards"), rim_type) %>
+    </div>
+  <% end %>
 <% end %>
