@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[6.1].define(version: 2024_09_17_221923) do
-
+ActiveRecord::Schema[7.0].define(version: 2024_12_12_221601) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -20,16 +19,16 @@ ActiveRecord::Schema[6.1].define(version: 2024_09_17_221923) do
     t.integer "year"
     t.integer "month"
     t.integer "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "cards", id: :serial, force: :cascade do |t|
     t.integer "suit_id"
     t.integer "face_id"
     t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["face_id"], name: "index_cards_on_face_id"
     t.index ["suit_id"], name: "index_cards_on_suit_id"
   end
@@ -38,16 +37,16 @@ ActiveRecord::Schema[6.1].define(version: 2024_09_17_221923) do
     t.bigint "birthday_id"
     t.bigint "member_id"
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["birthday_id"], name: "index_celestials_on_birthday_id"
     t.index ["member_id"], name: "index_celestials_on_member_id"
   end
 
   create_table "faces", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "number"
   end
 
@@ -55,8 +54,8 @@ ActiveRecord::Schema[6.1].define(version: 2024_09_17_221923) do
     t.integer "card_id"
     t.text "explanation"
     t.integer "reading"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["card_id"], name: "index_interpretations_on_card_id"
   end
 
@@ -67,8 +66,8 @@ ActiveRecord::Schema[6.1].define(version: 2024_09_17_221923) do
     t.text "thoughts"
     t.bigint "member_id"
     t.string "braintree_subscription_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "expense"
     t.boolean "accuracy"
     t.boolean "specific"
@@ -79,8 +78,8 @@ ActiveRecord::Schema[6.1].define(version: 2024_09_17_221923) do
   create_table "lookups", id: :serial, force: :cascade do |t|
     t.integer "birthday_id"
     t.string "ip_address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["birthday_id"], name: "index_lookups_on_birthday_id"
   end
 
@@ -91,20 +90,20 @@ ActiveRecord::Schema[6.1].define(version: 2024_09_17_221923) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "zodiac_sign"
     t.string "braintree_id"
     t.integer "subscription_status"
     t.text "subscriptions"
-    t.datetime "due_date"
+    t.datetime "due_date", precision: nil
     t.text "campaigns"
     t.index ["birthday_id"], name: "index_members_on_birthday_id"
     t.index ["email"], name: "index_members_on_email", unique: true
@@ -116,8 +115,8 @@ ActiveRecord::Schema[6.1].define(version: 2024_09_17_221923) do
     t.integer "card_id"
     t.integer "spread_id"
     t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["card_id"], name: "index_places_on_card_id"
     t.index ["spread_id"], name: "index_places_on_spread_id"
   end
@@ -125,20 +124,20 @@ ActiveRecord::Schema[6.1].define(version: 2024_09_17_221923) do
   create_table "quotes", id: :serial, force: :cascade do |t|
     t.string "source"
     t.text "phrasing"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "spreads", id: :serial, force: :cascade do |t|
     t.integer "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "suits", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   add_foreign_key "cards", "faces"
