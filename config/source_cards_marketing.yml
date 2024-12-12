@@ -1,7 +1,7 @@
 new_players:
   header: "Choose Your Birthday"
   header1: "Right Now Reading"
-  header2: " Source Card Reading"
+  source: " Source Card Reading"
   instructions: |
     Then Click Enter
   button: "Enter"

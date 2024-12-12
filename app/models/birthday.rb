@@ -100,6 +100,12 @@ class Birthday < ApplicationRecord
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
   end
+
+  def daily_cards_for_year_and_month year, month
+    (1..31).map do |day|
+      card_for_date Date.new(year, month, day), birth_card
+    end
+  end
   
   def card_for_this_year main_card = birth_card
     card_for_the_year_on_date Date.current, main_card
@@ -123,6 +129,12 @@ class Birthday < ApplicationRecord
     position = 52 + position if position < 0
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
+  end
+
+  def year_cards
+    (0..60).map do |i|
+      card_for_the_year_on_date birthdate + i.years
+    end
   end
   
   def ruling_card_for_the_year_on_date date
@@ -293,6 +305,14 @@ class Birthday < ApplicationRecord
     position = 52 + position if position < 0
     place = Place.find_by :spread_id => spread.id, :position => position
     place.card
+  end
+
+  def planetary_cards
+    (0..60).map do |year|
+      (0..6).map do |planet|
+        card_for_the_planetary_period_on_date birthdate + year.years + (planet * 52).days
+      end
+    end.flatten
   end
   
   def ruling_card_for_the_planetary_period_on_date date
@@ -508,6 +528,43 @@ class Birthday < ApplicationRecord
     triples_for_year.map do |date, planet, card|
       "Move to #{card.name} in #{planet} on #{date.strftime("%B %-d")}"
     end.join(".\n")
+  end
+
+  def seven_year_cards
+    life_spread = Spread.life_spread
+    birth_card_position = life_spread.position_of(birth_card).position
+    (1..13).map do |i|
+      position = (birth_card_position - i) % 52
+      life_spread.places.find_by(:position => position).card
+    end
+  end
+
+  def thirteen_year_cards
+    seven_year_cards
+  end
+
+  def current_seven_year_period
+
+  end
+
+  def current_thirteen_year_period
+
+  end
+
+  def seven_year_period_for_date date
+
+  end
+
+  def thirteen_year_period_for_date date
+
+  end
+
+  def seven_year_periods
+
+  end
+
+  def thirteen_year_periods
+
   end
   
   memoize :birth_card, :personality_card

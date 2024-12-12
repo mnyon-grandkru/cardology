@@ -8,6 +8,7 @@
   margin: 14px 30% 14px 30%;
   padding-top: 7px;
   padding-bottom: 7px;
+
   #widget_title {
     text-align: center;
     color: bisque;
@@ -25,22 +26,6 @@
   display: none;
 }
 
-@media screen and (max-width: 600px) {
-  #widget_instructions br {
-    display: block;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  #widget_title {
-    font-size: 28px;
-  }
-
-  #widget_instructions {
-    font-size: 25px;
-  }
-}
-
 @media only screen and (min-width: 768px) and (max-width: 1900px) {
   #widget_title {
     font-size: 35px;
@@ -51,7 +36,7 @@
   }
 }
 
-.widget_heading_2 {
+.welcome {
   border: 2px solid black;
   border-radius: 11px;
   background-color: black;
@@ -60,7 +45,7 @@
   margin-top: 1px;
   margin-bottom: 30px;
   
-  #widget_title_2 {
+  #welcome_title {
     font-size: 52px;
     text-align: center;
     color: bisque;
@@ -68,31 +53,17 @@
     margin-top: -4px;
   }
   
-  #widget_instructions_2 {
+  #welcome_instructions {
     text-align: center;
     color: bisque;
     text-shadow: 0px 3px 4px #448;
-  }
-}
-
-@media only screen and (max-width: 767px){
-  .widget_heading_2 {
-      margin: 10px 0;
-      font-size: 20px;
-      margin-bottom: 22px;
-  }
-
-  #widget_instructions_2 {
-    text-align: center;
-    color: bisque;
-    text-shadow: 0px 3px 4px #448;
-    font-size: 20px;
   }
 }
 
 #access_card_delivery_zone {
   .delivery_zone {
     text-align: center;
+
     img {
       width: 240px;
       border-radius: 24px;
@@ -124,25 +95,6 @@
       text-decoration: none;
     }
   }
-}
-
-.test .delivery_zone {
-  animation: shake 0.5s;
-  animation-iteration-count: 1;
-}
-
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
 #zodiac, #right_now_zodiac {
@@ -193,65 +145,38 @@ div#right_now_zodiac {
   }
 }
 
-.buy-button {
-  text-align: center;
-  margin-top: 4%;
-  margin-bottom: 2%
-}
-
-@media screen and (min-width: 320px) and (max-width: 768px){
-  .buy-button {
-    text-align: center;
-    margin-top: 9%
-  }
-}
-
-.widget_heading_3 {
-border: 2px solid black;
-border-radius: 11px;
-background-color: black;
-opacity: 0.8;
+.birth_card_lookup_header {
+  border: 2px solid black;
+  border-radius: 11px;
+  background-color: black;
+  opacity: 0.8;
   
-  #widget_title_3 {
+  #birth_card_lookup_title {
     text-align: center;
     color: bisque;
     text-shadow: 0px 5px 4px #448;
   }
   
-  #widget_instructions_3 {
+  #birth_card_lookup_instructions {
     text-align: center;
     color: bisque;
     text-shadow: 0px 3px 4px #448;
   }
 }
-#widget_instructions_3 br {
+
+#birth_card_lookup_instructions br {
   display: none;
 }
 
-@media screen and (max-width: 600px) {
-  #widget_instructions_3 br {
-    display: block;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  #widget_title_3 {
-    font-size: 36px;
-  }
-  #widget_instructions_3 {
-    font-size: 23px;
-  }
-}
-
 @media only screen and (min-width: 768px) and (max-width: 1900px) {
-  .widget_heading_3 {
+  .birth_card_lookup_header {
     margin: 14px 24% 14px 24%;
 
-    #widget_title_3 {
+    #birth_card_lookup_title {
       font-size: 35px;
     }
     
-    #widget_instructions_3 {
+    #birth_card_lookup_instructions {
       font-size: 22px;
     }
   }

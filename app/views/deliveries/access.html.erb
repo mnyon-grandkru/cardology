@@ -1,6 +1,6 @@
-<div class="widget_heading_3">
-  <section id="widget_title_3"><%= source_cards_marketing_text 'new_players', 'header2' %></section>
-  <section id="widget_instructions_3">Click on each card to read <br>the game of your life!</section> 
+<div class="birth_card_lookup_header">
+  <section id="birth_card_lookup_title"><%= source_cards_marketing_text 'new_players', 'source' %></section>
+  <section id="birth_card_lookup_instructions">Click on each card to read <br>the game of your life!</section> 
 </div>
 
 <% if params[:spread_direction] == 'vertical' %>
@@ -9,11 +9,6 @@
       flex-direction: column;
       width: 100%;
       align-items: center;
-    }
-    
-    .widget_heading {
-      /* margin: 10px 13% 10px 13% */
-      /* pretty sure this whole style block is deprecated */
     }
     
     .lower_navigation a {

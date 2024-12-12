@@ -3,6 +3,57 @@
   background-size: cover;
 }
 
+.wheel {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+
+  .wheel-rim {
+    display: flex;
+    // justify-content: center;
+
+    .wheel-rim-card {
+      padding: 10px;
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+}
+
+.wheel-rim-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 10px 0;
+  
+  // Optional: Hide scrollbar but keep functionality
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+  
+  &::-webkit-scrollbar {
+    display: none;           /* Chrome, Safari and Opera */
+  }
+}
+
 .delivery_zone {
   display: flex;
   justify-content: center;

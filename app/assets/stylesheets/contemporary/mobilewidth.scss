@@ -79,4 +79,40 @@
   .source_cards_card_design {
     width: 200px;
   }
+
+  #widget_title {
+    font-size: 28px;
+  }
+
+  #widget_instructions {
+    font-size: 25px;
+  }
+
+  #birth_card_lookup_title {
+    font-size: 36px;
+  }
+
+  #birth_card_lookup_instructions {
+    font-size: 23px;
+  }
+
+  .welcome {
+    margin: 10px 0;
+    font-size: 20px;
+    margin-bottom: 22px;
+  }
+
+  #welcome_instructions {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #widget_instructions br {
+    display: block;
+  }
+
+  #birth_card_lookup_instructions br {
+    display: block;
+  }
 }
