@@ -47,6 +47,8 @@ end
 group :development do
   gem 'web-console'
   gem 'listen'#, '~> 3.0.5'
+  gem 'better_errors'
+  gem 'binding_of_caller'  # Adds REPL and local/instance variable inspection
 end
 
 gem 'owlcarousel-rails','2.2.3.5'

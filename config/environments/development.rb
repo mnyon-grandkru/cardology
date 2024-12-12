@@ -75,4 +75,11 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Make sure these are set
+  config.consider_all_requests_local = true
+  config.debug_exception_response_format = :default
+  
+  # If you want better error pages, you can add:
+  config.web_console.permissions = '0.0.0.0/0'
 end
