@@ -5,9 +5,10 @@ class Member < ApplicationRecord
   enum :zodiac_sign => [:aries, :taurus, :gemini, :cancer, :leo, :virgo, :libra, :scorpio, :sagittarius, :capricorn, :aquarius, :pisces]
   enum :subscription_status => [:active, :past_due, :canceled, :upgraded]
   # attr_default :subscriptions, []
-  serialize :subscriptions
+  serialize :subscriptions, coder: JSON
   # attr_default :campaigns, []
-  serialize :campaigns
+  serialize :campaigns, coder: JSON
+  serialize :preferences, coder: YAML
   attr_accessor :days_past_due
 
   belongs_to :birthday
