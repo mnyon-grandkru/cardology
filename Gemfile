@@ -53,3 +53,5 @@ group :development do
 end
 
 gem 'owlcarousel-rails', '2.2.3.5'
+
+gem "importmap-rails", "~> 2.0"
