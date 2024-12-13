@@ -14,7 +14,7 @@ export default class extends Controller {
       const container = rim.parentElement
       const containerCenter = container.offsetWidth / 2
       const containerRect = container.getBoundingClientRect()
-
+      console.log("updating card positions")
       rim.querySelectorAll('.wheel-rim-card').forEach(card => {
         const cardRect = card.getBoundingClientRect()
         const cardCenter = (cardRect.left + cardRect.right) / 2
