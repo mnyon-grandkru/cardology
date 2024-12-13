@@ -1,4 +1,4 @@
-<%= content_tag :div, class: "wheel" do %>
+<%= content_tag :div, class: "wheel", data: { controller: "wheel" } do %>
   <% rim_types = [:thirteen_year, :seven_year, :year, :planetary, :daily] %>
   
   <% rim_types.each do |rim_type| %>

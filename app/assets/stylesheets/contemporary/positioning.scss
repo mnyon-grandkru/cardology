@@ -7,16 +7,28 @@
   width: 100vw;
   overflow: hidden;
   position: relative;
+  perspective: 1000px;
+  padding: 40px 0;
 
   .wheel-rim {
     display: flex;
     // justify-content: center;
+    transform: rotateX(10deg);
+    padding: 20px 0;
 
     .wheel-rim-card {
       padding: 10px;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+      
+      &:nth-child(n) {
+        transform: translateZ(calc((var(--offset-from-center, 0) * -1px))) 
+                  rotateY(calc(var(--offset-from-center, 0) * 1deg));
+      }
 
       img {
         width: 100px;
+        transform: translateZ(20px);
       }
     }
   }
@@ -52,6 +64,8 @@
   &::-webkit-scrollbar {
     display: none;           /* Chrome, Safari and Opera */
   }
+  
+  transform-style: preserve-3d;
 }
 
 .delivery_zone {
