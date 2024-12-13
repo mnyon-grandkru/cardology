@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '3.1.4'
+ruby '3.3.5'
 
-gem 'rails', '7.2.2.1'
+gem 'rails', '8.0.0.1'
 gem 'pg'
 gem 'puma'#, '~> 3.0'
 gem 'sass-rails'#, '~> 5.0'
@@ -10,6 +10,7 @@ gem 'coffee-rails'#, '~> 4.2'
 gem 'jquery-rails', '4.3.1'
 gem 'turbolinks'#, '~> 5'
 gem 'jbuilder'#, '~> 2.5'
+gem 'ostruct'
 # gem 'sprockets-rails'
 gem "bootsnap", require: false
 # gem 'redis', '~> 3.0'

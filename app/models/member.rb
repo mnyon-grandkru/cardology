@@ -2,8 +2,8 @@ class Member < ApplicationRecord
   after_create :deliver_temporary_password
   before_update :acknowledge_subscription_status_change
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-  enum :zodiac_sign => [:aries, :taurus, :gemini, :cancer, :leo, :virgo, :libra, :scorpio, :sagittarius, :capricorn, :aquarius, :pisces]
-  enum :subscription_status => [:active, :past_due, :canceled, :upgraded]
+  enum :zodiac_sign, [:aries, :taurus, :gemini, :cancer, :leo, :virgo, :libra, :scorpio, :sagittarius, :capricorn, :aquarius, :pisces]
+  enum :subscription_status, [:active, :past_due, :canceled, :upgraded]
   # attr_default :subscriptions, []
   serialize :subscriptions, coder: JSON
   # attr_default :campaigns, []
