@@ -4,7 +4,8 @@ module WheelsHelper
       content_tag(:header, type.to_s.titleize) +
       cards.map do |card|
         content_tag :div, :class => "wheel-rim-card" do
-          image_tag card.image_url
+          card.reading_extent.html_safe +
+          image_tag(card.image_url, :class => "wheel-rim-card-image")
         end
       end.join.html_safe
     end

@@ -103,7 +103,10 @@ class Birthday < ApplicationRecord
 
   def daily_cards_for_year_and_month year, month
     (1..31).map do |day|
-      card_for_date Date.new(year, month, day), birth_card
+      card = card_for_date Date.new(year, month, day), birth_card
+      card.reading_type = :daily
+      card.start_date = Date.new(year, month, day)
+      card
     end
   end
   
@@ -133,7 +136,10 @@ class Birthday < ApplicationRecord
 
   def year_cards
     (0..60).map do |i|
-      card_for_the_year_on_date birthdate + i.years
+      card = card_for_the_year_on_date birthdate + i.years
+      card.reading_type = :yearly
+      card.start_date = birthdate + i.years
+      card
     end
   end
   
@@ -310,7 +316,10 @@ class Birthday < ApplicationRecord
   def planetary_cards
     (0..60).map do |year|
       (0..6).map do |planet|
-        card_for_the_planetary_period_on_date birthdate + year.years + (planet * 52).days
+        card = card_for_the_planetary_period_on_date birthdate + year.years + (planet * 52).days
+        card.reading_type = :planetary
+        card.start_date = birthdate + year.years + (planet * 52).days
+        card
       end
     end.flatten
   end
@@ -535,12 +544,23 @@ class Birthday < ApplicationRecord
     birth_card_position = life_spread.position_of(birth_card).position
     (1..13).map do |i|
       position = (birth_card_position - i) % 52
-      life_spread.places.find_by(:position => position).card
+      card = life_spread.places.find_by(:position => position).card
+      card.reading_type = :seven_year
+      card.start_date = birthdate + (7 * (i - 1)).years
+      card
     end
   end
 
   def thirteen_year_cards
-    seven_year_cards
+    life_spread = Spread.life_spread
+    birth_card_position = life_spread.position_of(birth_card).position
+    (1..13).map do |i|
+      position = (birth_card_position - i) % 52
+      card = life_spread.places.find_by(:position => position).card
+      card.reading_type = :thirteen_year
+      card.start_date = birthdate + (13 * (i - 1)).years
+      card
+    end
   end
 
   def current_seven_year_period

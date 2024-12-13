@@ -3,7 +3,14 @@ class Card < ApplicationRecord
   belongs_to :face
   has_many :interpretations
   mount_uploader :image, CardUploader
+
+  attr_accessor :reading_type, :start_date
   
+  def reading_extent
+    reading_type.to_s.titleize + " " +
+    start_date.strftime("%B %d, %Y")
+  end
+
   def self.ordered_deck
     deck = []
     ['Hearts', 'Clubs', 'Diamonds', 'Spades'].each do |suit_name|
