@@ -1,5 +1,5 @@
 .body {
-  background-image: url(<%= asset_path('StarField.jpg') %>);
+  background-image: url('../../images/StarField.jpg');
   background-size: cover;
 }
 

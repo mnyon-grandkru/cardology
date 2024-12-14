@@ -37,11 +37,11 @@
 @import "middleend/interpretations.css";
 @import "middleend/members.css";
 
-@import "legacy/birthdays.scss";
-@import "legacy/calendar.scss";
-@import "legacy/celestials.scss";
-@import "legacy/iphone.scss";
-@import "legacy/lookups.scss";
-@import "legacy/quotes.scss";
-@import "legacy/reading.scss";
-@import "legacy/signups.scss";
+@import "legacy/birthdays.css";
+@import "legacy/calendar.css";
+@import "legacy/celestials.css";
+@import "legacy/iphone.css";
+@import "legacy/lookups.css";
+@import "legacy/quotes.css";
+@import "legacy/reading.css";
+@import "legacy/signups.css";
