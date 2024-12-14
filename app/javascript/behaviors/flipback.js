@@ -15,3 +15,8 @@ export function flipPlanetBack(event) {
 export function flipOctagonBack(event) {
   return $(event.currentTarget).closest('.surface-wrapper').css('transform', 'translateZ(-165px) rotateY(0deg)');
 }
+
+window.flipCardBack = flipCardBack;
+window.flipBoxBack = flipBoxBack;
+window.flipPlanetBack = flipPlanetBack;
+window.flipOctagonBack = flipOctagonBack;

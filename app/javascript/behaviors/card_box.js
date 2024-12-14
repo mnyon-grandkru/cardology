@@ -79,3 +79,8 @@ export function rotateOctagon(byDegrees) {
   outgoingSurface.style.transform = `rotateY(${360 - currentPosition}deg) translateZ(var(--octagon-z-index))`;
   incomingSurface.style.transform = `rotateY(${360 - desiredPosition}deg) translateZ(var(--octagon-z-index-front))`;
 }
+
+window.rotateOctagon = rotateOctagon;
+window.rotatePast = rotatePast;
+window.rotateFuture = rotateFuture;
+window.rotateTo = rotateTo;

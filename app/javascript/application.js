@@ -4,9 +4,10 @@ import { Application } from "@hotwired/stimulus";
 import jQuery from 'jquery'
 import '@rails/ujs'
 import 'jquery-validation'
-import 'js-routes'
 import 'owl.carousel'
 import 'moment'
+
+// import.meta.glob("behaviors/*.js");
 
 import { rotatePast, rotateFuture, rotateTo, rotateOctagon } from "./behaviors/card_box.js"
 import { flipCardBack, flipBoxBack, flipPlanetBack, flipOctagonBack } from "./behaviors/flipback.js"
@@ -29,7 +30,9 @@ window.flipOctagonBack = flipOctagonBack;
 window.owlOptions = owlOptions;
 window.cardReferenceToggler = cardReferenceToggler;
 
-import WheelController from "./controllers/wheel_controller.js"
+console.log("Window functions registered:", window.rotatePast);
+
+// import WheelController from "./controllers/wheel_controller.js"
 const application = Application.start();
 application.register("wheel", WheelController)
 

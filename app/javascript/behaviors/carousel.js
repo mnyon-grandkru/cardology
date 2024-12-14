@@ -30,3 +30,7 @@ export function initializeCarousel() {
 
 // Attach the event listener
 document.addEventListener('turbo:load', initializeCarousel);
+
+window.owlOptions = owlOptions;
+window.cardReferenceToggler = cardReferenceToggler;
+window.initializeCarousel = initializeCarousel;
