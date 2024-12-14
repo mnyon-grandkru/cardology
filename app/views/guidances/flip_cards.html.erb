@@ -9,7 +9,7 @@
       <div class="panel">
         <div class="front flip_card" onclick="addheight()">
           <%= reading_heading('daily', :here) %>
-          <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+          <%= card_back_image %>
         </div>
         <div class="back" id="daily_card">
           <%= card_box_pane @birthday, @birthday.card_for_today(@main_card), 'daily', Date.current, :here, nil, true %>
@@ -20,7 +20,7 @@
       <div class="panel">
         <div class="front flip_card" onclick="addheight2()">
           <%= reading_heading('planetary', :here) %>
-          <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+          <%= card_back_image %>
           <%= call_to_subscription %>
         </div>
         <div class="back" id="card52">
@@ -33,7 +33,7 @@
       <div class="panel">
         <div class="front flip_card" id="btn_zone" onclick="addheight3()">
           <%= reading_heading('yearly', :here) %>
-          <%= image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design' %>
+          <%= card_back_image %>
         </div>
         <div class="back" id= "card_year">
           <%= card_box_pane @birthday, @birthday.card_for_this_year(@main_card), 'yearly', @birthday.last_birthday, :here, nil, true %>
