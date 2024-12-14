@@ -219,7 +219,7 @@ module GuidancesHelper
   end
 
   def card_back_image
-    image_tag (asset_path 'Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;"
+    image_tag asset_path('Low-Grey-Blue-RGB.jpg'), :class => 'source_cards_card_design', :onclick => "rotatePast(180); return false;"
   end
 
   def subscribe_link
