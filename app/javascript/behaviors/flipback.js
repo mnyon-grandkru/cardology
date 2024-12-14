@@ -1,17 +1,17 @@
-window.flipCardBack = function(event) {
+export function flipCardBack(event) {
   $(event.currentTarget).closest('.panel').toggleClass('flip');
   return $(event.currentTarget).closest('.delivery_zone').toggleClass('add_height');
-};
+}
 
-window.flipBoxBack = function(event) {
+export function flipBoxBack(event) {
   return $(event.currentTarget).closest('.surface-wrapper').css('transform', 'translateZ(-165px) rotateY(180deg)');
-};
+}
 
-window.flipPlanetBack = function(event) {
+export function flipPlanetBack(event) {
   $(event.currentTarget).closest('.surface-wrapper').css('transform', 'translateZ(-165px) rotateY(180deg)');
   return $(event.currentTarget).closest('.surface-wrapper').find('.alpha').html($('#planet_back_config').data('planet-back-image'));
-};
+}
 
-window.flipOctagonBack = function(event) {
+export function flipOctagonBack(event) {
   return $(event.currentTarget).closest('.surface-wrapper').css('transform', 'translateZ(-165px) rotateY(0deg)');
-};
+}

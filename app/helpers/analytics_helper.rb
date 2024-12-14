@@ -1,6 +1,6 @@
 module AnalyticsHelper
   def google_analytics
-    javascript_include_tag("https://www.googletagmanager.com/gtag/js?id=#{ENV['GOOGLE_ANALYTICS_URCHIN']}", :async => true) +
+    tag.script(:src => "https://www.googletagmanager.com/gtag/js?id=#{ENV['GOOGLE_ANALYTICS_URCHIN']}", :async => true) +
     javascript_tag do <<-SCRIPT
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

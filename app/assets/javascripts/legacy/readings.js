@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).on('turbo:load', function() {
   setInterval(resizeReading, 50);
   attachFlippers();
   $('#upgrade_button').on('click', function(event) {

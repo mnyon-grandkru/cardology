@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).on('turbo:load', function() {
   window.addEventListener('message', function (event) {
     if (event.origin != 'https://www.lifeelevated.life') {
       return;

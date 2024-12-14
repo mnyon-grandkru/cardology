@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).on('turbo:load', function() {
   $('.subscription_management_for_member').on('click', '#exit_interview_initiate', function() {
     $('.subscription_management_for_member').slideUp(2000);
     return $('#cancellation_policy').slideUp(2000);
