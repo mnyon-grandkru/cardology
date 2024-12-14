@@ -56,8 +56,8 @@ module ReadingsHelper
   
   def zodiac_picker_for member, birthday
     if member.nil?
-      link_to(image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.leader}.png"), :class => 'sign_icon') + birthday.zodiac_for_birthday.leader.capitalize.to_s, personality_for_zodiac_birthday_path(birthday, :zodiac_sign => birthday.zodiac_for_birthday.leader, :source_cards => true), :remote => true, :class => 'zodiac_selection') +
-      link_to(image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.follower}.png"), :class => 'sign_icon') + birthday.zodiac_for_birthday.follower.capitalize.to_s, personality_for_zodiac_birthday_path(birthday, :zodiac_sign => birthday.zodiac_for_birthday.follower, :source_cards => true), :remote => true, :class => 'zodiac_selection')
+      link_to(image_tag("images/zodiac/#{birthday.zodiac_for_birthday.leader}.png", :class => 'sign_icon') + birthday.zodiac_for_birthday.leader.capitalize.to_s, personality_for_zodiac_birthday_path(birthday, :zodiac_sign => birthday.zodiac_for_birthday.leader, :source_cards => true), :remote => true, :class => 'zodiac_selection') +
+      link_to(image_tag("images/zodiac/#{birthday.zodiac_for_birthday.follower}.png", :class => 'sign_icon') + birthday.zodiac_for_birthday.follower.capitalize.to_s, personality_for_zodiac_birthday_path(birthday, :zodiac_sign => birthday.zodiac_for_birthday.follower, :source_cards => true), :remote => true, :class => 'zodiac_selection')
     elsif birthday == member&.birthday
       link_to(birthday.zodiac_for_birthday.leader.capitalize, member_assign_zodiac_path(:id => member.id, :member => {:zodiac_sign => birthday.zodiac_for_birthday.leader}), :method => :put, :remote => true, :class => 'zodiac_selection flip_card') +
       link_to(birthday.zodiac_for_birthday.follower.capitalize, member_assign_zodiac_path(:id => member.id, :member => {:zodiac_sign => birthday.zodiac_for_birthday.follower}), :method => :put, :remote => true, :class => 'zodiac_selection flip_card')
@@ -75,14 +75,14 @@ module ReadingsHelper
           birthday.zodiac_sign = birthday.zodiac_for_birthday.leader
           @leader_card = birthday.personality_card
           content_tag(:div, image_tag(@leader_card.image_url, :class => 'card_icon')) +
-          content_tag(:div, image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.leader}.png"), :class => 'sign_icon')) +
+          content_tag(:div, image_tag("images/zodiac/#{birthday.zodiac_for_birthday.leader}.png"), :class => 'sign_icon') +
           content_tag(:div, birthday.zodiac_for_birthday.leader.capitalize)
         end +
         link_to(guidances_personality_path(:birthday_id => birthday.id, :zodiac => birthday.zodiac_for_birthday.follower), :class => 'zodiac_selection') do
           birthday.zodiac_sign = birthday.zodiac_for_birthday.follower
           @follower_card = birthday.personality_card(true)
           content_tag(:div, birthday.zodiac_for_birthday.follower.capitalize) +
-          content_tag(:div, image_tag(asset_path("zodiac/#{birthday.zodiac_for_birthday.follower}.png"), :class => 'sign_icon')) +
+          content_tag(:div, image_tag("images/zodiac/#{birthday.zodiac_for_birthday.follower}.png"), :class => 'sign_icon') +
           content_tag(:div, image_tag(@follower_card.image_url, :class => 'card_icon'))
         end
       end

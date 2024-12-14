@@ -161,7 +161,7 @@ module GuidancesHelper
   end
 
   def spade_logo
-    image_tag asset_path('source-cards-spade-white.png'), class: 'spade_logo'
+    image_tag 'images/source-cards-spade-white.png', class: 'spade_logo'
   end
 
   def copyright_text

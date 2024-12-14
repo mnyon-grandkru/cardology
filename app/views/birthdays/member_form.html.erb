@@ -19,7 +19,7 @@
 
   <%= content_tag :div, :id => 'players_club_membership_form', :class => 'pane' do %>
     <%= content_tag :header, content_tag(:b, marketing_text('member_form', 'header')) %>
-    <%= image_tag asset_path('blueorangeround-lowrez.png'), :id => 'players_club_logo' %>
+    <%= image_tag 'images/blueorangeround-lowrez.png', :id => 'players_club_logo' %>
     <%= div_for @birth_card, :explication_of do %>
       <%= mark_up marketing_text('member_form', 'description') %>
     <% end %>
