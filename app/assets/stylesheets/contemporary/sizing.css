@@ -12,12 +12,12 @@ img.image_gallery {
   width: 330px;
 }
 
-// .delivery_zone{
+/* // .delivery_zone{
 //   padding-top: 40px;
 //   width: 50%; // width overrides the media querywhen in this position
 //   margin-bottom: 40px;
 //   margin-right: 10px;
-// }
+// } */
 
 @media only screen and (min-width: 1050px) {
   .prompt_zone{
@@ -51,7 +51,7 @@ img.image_gallery {
 }
 
 
-// Braintree interface - not in use 2024
+/* // Braintree interface - not in use 2024 */
 .buy-button {
   text-align: center;
   margin-top: 4%;

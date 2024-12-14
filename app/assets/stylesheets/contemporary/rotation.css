@@ -44,5 +44,5 @@
 
 .panel.flip .back img.reveal {
   opacity: 1;
-  transition-delay: 0.8s; // Delay the reveal until after the flip animation
+  transition-delay: 0.8s;
 }

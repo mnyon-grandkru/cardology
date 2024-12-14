@@ -46,7 +46,7 @@
 .owl-theme .owl-dots .owl-dot {
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
 }
 
 .owl-theme .owl-dots .owl-dot span {
@@ -55,7 +55,7 @@
   margin: 5px 7px;
   background: #D6D6D6;
   display: block;
-  -webkit-backface-visibility: visible; //TODO
+  -webkit-backface-visibility: visible;
   transition: opacity 200ms ease;
   border-radius: 30px;
 }

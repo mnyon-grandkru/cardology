@@ -19,7 +19,7 @@
     width: var(--card-box-width);
     height: 750px;
     perspective: 1200px;
-    // transform-style: preserve-3d;
+    /* // transform-style: preserve-3d; */
     
     .source_cards_card_design {
       width: var(--card-box-width);

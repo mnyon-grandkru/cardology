@@ -10,8 +10,29 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
- *= require owl.carousel
-
  */
+
+/* @import "owl.carousel.css"; */
+@import "contemporary/sizing.css";
+@import "contemporary/positioning.css";
+@import "contemporary/text.css";
+@import "contemporary/colors.css";
+@import "contemporary/buttons.css";
+@import "contemporary/animation.css";
+@import "contemporary/inputs.css";
+@import "contemporary/rotation.css";
+@import "contemporary/mobilewidth.css";
+@import "contemporary/card_box.css";
+@import "contemporary/deliveries.css";
+@import "contemporary/guidance.css";
+@import "contemporary/cards.css";
+
+@import "utility/braintree.css";
+@import "utility/flash.css";
+@import "utility/fonts.css";
+@import "utility/function.css";
+@import "utility/modal.css";
+@import "utility/owl.theme.css";
+
+@import "middleend/interpretations.css";
+@import "middleend/members.css";

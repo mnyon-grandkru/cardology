@@ -8,9 +8,9 @@ import 'js-routes'
 import 'owl.carousel'
 import 'moment'
 
-import { rotatePast, rotateFuture, rotateTo, rotateOctagon } from "./behaviors/card_box"
-import { flipCardBack, flipBoxBack, flipPlanetBack, flipOctagonBack } from "./behaviors/flipback"
-import { owlOptions, cardReferenceToggler, initializeCarousel } from "./behaviors/carousel"
+import { rotatePast, rotateFuture, rotateTo, rotateOctagon } from "./behaviors/card_box.js"
+import { flipCardBack, flipBoxBack, flipPlanetBack, flipOctagonBack } from "./behaviors/flipback.js"
+import { owlOptions, cardReferenceToggler, initializeCarousel } from "./behaviors/carousel.js"
 
 // Make jQuery available globally
 window.jQuery = jQuery
@@ -29,7 +29,7 @@ window.flipOctagonBack = flipOctagonBack;
 window.owlOptions = owlOptions;
 window.cardReferenceToggler = cardReferenceToggler;
 
-import WheelController from "./controllers/wheel_controller"
+import WheelController from "./controllers/wheel_controller.js"
 const application = Application.start();
 application.register("wheel", WheelController)
 

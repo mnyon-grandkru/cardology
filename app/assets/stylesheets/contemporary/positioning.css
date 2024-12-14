@@ -12,7 +12,7 @@
 
   .wheel-rim {
     display: flex;
-    // justify-content: center;
+    /* // justify-content: center; */
     transform: rotateX(10deg);
     padding: 20px 0;
 
@@ -40,7 +40,7 @@
   overflow-y: hidden;
   margin: 10px 0;
   
-  // Optional: Hide scrollbar but keep functionality
+  /* // Optional: Hide scrollbar but keep functionality */
   &::-webkit-scrollbar {
     height: 8px;
   }
