@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
+    console.log("wheel controller connected")
     this.updateCardPositions()
     // Update positions when scrolling
     this.element.querySelectorAll('.wheel-rim-container').forEach(container => {

@@ -92,7 +92,6 @@ class Birthday < ApplicationRecord
   def card_for_date date, main_card = birth_card
     return Card.joker if birth_card == Card.joker
     spread_ordinal = weeks_since_birth_on_date(date) % 90
-    Rails.logger.info "spread_ordinal: #{spread_ordinal.to_i}"
     spread = Spread.find_by(:age => spread_ordinal)
     position_of_main_card = spread.position_of main_card
     position = position_of_main_card.position - position_in_week_on_date(date)
