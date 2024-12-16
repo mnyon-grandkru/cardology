@@ -1,3 +1,5 @@
+console.log("Loading card_box.js");
+
 function currentRotation(panel) {
   let computedStyle = window.getComputedStyle(panel);
   let transformMatrix = computedStyle.transform;
@@ -26,6 +28,7 @@ function recordPanelRotation(panel, degrees) {
 }
 
 export function rotatePast(byDegrees) {
+  console.log("rotatePast function defined");
   let panel = event.target.closest('.surface-wrapper');
   let currentPosition = parseInt(panel.dataset.rotation) || currentRotation(panel);
   let desiredPosition = currentPosition - byDegrees;
@@ -79,8 +82,3 @@ export function rotateOctagon(byDegrees) {
   outgoingSurface.style.transform = `rotateY(${360 - currentPosition}deg) translateZ(var(--octagon-z-index))`;
   incomingSurface.style.transform = `rotateY(${360 - desiredPosition}deg) translateZ(var(--octagon-z-index-front))`;
 }
-
-window.rotateOctagon = rotateOctagon;
-window.rotatePast = rotatePast;
-window.rotateFuture = rotateFuture;
-window.rotateTo = rotateTo;

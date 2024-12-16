@@ -9,28 +9,36 @@ import 'moment'
 
 // import.meta.glob("behaviors/*.js");
 
-import { rotatePast, rotateFuture, rotateTo, rotateOctagon } from "./behaviors/card_box.js"
-import { flipCardBack, flipBoxBack, flipPlanetBack, flipOctagonBack } from "./behaviors/flipback.js"
-import { owlOptions, cardReferenceToggler, initializeCarousel } from "./behaviors/carousel.js"
+// import { rotatePast, rotateFuture, rotateTo, rotateOctagon } from "./behaviors/card_box.js"
+// import { flipCardBack, flipBoxBack, flipPlanetBack, flipOctagonBack } from "./behaviors/flipback.js"
+// import { owlOptions, cardReferenceToggler, initializeCarousel } from "./behaviors/carousel.js"
 
 // Make jQuery available globally
 window.jQuery = jQuery
 window.$ = jQuery
 
-// Make functions globally available if needed
-window.rotatePast = rotatePast;
-console.log(window.rotatePast)
-window.rotateFuture = rotateFuture;
-window.rotateTo = rotateTo;
-window.rotateOctagon = rotateOctagon;
-window.flipCardBack = flipCardBack;
-window.flipBoxBack = flipBoxBack;
-window.flipPlanetBack = flipPlanetBack;
-window.flipOctagonBack = flipOctagonBack;
-window.owlOptions = owlOptions;
-window.cardReferenceToggler = cardReferenceToggler;
+console.log("Loading application.js");
 
-console.log("Window functions registered:", window.rotatePast);
+import { rotatePast, rotateFuture, rotateTo, rotateOctagon } from "./behaviors"
+console.log("After import, rotatePast is:", typeof rotatePast);
+
+// Make functions globally available
+Object.assign(window, {
+  rotatePast,
+  rotateFuture,
+  rotateTo,
+  rotateOctagon
+});
+
+console.log("After Object.assign, window.rotatePast is:", typeof window.rotatePast);
+
+// Add a check to verify functions are attached
+console.log("Rotation functions loaded:", {
+  rotatePast: !!window.rotatePast,
+  rotateFuture: !!window.rotateFuture,
+  rotateTo: !!window.rotateTo,
+  rotateOctagon: !!window.rotateOctagon
+});
 
 // import WheelController from "./controllers/wheel_controller.js"
 const application = Application.start();
